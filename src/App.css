@@ -6,6 +6,12 @@ p {
   color: black;
 }
 
+div {
+  margin: 0;
+}
+
+
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -36,4 +42,108 @@ footer {
 
 footer p {    
   color: white;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  padding: 30px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.title {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button {
+  width: 95%;
+  margin: auto;
+  margin-bottom: 0.5em;
+  padding: 1em;
+  display: block;
+}
+
+.centerButton {
+  text-align: center;
+  background-color: #5004f3;
+  color: #5004f3;
+}
+
+.centerButton button {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+  background-color: red;
+}
+
+section {
+  margin: 0;
+  padding-bottom: 50px;
+}
+
+section:nth-child(even) {
+  background-color: darkgrey;
+}
+
+section:nth-child(odd) {
+  background-color: gray;
+}
+
+.imgColumn {
+  position: relative;
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.imgColumn .image {
+  width: 100%;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.imgColumn:hover .image {
+  opacity: 0.3;
+}
+
+.imgColumn:hover .middle {
+  opacity: 1;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+  margin: auto;
+  width: 70%;
+}
+
+.card {
+  
+  display: grid;
+  background-color: white;
+}
+
+.card p {
+  text-align: center;
+}
+
+.card img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.welcome {
+  position: relative;
+  text-align: center;
+  color: black;
 }
