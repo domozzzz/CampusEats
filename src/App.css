@@ -147,3 +147,38 @@ section:nth-child(odd) {
   text-align: center;
   color: black;
 }
+
+.about {
+  position: relative;
+  text-align: left;
+  color: black;
+  display: flex;
+  height: 100vh;
+}
+
+.about-image {
+  flex: 0 0 50%;
+}
+
+.about-image img {
+  object-fit: cover;
+}
+
+.about-text {
+  flex: 0 0 40%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-text h1 {
+  margin-bottom: 20px;
+  text-align: left;
+  padding: 0;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
