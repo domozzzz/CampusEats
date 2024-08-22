@@ -30,6 +30,7 @@ function LoginPage() {
     
     try {
       console.log(email,password)
+      //requires running 'json-server --watch ./src/db.json --port 3001' you might need to run 'npm install -g json-server' to install
       const response = await fetch (`http://localhost:3001/users?email=${email}&password=${password}`);
       const data = await response.json();
       
