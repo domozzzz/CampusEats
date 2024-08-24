@@ -35,14 +35,52 @@ i {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    color: #FDFDFD;
+    background-color: #064D42;
+    margin: 30px auto 50px auto;
+    width: 85%;
+    border-style: none;
+    border-radius: 15px;
 }
 
 .meal-info-header {
     display: flex;
+    width: 300px;
+    height: 65px;
+    margin: -40px auto 15px auto;
     flex-direction: row;
     justify-content: center;
+    background-color: white;
+    border-style: none;
+    border-radius: 15px;
 }
 
-.meal-info-header h3 {
-    margin: 10px;
+.meal-info-header button {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    width: 140px;
+    height: 50px;
+    border-style: none;
+    border-radius: 15px;
+    font-size: large;
+    font-weight: 600;
+    color: #064D42;
+    background-color: #D9E5E3;
+    padding: 0px;
+}
+
+.meal-info p {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #FDFDFD;
+}
+
+.meal-kit-ingredients h4 {
+    margin-bottom: 5px;
+}
+
+.meal-kit-ingredients p {
+    font-weight: lighter;
+    margin-top: 0px;
 }

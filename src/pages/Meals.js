@@ -24,26 +24,25 @@ export default function Meals() {
             </div>
             <div className="meal-info">
                 <div className="meal-info-header">
-                    <h3>Meal Kit</h3>
-                    <h3>Prepped & <br>
-                     Ready</h3>
+                    <button> Meal Kit </button>
+                    <button> Prepped & <br/> Ready </button>
                 </div>
-                <p>Meal kits provide you with all the ingredients needed to cook a meal from scratch.
+                <p>Meal kits provide you with all the ingredients needed to cook a meal from scratch.<br/>
                 They come with pre-measured ingredients and step-by-step instructions
                 </p>
-                <div>
+                <div className="meal-kit-ingredients">
                     <h4>Breakfast</h4>
                     <p>Stuff for breakfast</p>
                 </div>
-                <div>
+                <div className="meal-kit-ingredients">
                     <h4>Lunch</h4>
                     <p>Stuff for Lunch</p>
                 </div>
-                <div>
+                <div className="meal-kit-ingredients">
                     <h4>Dinner</h4>
                     <p>Stuff for dinner</p>
                 </div>
-                <div>
+                <div className="meal-kit-ingredients">
                     <h4>Snack</h4>
                     <p>Stuff for snack</p>
                 </div>
