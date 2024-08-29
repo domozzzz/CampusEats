@@ -23,6 +23,23 @@ function RegisterPage() {
     return isEmailValid && isPaswwordValid;
   }
 
+  const checkEmail = async (e) => {
+    try {
+      const response = await fetch (`http://localhost:3001/users?email=${email}`);
+      const data = await response.json();
+
+      if (data.length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+      
+    } catch {
+      return false;
+    }
+
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validform()) {
@@ -30,13 +47,18 @@ function RegisterPage() {
       return;
     }
     
+    const exists = await checkEmail();
+    if (exists == false){
+
     try {
-      console.log(email,password)
       //requires running 'json-server --watch ./src/db.json --port 3001' you might need to run 'npm install -g json-server' to install
-      const response = await fetch (`http://localhost:3001/users?email=${email}&password=${password}`);
+      const response = await fetch (`http://localhost:3001/users?email=${email}&password=${password}`, {
+        method:"POST",
+        body: JSON.stringify({email:`${email}`, password:`${password}`, firstname:`${firstname}`, lastname:`${lastname}`, phone:`${phone}`})
+      });
       const data = await response.json();
       
-      if (data.length > 0) {
+      if (response.ok) {
         console.log("logined in",email,password);
       } else {
         console.log(data);
@@ -46,8 +68,11 @@ function RegisterPage() {
     } catch (error) {
       console.error("error during login:", error);
     }
-    
+  } else {
+    alert("That email has already been registered");
+  }
   };
+
 
   
 
@@ -80,7 +105,7 @@ function RegisterPage() {
           />
           <input
             type="text"
-            placeholder="Username"
+            placeholder="Email"
             className="input-field"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
