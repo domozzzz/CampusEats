@@ -42,7 +42,7 @@ export default function About() {
                 </div>
             </div>
             <div class="join-us" alt="Avatar" style={{ width: "100%", height: "250px" }}>
-            <div class="container">
+            <div class="join-us-container">
                 <h1>Join Us!</h1>
                 <p>Ready to start eating better? Join CampusEats today and discover meal plans that fit your life.</p>
                 <button>Register</button>
