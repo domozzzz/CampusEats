@@ -1,37 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import logo from "../images/logo.png";
+
 
 export default function Header() {
 
   return (
-    <nav>
-      <ul>
-
-        <li><Link to = "/">
-              <a href="/">Home</a>
-        </Link></li>
-
-        <li><Link to = "/about">
-              <a href="about">About</a>
-        </Link></li>
-
-        <li><Link to = "/meals">
-          <a href="/meals">Meals</a>
-        </Link></li>
-
-        <li><Link to = "/recipes">
-          <a href="/recipes">Recipes</a>
-        </Link></li>
-
-        <li><Link to = "/contact">
-          <a href="/contact">Contact</a>
-        </Link></li>
-
-        <li><Link to = "/login">
-          <a href="/login">Login</a>
-        </Link></li>
-
-      </ul>
-    </nav>
+    <div>
+      <nav>
+        <ul>
+          <li class="unpadded"><NavLink to = "/"><img src={logo}  class="logo" alt="Logo"/></NavLink></li>
+          <li><NavLink to = "/">Home</NavLink></li>
+          <li><NavLink to = "/about">About</NavLink></li>
+          <li><NavLink to = "/meals">Meals Plan</NavLink></li>
+          <li><NavLink to = "/about">About Us</NavLink></li>
+          <li><NavLink to = "/community">Community</NavLink></li>
+          <li><NavLink to = "/order">Order</NavLink></li>
+        </ul>
+      </nav>
+    </div>
   );
 }
