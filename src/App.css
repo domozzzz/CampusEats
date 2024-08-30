@@ -43,28 +43,42 @@ footer .container {
   width: 100%;
 }
 
-footer .copyright {
-  margin-top: 0;
+footer .container {
+  display: flex;
+  width: 100%;
 }
 
+footer h3 {    
+  color: #064D42;
+  padding: 40px;
+  text-align: justify;
+  margin-top: 50px;
+  text-align: left;
+  font-size: 20px;
+  width: 50%
+}
 
 footer p {    
   color: #064D42;
   text-align: justify;
   position: relative;
   text-align: center;
-  margin-top: 50px;
+  font-size: 20px;
   margin-bottom: 0;
 }
 
 footer ul {
+  margin-top: 5px;
   text-align: right;
-  width: 50%
+  width: 40%
 }
 
 footer ul a {
   color: #064D42;
   text-decoration: none;
+  vertical-align: sub;
+  font-size: 20px;
+  margin-left: 100px;
 }
 
 h1 {

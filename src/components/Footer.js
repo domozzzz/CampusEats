@@ -7,8 +7,8 @@ export default function Footer() {
   return (
     <footer>
       <div class="container">
-        <img src={logo} alt="Avatar" style={{ width: "20%", height: "100%" }}></img>
-        <p>Custom meal kits designed by CampusEats and other users for delivery to your desired university!</p>
+        <img src={logo} alt="Avatar" style={{ width: "15%", height: "100%" }}></img>
+        <h3>Custom meal kits designed by CampusEats and other users for delivery to your desired university!</h3>
         <ul>
           <ul><Link to="/">
             <a href="/">Home</a>
