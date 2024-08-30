@@ -20,13 +20,11 @@ nav {
   background: transparent;
   position: relative;
   width: 100%;
-}
 
 a.active {
   font-weight: bold;
   background-color: transparent;
 }
-
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -102,10 +100,12 @@ h1 {
   font-size: 2.5em;
   text-align: center;
   padding: 30px;
+  font-family: "Poppins", sans-serif;
 }
 
 h2 {
   text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
 h3 {
@@ -310,4 +310,105 @@ section {
 
 .slideshow-button.right {
   right: 10px;
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.heading {
+  position: relative;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+}
+
+.heading img {
+  height: 40%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+  
+/* about page */
+.about {
+  position: relative;
+  text-align: left;
+  color: black;
+  background-color: white;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 100vh;
+}
+
+.about-image {
+  flex: 0 0 50%;
+  padding: 30px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+.about-image img {
+  object-fit: cover;
+}
+
+.about-text {
+  flex: 0 0 40%;
+
+.about2 {
+  position: relative;
+  justify-content: space-between;
+  text-align: left;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  background-color: #064D42;
+}
+
+.about2-title {
+  flex: 0 0 40%;
+  display: left;
+}
+
+.about2-title h1 {
+  color: white;
+  font-size: 2.5em;
+}
+
+.about2-text {
+  text-align: justify;
+  padding: 40px;
+}
+
+.about2-text p {
+  color: white;
+  font-size: 20px;
+}
+
+.join-us {
+  text-align: justify;
+}
+
+.container {
+  padding: 30px;
+  position: relative;
+  display: center;
+  text-align: center;
+}
+
+.container h1{
+  color: #064D42;
+  margin: 0;
+  padding: 10px;
+}
+
+.container button {
+  width: 20%;
+  margin: auto;
+  display: block;
+  background-color: #064D42;
+  color: white;
+}
+
+.container p {
+  font-size: 20px;
 }

@@ -4,16 +4,22 @@ import "../Login.css";
 import useToken from "../components/useToken";
 
 
-function LoginPage() {
+function RegisterPage() {
+
 
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [firstname, setFirst] = useState('');
+  const [lastname, setLast] = useState('');
+  const [phone, setPhone] = useState('');
   
   const validform = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
     const isEmailValid = emailRegex.test(email);
+    
     const isPaswwordValid = password.length > 8;
+
     return isEmailValid && isPaswwordValid;
   }
 
@@ -48,8 +54,30 @@ function LoginPage() {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Sign in to your account</h2>
+        <h2>Register to order</h2>
         <form  onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="First name"
+            className="input-field"
+            value={firstname}
+            onChange={(e) => setFirst(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Last name"
+            className="input-field"
+            value={lastname}
+            onChange={(e) => setLast(e.target.value)}
+
+          />
+          <input
+            type="text"
+            placeholder="Phone number"
+            className="input-field"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
           <input
             type="text"
             placeholder="Username"
@@ -57,6 +85,7 @@ function LoginPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          
           <input
             type="password"
             placeholder="Password"
@@ -65,14 +94,14 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
 
           />
-          <button type="submit" className="login-button">Login</button>
+          <button type="submit" className="login-button">Register</button>
         </form>
         <p>
-          Don’t have an account? <a href="/register">Register now.</a>
+         Already have an account? <a href="/login">Login.</a>
         </p>
       </div>
     </div>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
