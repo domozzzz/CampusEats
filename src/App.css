@@ -20,6 +20,7 @@ nav {
   background: transparent;
   position: relative;
   width: 100%;
+}
 
 a.active {
   font-weight: bold;
@@ -310,6 +311,7 @@ section {
 
 .slideshow-button.right {
   right: 10px;
+}
 
 .about-text p {
   font-size: 18px;
@@ -353,6 +355,7 @@ section {
 
 .about-text {
   flex: 0 0 40%;
+}
 
 .about2 {
   position: relative;
