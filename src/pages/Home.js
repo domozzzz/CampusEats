@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import burrito from '../images/Burrito.png'
-import chickenrRice from '../images/Chicken rice.png'
+import chickenRice from '../images/Chicken rice.png'
 import kebab from '../images/Kebab.png'
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
@@ -24,33 +24,33 @@ function ScrollButton({ id, children, className }) {
 export default function Home() {
     const slides = [
         <div class="cards">
-        <div class="card">
+          <Link to="/meals"><div class="card">
+              <img src={burrito} alt="Avatar"></img>
+                  <p>Braised Brisket Burrito</p>
+          </div></Link>
+          <Link to="/meals"><div class="card">
+              <img src={chickenRice} alt="Avatar"></img>
+                  <p>Hainanese Chicken Rice</p>
+          </div></Link>
+          <Link to="/meals"><div class="card">
+              <img src={kebab} alt="Avatar"></img>
+                  <p>Adana Kebab</p>
+          </div></Link>
+      </div>,
+        <div class="cards">
+        <Link to="/meals"><div class="card">
             <img src={burrito} alt="Avatar"></img>
-                <Link to="/meals" className="register-button">Braised Brisket Burrito</Link>
-        </div>
-        <div class="card">
-            <img src={chickenrRice} alt="Avatar"></img>
-                <Link to="/meals" className="register-button">Hainanese Chicken Rice</Link>
-        </div>
-        <div class="card">
+                <p>Braised Brisket Burrito</p>
+        </div></Link>
+        <Link to="/meals"><div class="card">
+            <img src={chickenRice} alt="Avatar"></img>
+                <p>Hainanese Chicken Rice</p>
+        </div></Link>
+        <Link to="/meals"><div class="card">
             <img src={kebab} alt="Avatar"></img>
-                <Link to="/meals" className="register-button">Adana Kebab</Link>
-        </div>
+                <p>Adana Kebab</p>
+        </div></Link>
     </div>,
-                    <div class="cards">
-                    <div class="card">
-                        <img src={burrito} alt="Avatar"></img>
-                            <Link to="/meals" className="register-button">Braised Brisket Burrito</Link>
-                    </div>
-                    <div class="card">
-                        <img src={chickenrRice} alt="Avatar"></img>
-                            <Link to="/meals" className="register-button">Hainanese Chicken Rice</Link>
-                    </div>
-                    <div class="card">
-                        <img src={kebab} alt="Avatar"></img>
-                            <Link to="/meals" className="register-button">Adana Kebab</Link>
-                    </div>
-                </div>,
       ];
     return (
         <div>
@@ -63,8 +63,8 @@ export default function Home() {
                         other users for delivery to your desired university.<br/>
                     </h1>
                     <div>
-                        <Link to="/login" className="login-button">Login</Link>
-                        <Link to="/" className="register-button">Register</Link>
+                        <Link to="/login" className="home-login-button">Login</Link>
+                        <Link to="/register" className="register-button">Register</Link>
                         <ScrollButton className="discover-button" id="projects">Discover More<span>&#8595;</span></ScrollButton>
                     </div>
                 </div>
