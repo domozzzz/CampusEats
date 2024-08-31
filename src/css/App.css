@@ -4,7 +4,13 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
+
+a.active {
+  text-decoration: underline;
+}
+
 
 p {
   color: black;
@@ -74,10 +80,11 @@ nav li a {
 }
 
 .welcome {
-  width: 100%;
-
+  
+  width: 100vw;
   position: absolute;
   top: 0px;
+  overflow: hidden;
 }
 
 .logo {
@@ -85,12 +92,9 @@ nav li a {
   width: auto;
 }
 
-.image-placeholder {
-  height: 100vh;
-}
-
 footer {
-  background-color:#5004f3;
+  position: relative;
+  background-color: var(--green);
 }
 
 footer p {    
@@ -150,14 +154,15 @@ h3 {
 
 }
 
-.explore-button {
+.about-register-button {
   font-size: 2em;
   border: none;
   border-radius: 15px;
-  margin-top: 2em;
-  margin-bottom: 0.5em;
-  margin-left: 37%;
-  margin-right: 37%;
+  margin-top: 1em;
+  width: min-content;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
   display: block;
   padding: 0.2em;
   padding-left: 0.5em;
@@ -167,7 +172,30 @@ h3 {
   text-decoration: none;
 }
 
-.login-button {  
+.explore-button {
+  font-size: 2em;
+  border: none;
+  border-radius: 15px;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  width: 30%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  background-color: var(--green);
+  color: white;
+  text-decoration: none;
+}
+
+.image-placeholder {
+  height: 90vh;
+}
+
+.home-login-button {  
   margin-left: 30px;
   font-size: 2em;
   background-color: transparent;
@@ -265,6 +293,13 @@ section {
   font-size: 1em;
   border-radius: 15px;
   background-color: var(--green);
+  color: white;
+}
+
+.card p {
+  color: white;
+  margin-top: 5px;
+  padding-bottom: 1em;
 }
 
 .card img {
@@ -319,14 +354,16 @@ section {
 }
 
 .heading {
-  position: relative;
+  position: absolute;
+  top: 0;
   text-align: center;
   color: white;
   font-size: 1.5em;
 }
 
 .heading img {
-  height: 40%;
+  height: 100vh;
+  width: 100%;
   object-fit: cover;
   border: 1px solid #ccc;
 }
@@ -339,7 +376,13 @@ section {
   background-color: white;
   display: flex;
   flex-direction: row-reverse;
+}
+
+.meal {
+  position: absolute;
+  background-color: white;
   height: 100vh;
+  z-index: 5;
 }
 
 .about-image {

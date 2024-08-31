@@ -1,13 +1,25 @@
 .login-container {
+    position: relative;
     display: flex;
-    background-image: url('./images/Homepage\ Image\ \(Buffet\).png');
-    background-size:cover;
+    position: absolute;
+    top: 0;
     justify-content: center;
     align-items: center;
+    background-attachment: fixed;
+    background-size: 100% 100vh;
     height: 100vh;
   }
   
+  .welcome {
+    width: 100vw;
+    position: absolute;
+    top: 0px;
+    overflow: hidden;
+  }
+  
   .login-box {
+    margin-top: 150px;
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: #FDFDFD;
@@ -17,14 +29,16 @@
     max-width: 300px;
     width: 100%;
   }
-  
+
   h2 {
+    position: relative;
     font-size: 24px;
     margin-bottom: 20px;
     color: #0c6649; /* Dark green color */
   }
   
   .input-field {
+    position: relative;
     display: block;
     background:transparent;
     text-align: center;
@@ -38,6 +52,7 @@
   }
   
   .login-button {
+    position: relative;
     max-width: 100px;
     padding: 10px;
     background: transparent;
@@ -49,31 +64,39 @@
   }
   
   .login-button:hover {
+    position: relative;
+
     background-color: #0a533b;
     color: white;
   }
   
   p {
+    position: relative;
+
     margin-top: 20px;
     font-size: 14px;
     color: #0a533b;
   }
 
-  
   a {
+    position: relative;
     color: #0c6649;
     text-decoration: none;
     font-weight: bold;
   }
-  
-  a:hover {
-    text-decoration: underline;
-  }
 
   form {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
   
+  body {
+    position: relative;
+  }
+
+  html {
+    position: relative;
+  }
