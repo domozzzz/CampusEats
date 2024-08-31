@@ -1,4 +1,6 @@
 .meals-title {
+    z-index: 10;
+    position: relative;
     text-align: center;
 }
 
@@ -8,6 +10,9 @@
 }
 
 .meals-logo {
+    z-index: 10;
+    padding-top: 150px;
+    position: relative;
     display: flex;
     justify-content: center;
 }
@@ -18,8 +23,8 @@
     flex-direction: column;
     text-align: center;
     margin:  20px;
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     padding: 15px 10px 15px;
     border-style: solid;
     border-color: #064D42;
@@ -31,6 +36,8 @@ i {
 }
 
 .meal-info {
+    z-index: 10;
+    position: relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -41,6 +48,10 @@ i {
     width: 85%;
     border-style: none;
     border-radius: 15px;
+}
+
+.meals-logo h3 {
+    font-size: 2em;
 }
 
 .meal-info-header {
@@ -68,6 +79,12 @@ i {
     background-color: #D9E5E3;
     padding: 0px;
 }
+
+.meals-title p {
+    font-size: 1em;
+}
+
+
 
 .meal-info p {
     width: 90%;

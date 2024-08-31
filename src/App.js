@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './App.css';
+import './css/App.css'
 import Home from './pages/Home.js';
 import About from './pages/About.js'
 import Meals from './pages/Meals.js';
@@ -9,7 +9,6 @@ import Login from './pages/Login.js';
 import RegisterPage from "./pages/Register.js";
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
-import './App.css';
 
 
 function App() {

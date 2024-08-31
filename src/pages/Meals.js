@@ -1,12 +1,20 @@
 //import '@fortawesome/fontawesome-free/css/all.min.css';
-import '../meals.css'
+import '../css/meals.css'
+import homepage from '../images/homepage.png'
 
 export default function Meals() {
     return (
         <div>
+            <div class="welcome" alt="Avatar">
+                <div class="heading-image">
+                <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
+                </div>
+                </div>
+            <div class="meal">
             <div className="meals-title">
                     <h2>Personalise your Meal Plan</h2>
                     <p>Craft your meals to fit your lifestyle and preferences</p>
+            </div>
             </div>
             <div className="meals-logo">
                 <div>

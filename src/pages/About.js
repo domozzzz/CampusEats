@@ -1,13 +1,14 @@
 
 import about from '../images/about.jpeg'
-import headingimage from '../images/headingimage.png'
+import homepage from '../images/homepage.png'
+import { Link } from 'react-router-dom';
 
 export default function About() {
     return (
         <div>
-            <div class="heading" alt="Avatar" style={{ width: "100%", height: "200px" }}>
+            <div class="welcome" alt="Avatar">
                 <div class="heading-image">
-                    <img src={headingimage} alt="Avatar" style={{ width: "100%", height: "100%" }}></img>
+                <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
                     <div class="title">
                         <h1>About Us</h1>
                     </div>
@@ -45,7 +46,7 @@ export default function About() {
             <div class="container">
                 <h1>Join Us!</h1>
                 <p>Ready to start eating better? Join CampusEats today and discover meal plans that fit your life.</p>
-                <button>Register</button>
+                <Link to="/register" class="about-register-button">Register</Link>
                 </div>
             </div>
         </div>

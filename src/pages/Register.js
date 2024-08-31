@@ -1,7 +1,9 @@
 
 import React, { useState } from "react";
-import "../Login.css";
+import "../css/App.css"
 import useToken from "../components/useToken";
+import { Link } from "react-router-dom";
+import homepage from '../images/homepage.png'
 
 
 function RegisterPage() {
@@ -52,7 +54,11 @@ function RegisterPage() {
   
 
   return (
+    <div>
     <div className="login-container">
+    <div class="welcome">
+                <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
+            </div>
       <div className="login-box">
         <h2>Register to order</h2>
         <form  onSubmit={handleSubmit}>
@@ -97,9 +103,11 @@ function RegisterPage() {
           <button type="submit" className="login-button">Register</button>
         </form>
         <p>
-         Already have an account? <a href="/login">Login.</a>
+         Already have an account? <Link to="/login">Login.</Link>
         </p>
       </div>
+    </div>
+    <div class="image-placeholder"></div>
     </div>
   );
 }
