@@ -1,7 +1,26 @@
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import '../meals.css'
+import { useState } from 'react'
+import '../css/meals.css'
+// import homepage from '../images/homepage.png'
+import mealtypeActive from '../images/meal_type_green.png'
+import mealtypeNonActive from '../images/meal_type_white.png'
+import order from "../images/order_white.png"
+import preferenceActive from "../images/preferences_green.png"
+import preferenceNonActive from '../images/preferences_white.png'
 
 export default function Meals() {
+    const [option, setOption] = useState([true, false, false])
+    const [mealKit, setMealKit] = useState(true)
+
+    function info() {
+        if (mealKit) {
+            return <p> Meal kits provide you with all the ingredients needed to cook a meal from scratch.<br/>
+                    They come with pre-measured ingredients and step-by-step instructions </p>
+        } else {
+            return <p> Prepared and ready meals are fully cooked and just need reheating. Perfect for <br/>
+                    busy days when you need a quick, nutritious meal without any prep work</p>
+        }
+
+    }
     return (
         <div>
             <div className="meals-title">
@@ -9,27 +28,30 @@ export default function Meals() {
                     <p>Craft your meals to fit your lifestyle and preferences</p>
             </div>
             <div className="meals-logo">
-                <div>
-                    <i class="fa-solid fa-utensils"></i>
+                <button className={option[0] === true ? "active" : "nonActive"}
+                onClick={() => setOption([true, false, false])}>
+                    <img src ={option[0] ? mealtypeActive : mealtypeNonActive}/>
                     <h3>Meal Type</h3>
-                </div>
-                <div>
-                    <i className="fa-solid fa-basket-shopping"></i>
+                </button>
+                <button className={option[1] === true ? "active" : "nonActive"}
+                onClick={() => setOption([false, true, false])}>
+                    <img src = {option[1] ? preferenceActive : preferenceNonActive}/>
                     <h3>Preferences</h3>
-                </div>
-                <div>
-                    <i className="fa-solid fa-circle-xmark"></i>
+                </button>
+                <button className={option[2] === true ? "active" : "nonActive"}
+                onClick={() => setOption([false, false, true])}>
+                    <img src = {order}/>
                     <h3>Order</h3>
-                </div>
+                </button>
             </div>
             <div className="meal-info">
                 <div className="meal-info-header">
-                    <button> Meal Kit </button>
-                    <button> Prepped & <br/> Ready </button>
+                    <button className={mealKit === true ? "active" : ''}
+                     onClick={() => setMealKit(true)}> Meal Kit </button>
+                    <button className={mealKit === false ? "active" : ''}
+                    onClick={() => setMealKit(false)}> Prepped & <br/> Ready </button>
                 </div>
-                <p>Meal kits provide you with all the ingredients needed to cook a meal from scratch.<br/>
-                They come with pre-measured ingredients and step-by-step instructions
-                </p>
+                {info()}
                 <div className="meal-kit-ingredients">
                     <h4>Breakfast</h4>
                     <p>Stuff for breakfast</p>
