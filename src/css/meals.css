@@ -17,22 +17,30 @@
     justify-content: center;
 }
 
-.meals-logo div {
+.meals-logo button {
     color: #064D42;
+    background-color:#FDFDFD;
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin:  20px;
-    width: 150px;
-    height: 150px;
+    margin:  20px 20px 30px 20px;
+    width: 200px;
+    height: 200px;
     padding: 15px 10px 15px;
     border-style: solid;
     border-color: #064D42;
     border-radius: 15%;  
 }
 
-i {
-    font-size: 30px;
+.meals-logo img {
+    height: 60%;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.meals-logo .active {
+    background-color: #064D42;
 }
 
 .meal-info {
@@ -45,19 +53,26 @@ i {
     color: #FDFDFD;
     background-color: #064D42;
     margin: 30px auto 50px auto;
-    width: 85%;
+    width: 70%;
     border-style: none;
     border-radius: 15px;
 }
 
 .meals-logo h3 {
     font-size: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.meals-logo .active h3 {
+    color: #FDFDFD;
 }
 
 .meal-info-header {
     display: flex;
     width: 300px;
-    height: 65px;
+    height: 55px;
     margin: -40px auto 15px auto;
     flex-direction: row;
     justify-content: center;
@@ -80,10 +95,14 @@ i {
     padding: 0px;
 }
 
+.meal-info-header .active {
+    background-color: #064D42;
+    color: #FDFDFD;
+}
+
 .meals-title p {
     font-size: 1em;
 }
-
 
 
 .meal-info p {
@@ -91,13 +110,18 @@ i {
     margin-left: auto;
     margin-right: auto;
     color: #FDFDFD;
+    font-size: 20px;
+    letter-spacing: 4px;
+
 }
 
 .meal-kit-ingredients h4 {
     margin-bottom: 5px;
+    font-size: 2rem;
 }
 
 .meal-kit-ingredients p {
     font-weight: lighter;
     margin-top: 0px;
+    font-size: 20px;
 }
