@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import "../Login.css";
 import useToken from "../components/useToken";
+import { supabase } from "../supabaseClient";
 
 
 function RegisterPage() {
@@ -47,7 +48,7 @@ function RegisterPage() {
       return;
     }
     
-    const exists = await checkEmail();
+    /*const exists = await checkEmail();
     if (exists == false){
 
     try {
@@ -70,11 +71,21 @@ function RegisterPage() {
     }
   } else {
     alert("That email has already been registered");
-  }
+  }*/
+  const {data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password,
+      phone: phone,
+      options: {
+        data: {
+          first_name: firstname,
+          last_name: lastname,
+        }
+      },
+    })
+  console.log(data,error);
   };
 
-
-  
 
   return (
     <div className="login-container">

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import "../Login.css";
 import useToken from "../components/useToken";
-
+import { supabase } from "../supabaseClient";
 
 function LoginPage() {
 
@@ -23,7 +23,7 @@ function LoginPage() {
       alert("Please enter a valid email and password");
       return;
     }
-    
+    /*
     try {
       console.log(email,password)
       //requires running 'json-server --watch ./src/db.json --port 3001' you might need to run 'npm install -g json-server' to install
@@ -31,7 +31,7 @@ function LoginPage() {
       const data = await response.json();
       
       if (data.length > 0) {
-        console.log("logined in",email,password);
+        console.log(data);
       } else {
         console.log(data);
         alert("Invalid username or password");
@@ -39,7 +39,12 @@ function LoginPage() {
 
     } catch (error) {
       console.error("error during login:", error);
-    }
+    }*/
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    })
+
     
   };
 
