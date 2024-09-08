@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import burrito from '../images/Burrito.png'
 import chickenRice from '../images/Chicken rice.png'
@@ -6,6 +6,21 @@ import kebab from '../images/Kebab.png'
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
 
+const API_ID = "b5ec2d19"
+const API_KEY = "7149eb247720d6f965c3355b860e5d42"
+
+async function getRecipes(name) {
+    const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${name}&app_id=${API_ID}&app_key=${API_KEY}`
+    try {
+        const response = await fetch(url)
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        return await response.json()
+    } catch (error) {
+        return {}
+    }
+}
 function ScrollButton({ id, children, className }) {
     const scroll = () => {
         const targetElement = document.getElementById(id);
@@ -22,6 +37,34 @@ function ScrollButton({ id, children, className }) {
 }
 
 export default function Home() {
+
+    const [recipes, setRecpipes] = useState([])
+    useEffect(() => {
+        const result = getRecipes("chicken")
+        result.then((data) => {
+            setRecpipes(data.hits)
+        })
+    }, [])
+
+    let slidesV2 = [] 
+    
+    recipes.forEach((recipe) => {
+        slidesV2.push(
+        <div class="cards">
+            <Link to="/meals" onClick={console.log(recipe.recipe.ingredients)}><div class="card">
+                <img src={recipe.recipe.image} alt="Avatar"></img>
+                    <p>{recipe.recipe.label}</p>
+            </div></Link>
+            <Link to="/meals" onClick={console.log(recipe.recipe.ingredients)}><div class="card">
+                <img src={recipe.recipe.image} alt="Avatar"></img>
+                    <p>{recipe.recipe.label}</p>
+            </div></Link>
+            <Link to="/meals" onClick={console.log(recipe.recipe.ingredients)}><div class="card">
+                <img src={recipe.recipe.image} alt="Avatar"></img>
+                    <p>{recipe.recipe.label}</p>
+            </div></Link>
+        </div>)
+    })
     const slides = [
         <div class="cards">
           <Link to="/meals"><div class="card">
@@ -75,7 +118,7 @@ export default function Home() {
                 <p>See below for our more popular dishes. Ready to be delivered to your desired university location.</p>
 
                     <div>
-                    <Slideshow slides={slides} />
+                    <Slideshow slides={slidesV2} />
                 </div>
 
                 <div class="explore">
