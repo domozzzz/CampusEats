@@ -11,7 +11,7 @@ export default function OrderSelect() {
                 <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
                 </div>
             </div>
-            <div class="order" alt="Avatar">
+            <div class="order">
                 <h1>Choose your type of meal</h1>
                 <div className='orderButtons'>
                     <button>
