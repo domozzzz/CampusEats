@@ -9,7 +9,8 @@ import Slideshow from "../components/Slideshow";
 const API_ID = "b5ec2d19"
 const API_KEY = "7149eb247720d6f965c3355b860e5d42"
 
-async function getRecipes(name) {
+async function getRecipes() {
+    const name = await prompt("Food display test")
     const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${name}&app_id=${API_ID}&app_key=${API_KEY}`
     try {
         const response = await fetch(url)
@@ -37,10 +38,9 @@ function ScrollButton({ id, children, className }) {
 }
 
 export default function Home() {
-
     const [recipes, setRecpipes] = useState([])
     useEffect(() => {
-        const result = getRecipes("chicken")
+        const result = getRecipes()
         result.then((data) => {
             setRecpipes(data.hits)
         })
@@ -51,15 +51,15 @@ export default function Home() {
     recipes.forEach((recipe) => {
         slidesV2.push(
         <div class="cards">
-            <Link to="/meals" onClick={console.log(recipe.recipe.ingredients)}><div class="card">
+            <Link to="/meals" onClick={() => {console.log(recipe.recipe.ingredients)}}><div class="card">
                 <img src={recipe.recipe.image} alt="Avatar"></img>
                     <p>{recipe.recipe.label}</p>
             </div></Link>
-            <Link to="/meals" onClick={console.log(recipe.recipe.ingredients)}><div class="card">
+            <Link to="/meals" onClick={() =>{console.log(recipe.recipe.ingredients)}}><div class="card">
                 <img src={recipe.recipe.image} alt="Avatar"></img>
                     <p>{recipe.recipe.label}</p>
             </div></Link>
-            <Link to="/meals" onClick={console.log(recipe.recipe.ingredients)}><div class="card">
+            <Link to="/meals" onClick={() => {console.log(recipe.recipe.ingredients)}}><div class="card">
                 <img src={recipe.recipe.image} alt="Avatar"></img>
                     <p>{recipe.recipe.label}</p>
             </div></Link>
