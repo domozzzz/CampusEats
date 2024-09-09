@@ -1,0 +1,48 @@
+.order {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+    height: auto;
+    width: 100%;
+    align-items: center;
+}
+
+.order h1 {
+    color: #064D42;
+    font-size: 3rem;
+}
+
+.orderButtons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.orderButtons button {
+    width: 250px;
+    height: 200px;
+    margin: 0 50px 100px 50px;
+    border-radius: 15px;
+    border: none;
+    background-color: #D9E5E3;
+}
+
+.orderButtons p {
+    color: black;
+    font-weight: bold;
+}
+
+.orderButtons button:hover {
+    box-shadow: 0 0 50px 5px #064D42;
+    transition-duration: 0.5s;
+}
+
+@media (max-width: 750px) {
+    .orderButtons button {
+        margin: 0 auto 100px auto !important;
+    }
+}
