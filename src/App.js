@@ -7,6 +7,7 @@ import Recipes from './pages/Recipes.js';
 import Contact from './pages/Contact.js'
 import Login from './pages/Login.js';
 import RegisterPage from "./pages/Register.js";
+import OrderPage from './pages/Order.js'
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterPage/>}/>
+          <Route path="/order" element={<OrderPage/>}/>
       </Routes>
 
       <Footer />
