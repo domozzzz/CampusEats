@@ -1,15 +1,26 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import homepage from '../images/homepage.png'
 import '../css/checkout.css'
 
-// function checkoutItem(image, name, cost) {
-//     return (
-
-//     )
-// }
-export default function cart() {
-
+function checkoutItem(image, name, cost) {
+    return (
+        <div className='checkoutItem'>
+        <img src={image} alt="image"></img>
+        <p>{name}<br/>${cost}</p>
+        <div className='increment'>
+            <button>-</button>
+            <p>1</p>
+            <button>+</button> 
+        </div>
+        <p>${cost}</p>
+        <button className='remove'>remove</button>
+    </div>
+    )
+}
+export default function Cart(props) {
+    const location = useLocation()
+    {console.log(location)}
     return (
         <div>
             <div className="welcome" alt="Avatar">
@@ -20,17 +31,7 @@ export default function cart() {
             <div className='checkout'>
                 <h1>Your Cart</h1>
 
-                <div className='checkoutItem'>
-                    <img src="" alt="image"></img>
-                    <p>Braised Beef Burrito <br/> $14.00</p>
-                    <div className='increment'>
-                        <button>-</button>
-                        <p>1</p>
-                        <button>+</button> 
-                    </div>
-                    <p>$14.00</p>
-                    <button className='remove'>remove</button>
-                </div>
+                {checkoutItem(location.state.image, location.state.name, location.state.cost)}
                 <button className='checkoutSubmit'>Checkout</button>
             </div>
         </div>

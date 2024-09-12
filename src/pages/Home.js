@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import burrito from '../images/Burrito.png'
 import chickenRice from '../images/Chicken rice.png'
 import kebab from '../images/Kebab.png'
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
+import Checkout from "./cart.js"
 
 const API_ID = "b5ec2d19"
 const API_KEY = "7149eb247720d6f965c3355b860e5d42"
@@ -46,55 +47,30 @@ export default function Home() {
         })
     }, [])
 
+    const navigate = useNavigate()
     let slidesV2 = [] 
     
     recipes.forEach((recipe) => {
         slidesV2.push(
         <div class="cards">
-            <Link to="/meals" onClick={() => {console.log(recipe.recipe.ingredients)}}><div class="card">
+            <Link onClick={() => {
+                console.log("yes")
+                navigate('/login')
+            }}><div class="card">
                 <img src={recipe.recipe.image} alt="Avatar"></img>
                     <p>{recipe.recipe.label}</p>
             </div></Link>
-            <Link to="/meals" onClick={() =>{console.log(recipe.recipe.ingredients)}}><div class="card">
+            <Link onClick={() =>{console.log(recipe.recipe)}}><div class="card">
                 <img src={recipe.recipe.image} alt="Avatar"></img>
                     <p>{recipe.recipe.label}</p>
             </div></Link>
-            <Link to="/meals" onClick={() => {console.log(recipe.recipe.ingredients)}}><div class="card">
+            <Link onClick={() => {console.log(recipe.recipe)}}><div class="card">
                 <img src={recipe.recipe.image} alt="Avatar"></img>
                     <p>{recipe.recipe.label}</p>
             </div></Link>
         </div>)
     })
-    const slides = [
-        <div class="cards">
-          <Link to="/meals"><div class="card">
-              <img src={burrito} alt="Avatar"></img>
-                  <p>Braised Brisket Burrito</p>
-          </div></Link>
-          <Link to="/meals"><div class="card">
-              <img src={chickenRice} alt="Avatar"></img>
-                  <p>Hainanese Chicken Rice</p>
-          </div></Link>
-          <Link to="/meals"><div class="card">
-              <img src={kebab} alt="Avatar"></img>
-                  <p>Adana Kebab</p>
-          </div></Link>
-      </div>,
-        <div class="cards">
-        <Link to="/meals"><div class="card">
-            <img src={burrito} alt="Avatar"></img>
-                <p>Braised Brisket Burrito</p>
-        </div></Link>
-        <Link to="/meals"><div class="card">
-            <img src={chickenRice} alt="Avatar"></img>
-                <p>Hainanese Chicken Rice</p>
-        </div></Link>
-        <Link to="/meals"><div class="card">
-            <img src={kebab} alt="Avatar"></img>
-                <p>Adana Kebab</p>
-        </div></Link>
-    </div>,
-      ];
+
     return (
         <div>
             <div class="welcome">
