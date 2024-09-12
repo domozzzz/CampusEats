@@ -18,7 +18,7 @@ function checkoutItem(image, name, cost) {
     </div>
     )
 }
-export default function Cart(props) {
+export default function Cart() {
     const location = useLocation()
     {console.log(location)}
     return (
@@ -31,7 +31,17 @@ export default function Cart(props) {
             <div className='checkout'>
                 <h1>Your Cart</h1>
 
-                {checkoutItem(location.state.image, location.state.name, location.state.cost)}
+                <div className='checkoutItem'>
+                    <img src='' alt="image"></img>
+                    <p>Test item<br/>$0.00</p>
+                    <div className='increment'>
+                        <button>-</button>
+                        <p>1</p>
+                        <button>+</button> 
+                    </div>
+                    <p>$0.00</p>
+                    <button className='remove'>remove</button>
+                </div>
                 <button className='checkoutSubmit'>Checkout</button>
             </div>
         </div>
