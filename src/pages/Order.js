@@ -20,8 +20,6 @@ function PopUp() {
   )
 }
 
-
-
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState('Popular');

@@ -14,7 +14,7 @@ export default function Header() {
           <li><NavLink to = "/meals">Meal Plan</NavLink></li>
           <li><NavLink to = "/about">About Us</NavLink></li>
           <li><NavLink to = "/community">Community</NavLink></li>
-          <li><NavLink to = "/order">Order</NavLink></li>
+          <li><NavLink to = "/orderChoice">Order</NavLink></li>
         </ul>
       </nav>
     </div>
