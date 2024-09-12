@@ -70,7 +70,7 @@ nav li a {
 /* Mobile */
 @media (max-width: 600px) {
   nav ul {
-    flex-direction: column; /* Stack items */
+    flex-direction: column; /* stack items */
     align-items: center;
   }
 
@@ -227,10 +227,26 @@ h3 {
   text-decoration: none;
 }
 
-.dropdown-option-button {
-  margin-left: 30px;
+.dropdown-button-open {
+  width: 150px;
   margin-right: 30px;
-  width: auto;
+  padding: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  float: right;
+  font-size: 1.5em;
+  border: none;
+  background-color: var(--green);
+  color: white;
+  text-decoration: none;
+  overflow:hidden
+}
+
+.dropdown-option-button {
+  padding: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  width: 150px;
   font-size: 1.5em;
   border: none;
   margin-bottom: 0.5em;
@@ -242,30 +258,27 @@ h3 {
   padding-right: 0.5em;
   margin-top: 0;
   margin-bottom: 0;
-}
+  
+  overflow:hidden
 
-.dropdown {
-  position: absolute;
 }
 
 .dropdown-content {
+  width: 150px;
   position: absolute;
-  width: auto;
-  right: 0; /* Align dropdown to the right */
-  top: 100%; /* Ensure dropdown appears below the button */
-  background-color: #f1f1f1;
-  min-width: 160px;
+  right: 0;
+  background-color: #bfa3a3;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   display: flex;
   border-radius: 15px;
-  flex-direction: column; /* Stack buttons vertically */
-  display: none;
-
+  flex-direction: column;
+  margin-right: 30px;
+  overflow: hidden;
 }
 
-.dropdown:hover .dropdown-content {
-  display: flex; /* Display stacked buttons when hovered */
+.dropdown-option-button:hover {
+  background-color: #717171;
 }
 
 .arrow {
@@ -396,6 +409,127 @@ section {
   color: white;
 }
 
+.pop {
+  position:fixed;
+  transform: translate(0, -35%);
+  width: 600px;
+  height: fit-content;
+  margin: auto;
+  z-index: 1000;
+  left: 0; 
+  right: 0; 
+  margin-inline: auto; 
+  background-color: var(--green);
+  border-radius: 15px;
+  padding-bottom: 50px;
+  text-align: center;
+  overflow: hidden;
+
+
+}
+
+.pop h2 {
+  color: white;
+}
+
+.pop-button {  
+  font-size: 2em;
+  background-color: transparent;
+  display: block;
+  float: left;
+  border: solid 1px;
+  border-radius: 15px;
+  margin-bottom: 0.5em;
+  display: block;
+  padding: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  color: var(--green);
+  background-color: white;
+  text-decoration: none;
+  margin: 0;
+  position: absolute;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 200px;
+}
+
+h4 {
+  font-size: 1.5em;
+  color: white;
+}
+
+table {
+  background-color: rgb(40, 40, 44);
+  color: white;
+  border: 1px solid white;
+  border-collapse: collapse;
+  left: 0; 
+  right: 0; 
+  margin-inline: auto; 
+
+}
+
+.pop button {
+  left: 0; 
+  right: 0; 
+  margin-inline: auto; 
+  overflow: hidden;
+
+}
+
+.pop img {
+  object-fit: cover;
+  height: 200px;
+  width: auto;
+  left: 0; 
+  right: 0; 
+  margin: auto;
+}
+
+.exit-button {
+  color: white;
+  background-color: var(--green);
+  border: none;
+  float: right;
+  overflow: hidden;
+}
+
+.transparent {
+  opacity: 0.5;
+  pointer-events: none; /* Prevent interaction with the cards when pop-up is open */
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.pop h4 {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.pop-info p {
+  margin-top: 5px;
+  text-align: center;
+  color: white;
+  left: 0; 
+  right: 0; 
+  margin-inline: auto; 
+}
+
+th {
+  background-color: rgb(70, 70, 70);
+
+  border: 1px solid white;
+
+}
+
+td {
+  border: 1px solid white;
+}
+
+.card:hover {
+  cursor:pointer
+}
+
 .card p {
   color: white;
   margin-top: 5px;
@@ -433,6 +567,10 @@ section {
   color: red;
   position: relative;
   margin-bottom: 100px;
+}
+
+.button {
+  border: none
 }
 
 button:hover {
@@ -479,7 +617,7 @@ button:hover {
   border: 1px solid #ccc;
 }
 
-/* about page */
+/* order page */
 .order {
   padding-top: 30px;
   padding-bottom: 150px;
@@ -491,6 +629,9 @@ button:hover {
 .order h1 {
   color: var(--green);
   padding-top: 0;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 40px;
 }
   
 /* about page */
