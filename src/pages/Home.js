@@ -7,22 +7,6 @@ import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
 import Checkout from "./cart.js"
 
-const API_ID = "b5ec2d19"
-const API_KEY = "7149eb247720d6f965c3355b860e5d42"
-
-async function getRecipes() {
-    const name = await prompt("Food display test")
-    const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${name}&app_id=${API_ID}&app_key=${API_KEY}`
-    try {
-        const response = await fetch(url)
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        return await response.json()
-    } catch (error) {
-        return {}
-    }
-}
 function ScrollButton({ id, children, className }) {
     const scroll = () => {
         const targetElement = document.getElementById(id);
@@ -39,38 +23,36 @@ function ScrollButton({ id, children, className }) {
 }
 
 export default function Home() {
-    const [recipes, setRecpipes] = useState([])
-    useEffect(() => {
-        const result = getRecipes()
-        result.then((data) => {
-            setRecpipes(data.hits)
-        })
-    }, [])
-
-    const navigate = useNavigate()
-    let slidesV2 = [] 
-    
-    recipes.forEach((recipe) => {
-        slidesV2.push(
+    const slides = [
         <div class="cards">
-            <Link onClick={() => {
-                console.log("yes")
-                navigate('/login')
-            }}><div class="card">
-                <img src={recipe.recipe.image} alt="Avatar"></img>
-                    <p>{recipe.recipe.label}</p>
-            </div></Link>
-            <Link onClick={() =>{console.log(recipe.recipe)}}><div class="card">
-                <img src={recipe.recipe.image} alt="Avatar"></img>
-                    <p>{recipe.recipe.label}</p>
-            </div></Link>
-            <Link onClick={() => {console.log(recipe.recipe)}}><div class="card">
-                <img src={recipe.recipe.image} alt="Avatar"></img>
-                    <p>{recipe.recipe.label}</p>
-            </div></Link>
-        </div>)
-    })
-
+          <Link to="/meals"><div class="card">
+              <img src={burrito} alt="Avatar"></img>
+                  <p>Braised Brisket Burrito</p>
+          </div></Link>
+          <Link to="/meals"><div class="card">
+              <img src={chickenRice} alt="Avatar"></img>
+                  <p>Hainanese Chicken Rice</p>
+          </div></Link>
+          <Link to="/meals"><div class="card">
+              <img src={kebab} alt="Avatar"></img>
+                  <p>Adana Kebab</p>
+          </div></Link>
+      </div>,
+        <div class="cards">
+        <Link to="/meals"><div class="card">
+            <img src={burrito} alt="Avatar"></img>
+                <p>Braised Brisket Burrito</p>
+        </div></Link>
+        <Link to="/meals"><div class="card">
+            <img src={chickenRice} alt="Avatar"></img>
+                <p>Hainanese Chicken Rice</p>
+        </div></Link>
+        <Link to="/meals"><div class="card">
+            <img src={kebab} alt="Avatar"></img>
+                <p>Adana Kebab</p>
+        </div></Link>
+    </div>,
+      ];
     return (
         <div>
             <div class="welcome">
@@ -94,7 +76,7 @@ export default function Home() {
                 <p>See below for our more popular dishes. Ready to be delivered to your desired university location.</p>
 
                     <div>
-                    <Slideshow slides={slidesV2} />
+                    <Slideshow slides={slides} />
                 </div>
 
                 <div class="explore">
