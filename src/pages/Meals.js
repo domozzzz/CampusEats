@@ -25,9 +25,9 @@ export default function Meals() {
         <div>
             <div class="welcome" alt="Avatar">
                 <div class="heading-image">
-                <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
+                    <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
                 </div>
-                </div>
+            </div>
             <div class="meal">
             <div className="meals-title">
                     <h2>Personalise your Meal Plan</h2>

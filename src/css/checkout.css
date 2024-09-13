@@ -1,0 +1,83 @@
+.checkout {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+    height: auto;
+    width: 100%;
+    align-items: center;
+}
+
+.checkout h1 {
+    color: #064D42;
+    font-size: 3rem;
+}
+
+.checkoutItem {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    flex-wrap: nowrap;
+    width: auto;
+    background-color: #064D42;
+    border-radius: 25px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.checkoutItem img {
+    height: 100px;
+    width: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+}
+.checkoutItem p {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    width: 200px;
+    color: white;
+    font-size: 1rem;
+}
+
+.checkoutItem .increment {
+    display: flex;
+    background-color: #D9E5E3;
+    height: 25px;
+    width: 100px;
+    margin: auto 25px auto 25px;
+    border-radius: 10px;
+    border: none;
+}
+
+.checkoutItem .increment p {
+    color: #064D42;
+}
+
+.checkoutItem .increment button{
+    background-color: transparent;
+    border:none;
+}
+
+.checkoutItem .remove {
+    background-color: transparent;
+    border: none;
+    color: white;
+    height:25px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 30px;
+}
+
+.checkoutSubmit {
+    padding: 5px 20px 5px 20px;
+    background-color: #064D42;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 25px;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
