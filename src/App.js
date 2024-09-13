@@ -7,7 +7,7 @@ import Recipes from './pages/Recipes.js';
 import Contact from './pages/Contact.js'
 import Login from './pages/Login.js';
 import OrderChoice from './pages/OrderChoice.js'
-import Checkout from './pages/cart.js'
+import Cart from './pages/cart.js'
 import RegisterPage from "./pages/Register.js";
 import Order from './pages/Order.js'
 import Header from './components/Header.js';
@@ -29,7 +29,7 @@ function App() {
           <Route path="/register" element={<RegisterPage/>}/>
           <Route path="/orderChoice" element={<OrderChoice/>}/>
           <Route path="/order" element={<Order/>}/>
-          <Route path="/checkout-test" element={<Checkout/>}/>
+          <Route path="/cart" element={<Cart/>}/>
       </Routes>
 
       <Footer />

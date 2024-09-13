@@ -31,9 +31,7 @@ export default function Footer() {
           </Link></ul>
         </ul>
       </div>
-      <div class="copyright">
       <p>&copy; <script>document.write(new Date().getFullYear())</script> Created by Alliance</p>
-    </div>
     </footer>
   );
 }

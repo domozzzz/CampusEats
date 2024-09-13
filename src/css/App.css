@@ -93,8 +93,8 @@ nav li a {
 }
 
 footer {
-  position: relative;
-  background-color: var(--green);
+  position: absolute;
+  background-color: #D9E5E3;
 }
 
 footer p {    

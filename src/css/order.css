@@ -1,4 +1,4 @@
-.order {
+.order-choice {
     display: flex;
     flex-direction: column;
     background-color: white;
@@ -8,12 +8,12 @@
     align-items: center;
 }
 
-.order h1 {
+.order-choice h1 {
     color: #064D42;
     font-size: 3rem;
 }
 
-.orderButtons {
+.orderChoiceButtons {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -22,7 +22,7 @@
     margin-right: auto;
 }
 
-.orderButtons button {
+.orderChoiceButtons button {
     width: 250px;
     height: 200px;
     margin: 0 50px 100px 50px;
@@ -31,7 +31,7 @@
     background-color: #D9E5E3;
 }
 
-.orderButtons p {
+.orderChoiceButtons p {
     color: black;
     font-weight: bold;
 }
@@ -42,7 +42,7 @@
 }
 
 @media (max-width: 750px) {
-    .orderButtons button {
+    .orderChoiceButtons button {
         margin: 0 auto 100px auto !important;
     }
 }
