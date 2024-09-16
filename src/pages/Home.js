@@ -25,37 +25,80 @@ function ScrollButton({ id, children, className }) {
 }
 
 export default function Home() {
-    console.log(supabase)
-    const slides = [
-        <div class="cards">
-          <Link to="/meals"><div class="card">
-              <img src={burrito} alt="Avatar"></img>
-                  <p>Braised Brisket Burrito</p>
-          </div></Link>
-          <Link to="/meals"><div class="card">
-              <img src={chickenRice} alt="Avatar"></img>
-                  <p>Hainanese Chicken Rice</p>
-          </div></Link>
-          <Link to="/meals"><div class="card">
-              <img src={kebab} alt="Avatar"></img>
-                  <p>Adana Kebab</p>
-          </div></Link>
-      </div>,
-        <div class="cards">
-        <Link to="/meals"><div class="card">
-            <img src={burrito} alt="Avatar"></img>
-                <p>Braised Brisket Burrito</p>
-        </div></Link>
-        <Link to="/meals"><div class="card">
-            <img src={chickenRice} alt="Avatar"></img>
-                <p>Hainanese Chicken Rice</p>
-        </div></Link>
-        <Link to="/meals"><div class="card">
-            <img src={kebab} alt="Avatar"></img>
-                <p>Adana Kebab</p>
-        </div></Link>
-    </div>,
-      ];
+
+    const [loading, setLoading] = useState(true)
+    const [error,setError] = useState(false)
+    const [mealData, setData] = useState(null)
+
+    useEffect(() => {
+        setLoading(true)
+        const fetchMeals = async () => {
+            const {data: d, e} = await supabase
+                .from('meals')
+                .select('*')
+                if (e) {
+                    setError(true)
+                    setData(null)
+                    setLoading(false)
+                }
+                if (d) {
+                    setError(false)
+                    setData(d)
+                    setLoading(false)
+                }     
+
+        }
+        fetchMeals()
+    },[])
+
+    const generate_slides = () => {
+            return mealData.map((meal,i) => {
+                console.log(meal)
+                return (
+                    <div class="cards">
+                        <Link to="/meals">
+                            <div class="card">
+                            <img src={meal.photo} alt="Avatar"></img>
+                                <p>{meal.name}</p>
+                            </div>
+                        </Link>
+                    </div>
+                )
+            });
+    }   
+    // const slides = [
+    //     <div class="cards">
+    //       <Link to="/meals">
+    //         <div class="card">
+    //           <img src={burrito} alt="Avatar"></img>
+    //               <p>Braised Brisket Burrito</p>
+    //         </div>
+    //       </Link>
+    //       <Link to="/meals"><div class="card">
+    //           <img src={chickenRice} alt="Avatar"></img>
+    //               <p>Hainanese Chicken Rice</p>
+    //       </div></Link>
+    //       <Link to="/meals"><div class="card">
+    //           <img src={kebab} alt="Avatar"></img>
+    //               <p>Adana Kebab</p>
+    //       </div></Link>
+    //   </div>,
+    //     <div class="cards">
+    //     <Link to="/meals"><div class="card">
+    //         <img src={burrito} alt="Avatar"></img>
+    //             <p>Braised Brisket Burrito</p>
+    //     </div></Link>
+    //     <Link to="/meals"><div class="card">
+    //         <img src={chickenRice} alt="Avatar"></img>
+    //             <p>Hainanese Chicken Rice</p>
+    //     </div></Link>
+    //     <Link to="/meals"><div class="card">
+    //         <img src={kebab} alt="Avatar"></img>
+    //             <p>Adana Kebab</p>
+    //     </div></Link>
+    // </div>,
+    //   ];
+    //console.log(slides)
     return (
         <div>
             <div class="welcome">
@@ -79,7 +122,7 @@ export default function Home() {
                 <p>See below for our more popular dishes. Ready to be delivered to your desired university location.</p>
 
                     <div>
-                    <Slideshow slides={slides} />
+                        {!loading && !error ? <Slideshow slides={generate_slides()}/> : <p>Not yet loaded</p>}
                 </div>
 
                 <div class="explore">
