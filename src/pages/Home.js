@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import supabase from "../supabase.js";
 import { Link, useNavigate} from "react-router-dom";
 import burrito from '../images/Burrito.png'
 import chickenRice from '../images/Chicken rice.png'
@@ -6,6 +7,7 @@ import kebab from '../images/Kebab.png'
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
 import Checkout from "./cart.js"
+
 
 function ScrollButton({ id, children, className }) {
     const scroll = () => {
@@ -23,6 +25,7 @@ function ScrollButton({ id, children, className }) {
 }
 
 export default function Home() {
+    console.log(supabase)
     const slides = [
         <div class="cards">
           <Link to="/meals"><div class="card">
