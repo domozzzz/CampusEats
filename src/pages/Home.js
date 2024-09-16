@@ -53,7 +53,6 @@ export default function Home() {
 
     const generate_slides = () => {
             return mealData.map((meal,i) => {
-                console.log(meal)
                 return (
                     <div class="cards">
                         <Link to="/meals">
