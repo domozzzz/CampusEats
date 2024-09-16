@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "user@example.com",
+      "password": "password123",
+      "firstname": "user",
+      "lastname": "1",
+      "phone": "0474918423"
+    },
+    {
+      "id": "2",
+      "email": "user2@example.com",
+      "password": "password123",
+      "firstname": "user",
+      "lastname": "2",
+      "phone": "0474918423"
+    },
+    {
+      "id": "7ead",
+      "email": "user3@email.com",
+      "password": "12345678910",
+      "firstname": "user",
+      "lastname": "3",
+      "phone": "0474918423"
+    },
+    {
+      "id": "981c",
+      "email": "user4@email.com",
+      "password": "12345678910",
+      "firstname": "user",
+      "lastname": "4",
+      "phone": "0474918423"
+    }
+  ]
+}
