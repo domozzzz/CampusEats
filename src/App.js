@@ -12,6 +12,7 @@ import RegisterPage from "./pages/Register.js";
 import Order from './pages/Order.js'
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
+import MapDisplay from "./components/map.js";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/orderChoice" element={<OrderChoice/>}/>
           <Route path="/order" element={<Order/>}/>
           <Route path="/cart" element={<Cart/>}/>
+          <Route path='/map' element={<MapDisplay/>}/>
       </Routes>
 
       <Footer />
