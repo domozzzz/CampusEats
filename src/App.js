@@ -13,6 +13,7 @@ import Cart from './pages/cart.js'
 import RegisterPage from "./pages/Register.js";
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
+import Upload from "./pages/upload.js";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/orderPreMade" element={<OrderPreMade/>}/>
           <Route path="/orderMealKit" element={<OrderMealKit/>}/>
           <Route path="/cart" element={<Cart/>}/>
+          <Route path="/upload" element = {<Upload/>}/>
       </Routes>
 
       <Footer />

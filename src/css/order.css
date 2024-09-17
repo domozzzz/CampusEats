@@ -15,6 +15,10 @@
     font-size: 3rem;
 }
 
+.order-choice h3 {
+    font-size: 2rem;
+}
+
 .orderChoiceButtons {
     display: flex;
     flex-direction: row;
