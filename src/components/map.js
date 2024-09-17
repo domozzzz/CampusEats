@@ -12,7 +12,7 @@ import {
   Pin
 } from '@vis.gl/react-google-maps';
 
-const MAP_API_KEY = 'AIzaSyDJjou6_7Q0tcNr_xyrPBpyCuUakcKUQLY'
+const MAP_API_KEY = 'Not yet set'
 
 const locations = [
   {key: 'operaHouse', location: { lat: -33.8567844, lng: 151.213108  }},
