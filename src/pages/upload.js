@@ -26,12 +26,32 @@ export default function Upload() {
                     </div>
                     <input id="file-upload" type="file"/>
                     <h2>2. Fill the details.</h2>
-                    <label>Your name</label>
+                    <h3>Your name</h3>
                     <input type="text" value="Example: Spiderman Dude" />
-                    <label>Dish Name</label>
+                    <h3>Dish Name</h3>
                     <input type="text" value="Example: Jacket Potato with Chilli and Cheese"/>
-                    <label>Description of Dish</label>
-                    <input className="description" type="text" value="Example: Spuds with Spicy Chilli-con-carne and cheese"/>
+                    <h3>Dietary Options</h3>
+                    <div className="dietary">
+                        <div className="option">
+                            <input type="checkbox"/>
+                            <label>Gluten-free</label>
+                        </div>
+                        <div className="option">
+                            <input type="checkbox"/>
+                            <label>Vegetarian</label>                           
+                        </div>
+                        <div className="option">
+                            <input type = "checkbox"/>
+                            <label>Vegan</label>
+                        </div>
+                    </div>
+                    <h3>Add ingredients</h3>
+                    <div className="ingredients">
+                        <div className="add-ingredient">
+                            <input type="text" placeholder="e.g. Egg"/>
+                            <button>+</button>
+                        </div>
+                    </div>
                     <h2>3. Upload.</h2>
                     <label>
                         Make sure all the details are correct. 
