@@ -8,6 +8,8 @@ import supabase from "../supabase";
 export default function Upload() {
 
     const [inputs, setInputs] = useState({})
+    const [ingredients, setIngredients] = useState([])
+    const [newIngredient, setNewIngredient] = useState(null)
 
     const handleInput = (e) => {
         const inputName = e.target.name
@@ -18,6 +20,24 @@ export default function Upload() {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(inputs)
+    }
+
+    const handleNewIngredient = (e) => {
+        const ingredientName = e.target.value
+        setNewIngredient(ingredientName)
+    }
+
+    const addIngredient = (e) => {
+        if (newIngredient != null) {
+            setIngredients([...ingredients,newIngredient])
+        }
+        setNewIngredient(null)
+    }
+
+    const removeIngredient = (e) => {
+        const buttonName = e.target.name
+        const index = parseInt(buttonName.slice(7))
+        setIngredients(ing => ing.filter((val, i) => (i != index)))
     }
     return (
         <div>
@@ -40,14 +60,43 @@ export default function Upload() {
                     </div>
                     <input id="file-upload" type="file" name="image" onChange={handleInput}/>
                     <h2>2. Fill the details.</h2>
-                    <label>Your name</label>
-                    <input type="text" placeholder="Example: Spiderman Dude" name="username" onChange={handleInput} />
-                    <label>Dish Name</label>
-                    <input type="text" placeholder="Example: Jacket Potato with Chilli and Cheese" name="dishname"
-                     onChange={handleInput}/>
-                    <label>Description of Dish</label>
-                    <input className="description" type="text" placeholder="Example: Spuds with Spicy Chilli-con-carne and cheese" 
-                    name="description" onChange={handleInput}/>
+                    <h3>Your name</h3>
+                    <input type="text" value="Example: Spiderman Dude" />
+                    <h3>Dish Name</h3>
+                    <input type="text" value="Example: Jacket Potato with Chilli and Cheese"/>
+                    <h3>Dietary Options</h3>
+                    <div className="dietary">
+                        <div className="option">
+                            <input type="checkbox"/>
+                            <label>Gluten-free</label>
+                        </div>
+                        <div className="option">
+                            <input type="checkbox"/>
+                            <label>Vegetarian</label>                           
+                        </div>
+                        <div className="option">
+                            <input type = "checkbox"/>
+                            <label>Vegan</label>
+                        </div>
+                    </div>
+                    <h3>Add ingredients</h3>
+                    <div className="ingredients">
+                        <div className="ingredient_list">
+                            {ingredients.map((elem, i) => {
+                                        return (
+                                            <div className="ingredient">
+                                                <label >{elem}</label>
+                                                <button type="button" name={"button-" + i.toString()} onClick={removeIngredient}>-</button>
+                                            </div>
+                                        )
+                                })
+                            }
+                        </div>
+                        <div className="add-ingredient">
+                            <input name="newIngredient" type="text" placeholder="e.g. Egg" onChange={handleNewIngredient}/>
+                            <button type="button" onClick={addIngredient}>+</button>
+                        </div>
+                    </div>
                     <h2>3. Upload.</h2>
                     <label>
                         Make sure all the details are correct. 

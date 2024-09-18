@@ -7,6 +7,11 @@
     padding-bottom: 50px;
 }
 
+h3 {
+    font-size: 20px;
+    font-weight: lighter;
+}
+
 input[type="file"] {
     display: none;
 }
@@ -51,8 +56,85 @@ input[type="text"] {
     border-color: #064D42;
 }
 
+.dietary {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding: 10px;
+}
+
+.dietary .option {
+    margin: 6px;
+}
+
 input.description {
     height: 150px;
+}
+
+.ingredients {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    border-style: solid;
+    border-color: #064D42;
+    border-width: 1px;
+    border-radius: 20px;
+}
+
+.ingredient_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredient {
+    display: flex;
+    align-items: center;
+    width: auto ;
+    margin-left: auto;
+    margin-right: auto;  
+}
+
+.ingredient label {
+    width: 100px;
+    text-align: center;
+}
+
+.ingredient button {
+    background-color: #064D42;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.add-ingredient {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: row;
+    width: auto;
+}
+
+.add-ingredient input {
+    width: auto;
+    margin-right: 0;
+    height: 30px;
+}
+
+.add-ingredient button {
+    background-color: #064D42;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+    padding: 5px;
+    margin-left: 5px;
 }
 
 button {
