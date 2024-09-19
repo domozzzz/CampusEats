@@ -7,19 +7,36 @@ import supabase from "../supabase";
 
 export default function Upload() {
 
-    const [inputs, setInputs] = useState({})
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState(null)
 
-    const handleInput = (e) => {
-        const inputName = e.target.name
-        const inputValue = e.target.value
-        setInputs(values => ({...values, [inputName]:inputValue}))
-    }
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(inputs)
+        const username = e.target.username.value
+        const dishname = e.target.dishname.value
+        const gf = e.target.gf.checked
+        const vegetarian = e.target.vegetarian.checked
+        const vegan = e.target.vegan.checked
+
+        const dataInput = [username, dishname, gf, vegetarian, vegan, ingredients]
+
+        if (dataInput.some((x) => {return x == null || x.length == 0})) {
+            console.log("Not completely filled")
+            return
+        } else {
+            const {data, error} = await supabase
+            .from('meals')
+            .insert([{name: dishname, ingredients: {required: ingredients, optional: []},
+            gf: gf, vegan: vegan, vegetarian: vegetarian, type: 1, able_to_order: true}])
+
+            if (error) {
+                console.log(error)
+            }
+
+            if (data) {
+                console.log(data)
+            }
+        }
     }
 
     const handleNewIngredient = (e) => {
@@ -37,7 +54,7 @@ export default function Upload() {
     const removeIngredient = (e) => {
         const buttonName = e.target.name
         const index = parseInt(buttonName.slice(7))
-        setIngredients(ing => ing.filter((val, i) => (i != index)))
+        setIngredients(ing => ing.filter((val, i) => (i !== index)))
     }
     return (
         <div>
@@ -58,24 +75,24 @@ export default function Upload() {
                             </label>
                         </p>
                     </div>
-                    <input id="file-upload" type="file" name="image" onChange={handleInput}/>
+                    <input name="image" id="file-upload" type="file"/>
                     <h2>2. Fill the details.</h2>
                     <h3>Your name</h3>
-                    <input type="text" value="Example: Spiderman Dude" />
+                    <input name="username" type="text" placeholder="Example: Spiderman Dude" />
                     <h3>Dish Name</h3>
-                    <input type="text" value="Example: Jacket Potato with Chilli and Cheese"/>
+                    <input name="dishname" type="text" placeholder="Example: Jacket Potato with Chilli and Cheese"/>
                     <h3>Dietary Options</h3>
                     <div className="dietary">
                         <div className="option">
-                            <input type="checkbox"/>
+                            <input name="gf" type="checkbox"/>
                             <label>Gluten-free</label>
                         </div>
                         <div className="option">
-                            <input type="checkbox"/>
+                            <input name="vegetarian" type="checkbox"/>
                             <label>Vegetarian</label>                           
                         </div>
                         <div className="option">
-                            <input type = "checkbox"/>
+                            <input name="vegan" type = "checkbox"/>
                             <label>Vegan</label>
                         </div>
                     </div>
@@ -84,7 +101,7 @@ export default function Upload() {
                         <div className="ingredient_list">
                             {ingredients.map((elem, i) => {
                                         return (
-                                            <div className="ingredient">
+                                            <div className="ingredient" key={i}>
                                                 <label >{elem}</label>
                                                 <button type="button" name={"button-" + i.toString()} onClick={removeIngredient}>-</button>
                                             </div>
@@ -93,10 +110,23 @@ export default function Upload() {
                             }
                         </div>
                         <div className="add-ingredient">
-                            <input name="newIngredient" type="text" placeholder="e.g. Egg" onChange={handleNewIngredient}/>
+                            <input name="newIngredient" value={newIngredient == null ? '' : newIngredient} type="text" placeholder="e.g. Egg" onChange={handleNewIngredient}/>
+                            {/* <label>type: </label>
+                            <select>
+                                <option value="protein">protein</option>
+                                <option value ="carb">carb</option>
+                                <option value="vegetable">vegetable</option>
+                                <option value="fruit">fruit</option>
+                                <otion value="else">else</otion>
+                            </select>
+                            <label>Cost of item: </label>
+                            <input type="number"/> */}
                             <button type="button" onClick={addIngredient}>+</button>
                         </div>
                     </div>
+                    {/* <div className="cost">
+                        <h3>How much does it cost?</h3>
+                    </div> */}
                     <h2>3. Upload.</h2>
                     <label>
                         Make sure all the details are correct. 
