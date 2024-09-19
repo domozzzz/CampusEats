@@ -167,6 +167,7 @@ button {
 
 .close-popup {
     position: absolute;
+    margin: 20px;
     right: 0;
     top:0;
     background-color: #064D42;

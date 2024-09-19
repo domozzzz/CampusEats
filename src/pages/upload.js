@@ -116,7 +116,7 @@ export default function Upload() {
                             }
                         </div>
                         <div className="add-ingredient">
-                            <button type="button" onClick={setPopup}>+</button>
+                            <button type="button" style={popup ? {margin: '0px'} : {margin: '20px'}} onClick={setPopup}>+</button>
                         </div>
                     </div>
                     
