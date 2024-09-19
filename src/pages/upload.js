@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import homepage from '../images/homepage.png'
 import "../css/upload.css"
 import "../css/App.css"
+import UploadPopup from "../components/UploadPopUp";
 import supabase from "../supabase";
 
 
@@ -9,6 +10,7 @@ export default function Upload() {
 
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState(null)
+    const [popup, setPopup] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -55,6 +57,10 @@ export default function Upload() {
         const buttonName = e.target.name
         const index = parseInt(buttonName.slice(7))
         setIngredients(ing => ing.filter((val, i) => (i !== index)))
+    }
+
+    const removePopup = () => {
+        setPopup(false)
     }
     return (
         <div>
@@ -110,23 +116,118 @@ export default function Upload() {
                             }
                         </div>
                         <div className="add-ingredient">
-                            <input name="newIngredient" value={newIngredient == null ? '' : newIngredient} type="text" placeholder="e.g. Egg" onChange={handleNewIngredient}/>
-                            {/* <label>type: </label>
-                            <select>
-                                <option value="protein">protein</option>
-                                <option value ="carb">carb</option>
-                                <option value="vegetable">vegetable</option>
-                                <option value="fruit">fruit</option>
-                                <otion value="else">else</otion>
-                            </select>
-                            <label>Cost of item: </label>
-                            <input type="number"/> */}
-                            <button type="button" onClick={addIngredient}>+</button>
+                            <button type="button" onClick={setPopup}>+</button>
                         </div>
                     </div>
+                    
                     {/* <div className="cost">
                         <h3>How much does it cost?</h3>
                     </div> */}
+                    < UploadPopup trigger={popup}>
+                        <button className="close-popup" onClick={removePopup}>x</button>
+                        <div className="ingredient-name">
+                            <h3>Name of ingredient</h3>
+                            <input placeholder="" type="text"/>
+                        </div>
+                        <br/>
+                        <div className="ingredient-quantity">
+                            <h3>Quantity of ingredient</h3>
+                            <div>
+                                <input type="number"/>
+                                <select>
+                                    <option value="item">item</option>
+                                    <option value="grams">grams</option>
+                                    <option value="millilitres">millilitres</option>
+                                    <option value="teaspoon">teaspoon</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br/>
+                        <h3>Cost of ingredient</h3>
+                        <div className="ingredient-cost">
+                            <label>$</label><input type="number"/>
+                        </div>
+                        <br/>
+                        <h3>nutritional value for your ingredient</h3>
+                        <br/>
+                        <div className="ingredient-nutrition">
+                            <table>
+                                <tr>
+                                    <th>Nutritient</th>
+                                    <th>Amount per Serving</th>
+                                </tr>
+                                <tr>
+                                    <td>Calories</td>
+                                    <td><input type="number"/>grams</td>
+                                </tr>
+                                <tr>
+                                    <td>Fats</td>
+                                    <td><input type="number"/> grams</td>
+                                </tr>
+                                <tr>
+                                    <td> - saturated fats</td>
+                                    <td><input type="number"/>g</td>
+                                </tr>
+                                <tr>
+                                    <td> - Trans Fat</td>
+                                    <td><input type="number"/>g</td>
+                                </tr>
+                                <tr>
+                                    <td>Cholestrol</td>
+                                    <td><input type="number"/>mg</td>
+                                </tr>
+                                <tr>
+                                    <td>Sodium</td>
+                                    <td><input type="number"/>mg</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Carbohydrates</td>
+                                    <td><input type="number"/>g</td>
+                                </tr>
+                                <tr>
+                                    <td> - Dietary Fiber</td>
+                                    <td><input type="number"/>g</td>
+                                </tr>
+                                <tr>
+                                    <td>Sugars</td>
+                                    <td><input type="number"/>g</td>
+                                </tr>
+                                <tr>
+                                    <td>Protein</td>
+                                    <td><input type="number"/>g</td>
+                                </tr>
+                                <tr>
+                                    <td>Vitamins and Minerals</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td> - Vitamin A</td>
+                                    <td><input type="number"/>% DV</td>
+                                </tr>
+                                <tr>
+                                    <td> - Vitamin C</td>
+                                    <td><input type="number"/>% DV</td>
+                                </tr>
+                                <tr>
+                                    <td>Calcium</td>
+                                    <td><input type="number"/>% DV</td>
+                                </tr>
+                                <tr>
+                                    <td>Iron</td>
+                                    <td><input type="number"/>% DV</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <button className="popup-submit" type="button"> submit</button>
+                    </UploadPopup>
+                    <div className="nutrition-warning">
+                        <br/>
+                        <label>
+                            *You should ensure that all nutritional information you provide is
+                            accurate. Incorrect meal kit nutritional info may be flagged and removed 
+                            from community page.
+                        </label>
+                    </div>
                     <h2>3. Upload.</h2>
                     <label>
                         Make sure all the details are correct. 
