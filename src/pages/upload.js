@@ -84,7 +84,7 @@ export default function Upload() {
                     <input name="image" id="file-upload" type="file"/>
                     <h2>2. Fill the details.</h2>
                     <h3>Your name</h3>
-                    <input name="username" type="text" placeholder="Example: Spiderman Dude" />
+                    <input name="username" type="text" placeholder="Example: Bob Jane" />
                     <h3>Dish Name</h3>
                     <input name="dishname" type="text" placeholder="Example: Jacket Potato with Chilli and Cheese"/>
                     <h3>Dietary Options</h3>
