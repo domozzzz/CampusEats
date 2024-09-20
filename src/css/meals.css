@@ -125,3 +125,62 @@
     margin-top: 0px;
     font-size: 20px;
 }
+
+@media screen and (max-width: 800px) {
+    .meals-logo {
+      padding-top: 100px;
+      flex-direction: column;
+    }
+  
+    .meals-logo button {
+      width: 150px;
+      height: 150px;
+      margin: 10px;
+    }
+  
+    .meals-logo img {
+      height: 50%;
+      width: 50%;
+    }
+  
+    .meal-info {
+      width: 90%;
+      margin: 20px auto;
+    }
+  
+    .meals-logo h3 {
+      font-size: 1.5em;
+    }
+  
+    .meal-info-header {
+      width: 250px;
+      height: 45px;
+    }
+  
+    .meal-info-header button {
+      width: 120px;
+      height: 45px;
+      font-size: medium;
+    }
+  
+    .meals-title h2 {
+      font-size: 30px;
+    }
+  
+    .meals-title p {
+      font-size: 0.9em;
+    }
+  
+    .meal-info p {
+      font-size: 18px;
+      letter-spacing: 2px;
+    }
+  
+    .meal-kit-ingredients h4 {
+      font-size: 1.8rem;
+    }
+  
+    .meal-kit-ingredients p {
+      font-size: 18px;
+    }
+  }
