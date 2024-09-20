@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import homepage from '../images/homepage.png'
-import '../css/Checkout.css'
+import '../css/checkout.css'
 
 function checkoutItem(image, name, cost) {
     return (

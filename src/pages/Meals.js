@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../css/Meals.css'
+import '../css/meals.css'
 import homepage from '../images/homepage.png'
 import mealtypeActive from '../images/meal_type_green.png'
 import mealtypeNonActive from '../images/meal_type_white.png'
