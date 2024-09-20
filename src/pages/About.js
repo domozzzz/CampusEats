@@ -2,6 +2,7 @@
 import about from '../images/about.jpeg'
 import homepage from '../images/homepage.png'
 import { Link } from 'react-router-dom';
+import '../css/About.css'
 
 export default function About() {
     return (
