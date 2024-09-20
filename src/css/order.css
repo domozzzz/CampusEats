@@ -4,6 +4,7 @@
     background-color: white;
     position: relative;
     height: auto;
+    padding-bottom: 120px;
     width: 100%;
     align-items: center;
 }
@@ -12,6 +13,10 @@
 .order-choice h1 {
     color: #064D42;
     font-size: 3rem;
+}
+
+.order-choice h3 {
+    font-size: 2rem;
 }
 
 .orderChoiceButtons {
