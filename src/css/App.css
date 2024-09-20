@@ -772,70 +772,13 @@ footer p {
   margin-bottom: 40px;
 }
   
-/* About page */
-.about {
-  position: relative;
-  text-align: left;
-  color: var(--black);
-  background-color: var(--white);
-  display: flex;
-  flex-direction: row-reverse;
-}
+
 
 .meal {
   position: absolute;
   background-color: var(--white);
   height: 100vh;
   z-index: 5;
-}
-
-.about-image {
-  flex: 0 0 50%;
-  padding: 30px;
-  margin-top: 60px;
-  margin-bottom: 30px;
-}
-
-.about-image img {
-  object-fit: cover;
-}
-
-.about-text {
-  flex: 0 0 40%;
-}
-
-.about2 {
-  position: relative;
-  justify-content: space-between;
-  text-align: left;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  background-color: var(--green);
-}
-
-.about2-title {
-  flex: 0 0 40%;
-  display: left;
-}
-
-.about2-title h1 {
-  color: var(--white);
-  font-size: 2.5em;
-}
-
-.about2-text {
-  text-align: justify;
-  padding: 40px;
-}
-
-.about2-text p {
-  color: var(--white);
-  font-size: 20px;
-}
-
-.join-us {
-  text-align: justify;
 }
 
 .container {
