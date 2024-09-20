@@ -1,6 +1,6 @@
 import React from "react";
 import homepage from '../images/homepage.png'
-import "../css/Upload.css"
+import "../css/upload.css"
 import "../css/App.css"
 
 
