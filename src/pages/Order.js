@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import homepage from '../images/homepage.png'
-import '../css/order.css'
+import '../css/Order.css'
 
 export default function OrderSelect() {
     return (

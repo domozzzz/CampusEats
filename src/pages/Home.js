@@ -2,11 +2,11 @@ import React, {useState, useEffect} from "react";
 import supabase from "../supabase.js";
 import { Link, useNavigate} from "react-router-dom";
 import burrito from '../images/Burrito.png'
-import chickenRice from '../images/Chicken rice.png'
+import chickenRice from '../images/chickenRice.png'
 import kebab from '../images/Kebab.png'
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
-import Checkout from "./cart.js"
+import '../css/Home.css'
 
 
 function ScrollButton({ id, children, className }) {
@@ -100,18 +100,20 @@ export default function Home() {
     //console.log(slides)
     return (
         <div>
-            <div class="welcome">
-                <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
-                <div class="title">
-                    <h1>CampusEats<br></br>
-                        <b>The Solutions for Your Everyday Meals</b><br/>
-                        Custom meal kits designed by CampusEats and<br/>
-                        other users for delivery to your desired university.<br/>
+            <div class="aboveTheFold">
+                <img src={homepage} alt="Homepage" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
+                <div class="title-text">
+                    <h1>CampusEats<br />
+                        <b>The Solutions for Your Everyday Meals</b><br />
+                        Custom meal kits designed by CampusEats and<br />
+                        other users for delivery to your desired university.<br />
                     </h1>
                     <div>
-                        <Link to="/login" className="home-login-button">Login</Link>
+                        <Link to="/login" className="login-button2">Login</Link>
                         <Link to="/register" className="register-button">Register</Link>
-                        <ScrollButton className="discover-button" id="projects">Discover More<span>&#8595;</span></ScrollButton>
+                        <ScrollButton className="discover-button" id="projects">
+                            Discover More<span>&#8595;</span>
+                        </ScrollButton>
                     </div>
                 </div>
             </div>

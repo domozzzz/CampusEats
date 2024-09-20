@@ -1,0 +1,172 @@
+
+
+.custom-meal-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .progress-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    width: 50%;
+  }
+  
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+  }
+  
+  .step-number {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #D9E5E3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #064D42;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .step.active .step-number {
+    background-color: #064D42;
+    color: #D9E5E3;
+  }
+  
+  .step-name {
+    font-size: 14px;
+    color: #333;
+  }
+
+  .line {
+    flex: 1;
+    height: 10px;
+    background-color: #D9E5E3;
+    margin-bottom:30px ;
+  }
+
+  .line.active {
+    flex: 1;
+    height: 10px;
+    background-color: #064D42;
+    margin-bottom:30px ;
+  }
+  
+  .step-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 500px;
+    width: 90%;
+    margin-top: 30px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .content-box {
+    flex: 1;
+    border: 1px solid black;
+    padding-top: 30px;
+    border: 1px solid #333;
+    width: 90%;
+    min-height: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFF;
+  }
+
+  .option-button {
+    background-color: #D9E5E3;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 10px;
+    color: #064D42;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .total {
+    background-color: #D9E5E3;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 10px;
+    color: #064D42;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    width: 100px;
+
+  }
+
+  .option-button:hover {
+    background-color: #064D42;
+    color: #D9E5E3;
+  }
+
+  .option-button-selected {
+    background-color: #064D42;
+    color: #FFFF;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .option-div {
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    
+  }
+  
+  .step-div {
+    position: absolute;
+    top: -60px;
+    background-color: #fff;
+    width: 30%;
+    padding: 10px;
+    border: 1px solid black;
+    z-index: 10;
+  }
+
+  .review {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 500px;
+  }
+
+  .review-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
