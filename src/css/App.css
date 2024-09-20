@@ -1,19 +1,21 @@
 :root {
-  --green: #0c6649
-}
+  --white: #ffff;
+  --black: #0000;
+  --green: #064D42;
+  --gray: #717171;
+  --lightGray: #D9E5E3;
+  --blue: #2196F3;
+  --tableHeader: #292626;
+  --tableBody: #1a1a1d;
 
-body {
-  margin: 0;
-  overflow-x: hidden;
 }
 
 a.active {
   text-decoration: underline;
 }
 
-
 p {
-  color: black;
+  color: var(--black);
 }
 
 div {
@@ -40,12 +42,7 @@ nav ul {
   background-color: transparent;
 }
 
-#projects p {
-  font-size: 1.2em;
-  text-align: center;
-}
-
-nav ul li { /* all elements in nav */
+nav ul li { /* All nav elements */
   padding-top: 25px;
   padding-left: 0px;
   font-size: 1.5em;
@@ -56,13 +53,13 @@ nav ul li { /* all elements in nav */
 }
 
 nav ul li:last-child {
-  margin-left: auto; /* last item on right */
+  margin-left: auto; /* Put last nav item on right */
   margin-right: 20px;
 }
 
 nav li a {    
   display: block;
-  color: white;
+  color: var(--white);
   padding: 14px 16px;
   text-decoration: none;
 }
@@ -70,21 +67,13 @@ nav li a {
 /* Mobile */
 @media (max-width: 600px) {
   nav ul {
-    flex-direction: column; /* stack items */
+    flex-direction: column; /* Stack items */
     align-items: center;
   }
 
   nav li {
     width: 100%;
   }
-}
-
-.welcome {
-  
-  width: 100vw;
-  position: absolute;
-  top: 0px;
-  overflow: hidden;
 }
 
 .logo {
@@ -94,12 +83,12 @@ nav li a {
 
 footer {
   position: absolute;
-  background-color: #D9E5E3;
+  background-color: var(--lightGray);
   width: 100%;
 }
 
 footer p {    
-  color: white;
+  color: var(--white);
 }
 
 h1 {
@@ -122,37 +111,19 @@ h3 {
   color: var(--green);
 }
 
-.title {
+.title-text {
   position: absolute;
   transform: translate(0, -130%);
-  color: white;
+  color: var(--white);
 }
 
-.title h1 {
+.title-text h1 {
   font-weight: normal;
   text-align: left;
 }
 
-.title b {
+.title-text b {
   font-size: 1.3em;
-}
-
-.register-button {
-  margin-left: 30px;
-  font-size: 2em;
-  display: block;
-  float: left;
-  border: none;
-  border-radius: 15px;
-  margin-bottom: 0.5em;
-  display: block;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  background-color: var(--green);
-  color: white;
-  text-decoration: none;
-
 }
 
 .about-register-button {
@@ -169,26 +140,7 @@ h3 {
   padding-left: 0.5em;
   padding-right: 0.5em;
   background-color: var(--green);
-  color: white;
-  text-decoration: none;
-}
-
-.explore-button {
-  font-size: 2em;
-  border: none;
-  border-radius: 15px;
-  margin-top: 2em;
-  margin-bottom: 0.5em;
-  width: 30%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  background-color: var(--green);
-  color: white;
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -208,7 +160,7 @@ h3 {
   padding-left: 0.5em;
   padding-right: 0.5em;
   background-color: var(--green);
-  color: white;
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -224,7 +176,7 @@ h3 {
   padding-left: 0.5em;
   padding-right: 0.5em;
   background-color: var(--green);
-  color: white;
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -238,7 +190,7 @@ h3 {
   font-size: 1.5em;
   border: none;
   background-color: var(--green);
-  color: white;
+  color: var(--white);
   text-decoration: none;
   overflow:hidden
 }
@@ -251,7 +203,7 @@ h3 {
   font-size: 1.5em;
   border: none;
   margin-bottom: 0.5em;
-  color: black;
+  color: var(--black);
   text-decoration: none;
   padding-top: 0;
   padding-bottom: 0;
@@ -268,7 +220,7 @@ h3 {
   width: 150px;
   position: absolute;
   right: 0;
-  background-color: #bfa3a3;
+  background-color: var(--gray);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   display: flex;
@@ -279,67 +231,17 @@ h3 {
 }
 
 .dropdown-option-button:hover {
-  background-color: #717171;
+  background-color: var(--gray);
 }
 
-
-.home-login-button {  
-  margin-left: 30px;
-  font-size: 2em;
-  background-color: transparent;
-  display: block;
-  float: left;
-  border: solid 1px;
-  border-radius: 15px;
-  margin-bottom: 0.5em;
-  display: block;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  color: white;
-  text-decoration: none;
-}
-
-.discover-button {
-  margin-left: 30px;
-  font-size: 2em;
-  background-color: transparent;
-  border: none;
-  border-radius: 15px;
-  margin-bottom: 0.5em;
-  padding: 0.2em;
-  display: block;
-  float: right;
-  margin-right: 30px;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
 
 .center {
   margin-top: 30px;
   text-align: center;
 }
 
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
 section {
-  background-color: white;
+  background-color: var(--white);
   margin: 0;
   padding-bottom: 50px;
 }
@@ -381,7 +283,7 @@ section {
   font-size: 1em;
   border-radius: 15px;
   background-color: var(--green);
-  color: white;
+  color: var(--white);
 }
 
 .pop {
@@ -402,7 +304,7 @@ section {
 }
 
 .pop h2 {
-  color: white;
+  color: var(--white);
 }
 
 .pop-button {  
@@ -418,7 +320,7 @@ section {
   padding-left: 0.5em;
   padding-right: 0.5em;
   color: var(--green);
-  background-color: white;
+  background-color: var(--white);
   text-decoration: none;
   margin: 0;
   position: absolute;
@@ -429,13 +331,13 @@ section {
 
 h4 {
   font-size: 1.5em;
-  color: white;
+  color: var(--white);
 }
 
 table {
-  background-color: rgb(40, 40, 44);
-  color: white;
-  border: 1px solid white;
+  background-color: var(--lightBlack);
+  color: var(--white);
+  border: 1px solid var(--white);
   border-collapse: collapse;
   left: 0; 
   right: 0; 
@@ -461,7 +363,7 @@ table {
 }
 
 .exit-button {
-  color: white;
+  color: var(--white);
   background-color: var(--green);
   border: none;
   float: right;
@@ -482,21 +384,22 @@ table {
 .pop-info p {
   margin-top: 5px;
   text-align: center;
-  color: white;
+  color: var(--white);
   left: 0; 
   right: 0; 
   margin-inline: auto; 
 }
 
 th {
-  background-color: rgb(70, 70, 70);
+  background-color: var(--tableHeader);
 
-  border: 1px solid white;
+  border: 1px solid var(--white);
 
 }
 
 td {
-  border: 1px solid white;
+  background-color: var(--tableBody);
+  border: 1px solid var(--white);
 }
 
 .card:hover {
@@ -504,7 +407,7 @@ td {
 }
 
 .card p {
-  color: white;
+  color: var(--white);
   margin-top: 5px;
   padding-bottom: 1em;
 }
@@ -514,30 +417,7 @@ td {
   margin: 5%;
 }
 
-.slideshow {
-  position: relative;
-  overflow: hidden;
-  width: 80%;
-  margin: auto;
-}
-
-.slideshow-content {
-  display: flex;
-  transition: transform 0.5s ease;
-  width: 100%;
-}
-
-.slideshow-item {
-  min-width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .strip {
-  background-color: red;
-  color: red;
   position: relative;
   margin-bottom: 100px;
 }
@@ -550,26 +430,6 @@ button:hover {
     cursor: pointer;
 }
 
-.slideshow-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 100;
-}
-
-.slideshow-button.left {
-  left: 10px;
-}
-
-.slideshow-button.right {
-  right: 10px;
-}
-
 .about-text p {
   font-size: 18px;
   line-height: 1.6;
@@ -579,7 +439,7 @@ button:hover {
   position: absolute;
   top: 0;
   text-align: center;
-  color: white;
+  color: var(--white);
   font-size: 1.5em;
 }
 
@@ -590,19 +450,19 @@ button:hover {
   border: 1px solid #ccc;
 }
 
-/* order page */
+/* Order page */
 .order {
   padding-top: 30px;
   padding-bottom: 150px;
   position: relative;
-  color: black;
-  background-color: white;
+  color: var(--black);
+  background-color: var(--white);
 }
 
 .order-meal-kit {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--white);
   position: relative;
   height: auto;
   width: 100%;
@@ -611,11 +471,11 @@ button:hover {
 }
 
 .order-meal-kit p {
-  color: black; 
+  color: var(--black); 
 }
 
 .black {
-  color: black;
+  color: var(--black);
 }
 
 
@@ -626,7 +486,7 @@ button:hover {
 }
 .order-meal-kit h2{
   font-size: 2em;
-  color: white;
+  color: var(--white);
 }
 
 
@@ -637,7 +497,7 @@ label {
 .meal-kit-info-left h3 {
   text-align: left;
   font-size: 1.5em;
-  color: white;
+  color: var(--white);
   padding-left: 50px;
 }
 
@@ -703,7 +563,7 @@ footer p {
 
 }
 
-/* Hide the browser's default checkbox */
+/* Hide the default checkbox */
 .container input {
   position: absolute;
   opacity: 0;
@@ -712,49 +572,48 @@ footer p {
   width: 0;
 }
 
-/* Create a custom checkbox */
 .checkmark {
   position: absolute;
   top: 45px;
   left: 20px;
   height: 25px;
   width: 25px;
-  background-color: #eee;
+  background-color: var(--white);
 }
 
 .meal-kit-info-left label  {
   text-align: left;
 }
 
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
+/* Grey background on hover */
+.order-container:hover input ~ .checkmark {
+  background-color: var(--lightGray);
 }
 
-/* When the checkbox is checked, add a blue background */
+/* Blue background on select */
 .order-container input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: var(--blue)
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
+/* Hide on unselect */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the checkmark when checked */
+/* Show checkmark on select */
 .order-container input:checked ~ .checkmark:after {
   display: block;
 }
 
-/* Style the checkmark/indicator */
+/* Tick style */
 .order-container .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
   height: 10px;
-  border: solid white;
+  border: solid var(--white);
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
@@ -762,7 +621,7 @@ footer p {
 }
 
 .order-meal-kit p {
-  color: white;
+  color: var(--white);
   margin-top: 0;
   font-size: 22px;
 }
@@ -781,8 +640,8 @@ footer p {
   z-index: 10;
   position: relative;
   text-align: center;
-  color: #FDFDFD;
-  background-color: #064D42;
+  color: var(--white);
+  background-color: var(--green);
   margin: 30px auto 50px auto;
   width: 70%;
   border-style: none;
@@ -792,8 +651,8 @@ footer p {
 .meal-kit-info-left {
   z-index: 10;
   text-align: center;
-  color: #FDFDFD;
-  background-color: #064D42;
+  color: var(--white);
+  background-color: var(--green);
   margin: 30px 60px 50px 40px;
   width: 40%;
   border-style: none;
@@ -814,8 +673,8 @@ footer p {
   z-index: 10;
   position: relative;
   text-align: left;
-  color: #FDFDFD;
-  background-color: #064D42;
+  color: var(--white);
+  background-color: var(--green);
   margin: 30px 60px 10px 40px;
   width: 100%;
   border-style: none;
@@ -826,8 +685,8 @@ footer p {
 
 .servings-container {
   display: flex;
-  justify-content: space-between; /* Pushes the p and ul to opposite sides */
-  align-items: center; /* Vertically aligns the items */
+  justify-content: space-between; /* Push elements to opposite sides */
+  align-items: center;
 }
 
 .serving-select {
@@ -843,7 +702,7 @@ footer p {
 .serving-select li {
   border-style: solid;
   border-width: 1px;
-  border-color: white;
+  border-color: var(--white);
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 5px;
@@ -861,24 +720,20 @@ footer p {
   width: 30%;
 }
 
-/* Apply Flexbox to make the two columns side by side */
 .meal-kit-container {
   display: flex;
   justify-content: space-between;
   gap: 20px; /* Space between the panels */
 }
 
-/* Ensure both columns take up space properly */
 .meal-kit-info-left, .split-right {
   flex: 1;
 }
 
-/* Optional: Adjust the width or max-width if you want to limit panel sizes */
 .meal-kit-info-left, .split-right {
-  max-width: 45%; /* Prevents panels from taking up too much space */
+  max-width: 45%;
 }
 
-/* Add some padding for better appearance */
 .order-meal-kit {
   padding: 20px;
 }
@@ -888,7 +743,7 @@ footer p {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  color: #FDFDFD;
+  color: var(--white);
   font-size: 20px;
   letter-spacing: 4px;
 
@@ -902,19 +757,19 @@ footer p {
   margin-bottom: 40px;
 }
   
-/* about page */
+/* About page */
 .about {
   position: relative;
   text-align: left;
-  color: black;
-  background-color: white;
+  color: var(--black);
+  background-color: var(--white);
   display: flex;
   flex-direction: row-reverse;
 }
 
 .meal {
   position: absolute;
-  background-color: white;
+  background-color: var(--white);
   height: 100vh;
   z-index: 5;
 }
@@ -941,7 +796,7 @@ footer p {
   align-items: center;
   display: flex;
   flex-direction: row;
-  background-color: #064D42;
+  background-color: var(--green);
 }
 
 .about2-title {
@@ -950,7 +805,7 @@ footer p {
 }
 
 .about2-title h1 {
-  color: white;
+  color: var(--white);
   font-size: 2.5em;
 }
 
@@ -960,7 +815,7 @@ footer p {
 }
 
 .about2-text p {
-  color: white;
+  color: var(--white);
   font-size: 20px;
 }
 
@@ -975,7 +830,7 @@ footer p {
 }
 
 .container h1{
-  color: #064D42;
+  color: var(--green);
   margin: 0;
   padding: 10px;
 }
@@ -990,8 +845,8 @@ footer p {
   width: 20%;
   margin: auto;
   display: block;
-  background-color: #064D42;
-  color: white;
+  background-color: var(--green);
+  color: var(--white);
 }
 
 .container p {
@@ -1007,7 +862,7 @@ footer p {
 }
 
 .order-container h1{
-  color: #064D42;
+  color: var(--green);
   margin: 0;
   padding: 10px;
 }
@@ -1022,8 +877,8 @@ footer p {
   width: 20%;
   margin: auto;
   display: block;
-  background-color: #064D42;
-  color: white;
+  background-color: var(--green);
+  color: var(--white);
 }
 
 .order-container p {

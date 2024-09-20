@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import '../css/Slideshow.css';
 
 // Disregard negative results
 function mod(n, m) {

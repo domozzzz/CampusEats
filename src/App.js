@@ -7,9 +7,10 @@ import Recipes from './pages/Recipes.js';
 import Contact from './pages/Contact.js'
 import Login from './pages/Login.js';
 import Order from './pages/Order.js'
+import Community from './pages/Community.js';
 import OrderMealKit from './pages/OrderMealKit.js'
 import OrderPreMade from './pages/OrderPreMade.js'
-import Cart from './pages/cart.js'
+import Cart from './pages/Cart.js'
 import RegisterPage from "./pages/Register.js";
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
@@ -20,7 +21,6 @@ function App() {
   return (
     <Router>
       <Header />
-
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -33,11 +33,10 @@ function App() {
           <Route path="/orderPreMade" element={<OrderPreMade/>}/>
           <Route path="/orderMealKit" element={<OrderMealKit/>}/>
           <Route path="/cart" element={<Cart/>}/>
+          <Route path="/community" element={<Community/>}/>
           <Route path="/upload" element = {<Upload/>}/>
       </Routes>
-
       <Footer />
-
     </Router>
   );
 }

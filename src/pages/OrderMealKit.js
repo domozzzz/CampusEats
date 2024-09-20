@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import homepage from '../images/homepage.png'
-import '../css/order.css'
+import '../css/Order.css'
 
 export default function OrderSelect() {
     return (
@@ -76,7 +75,7 @@ export default function OrderSelect() {
                         <div className="meal-kit-info-right">
                         <h2>2. Select your plan</h2>
                         <div className="servings-container">
-                        <p>Servings per meal </p> 
+                        <p>Servings per meal </p>
                         <ul className="serving-select">
                             <li>1</li>
                             <li>2</li>
