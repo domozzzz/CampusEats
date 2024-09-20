@@ -12,6 +12,7 @@ import OrderMealKit from './pages/OrderMealKit.js'
 import OrderPreMade from './pages/OrderPreMade.js'
 import Cart from './pages/cart.js'
 import RegisterPage from "./pages/Register.js";
+import Customise from "./pages/Customise.js";
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import Upload from "./pages/upload.js";
@@ -29,12 +30,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterPage/>}/>
-          <Route path="/order" element={<Order/>}/>
-          <Route path="/orderPreMade" element={<OrderPreMade/>}/>
-          <Route path="/orderMealKit" element={<OrderMealKit/>}/>
-          <Route path="/cart" element={<Cart/>}/>
-          <Route path="/community" element={<Community/>}/>
-          <Route path="/upload" element = {<Upload/>}/>
+          <Route path="/customise" element={<Customise/>}/>
       </Routes>
       <Footer />
     </Router>
