@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import homepage from '../images/homepage.png'
+import {Helmet} from 'react-helmet-async'
 import "../css/upload.css"
 import "../css/App.css"
 import UploadPopup from "../components/UploadPopUp";
@@ -64,6 +65,10 @@ export default function Upload() {
     }
     return (
         <div>
+            <Helmet>
+                <title>Upload page</title>
+                <script src="https://kit.fontawesome.com/772a7aab14.js" crossorigin="anonymous"></script>
+            </Helmet>
             <div className="welcome" alt="Avatar">
                 <div className="heading-image">
                     <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
