@@ -55,7 +55,7 @@ input.description {
     height: 150px;
 }
 
-button {
+.upload-button {
     font-size: 20px;
     color: #064D42;
     margin: 20px;

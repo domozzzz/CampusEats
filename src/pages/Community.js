@@ -1,7 +1,7 @@
 import homepage from '../images/homepage.png'
-import burrito from '../images/Burrito.png'
+import burrito from '../images/burrito.png'
 import chickenRice from '../images/chickenRice.png'
-import kebab from '../images/Kebab.png'
+import kebab from '../images/kebab.png'
 import React, { useState } from 'react';
 import "../css/Community.css"
 
@@ -23,7 +23,7 @@ const Dropdown = () => {
   };
 
   return (
-    <div className="dropdown" onMouseLeave={closeDropdown}>
+    <div className="dropdown">
       {!isOpen && (<button 
         className="dropdown-button" 
         onClick={toggleDropdown}

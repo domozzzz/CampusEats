@@ -1,7 +1,7 @@
 import React from "react";
 import homepage from '../images/homepage.png'
 import {Helmet} from 'react-helmet-async'
-import "../css/upload.css"
+import "../css/Upload.css"
 import "../css/App.css"
 
 
@@ -42,7 +42,7 @@ export default function Upload() {
                         Make sure all the details are correct. 
                         Then just simply click the 'Upload' button below.
                     </label>
-                    <button>Upload</button>
+                    <button className="upload-button">Upload</button>
                 </form>
             </div>  
         </div>
