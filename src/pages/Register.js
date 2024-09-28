@@ -1,15 +1,11 @@
 
 import React, { useState } from "react";
 import "../css/App.css"
-//import useToken from "../components/useToken";
+import useToken from "../components/UseToken";
 import { Link } from "react-router-dom";
 import homepage from '../images/homepage.png'
 
-
 function RegisterPage() {
-
-
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstname, setFirst] = useState('');

@@ -6,32 +6,30 @@ export default function Footer() {
 
   return (
     <footer>
-      <div class="container">
-        <img src={logo} alt="Avatar" style={{ width: "15%", height: "100%" }}></img>
-        <h3>Custom meal kits designed by CampusEats and other users for delivery to your desired university!</h3>
+      <div class="container footer">
+        <div className="footer_image">
+          <img src={logo} alt="Avatar"></img>
+          <p>&copy; <script>document.write(new Date().getFullYear())</script> Created by Alliance</p> 
+        </div>
+        <h3>Custom meal kits designed by CampusEats and <br/> other users for delivery to your desired university!</h3>
         <ul>
-          <ul><Link to="/">
-            <a href="/">Home</a>
-          </Link></ul>
+          <li><Link to="/orderMealKit">
+            <a href="/">Meal Plan</a>
+          </Link></li>
 
-          <ul><Link to="/about">
-            <a href="about">About</a>
-          </Link></ul>
+          <li><Link to="/about">
+            <a href="about">About Us</a>
+          </Link></li>
 
-          <ul><Link to="/meals">
+          <li><Link to="/order">
             <a href="/meals">Meals</a>
-          </Link></ul>
+          </Link></li>
 
-          <ul><Link to="/recipes">
+          <li><Link to="/community">
             <a href="/recipes">Recipes</a>
-          </Link></ul>
-
-          <ul><Link to="/contact">
-            <a href="/contact">Contact</a>
-          </Link></ul>
+          </Link></li>
         </ul>
-      </div>
-      <p>&copy; <script>document.write(new Date().getFullYear())</script> Created by Alliance</p>
+      </div> 
     </footer>
   );
 }

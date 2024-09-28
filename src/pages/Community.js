@@ -132,7 +132,7 @@ export default function About() {
                 <div class="heading-image">
                 <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
                     <div class="title">
-                        <h1>About Us</h1>
+                      <h1>About Us</h1>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@ export default function About() {
                   Click one of the meals to show more information.<br />
                 </p>
                 <div className='search-box'>
-                  <input type="text" placeholder="Search for ingredient" />
+                  <input type="search" placeholder="Search for ingredient" />
                 </div>
                 <div className='community-box'>
                   <div className='sub-box'>
