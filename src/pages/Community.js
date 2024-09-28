@@ -1,7 +1,7 @@
 import homepage from '../images/homepage.png'
-import burrito from '../images/burrito.png'
+import burrito from '../images/Burrito.png'
 import chickenRice from '../images/chickenRice.png'
-import kebab from '../images/kebab.png'
+import kebab from '../images/Kebab.png'
 import React, { useState } from 'react';
 import "../css/Community.css"
 

@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import "../css/App.css"
-import useToken from "../components/UseToken";
+import useToken from "../components/useToken";
 import { Link } from "react-router-dom";
 import homepage from '../images/homepage.png'
 
