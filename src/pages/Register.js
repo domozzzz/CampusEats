@@ -5,11 +5,7 @@ import useToken from "../components/useToken";
 import { Link } from "react-router-dom";
 import homepage from '../images/homepage.png'
 
-
 function RegisterPage() {
-
-
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstname, setFirst] = useState('');
