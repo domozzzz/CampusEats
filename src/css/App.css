@@ -336,11 +336,6 @@ section {
   right: 10px;
 }
 
-.about-text p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
 .heading {
   position: absolute;
   top: 0;
@@ -364,6 +359,7 @@ section {
   background-color: white;
   display: flex;
   flex-direction: row-reverse;
+  height: 100vh;
 }
 
 .meal {
@@ -386,6 +382,20 @@ section {
 
 .about-text {
   flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-text h1 {
+  margin-bottom: 20px;
+  text-align: left;
+  padding: 0;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .about2 {
@@ -396,14 +406,11 @@ section {
   display: flex;
   flex-direction: row;
   background-color: #064D42;
-  height: 600px;
 }
 
 .about2-title {
   flex: 0 0 40%;
   display: left;
-  width: 100%;
-  height: 600px;
 }
 
 .about2-title h1 {
@@ -425,20 +432,20 @@ section {
   text-align: justify;
 }
 
-.container {
+.join-us-container {
   padding: 30px;
   position: relative;
   display: center;
   text-align: center;
 }
 
-.container h1{
+.join-us-container h1{
   color: #064D42;
   margin: 0;
   padding: 10px;
 }
 
-.container button {
+.join-us-container button {
   width: 20%;
   margin: auto;
   display: block;
@@ -446,7 +453,7 @@ section {
   color: white;
 }
 
-.container p {
+.join-us-container p {
   font-size: 20px;
 }
 
@@ -518,39 +525,43 @@ section {
     position: relative; 
     display: grid;
     text-align:center;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     grid-gap: 10px;
     margin: auto;
-    width: 50%;
+    width: 100%;
   }
 
 .card {
   position: relative;
+  width: 100%;
   font-size: 1em;
   border-radius: 15px;
   background-color: var(--green);
   color: white;
   justify-items: center;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  grid-gap: 20px; 
+  display: flex;
+  flex-direction: column;
+  grid-gap: 10px; 
+  height: 200px;
  }
 
 
 .card p {
   color: white;
-  margin-top: 5px;
-  padding-bottom: 1em;
+  margin: 0;
+  padding: 0;
 }
 
 .card img {
-  width: 50%;
-  margin: 5%;
+  width: 80%;
+  margin: 10%;
 }
 
 .explore-button {
   width: 50%;
-  font-size: 1.5em;
+  font-size: 1em;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
   /* About Page */
@@ -577,6 +588,12 @@ section {
     padding: 10px;
     margin-top: 0;
     font-size: 1em;
+  }
+
+  .about-text h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 0;
   }
 
   .about2 {
@@ -616,10 +633,6 @@ section {
     font-size: 1.5em;
   }
 
-  .container button {
-    width: 50%;
-  }
-
   .join-us {
     font-size: 1em;
     text-align: center;
@@ -629,6 +642,12 @@ section {
     padding: 10px;
     font-size: 18px;
     text-align: center;
+  }
+
+  .about-register-button{
+    font-size: 1.4em;
+    padding: 10px;
+    width: 50%;
   }
 
   h1, h2, h3, h4 {
