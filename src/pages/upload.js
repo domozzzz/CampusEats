@@ -223,7 +223,7 @@ export default function Upload() {
                     <p style={{color: 'green'}}>{successful ? successful : ''}</p>
                     <p>*All Meal-kits will be subjected to a review process by our CampusEats team.
                          Ensure all information you provide is factual and accurate. Only select meal kits will be displayed within
-                         the marketplace and avliable for order</p>
+                         the marketplace and avaliable for order</p>
                 </div>
             </div>  
         </div>
