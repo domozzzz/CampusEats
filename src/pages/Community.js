@@ -1,12 +1,13 @@
 import homepage from '../images/homepage.png'
-import burrito from '../images/Burrito.png'
+import burrito from '../images/burrito.png'
 import chickenRice from '../images/chickenRice.png'
-import kebab from '../images/Kebab.png'
+import kebab from '../images/kebab.png'
 import React, { useState } from 'react';
+import "../css/Community.css"
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('Popular');
+  const [selectedValue, setSelectedValue] = useState('Likes');
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -22,14 +23,13 @@ const Dropdown = () => {
   };
 
   return (
-    <div className="dropdown" onMouseLeave={closeDropdown}
->
-      <button 
+    <div className="dropdown">
+      {!isOpen && (<button 
         className="dropdown-button" 
         onClick={toggleDropdown}
       >
         {selectedValue}
-      </button>
+      </button>)}
 
       {isOpen && (
         <div className="dropdown-content">
@@ -38,23 +38,23 @@ const Dropdown = () => {
           >{selectedValue}</button>
           <button 
             className="dropdown-option-button" 
-            onClick={() => handleButtonClick('Popular')}
+            onClick={() => handleButtonClick('Likes')}
           >
-            Popular
+            Likes
           </button>
 
           <button 
             className="dropdown-option-button" 
-            onClick={() => handleButtonClick('Price')}
+            onClick={() => handleButtonClick('Most ordered')}
           >
-            Price
+            Most ordered
           </button>
 
           <button
             className="dropdown-option-button" 
-            onClick={() => handleButtonClick('Nutritional')}
+            onClick={() => handleButtonClick('Cost')}
           >
-            Nutritional
+            Cost
           </button>
         </div>
       )}
@@ -132,15 +132,51 @@ export default function About() {
                 <div class="heading-image">
                 <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
                     <div class="title">
-                        <h1>About Us</h1>
+                      <h1>About Us</h1>
                     </div>
                 </div>
             </div>
             <div class="order">
+              <h1>Marketplace</h1>
             <div>
-                    <Dropdown></Dropdown>
-                <h1>Order One Meal</h1>
+                <p>Welcome to the CampusEats community!<br />
+                  Explore meal ideas shared by fellow students, share your own <br />
+                  creations and get inspired to eat healthy!<br />
+                  Click one of the meals to show more information.<br />
+                </p>
+                <div className='search-box'>
+                  <input type="search" placeholder="Search for ingredient" />
+                </div>
+                <div className='community-box'>
+                  <div className='sub-box'>
+                    <h1>Dietry</h1>
+                    <ul>
+                      <li><input type="checkbox"></input>Gluten-Free</li>
+                      <li><input type="checkbox"></input>Vegan</li>
+                      <li><input type="checkbox"></input>Vegetarian</li>
+                    </ul>
 
+                  </div>
+                  <div className='sub-box'>
+                    <h1>Nutritients</h1>
+                    <ul>
+                      <li className='spaced'><input type="text2" /><span>≤ Carbs ≤</span><input type="text2" /></li>
+                      <li className='spaced'><input type="text2" /><span>≤ Protein ≤</span><input type="text2" /></li>
+                      <li className='spaced'><input type="text2" /><span>≤ Sugars ≤</span><input type="text2" /></li>
+                    </ul>
+                  </div>
+                  <div className='sub-box'>
+                    <h1>Location</h1>
+                    <ul>
+                    <li><input type="checkbox"></input>Any</li>
+                    <li><input type="checkbox"></input>Custom<input type="text3" /></li>
+                    </ul>
+                  </div>
+                  <div className='s ub-box'>
+                    <Dropdown></Dropdown>
+                  </div>
+
+                </div>
               </div>
               <div>
             {seen ? <Pop/> : null}
@@ -148,27 +184,51 @@ export default function About() {
           <div className={`cards ${seen ? 'transparent' : ''}`}>
                   <div class="card" onClick={openPop}>
                             <img src={burrito} alt="Avatar"></img>
-                            <p>Braised Brisket Burrito</p>
+                            <p>Braised Brisket Burrito<br />
+                              Creator: Joseph<br />
+                              ♡ 156<br />
+                              Location: QUT
+                            </p>  
                         </div>
                         <div class="card" onclick="openForm()">
                             <img src={chickenRice} alt="Avatar"></img>
-                            <p>Hainanese Chicken Rice</p>
+                            <p>Braised Brisket Burrito<br />
+                              Creator: Joseph<br />
+                              ♡ 156<br />
+                              Location: QUT
+                            </p>  
                         </div>
                         <div class="card">
                             <img src={kebab} alt="Avatar"></img>
-                            <p>Adana Kebab</p>
+                            <p>Braised Brisket Burrito<br />
+                              Creator: Joseph<br />
+                              ♡ 156<br />
+                              Location: QUT
+                            </p>  
                         </div>
                         <div class="card">
                             <img src={burrito} alt="Avatar"></img>
-                            <p>Braised Brisket Burrito</p>
+                            <p>Braised Brisket Burrito<br />
+                              Creator: Joseph<br />
+                              ♡ 156<br />
+                              Location: QUT
+                            </p>  
                         </div>
                         <div class="card" onclick="openForm()">
                             <img src={chickenRice} alt="Avatar"></img>
-                            <p>Hainanese Chicken Rice</p>
+                            <p>Braised Brisket Burrito<br />
+                              Creator: Joseph<br />
+                              ♡ 156<br />
+                              Location: QUT
+                            </p>  
                         </div>
                         <div class="card">
                             <img src={kebab} alt="Avatar"></img>
-                            <p>Adana Kebab</p>
+                            <p>Braised Brisket Burrito<br />
+                              Creator: Joseph<br />
+                              ♡ 156<br />
+                              Location: QUT
+                            </p>  
                         </div>
                 </div>
             </div>

@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from "react";
-import supabase from "../supabase.js";
-import { Link, useNavigate} from "react-router-dom";
-import burrito from '../images/Burrito.png'
+import React from "react";
+import { Link } from "react-router-dom";
+import burrito from '../images/burrito.png'
 import chickenRice from '../images/chickenRice.png'
-import kebab from '../images/Kebab.png'
+import kebab from '../images/kebab.png'
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
+import { useState, useEffect } from "react";
+import supabase from "../supabase";
 
 
 function ScrollButton({ id, children, className }) {
@@ -36,6 +37,8 @@ export default function Home() {
             const {data: d, e} = await supabase
                 .from('meals')
                 .select('*')
+                .limit(9)
+                .order('likes', {ascending: false})
                 if (e) {
                     setError(true)
                     setData(null)
@@ -52,18 +55,24 @@ export default function Home() {
     },[])
 
     const generate_slides = () => {
-            return mealData.map((meal,i) => {
-                return (
-                    <div class="cards">
-                        <Link to="/meals">
-                            <div class="card">
-                            <img src={meal.photo} alt="Avatar"></img>
-                                <p>{meal.name}</p>
-                            </div>
-                        </Link>
-                    </div>
-                )
-            });
+        var slides = []
+        for (let i = 0; i < 3; i++) {
+            slides.push(
+                <div class="cards">
+                    {mealData.slice(i*3,(i*3)+3).map((meal) => {
+                        return (
+                            <Link to="/meals">
+                                <div class="card">
+                                <img src={meal.photo} alt="Avatar"></img>
+                                    <p>{meal.name}</p>
+                                </div>
+                            </Link>
+                        )
+                    })}
+                </div>                
+            )
+        }
+        return slides
     }   
     // const slides = [
     //     <div class="cards">

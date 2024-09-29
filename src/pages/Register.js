@@ -6,11 +6,7 @@ import { Link } from "react-router-dom";
 import homepage from '../images/homepage.png'
 import supabase from "../supabase";
 
-
 function RegisterPage() {
-
-
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstname, setFirst] = useState('');
