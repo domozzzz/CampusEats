@@ -1,254 +1,205 @@
 .upload {
     position: relative;
     display: flex;
+    flex-direction: column;
      justify-content: center;
     background-color: white;
     height: auto;
     padding-bottom: 50px;
 }
 
-h3 {
-    font-size: 20px;
+.upload .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.upload h1 {
+    font-size: 3.5rem;
+    color: #064d42;
+    margin-bottom: 5px;
+}
+
+.upload h3 {
+    font-size: 1.5rem;
     font-weight: lighter;
+    width: 500px;
+
 }
 
-input[type="file"] {
-    display: none;
-}
-
-.file_upload_container {
-    border-style:solid;
-    border-color: #064D42;
-    border-radius: 20px;
-    padding: 15px;
+.create-upload {
+    margin-top: 20px;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-
 }
 
-.file_upload_container p {
-    line-height: 25px;
-    font-size: 15px;
-    text-align: center;
-}
-
-.file_upload_container label {
-    margin: 10px;
-    background-color: #D9E5E3;
-    border-style: none;
-    padding: 5px;
-}
-
-label {
-    color: #064D42;
-    font-weight: 400;
-}
-
-input[type="text"] {
-    text-align: center;
-    color: rgb(6, 77, 66,0.5);
-    width: 80%;
-    height:auto;
-    margin: 10px;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: #064D42;
-}
-
-.dietary {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    padding: 10px;
-}
-
-.dietary .option {
-    margin: 6px;
-}
-
-input.description {
-    height: 150px;
-}
-
-.ingredients {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    border-style: solid;
-    border-color: #064D42;
-    border-width: 1px;
-    border-radius: 20px;
-}
-
-.ingredient_list {
-    display: flex;
-    flex-direction: column;
-}
-
-.ingredient {
-    display: flex;
-    align-items: center;
-    width: auto ;
-    margin-left: auto;
-    margin-right: auto;  
-}
-
-.ingredient label {
-    width: 100px;
-    text-align: center;
-}
-
-.ingredient button {
-    background-color: #064D42;
-    color: white;
-    border-radius: 5px;
-    height: 30px;
-    width: 30px;
-    font-size: 15px;
-    padding: 5px;
-    margin-left: 5px;
-}
-
-.add-ingredient {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-direction: row;
-    width: auto;
-}
-
-.add-ingredient input {
-    width: auto;
-    margin-right: 0;
-    height: 30px;
-}
-
-.add-ingredient button {
-    background-color: #064D42;
-    color: white;
-    border-radius: 5px;
-    height: 30px;
-    width: 30px;
-    font-size: 15px;
-    padding: 5px;
-    margin-left: 5px;
-}
-
-button {
-    font-size: 20px;
-    color: #064D42;
-    margin: 20px;
-    padding: 10px;
-    border-style: none;
-    border-radius: 20px;
-    background-color:#D9E5E3;
-}
-
-.upload-popup {
-    z-index: 1;
-    margin-top: 30px;
-    position: absolute;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    width: 110%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color:#D9E5E3;
-    border-style: none;
-    border-radius: 20px;
-}
-
-.close-popup {
-    position: absolute;
-    margin: 20px;
-    right: 0;
-    top:0;
-    background-color: #064D42;
-    color: white;
-    border-radius: 5px;
-}
-
-.ingredient-name {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.ingredient-name input {
-    width: 250px;
-    border-style: none;
-    border-bottom: 1px solid #064D42;
-    background-color: transparent;
-}
-
-.ingredient-quantity div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-}
-
-.ingredient-quantity input[type="number"] {
-    margin-left: auto;
-    width: 50px;
-    border-style: none;
-    border-bottom: 1px solid #064D42;
-    background-color: transparent;
-}
-
-.ingredient-quantity select {
-    margin-right: auto;
-    width: 50px;
-    border-style: none;
-    border-bottom: 1px solid #064D42;
-    background-color: transparent;
-}
-
-.ingredient-cost {
-   display: flex;
-}
-.ingredient-cost label {
-    margin-left: auto;
+.create-upload .detail-name {
+    text-align: right;
     margin-right: 10px;
 }
+.create-upload .detail-name ul {
+    list-style: none;
+    margin-top: 10px;
 
-.ingredient-cost input {
-    margin-right: auto;
-    width: 50px;
-    border-style: none;
-    border-bottom: 1px solid #064D42;
-    background-color: transparent;
 }
 
-.ingredient-nutrition table {
-    width: 60%;
-}
-
-.ingredient-nutrition input {
-    width: 50px;
-}
-
-.ingredient-nutrition label {
-    margin-left: auto;
+.create-upload .detail-name li {
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.popup-submit {
-    position: absolute;
-    bottom: 0;
-    left:40%;
-    background-color: #064D42;
-    color: white;
+.create-upload .detail-name .active {
+    color: #064d42;
+    font-size: 2rem;
+}
+.upload .Basic_info {
+    width: 750px;
+    background-color: #064d42;
+    padding: 40px 20px;
+    border-style: none;
+    border-radius: 20px;
 }
 
-.nutrition-warning {
-    width: 450px;
+.upload .Basic_info h2 {
+    margin-top: 0;
+    color: white;
+    font-size: 2.6rem;
+}
+
+.upload .Basic_info p {
+    color: white;
+    font-size: 1.5rem;
     text-align: center;
+}
+
+.upload .dietary {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+}
+.upload .dietary input[type=checkbox] {
+    transform: scale(1.5);
+    margin-right: 15px;
+    accent-color: #064d42;
+}
+
+.upload .arrows {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 10px;
+    color: #064d42;
+    font-size: 3.5rem;
+}
+
+.basic_input {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.basic_input input[type=text] {
+    text-align: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid white 2px;
+}
+
+.basic_input input[type=text]::placeholder {
+    color: white    ;
+}
+
+.ingredient_list {
+    text-align: center;
+    background-color: white;
+    color:#064d42;
+    font-size: 1rem;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    justify-content: center;
+    padding: 10px;
+}
+
+.ingredient_list .item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ingredient_list .item button {
+    margin-left: auto;
+    margin-right: 10px;
+    height: 30px;
+    width: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #064d42;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.add_ingredient {
+    background-color: white;
+    text-align: center;
+    margin-top: 10px;
+    padding:10px;
+    width:fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+.add_ingredient_button {
+    background-color:#064d42;
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    height: 50px;
+    font-size: 2.5rem;
+    border-radius: 20px;
+}
+
+.add_ingredient input {
+    margin:10px;
+    border-color: #064d42;
+    text-align: center;
+}
+
+.add_ingredient input[type=number] {
+    width:50px;
+}
+
+.submit_upload {
+    margin-top: 20px;
+    text-align: center;
+    width:auto;
+}
+
+.submit_upload p {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.submit_upload button {
+    background-color: #064d42;
+    color: white;
+    width: fit-content;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
 }

@@ -7,39 +7,40 @@ import UploadPopup from "../components/UploadPopUp";
 import supabase from "../supabase";
 
 
+const baseIngreident = {
+    name: null,
+    quantity: 1,
+    measurement: 'grams'
+}
 export default function Upload() {
 
+    const [display, setDisplay] = useState(0)
     const [ingredients, setIngredients] = useState([])
-    const [newIngredient, setNewIngredient] = useState(null)
-    const [popup, setPopup] = useState(false)
+    const [errorIngredient, setErrorIngreident] = useState(null)
+    const [errorSubmit, setErrorSubmit] = useState(null)
+    const [newIngredient, setNewIngredient] = useState(baseIngreident)
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const username = e.target.username.value
-        const dishname = e.target.dishname.value
-        const gf = e.target.gf.checked
-        const vegetarian = e.target.vegetarian.checked
-        const vegan = e.target.vegan.checked
+    const [upload, setUpload] = useState(
+        {
+            name: null,
+            image: null,
+            gf: false,
+            vegetarian: false,
+            vegan: false,
+            ingredients: ingredients
 
-        const dataInput = [username, dishname, gf, vegetarian, vegan, ingredients]
-
-        if (dataInput.some((x) => {return x == null || x.length == 0})) {
-            console.log("Not completely filled")
-            return
-        } else {
-            const {data, error} = await supabase
-            .from('meals')
-            .insert([{name: dishname, ingredients: {required: ingredients, optional: []},
-            gf: gf, vegan: vegan, vegetarian: vegetarian, type: 1, able_to_order: true}])
-
-            if (error) {
-                console.log(error)
-            }
-
-            if (data) {
-                console.log(data)
-            }
         }
+    )
+   
+    const handleSubmit = async () => {
+        if (upload['name'] === null) {
+            setErrorSubmit("Error uploading mealkit, ensure you have entered valid name")
+        }else if (upload['image'] === null) {
+            setErrorSubmit("Error uploading mealkit, ensure you have entered an image line")
+        }else if (upload['ingredients'].length === 0) {
+            setErrorSubmit("Error uploading mealkit, ensure you add ingredients")
+        }
+
     }
 
     const handleNewIngredient = (e) => {
@@ -48,10 +49,14 @@ export default function Upload() {
     }
 
     const addIngredient = (e) => {
-        if (newIngredient != null) {
+        if (newIngredient['name'] != null) {
             setIngredients([...ingredients,newIngredient])
+            setUpload({...upload,['ingredients']: ingredients})
+            setNewIngredient(baseIngreident)
+            setErrorIngreident(null)
+        } else {
+            setErrorIngreident("Error adding new ingredient")
         }
-        setNewIngredient(null)
     }
 
     const removeIngredient = (e) => {
@@ -60,9 +65,93 @@ export default function Upload() {
         setIngredients(ing => ing.filter((val, i) => (i !== index)))
     }
 
-    const removePopup = () => {
-        setPopup(false)
+    const basicDetails = (
+        <div className="Basic_info">
+            <h2>Basic Details</h2>
+            <div className="basic_input">
+                <input type="text" placeholder="Meal Kit Name" onChange={e => setUpload({...upload,['name']: e.target.value})}/>
+                <input type="text" placeholder="Image Link" onChange={e => setUpload({...upload,['image']: e.target.value})}/>
+            </div>
+        </div>
+        )
+    
+    const dietary = (
+        <div className="Basic_info">
+            <h2>Dietary</h2>
+            <p>Check the boxes for relevant dietary info which applies to your meal</p>
+            <div className="dietary">
+                <div>
+                    <input type="checkbox" onChange={e => setUpload({...upload,['vegetarian']: e.target.value === 'on' ? true : false})}/> 
+                    <label>Vegetarian</label>
+                </div>
+                <div>
+                    <input type="checkbox" onChange={e => setUpload({...upload,['gf']: e.target.value ==='on' ? true : false})}/> 
+                    <label>Gluten-Free</label>
+                </div>
+                <div>
+                    <input type="checkbox" onChange={e => setUpload({...upload,['vegan']: e.target.value === 'on' ? true : false})}/> 
+                    <label>Vegan</label>
+                </div>
+            </div>
+    
+        </div>        
+    )
+    
+    const ingredientDisplay = (
+        <div className="Basic_info">
+                            <h2>Ingredients</h2>
+                            <div className="ingredient_list">
+                                {ingredients.map((item, i) => {
+                                    return (
+                                        <div className="item">
+                                            <ul>{item.name} x {item.quantity} {item.measurement}</ul><button name={`Button-${i}`} onClick={removeIngredient}>-</button>
+                                        </div> 
+                                    )
+                                })}                                                              
+                            </div>
+                            <div className="add_ingredient">
+                                <div className="info">
+                                    <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name" onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}/>
+                                    <label> x </label>
+                                    <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
+                                    <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
+                                        <option value="grams">grams</option>
+                                        <option value="milli-grams">milli-grams</option>
+                                        <option value = "litres">litres</option>
+                                        <option value = "milli-litres">milli-litres</option>
+                                        <option value="tablespoon">tablespoon</option>
+                                        <option value="item">item</option>
+                                    </select>
+                                    <button className="add_ingredient_button" onClick={addIngredient}>+</button>
+                                    <p style={{color:'red'}}>{errorIngredient ? errorIngredient : ''}</p>
+                                </div>
+                            </div>
+                        </div>
+    )
+    
+    const options = [basicDetails, dietary, ingredientDisplay]
+
+    const arrow_up = () => {
+        if (display == 0) {
+            return
+        } else {
+            setDisplay(display-1)
+        }
     }
+
+    const arrow_down = () => {
+        if (display == 2) {
+            return
+        } else {
+            setDisplay(display+1)
+        }
+    }    
+
+    const test = () => {
+        console.log(upload)
+    }
+
+ 
     return (
         <div>
             <Helmet>
@@ -75,171 +164,34 @@ export default function Upload() {
                 </div>
             </div>  
             <div className="upload">
-                <form onSubmit={handleSubmit}>
-                    <h2>1. Upload your picture.</h2>
-                    <div className="file_upload_container">
-                        <p>
-                            Drag or drop your picture here <br/>
-                            or <br/>
-                            <label htmlFor="file-upload" className="custom-file-upload">
-                                Click here to browse your files
-                            </label>
-                        </p>
+                <div className="header">
+                <h1>Upload</h1>
+                <h3>Upload your own meal-kits for review from our CampusEats team. Accepted Meal-Kits will be displayed on our market place and avaliable for purchase.</h3>
+                </div>
+                <div className="create-upload">
+                    <div className="detail-name">
+                        <ul>
+                            <li style={display==0 ? {'color': '#064d42', 'font-size': '2rem'} : {'color':'#D9E5E3', 'font-size': '1.5rem'}}>Basic Details</li>
+                            <li style={display==1 ? {'color': '#064d42', 'font-size': '2rem'} : {'color':'#D9E5E3', 'font-size': '1.5rem'}}>Dietary Info</li>
+                            <li style={display==2 ? {'color': '#064d42', 'font-size': '2rem'} : {'color':'#D9E5E3', 'font-size': '1.5rem'}}>Ingredients</li>
+                        </ul>
+
                     </div>
-                    <input name="image" id="file-upload" type="file"/>
-                    <h2>2. Fill the details.</h2>
-                    <h3>Your name</h3>
-                    <input name="username" type="text" placeholder="Example: Bob Jane" />
-                    <h3>Dish Name</h3>
-                    <input name="dishname" type="text" placeholder="Example: Jacket Potato with Chilli and Cheese"/>
-                    <h3>Dietary Options</h3>
-                    <div className="dietary">
-                        <div className="option">
-                            <input name="gf" type="checkbox"/>
-                            <label>Gluten-free</label>
-                        </div>
-                        <div className="option">
-                            <input name="vegetarian" type="checkbox"/>
-                            <label>Vegetarian</label>                           
-                        </div>
-                        <div className="option">
-                            <input name="vegan" type = "checkbox"/>
-                            <label>Vegan</label>
-                        </div>
+                    <div className="details">
+                        {options[display]}              
                     </div>
-                    <h3>Add ingredients</h3>
-                    <div className="ingredients">
-                        <div className="ingredient_list">
-                            {ingredients.map((elem, i) => {
-                                        return (
-                                            <div className="ingredient" key={i}>
-                                                <label >{elem}</label>
-                                                <button type="button" name={"button-" + i.toString()} onClick={removeIngredient}>-</button>
-                                            </div>
-                                        )
-                                })
-                            }
-                        </div>
-                        <div className="add-ingredient">
-                            <button type="button" style={popup ? {margin: '0px'} : {margin: '20px'}} onClick={setPopup}>+</button>
-                        </div>
+                    <div className="arrows">
+                        <i class="fa-solid fa-arrow-up" onClick={arrow_up}></i>
+                        <i class="fa-solid fa-arrow-down" onClick={arrow_down}></i>
                     </div>
-                    
-                    {/* <div className="cost">
-                        <h3>How much does it cost?</h3>
-                    </div> */}
-                    < UploadPopup trigger={popup}>
-                        <button className="close-popup" onClick={removePopup}>x</button>
-                        <div className="ingredient-name">
-                            <h3>Name of ingredient</h3>
-                            <input placeholder="" type="text"/>
-                        </div>
-                        <br/>
-                        <div className="ingredient-quantity">
-                            <h3>Quantity of ingredient</h3>
-                            <div>
-                                <input type="number"/>
-                                <select>
-                                    <option value="item">item</option>
-                                    <option value="grams">grams</option>
-                                    <option value="millilitres">millilitres</option>
-                                    <option value="teaspoon">teaspoon</option>
-                                </select>
-                            </div>
-                        </div>
-                        <br/>
-                        <h3>Cost of ingredient</h3>
-                        <div className="ingredient-cost">
-                            <label>$</label><input type="number"/>
-                        </div>
-                        <br/>
-                        <h3>nutritional value for your ingredient</h3>
-                        <br/>
-                        <div className="ingredient-nutrition">
-                            <table>
-                                <tr>
-                                    <th>Nutritient</th>
-                                    <th>Amount per Serving</th>
-                                </tr>
-                                <tr>
-                                    <td>Calories</td>
-                                    <td><input type="number"/>grams</td>
-                                </tr>
-                                <tr>
-                                    <td>Fats</td>
-                                    <td><input type="number"/> grams</td>
-                                </tr>
-                                <tr>
-                                    <td> - saturated fats</td>
-                                    <td><input type="number"/>g</td>
-                                </tr>
-                                <tr>
-                                    <td> - Trans Fat</td>
-                                    <td><input type="number"/>g</td>
-                                </tr>
-                                <tr>
-                                    <td>Cholestrol</td>
-                                    <td><input type="number"/>mg</td>
-                                </tr>
-                                <tr>
-                                    <td>Sodium</td>
-                                    <td><input type="number"/>mg</td>
-                                </tr>
-                                <tr>
-                                    <td>Total Carbohydrates</td>
-                                    <td><input type="number"/>g</td>
-                                </tr>
-                                <tr>
-                                    <td> - Dietary Fiber</td>
-                                    <td><input type="number"/>g</td>
-                                </tr>
-                                <tr>
-                                    <td>Sugars</td>
-                                    <td><input type="number"/>g</td>
-                                </tr>
-                                <tr>
-                                    <td>Protein</td>
-                                    <td><input type="number"/>g</td>
-                                </tr>
-                                <tr>
-                                    <td>Vitamins and Minerals</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td> - Vitamin A</td>
-                                    <td><input type="number"/>% DV</td>
-                                </tr>
-                                <tr>
-                                    <td> - Vitamin C</td>
-                                    <td><input type="number"/>% DV</td>
-                                </tr>
-                                <tr>
-                                    <td>Calcium</td>
-                                    <td><input type="number"/>% DV</td>
-                                </tr>
-                                <tr>
-                                    <td>Iron</td>
-                                    <td><input type="number"/>% DV</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <button className="popup-submit" type="button"> submit</button>
-                    </UploadPopup>
-                    <div className="nutrition-warning">
-                        <br/>
-                        <label>
-                            *You should ensure that all nutritional information you provide is
-                            accurate. Incorrect meal kit nutritional info may be flagged and removed 
-                            from community page.
-                        </label>
-                    </div>
-                    <h2>3. Upload.</h2>
-                    <label>
-                        Make sure all the details are correct. 
-                        Then just simply click the 'Upload' button below.
-                    </label>
-                    <button>Upload</button>
-                </form>
+                </div>
+                <div className="submit_upload">
+                    <button onClick={handleSubmit}>Submit Meal-kit</button>
+                    <p style={{color: 'red'}}>{errorSubmit ? errorSubmit : ''}</p>
+                    <p>*All Meal-kits will be subjected to a review process by our CampusEats team.
+                         Ensure all information you provide is factual and accurate. Only select meal kits will be displayed within
+                         the marketplace and avliable for order</p>
+                </div>
             </div>  
         </div>
     )
