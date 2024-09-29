@@ -18,11 +18,14 @@ import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import MapDisplay from "./components/map.js";
 import Upload from "./pages/upload.js";
+import AuthProvider from "./components/AuthProvider.js";
+import ProfilePage from "./pages/Profile.js";
 
 
 function App() {
   return (
     <HelmetProvider>
+      <AuthProvider>
     <Router>
       <Header />
       <Routes>
@@ -40,9 +43,11 @@ function App() {
           <Route path='/map' element={<MapDisplay/>}/>
           <Route path="/upload" element = {<Upload/>}/>
           <Route path="/customise" element={<Customise/>}/>
+          <Route path="/profile" element={<ProfilePage/>}/>
       </Routes>
       <Footer />
     </Router>
+    </AuthProvider>
     </HelmetProvider>
   );
 }

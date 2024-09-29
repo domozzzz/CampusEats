@@ -1,16 +1,20 @@
 
 import React, { useState } from "react";
 import "../css/Login.css";
-import useToken from "../components/useToken";
-import { Link } from "react-router-dom";
-import homepage from '../images/homepage.png'
+import { Link, useNavigate } from "react-router-dom";
+import supabase from "../supabase.js";
+import homepage from '../images/homepage.png';
+import { useAuth } from "../components/AuthProvider.js";
+import { Navigate } from "react-router-dom";
 
 
 function LoginPage() {
-
+  
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
   
   const validform = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
@@ -25,22 +29,15 @@ function LoginPage() {
       alert("Please enter a valid email and password");
       return;
     }
-    
-    try {
-      console.log(email,password)
-      //requires running 'json-server --watch ./src/db.json --port 3001' you might need to run 'npm install -g json-server' to install
-      const response = await fetch (`http://localhost:3001/users?email=${email}&password=${password}`);
-      const data = await response.json();
-      
-      if (data.length > 0) {
-        console.log("logined in",email,password);
-      } else {
-        console.log(data);
-        alert("Invalid username or password");
-      }
+    const { data: {user, session}, error } = await login(email, password)
+    if (error) {
+      console.log(error);
 
-    } catch (error) {
-      console.error("error during login:", error);
+    }
+    if (user && session) {
+      navigate("/");
+    } else {
+      console.log("didnt work\n", user, session, error );
     }
     
   };

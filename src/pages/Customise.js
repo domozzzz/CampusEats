@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { supabase } from '../supabaseClient';
+import supabase from "../supabase.js";
 import "../css/CustomMeal.css";
 import { Link } from "react-router-dom";
 import homepage from '../images/homepage.png'
+import { useAuth } from "../components/AuthProvider.js";
 
 
 
@@ -103,7 +104,6 @@ export default function Customise() {
     return (
         <div className="custom-meal-container">
             <h1>Custom Meal</h1>
-            
             <div class="progress-steps">
                 <div className={`step ${1 <= currentStep ? "active" : ""}`}>
                     <div className="step-number">{1}</div>
