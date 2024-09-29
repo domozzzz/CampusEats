@@ -36,6 +36,8 @@ export default function Home() {
             const {data: d, e} = await supabase
                 .from('meals')
                 .select('*')
+                .limit(9)
+                .order('likes', {ascending: false})
                 if (e) {
                     setError(true)
                     setData(null)
@@ -52,18 +54,24 @@ export default function Home() {
     },[])
 
     const generate_slides = () => {
-            return mealData.map((meal,i) => {
-                return (
-                    <div class="cards">
-                        <Link to="/meals">
-                            <div class="card">
-                            <img src={meal.photo} alt="Avatar"></img>
-                                <p>{meal.name}</p>
-                            </div>
-                        </Link>
-                    </div>
-                )
-            });
+        var slides = []
+        for (let i = 0; i < 3; i++) {
+            slides.push(
+                <div class="cards">
+                    {mealData.slice(i*3,(i*3)+3).map((meal) => {
+                        return (
+                            <Link to="/meals">
+                                <div class="card">
+                                <img src={meal.photo} alt="Avatar"></img>
+                                    <p>{meal.name}</p>
+                                </div>
+                            </Link>
+                        )
+                    })}
+                </div>                
+            )
+        }
+        return slides
     }   
     // const slides = [
     //     <div class="cards">
