@@ -41,7 +41,7 @@ export default function Upload() {
             setErrorSubmit("Error uploading mealkit, ensure you add ingredients")
         } else {
             const {data, error} = await supabase
-            .from('meals')
+            .from('meals_unvalidated')
             .insert(
                 {
                    name: upload['name'],
@@ -77,7 +77,6 @@ export default function Upload() {
             setErrorSubmit(null)
             setErrorIngreident(null)
             setSuccessful("Successfully submitted meal-kit, you should see it on the homepage soon!")
-            console.log(successful)
         }
 
     }

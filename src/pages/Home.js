@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from "react";
-import supabase from "../supabase.js";
-import { Link, useNavigate} from "react-router-dom";
-import burrito from '../images/Burrito.png'
+import React from "react";
+import { Link } from "react-router-dom";
+import burrito from '../images/burrito.png'
 import chickenRice from '../images/chickenRice.png'
-import kebab from '../images/Kebab.png'
+import kebab from '../images/kebab.png'
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
+import { useState, useEffect } from "react";
+import supabase from "../supabase";
 
 
 function ScrollButton({ id, children, className }) {
