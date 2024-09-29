@@ -19,6 +19,7 @@ export default function Upload() {
     const [errorIngredient, setErrorIngreident] = useState(null)
     const [errorSubmit, setErrorSubmit] = useState(null)
     const [newIngredient, setNewIngredient] = useState(baseIngreident)
+    const [successful, setSuccessful] = useState(null)
 
     const [upload, setUpload] = useState(
         {
@@ -27,7 +28,6 @@ export default function Upload() {
             gf: false,
             vegetarian: false,
             vegan: false,
-            ingredients: ingredients
 
         }
     )
@@ -37,22 +37,57 @@ export default function Upload() {
             setErrorSubmit("Error uploading mealkit, ensure you have entered valid name")
         }else if (upload['image'] === null) {
             setErrorSubmit("Error uploading mealkit, ensure you have entered an image line")
-        }else if (upload['ingredients'].length === 0) {
+        }else if (ingredients.length == 0) {
             setErrorSubmit("Error uploading mealkit, ensure you add ingredients")
+        } else {
+            const {data, error} = await supabase
+            .from('meals')
+            .insert(
+                {
+                   name: upload['name'],
+                   photo: upload['image'],
+                   ingredients: ingredients,
+                   gf: upload['gf'],
+                   vegan: upload['vegan'],
+                   vegetarian: upload['vegetarian'] 
+                }
+            )
+            .select()
+            if (error) {
+                setErrorSubmit(error)
+            }
+
+            if (data) {
+                const {d, e} = await supabase
+                .from('post')
+                .insert([
+                    {
+                       meal_id: data[0].id,
+                       title: upload['name']
+                    }
+                ]).select()
+
+                if (d) {
+                }
+                if (e) {
+                    setErrorSubmit(e)
+                }
+            }
+
+            setErrorSubmit(null)
+            setErrorIngreident(null)
+            setSuccessful("Successfully submitted meal-kit, you should see it on the homepage soon!")
+            console.log(successful)
         }
 
     }
 
-    const handleNewIngredient = (e) => {
-        const ingredientName = e.target.value
-        setNewIngredient(ingredientName)
-    }
 
     const addIngredient = (e) => {
         if (newIngredient['name'] != null) {
             setIngredients([...ingredients,newIngredient])
             setUpload({...upload,['ingredients']: ingredients})
-            setNewIngredient(baseIngreident)
+            setNewIngredient({...newIngredient, ['name']: null})
             setErrorIngreident(null)
         } else {
             setErrorIngreident("Error adding new ingredient")
@@ -147,9 +182,6 @@ export default function Upload() {
         }
     }    
 
-    const test = () => {
-        console.log(upload)
-    }
 
  
     return (
@@ -171,9 +203,9 @@ export default function Upload() {
                 <div className="create-upload">
                     <div className="detail-name">
                         <ul>
-                            <li style={display==0 ? {'color': '#064d42', 'font-size': '2rem'} : {'color':'#D9E5E3', 'font-size': '1.5rem'}}>Basic Details</li>
-                            <li style={display==1 ? {'color': '#064d42', 'font-size': '2rem'} : {'color':'#D9E5E3', 'font-size': '1.5rem'}}>Dietary Info</li>
-                            <li style={display==2 ? {'color': '#064d42', 'font-size': '2rem'} : {'color':'#D9E5E3', 'font-size': '1.5rem'}}>Ingredients</li>
+                            <li style={display==0 ? {'color': '#064d42', 'fontSize': '2rem'} : {'color':'#D9E5E3', 'fontSize': '1.5rem'}}>Basic Details</li>
+                            <li style={display==1 ? {'color': '#064d42', 'fontSize': '2rem'} : {'color':'#D9E5E3', 'fontSize': '1.5rem'}}>Dietary Info</li>
+                            <li style={display==2 ? {'color': '#064d42', 'fontSize': '2rem'} : {'color':'#D9E5E3', 'fontSize': '1.5rem'}}>Ingredients</li>
                         </ul>
 
                     </div>
@@ -188,6 +220,7 @@ export default function Upload() {
                 <div className="submit_upload">
                     <button onClick={handleSubmit}>Submit Meal-kit</button>
                     <p style={{color: 'red'}}>{errorSubmit ? errorSubmit : ''}</p>
+                    <p style={{color: 'green'}}>{successful ? successful : ''}</p>
                     <p>*All Meal-kits will be subjected to a review process by our CampusEats team.
                          Ensure all information you provide is factual and accurate. Only select meal kits will be displayed within
                          the marketplace and avliable for order</p>
