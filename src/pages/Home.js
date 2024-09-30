@@ -37,6 +37,7 @@ export default function Home() {
             const {data: d, e} = await supabase
                 .from('meals')
                 .select('*')
+                .neq('id',0)
                 .limit(9)
                 .order('likes', {ascending: false})
                 if (e) {
@@ -64,7 +65,11 @@ export default function Home() {
                             <Link to="/meals">
                                 <div class="card">
                                 <img src={meal.photo} alt="Avatar"></img>
-                                    <p>{meal.name}</p>
+                                <p>{meal.name}<br />
+                              Creator: {meal.seller_id}<br />
+                              ♡ {meal.likes}<br />
+                              Location: QUT
+                            </p>  
                                 </div>
                             </Link>
                         )
