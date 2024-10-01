@@ -1,0 +1,59 @@
+.Map {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+}
+
+.Map h1 {
+    font-size: 3.5rem;
+    color:#064d42;
+}
+
+.map-style {
+    width: 40vw;
+    height: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px #064d42;
+}
+
+.possible_location {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+}
+
+.possible_location button {
+    background-color: #064d42;
+    color: white;
+    width: fit-content;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.possible_location .inactive {
+    background-color: grey;
+}
+
+.inactive:hover {
+    background-color: #064d42;
+    transition-duration: 500ms;
+}
+
+.submit_location {
+    background-color: #064d42;
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    width: fit-content;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;    
+}
