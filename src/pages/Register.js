@@ -1,9 +1,10 @@
 
 import React, { useState } from "react";
 import "../css/App.css"
-import useToken from "../components/useToken";
+import useToken from "../components/AuthProvider";
 import { Link } from "react-router-dom";
 import homepage from '../images/homepage.png'
+import supabase from "../supabase";
 
 function RegisterPage() {
   const [email, setEmail] = useState('');
@@ -11,6 +12,7 @@ function RegisterPage() {
   const [firstname, setFirst] = useState('');
   const [lastname, setLast] = useState('');
   const [phone, setPhone] = useState('');
+  const [msg, setMsg] = useState("");
   
   const validform = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
@@ -21,22 +23,6 @@ function RegisterPage() {
     return isEmailValid && isPaswwordValid;
   }
 
-  const checkEmail = async (e) => {
-    try {
-      const response = await fetch (`http://localhost:3001/users?email=${email}`);
-      const data = await response.json();
-
-      if (data.length > 0) {
-        return true;
-      } else {
-        return false;
-      }
-      
-    } catch {
-      return false;
-    }
-
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,31 +30,29 @@ function RegisterPage() {
       alert("Please enter a valid email and password");
       return;
     }
-    
-    const exists = await checkEmail();
-    if (exists == false){
-
     try {
-      //requires running 'json-server --watch ./src/db.json --port 3001' you might need to run 'npm install -g json-server' to install
-      const response = await fetch (`http://localhost:3001/users?email=${email}&password=${password}`, {
-        method:"POST",
-        body: JSON.stringify({email:`${email}`, password:`${password}`, firstname:`${firstname}`, lastname:`${lastname}`, phone:`${phone}`})
-      });
-      const data = await response.json();
-      
-      if (response.ok) {
-        console.log("logined in",email,password);
-      } else {
-        console.log(data);
-        alert("Invalid username or password");
+      const {data, error} = await supabase.auth.signUp(
+        {
+          email: email,
+          password: password,
+          options: {
+            data: {
+              first_name: firstname,
+              last_name: lastname,
+              phone: phone,
+            }
+          }
+        }
+      )
+      if (!error && data) {
+        setMsg("Registration successful. Please check your email.");
       }
-
-    } catch (error) {
-      console.error("error during login:", error);
+    } catch(error) {
+      setMsg("There was an error creating your account");
     }
-  } else {
-    alert("That email has already been registered");
-  }
+    
+    
+
   };
 
 
@@ -81,6 +65,7 @@ function RegisterPage() {
                 <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
             </div>
       <div className="login-box">
+        <h2>{msg}</h2>
         <h2>Register to order</h2>
         <form  onSubmit={handleSubmit}>
           <input

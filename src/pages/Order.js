@@ -2,10 +2,18 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import homepage from '../images/homepage.png'
 import '../css/Order.css'
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '../components/AuthProvider';
+
 
 export default function OrderSelect() {
-    return (
+
+    const { user } = useAuth();
+
+
+    return user ? (
          <div>
+            {console.log("loged in as", user.email)}
             <div class="welcome" alt="Avatar">
                 <div class="heading-image">
                 <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
@@ -34,6 +42,6 @@ export default function OrderSelect() {
                 </div>
             </div>
         </div>
-    )
+    ) : (<Navigate to="/login"/>)
 }
 
