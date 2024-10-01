@@ -6,62 +6,6 @@ import React, { useState, useEffect } from 'react';
 import "../css/Community.css"
 import supabase from '../supabase';
 
-const Dropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('Likes');
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeDropdown = () => {
-    setIsOpen(false);
-  };
-
-  const handleButtonClick = (value) => {
-    setSelectedValue(value);
-    setIsOpen(false);
-  };
-
-  return (
-    <div className="dropdown">
-      {!isOpen && (<button 
-        className="dropdown-button" 
-        onClick={toggleDropdown}
-      >
-        {selectedValue}
-      </button>)}
-
-      {isOpen && (
-        <div className="dropdown-content">
-          <button
-            className="dropdown-button-open" 
-          >{selectedValue}</button>
-          <button 
-            className="dropdown-option-button" 
-            onClick={() => handleButtonClick('Likes')}
-          >
-            Likes
-          </button>
-
-          <button 
-            className="dropdown-option-button" 
-            onClick={() => handleButtonClick('Most ordered')}
-          >
-            Most ordered
-          </button>
-
-          <button
-            className="dropdown-option-button" 
-            onClick={() => handleButtonClick('Cost')}
-          >
-            Cost
-          </button>
-        </div>
-      )}
-    </div>
-  );
-};
 
 export default function Community() {
 
@@ -87,6 +31,8 @@ export default function Community() {
 
   const [orderBy, setOrderBy] = useState('likes')
 
+  const [search, setSearch] = useState(null)
+
   const [results, setResults] = useState([])
   const [Ingredients, setIngredients] = useState({
     name: null,
@@ -101,6 +47,72 @@ export default function Community() {
   }
 
   const [seen, setSeen] = useState(false)
+
+  const [selectedValue, setSelectedValue] = useState('Likes');
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const Dropdown = () => {
+  
+    const toggleDropdown = () => {
+      setIsOpen(!isOpen);
+    };
+  
+    const closeDropdown = () => {
+      setIsOpen(false);
+    };
+  
+    const handleButtonClick = (e) => {
+      setSelectedValue(e.target.value);
+      setOrderBy(e.target.name)
+      setIsOpen(false);
+    };
+  
+    return (
+      <div className="dropdown">
+        {!isOpen && (<button 
+          className="dropdown-button" 
+          onClick={toggleDropdown}
+        >
+          {selectedValue}
+        </button>)}
+  
+        {isOpen && (
+          <div className="dropdown-content">
+            <button
+              className="dropdown-button-open" 
+            >{selectedValue}</button>
+            <button 
+              className="dropdown-option-button" 
+              name="likes"
+              value="Likes"
+              onClick={handleButtonClick}
+            >
+              Likes
+            </button>
+  
+            <button 
+              className="dropdown-option-button" 
+              name="number_of_orders"
+              value="Most ordered"
+              onClick={handleButtonClick}
+            >
+              Most ordered
+            </button>
+  
+            <button
+              className="dropdown-option-button" 
+              name = "price"
+              value='Cost'
+              onClick={handleButtonClick}
+            >
+              Cost
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   async function openPop(event) {
     const meal = results.find(meal => meal.id == event.target.name)
@@ -134,7 +146,6 @@ export default function Community() {
   const set_dietary_option = (e) => {
     if (e.target.checked) {
       setDietary({...dietary,[e.target.name]: true})
-      console.log(dietary.vegan)
     } else {
       setDietary({...dietary,[e.target.name]: false})
     }
@@ -163,6 +174,14 @@ export default function Community() {
   const set_max_sugars = (e) => {
     setSugars({...sugars, ['high']: parseFloat(e.target.value)})
   }
+
+  const get_search = (e) => {
+    if (e.target.value.length == 0) {
+      setSearch(null)
+    } else {
+      setSearch(e.target.value)
+    }
+  }
   
   useEffect(() => {
     const getResults = async () => {
@@ -175,7 +194,8 @@ export default function Community() {
       .lte('nutrition.Protein',protein.high)
       .gte('nutrition.Sugars',sugars.low)
       .gte('nutrition.Calories',calories.low)  
-      .gte('nutrition.Protein',protein.low)          
+      .gte('nutrition.Protein',protein.low)
+      .order(`${orderBy}`,{ascending: false})          
       if (data) {
         const result = data.filter((mealkit) => {
           const vegan = () => {
@@ -198,7 +218,14 @@ export default function Community() {
             }
             return true
           }
-          return mealkit.nutrition !=null && vegan() && gf() && vegetarian()
+
+          const searchMatch = () => {
+            if (search != null) {
+              return mealkit.name.toLowerCase().includes(search.toLowerCase())
+            }
+            return true
+          }
+          return mealkit.nutrition !=null && vegan() && gf() && vegetarian() && searchMatch()
         })
          setResults(result)
       }
@@ -209,7 +236,7 @@ export default function Community() {
     }
 
     getResults()
-  },[dietary, calories, sugars, protein, orderBy])
+  },[dietary, calories, sugars, protein, orderBy, search])
     const Pop = () => {
       return (
         <div className='pop'>
@@ -308,7 +335,7 @@ export default function Community() {
                   Click one of the meals to show more information.<br />
                 </p>
                 <div className='search-box'>
-                  <input type="search" placeholder="Search for key word" />
+                  <input type="search" onChange={get_search} placeholder="Search for key word"/>
                 </div>
                 <div className='community-box'>
                   <div className='sub-box'>
@@ -336,13 +363,16 @@ export default function Community() {
                     </ul>
                   </div>
                   <div className='s ub-box'>
+                    <h1>Filter</h1>
                     <Dropdown></Dropdown>
                   </div>
 
                 </div>
               </div>
               <div>
-            {seen ? <Pop/> : null}
+        </div>
+        <div className='popup-display'>
+        {seen ? <Pop/> : null}
         </div>
         <div className={`cards ${seen ? 'transparent' : ''}`}>
           {results.map((meal) => {
@@ -358,7 +388,7 @@ export default function Community() {
                   <p style={{color: 'red'}}>{error ? error : ''}</p>
                   </div>
             )
-          })}              
+          })}            
           </div>
             </div>
         </div>

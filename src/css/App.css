@@ -226,12 +226,12 @@ section {
   border-radius: 15px;
   background-color: var(--green);
   color: var(--white);
-  width: auto;
+  width: 300px;
+  height: fit-content;
 }
 
 .pop {
-  position:fixed;
-  transform: translate(0, -100%);
+  position:absolute;
   width: 600px;
   height: fit-content;
   margin: auto;
@@ -243,7 +243,6 @@ section {
   border-radius: 15px;
   padding-bottom: 50px;
   text-align: center;
-  overflow: hidden;
 }
 
 .spaced {
@@ -364,6 +363,7 @@ td {
 .card img {
   width: 90%;
   margin: 5%;
+  height: 200px;
 }
 
 .strip {
