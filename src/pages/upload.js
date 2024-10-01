@@ -215,6 +215,10 @@ export default function Upload() {
                         <i class="fa-solid fa-arrow-up" onClick={arrow_up}></i>
                         <i class="fa-solid fa-arrow-down" onClick={arrow_down}></i>
                     </div>
+                    <div className="arrows small">
+                    <i class="fa-solid fa-arrow-left" onClick={arrow_up}></i>    
+                    <i class="fa-solid fa-arrow-right" onClick={arrow_down}></i>
+                    </div>
                 </div>
                 <div className="submit_upload">
                     <button onClick={handleSubmit}>Submit Meal-kit</button>

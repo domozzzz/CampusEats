@@ -96,6 +96,9 @@
     font-size: 3.5rem;
 }
 
+.small {
+    width: 0 !important;
+}
 .basic_input {
     display: flex;
     justify-content: space-evenly;
@@ -203,3 +206,75 @@
     padding: 10px;
     border-radius: 10px;
 }
+/* Mobile */
+
+@media only screen and (max-width: 850px) {
+    .create-upload {
+        flex-direction: column;
+    }
+
+    .upload {
+        margin-top: -20px;
+    }
+
+    .detail-name ul {
+        font-size: 1rem;
+        margin-left: auto;
+        padding: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .detail-name li {
+        font-size: 1.5rem !important;
+        margin: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .details {
+        width: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .Basic_info {
+        width:80% !important;
+    }
+    .basic_input {
+        flex-direction: column;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .item {
+        display: flex;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto !important;
+    }
+    .item ul {
+        padding: 0;
+    }
+
+    .add_ingredient input[type="text"]{
+        width: 100px;
+    }
+
+    .arrows {
+        display: none;
+        visibility: hidden;
+    }
+
+    .small {
+        width: auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        visibility: visible !important;
+        margin-top: -75px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+  }
