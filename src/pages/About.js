@@ -14,7 +14,7 @@ export default function About() {
                     </div>
                 </div>
             </div>
-            <div class="about" alt="Avatar" style={{ width: "100%", height: "600px" }}>
+            <div class="about" alt="Avatar">
                 <div class="about-image">
                     <img src={about} alt="Avatar" style={{ width: "100%", height: "100%" }}></img>
                 </div>
@@ -27,7 +27,7 @@ export default function About() {
                     </p>
                 </div>
             </div>
-            <div class="about2" alt="Avatar" style={{ width: "100%", height: "600px" }}>
+            <div class="about2" alt="Avatar">
                 <div class="about2-title">
                     <h1>What is CampusEats?</h1>
                 </div>

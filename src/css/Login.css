@@ -4,104 +4,121 @@ body {
 }
 
 .login-container {
-    position: relative;
-    display: flex;
-    position: absolute;
-    top: 0;
-    justify-content: center;
-    align-items: center;
-    background-attachment: fixed;
-    background-size: 100% 100vh;
-    height: 100vh;
-  }
-  
-  .welcome {
-    width: 100vw;
-    position: absolute;
-    top: 0px;
-    overflow: hidden;
-  }
-  
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-attachment: fixed;
+  background-size: 100% 100vh;
+  height: 100vh;
+}
+
+.welcome {
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
+.login-box {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  background-color: #FDFDFD;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #0c6649;
+}
+
+.input-field {
+  display: block;
+  background: transparent;
+  text-align: center;
+  color: #A4A4A4;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 16px;
+}
+
+.login-button {
+  max-width: 100px;
+  padding: 10px;
+  background: transparent;
+  color: #0c6649;
+  border: 1px solid #0c6649;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #0a533b;
+  color: white;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #0a533b;
+}
+
+a {
+  color: #0c6649;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+body,
+html {
+  position: relative;
+}
+
+/* Media Query for screens smaller than 800px */
+@media screen and (max-width: 800px) {
   .login-box {
-    margin-top: 150px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: #FDFDFD;
-    padding: 40px;
-    border-radius: 15px;
-    text-align: center;
-    max-width: 300px;
-    width: 100%;
+    padding: 20px;
+    max-width: 250px;
+    margin-top: 100px;
   }
 
   h2 {
-    position: relative;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #0c6649; /* Dark green color */
+    font-size: 20px;
   }
-  
+
   .input-field {
-    position: relative;
-    display: block;
-    background:transparent;
-    text-align: center;
-    color: #A4A4A4;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: none;
-    border-bottom: 2px solid black;
-    font-size: 16px;
-  }
-  
-  .login-button {
-    position: relative;
-    max-width: 100px;
-    padding: 10px;
-    background: transparent;
-    color: #0c6649;
-    border: 1px solid #0c6649;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .login-button:hover {
-    position: relative;
-
-    background-color: #0a533b;
-    color: white;
-  }
-  
-  p {
-    position: relative;
-
-    margin-top: 20px;
     font-size: 14px;
-    color: #0a533b;
+  }
+
+  .login-button {
+    max-width: 80px;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  p {
+    font-size: 12px;
   }
 
   a {
-    position: relative;
-    color: #0c6649;
-    text-decoration: none;
-    font-weight: bold;
+    font-size: 12px;
   }
-
-  form {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  body {
-    position: relative;
-  }
-
-  html {
-    position: relative;
-  }
+}
