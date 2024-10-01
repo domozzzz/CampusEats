@@ -1,3 +1,7 @@
+:root {
+    --green: #064D42;
+}
+
 .order-choice {
     display: flex;
     flex-direction: column;
@@ -8,7 +12,6 @@
     width: 100%;
     align-items: center;
 }
-
 
 .order-choice h1 {
     color: #064D42;
@@ -29,13 +32,28 @@
 }
 
 .orderChoiceButtons button {
-    width: 250px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     margin: 0 50px 100px 50px;
-    border-radius: 15px;
     border: none;
+    background-color: transparent;
+}
+
+.grey-button {
+    margin: 50px 50px 50px 50px;
     background-color: #D9E5E3;
 }
+
+.green-button {
+    margin: 50px 50px 50px 50px;
+    background-color: var(--green);
+    color: white; /* Ensure text visibility */
+}
+
+.white {
+    color: white; /* Ensure text visibility */
+}
+
 
 .orderChoiceButtons p {
     color: black;
