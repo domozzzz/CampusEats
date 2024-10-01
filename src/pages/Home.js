@@ -6,6 +6,9 @@ import kebab from '../images/kebab.png'
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
+import { useState, useEffect } from "react";
+import supabase from "../supabase";
+
 
 function ScrollButton({ id, children, className }) {
     const scroll = () => {
@@ -23,37 +26,92 @@ function ScrollButton({ id, children, className }) {
 }
 
 export default function Home() {
-    const slides = [
-        <div class="cards">
-            <Link to="/meals"><div class="card">
-                    <img src={burrito} alt="Avatar"></img>
-                    <p>Braised Brisket Burrito</p>
-            </div></Link>
-            <Link to="/meals"><div class="card">
-                <img src={chickenRice} alt="Avatar"></img>
-                <p>Hainanese Chicken Rice</p>
-            </div></Link>
-            <Link to="/meals"><div class="card">
-                <img src={kebab} alt="Avatar"></img>
-                <p>Adana Kebab</p>
-            </div></Link>
-        </div>,
-        <div class="cards">
-            <Link to="/meals"><div class="card">
-                <img src={burrito} alt="Avatar"></img>
-                <p>Braised Brisket Burrito</p>
-            </div></Link>
-            <Link to="/meals"><div class="card">
-                <img src={chickenRice} alt="Avatar"></img>
-                <p>Hainanese Chicken Rice</p>
-            </div></Link>
-            <Link to="/meals"><div class="card">
-                <img src={kebab} alt="Avatar"></img>
-                <p>Adana Kebab</p>
-            </div></Link>
-        </div>,
-    ];
 
+    const [loading, setLoading] = useState(true)
+    const [error,setError] = useState(false)
+    const [mealData, setData] = useState(null)
+
+    useEffect(() => {
+        setLoading(true)
+        const fetchMeals = async () => {
+            const {data: d, e} = await supabase
+                .from('meals')
+                .select('*')
+                .neq('id',0)
+                .limit(9)
+                .order('likes', {ascending: false})
+                if (e) {
+                    setError(true)
+                    setData(null)
+                    setLoading(false)
+                }
+                if (d) {
+                    setError(false)
+                    setData(d)
+                    setLoading(false)
+                }     
+
+        }
+        fetchMeals()
+    },[])
+
+    const generate_slides = () => {
+        var slides = []
+        for (let i = 0; i < 3; i++) {
+            slides.push(
+                <div class="cards">
+                    {mealData.slice(i*3,(i*3)+3).map((meal) => {
+                        return (
+                            <Link to="/meals">
+                                <div class="card">
+                                <img src={meal.photo} alt="Avatar"></img>
+                                <p>{meal.name}<br />
+                              Creator: {meal.seller_id}<br />
+                              ♡ {meal.likes}<br />
+                              Location: QUT
+                            </p>  
+                                </div>
+                            </Link>
+                        )
+                    })}
+                </div>                
+            )
+        }
+        return slides
+    }   
+    // const slides = [
+    //     <div class="cards">
+    //       <Link to="/meals">
+    //         <div class="card">
+    //           <img src={burrito} alt="Avatar"></img>
+    //               <p>Braised Brisket Burrito</p>
+    //         </div>
+    //       </Link>
+    //       <Link to="/meals"><div class="card">
+    //           <img src={chickenRice} alt="Avatar"></img>
+    //               <p>Hainanese Chicken Rice</p>
+    //       </div></Link>
+    //       <Link to="/meals"><div class="card">
+    //           <img src={kebab} alt="Avatar"></img>
+    //               <p>Adana Kebab</p>
+    //       </div></Link>
+    //   </div>,
+    //     <div class="cards">
+    //     <Link to="/meals"><div class="card">
+    //         <img src={burrito} alt="Avatar"></img>
+    //             <p>Braised Brisket Burrito</p>
+    //     </div></Link>
+    //     <Link to="/meals"><div class="card">
+    //         <img src={chickenRice} alt="Avatar"></img>
+    //             <p>Hainanese Chicken Rice</p>
+    //     </div></Link>
+    //     <Link to="/meals"><div class="card">
+    //         <img src={kebab} alt="Avatar"></img>
+    //             <p>Adana Kebab</p>
+    //     </div></Link>
+    // </div>,
+    //   ];
+    //console.log(slides)
     return (
         <div>
             <div class="aboveTheFold">
@@ -77,10 +135,14 @@ export default function Home() {
             <section id="projects">
                 <h3>Meal Plan</h3>
                 <p>See below for our more popular dishes. Ready to be delivered to your desired university location.</p>
-                <Slideshow slides={slides} />
-                <Link to="/meals" className="explore-button">
-                    Explore more meal plans <span>&#8594;</span>
-                </Link>
+
+                    <div>
+                        {!loading && !error ? <Slideshow slides={generate_slides()}/> : <p>Not yet loaded</p>}
+                </div>
+
+                <div class="explore">
+                    <Link to="/meals" className="explore-button">Explore more meal plans <span>&#8594;</span></Link>
+                </div>
             </section>
         </div>
     );
