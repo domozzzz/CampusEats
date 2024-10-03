@@ -1,7 +1,7 @@
 .Map {
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     background-color: white;
 }
 
@@ -46,10 +46,11 @@
 
 .submit_location {
     background-color: #064d42;
-    margin-top: 30px;
+    margin-top: 50px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
     color: white;
     width: fit-content;
     font-size: 1.5rem;

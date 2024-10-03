@@ -7,7 +7,7 @@ import "../css/Map.css"
 import "../css/App.css"
 import supabase from '../supabase';
 
-const MAP_API_KEY = '***PUT API KEY HERE***'
+const MAP_API_KEY = ''
 
 const UQ = {lat: -27.4977, lng: 153.0129}
 
