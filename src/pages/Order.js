@@ -21,7 +21,7 @@ export default function OrderSelect() {
             <div class="order-choice">
                 <h1>Choose your type of meal</h1>
                 <div className='orderChoiceButtons'>
-                    <Link to="/orderMealKit"><button>
+                    <Link to="/map"><button>
                         <h3>Meal Kit</h3>
                         <p>Meal kit will be delivered to you in form of 
                             raw ingredients that you can cook yourself!</p>

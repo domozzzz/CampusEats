@@ -3,6 +3,7 @@
 import React, {useEffect, useState, useRef, useCallback,useMemo} from 'react';
 import homepage from '../images/homepage.png'
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { Link } from 'react-router-dom';
 import "../css/Map.css"
 import "../css/App.css"
 import supabase from '../supabase';
@@ -76,7 +77,9 @@ const MapDisplay = () => {
               center={{lat: display.lat, lng: display.lng}}
               zoom={16}>
             </GoogleMap>
+            <Link to={`../orderMealKit/${display.id}`}>
             <button className='submit_location'>Select {display.name}</button>
+            </Link>
             </div>
           )}
         </div>          

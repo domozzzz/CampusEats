@@ -11,7 +11,7 @@ import Order from './pages/Order.js';
 import Community from './pages/Community.js';
 import OrderMealKit from './pages/OrderMealKit.js';
 import OrderPreMade from './pages/OrderPreMade.js';
-import Cart from './pages/cart.js';
+import Cart from './pages/Cart.js';
 import RegisterPage from "./pages/Register.js";
 import Customise from "./pages/Customise.js";
 import Header from './components/Header.js';
