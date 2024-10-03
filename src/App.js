@@ -18,6 +18,7 @@ import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import MapDisplay from "./components/map.js";
 import Upload from "./pages/upload.js";
+import Profile from "./pages/Profile.js";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/order" element={<Order/>}/>
           <Route path="/orderPreMade" element={<OrderPreMade/>}/>
           <Route path="/orderMealKit" element={<OrderMealKit/>}/>
+          <Route path="/profile" element={<Profile/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path='/map' element={<MapDisplay/>}/>
           <Route path="/upload" element = {<Upload/>}/>
@@ -44,7 +46,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
-    </HelmetProvider>
+    // </HelmetProvider>
   );
 }
 
