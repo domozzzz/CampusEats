@@ -19,6 +19,7 @@ import Footer from './components/Footer.js';
 import MapDisplay from "./components/map.js";
 import Upload from "./pages/upload.js";
 import Profile from "./pages/Profile.js";
+import EditProfile from "./pages/EditProfile.js";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/orderPreMade" element={<OrderPreMade/>}/>
           <Route path="/orderMealKit" element={<OrderMealKit/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/editProfile" element={<EditProfile/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path='/map' element={<MapDisplay/>}/>
           <Route path="/upload" element = {<Upload/>}/>
@@ -46,7 +48,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
-    // </HelmetProvider>
+    </HelmetProvider>
   );
 }
 

@@ -1,0 +1,77 @@
+:root {
+    --green: #064D42;
+}
+
+.edit-profile {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+    align-items: center;
+}
+
+.edit-profile h1 {
+    color: #064D42;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.edit-profile-form {
+    background-color: white;
+    padding: 40px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    position: relative;
+}
+
+.edit-profile-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    text-align: center;
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #064D42;
+    border-radius: 10px;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.save-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #064D42;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn:hover {
+    background-color: #054138;
+}
