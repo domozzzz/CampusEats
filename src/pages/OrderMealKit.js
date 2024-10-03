@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import homepage from '../images/homepage.png'; 
-import lentils from '../images/Lentils.png'; 
+import homepage from '../images/homepage.png';
+import lentils from '../images/Lentils.png';
 import whiteRice from '../images/White_rice.png';
 import brownRice from '../images/Brown_rice.png';
 import periPeri from '../images/PeriPeri.png';
@@ -39,8 +39,8 @@ export default function OrderSelect() {
                     <div
                         className={`step ${step === index + 1 ? 'active' : ''}`}
                         key={index}
-                        onClick={() => goToStep(index + 1)} // Add onClick to go to step
-                        style={{ cursor: 'pointer' }} // Make the step clickable
+                        onClick={() => goToStep(index + 1)}
+                        style={{ cursor: 'pointer' }}
                     >
                         <div className="number">{index + 1}</div>
                         <span>{stepLabel}</span>
@@ -84,7 +84,6 @@ export default function OrderSelect() {
             case 2:
                 return (
                     <div className="choices">
-                        {/* Add your protein images and labels */}
                         <ChoiceCard imageSrc={periPeri} label="Protein 1" onClick={() => handleChoice('protein', 'Protein 1')} />
                         <ChoiceCard imageSrc={braisedbeef} label="Protein 2" onClick={() => handleChoice('protein', 'Protein 2')} />
                         <ChoiceCard imageSrc={porchetta} label="Protein 3" onClick={() => handleChoice('protein', 'Protein 3')} />
@@ -93,7 +92,6 @@ export default function OrderSelect() {
             case 3:
                 return (
                     <div className="choices">
-                        {/* Add your veggie images and labels */}
                         <ChoiceCard imageSrc={lentils} label="Veggie 1" onClick={() => handleChoice('veggie', 'Veggie 1')} />
                         <ChoiceCard imageSrc={lentils} label="Veggie 2" onClick={() => handleChoice('veggie', 'Veggie 2')} />
                         <ChoiceCard imageSrc={lentils} label="Veggie 3" onClick={() => handleChoice('veggie', 'Veggie 3')} />
@@ -112,27 +110,16 @@ export default function OrderSelect() {
 
     return (
         <div>
-            {/* Background Image */}
             <div className="welcome">
                 <div className="heading-image">
                     <img src={homepage} alt="Homepage" style={{ zIndex: "0", width: "100%", height: "100vh", position: "relative" }} />
                 </div>
             </div>
-
-            {/* Quick Order Section */}
             <div className="quick-order">
                 <h1>Quick Order</h1>
-
-                {/* Progress Bar */}
                 <ProgressBar />
-
-                {/* Step Instruction */}
                 <StepInstruction />
-
-                {/* Step Content */}
                 {stepContent()}
-
-                {/* Continue Button */}
                 {step < 4 && <button className="continue-btn" onClick={nextStep}>Continue</button>}
             </div>
         </div>
