@@ -26,6 +26,7 @@
 .profile-header .email {
     color: grey;
     margin-top: 5px;
+    text-align: left;
 }
 
 .name-email-container h2 {
@@ -94,12 +95,14 @@
     font-weight: bold;
     margin-bottom: 5px;
     color: #333;
+    text-align: left;
 }
   
 .detail-field p {
     margin: 0;
     color: #555;
     font-size: 16px;
+    text-align: left;
 }
   
 .icon {
@@ -146,6 +149,8 @@
 }
 
 .order-text h3 {
+    margin: 0;
+    padding: 0;
     text-align: left;
     font-size: 18px;
 }
