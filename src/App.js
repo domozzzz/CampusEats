@@ -11,7 +11,7 @@ import Order from './pages/Order.js';
 import Community from './pages/Community.js';
 import OrderMealKit from './pages/OrderMealKit.js';
 import OrderPreMade from './pages/OrderPreMade.js';
-import Cart from './pages/Cart.js';
+import Cart from './pages/cart.js';
 import RegisterPage from "./pages/Register.js";
 import Customise from "./pages/Customise.js";
 import Header from './components/Header.js';
@@ -20,6 +20,7 @@ import MapDisplay from "./components/map.js";
 import Upload from "./pages/upload.js";
 import Profile from "./pages/Profile.js";
 import EditProfile from "./pages/EditProfile.js";
+import OrderStatus from "./pages/OrderStatus.js";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterPage/>}/>
           <Route path="/order" element={<Order/>}/>
+          <Route path="/orderStatus" element={<OrderStatus/>}/>
           <Route path="/orderPreMade" element={<OrderPreMade/>}/>
           <Route path="/orderMealKit" element={<OrderMealKit/>}/>
           <Route path="/profile" element={<Profile/>}/>
@@ -48,7 +50,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
-    </HelmetProvider>
+  </HelmetProvider>
   );
 }
 
