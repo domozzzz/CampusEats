@@ -25,7 +25,7 @@ export default function OrderSelect() {
                     </button></Link>
                     </span>
                     <span className="green-button">
-                    <Link to="/orderPreMade"><button>
+                    <Link to="/locationSearch"><button>
                         <img src={search} style={{height: "140px"}}></img>
                         <h3 style={{color: "white"}}>Search Meal-kits</h3>
                         <p style={{color: "white"}}>Search through custom Meal-kits made by the

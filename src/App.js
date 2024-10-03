@@ -18,6 +18,8 @@ import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import MapDisplay from "./components/map.js";
 import Upload from "./pages/upload.js";
+import LocationSearch from "./pages/LocationSearch.js";
+import OrderSearch from "./pages/OrderSearch.js";
 
 
 function App() {
@@ -41,6 +43,11 @@ function App() {
           <Route path="/upload" element = {<Upload/>}/>
           <Route path="/customise" element={<Customise/>}/>
           <Route path="/community" element={<Community/>}/>
+          <Route path="/locationSearch" element={<LocationSearch/>}/>
+          <Route path="/orderSearch" element={<OrderSearch/>}/>
+
+          
+
       </Routes>
       <Footer />
     </Router>

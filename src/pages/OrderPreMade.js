@@ -129,6 +129,7 @@ export default function About() {
 
         <h4>$14 - 1 serving</h4>
         <button onClick={addToCart} className='pop-button'>Add to Cart</button>
+        <Link><button className='pop-button'>Checkout</button></Link>
       </div>
     )
   }

@@ -445,12 +445,9 @@ section {
 .pop-button {  
   font-size: 2em;
   background-color: transparent;
-  display: block;
-  float: left;
   border: solid 1px;
   border-radius: 15px;
   margin-bottom: 0.5em;
-  display: block;
   padding: 0.2em;
   padding-left: 0.5em;
   padding-right: 0.5em;
@@ -458,9 +455,6 @@ section {
   background-color: var(--white);
   text-decoration: none;
   margin: 0;
-  position: absolute;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
   width: 200px;
 }
 
