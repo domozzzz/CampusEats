@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import supabase from "../supabase.js";
-import "../css/CustomMeal.css";
+import styles from "../css/CustomMeal.module.css"
 import { Link } from "react-router-dom";
 import homepage from '../images/homepage.png'
 import { useAuth } from "../components/AuthProvider.js";
@@ -102,39 +102,40 @@ export default function Customise() {
 
 
     return (
-        <div className="custom-meal-container">
+        <div>
+        <div className={styles.custom_meal_container}>
             <h1>Custom Meal</h1>
-            <div class="progress-steps">
-                <div className={`step ${1 <= currentStep ? "active" : ""}`}>
-                    <div className="step-number">{1}</div>
-                    <div className="step-name">{steps[0]}</div>
+            <div className={styles.progress_steps}>
+                <div className={`${styles.step} ${1 <= currentStep ? styles.active : ""}`}>
+                    <div className={styles.step_number}>{1}</div>
+                    <div className={styles.step_name}>{steps[0]}</div>
                 </div>
-                <div className={`line ${2 <= currentStep ? "active" : ""}`}></div>
-                <div className={`step ${2 <= currentStep ? "active" : ""}`}>
-                    <div className="step-number">2</div>
-                    <div className="step-name">{steps[1]}</div>
+                <div className={`${styles.line} ${2 <= currentStep ? styles.active : ""}`}></div>
+                <div className={`${styles.step} ${2 <= currentStep ? styles.active : ""}`}>
+                    <div className={styles.step_number}>2</div>
+                    <div className={styles.step_name}>{steps[1]}</div>
                 </div>
-                <div className={`line ${3 <= currentStep ? "active" : ""}`}></div>
-                <div className={`step ${3 <= currentStep ? "active" : ""}`}>
-                    <div className="step-number">3</div>
-                    <div className="step-name">{steps[2]}</div>
+                <div className={`${styles.line} ${3 <= currentStep ? styles.active : ""}`}></div>
+                <div className={`${styles.step} ${3 <= currentStep ? styles.active : ""}`}>
+                    <div className={styles.step_number}>3</div>
+                    <div className={styles.step_name}>{steps[2]}</div>
                 </div>
-                <div className={`line ${4 <= currentStep ? "active" : ""}`}></div>
-                <div className={`step ${4 <= currentStep ? "active" : ""}`}>
-                    <div className="step-number">4</div>
-                    <div className="step-name">{steps[3]}</div>
+                <div className={`${styles.line} ${4 <= currentStep ? styles.active : ""}`}></div>
+                <div className={`${styles.step} ${4 <= currentStep ? styles.active : ""}`}>
+                    <div className={styles.step_number}>4</div>
+                    <div className={styles.step_name}>{steps[3]}</div>
                 </div>
             </div>
-            <div className="step-content">
-                <div className="step-div">
+            <div className={styles.step_content}>
+                <div className={styles.step_div}>
                     <h2>Step {currentStep}: {steps[currentStep-1]}</h2>
                 </div>
-                <div className="content-box">
+                <div className={styles.content_box}>
                     {currentStep == 1 && (
                         <div>
                            {Object.entries(baseList).map(([key,value]) => (
                             <button key={key}
-                            className={value.added ? "option-button-selected" : "option-button"}
+                            className={value.added ? styles.option_button_selected : styles.option_button}
                             onClick={() => additem([value.type,key])}
                             >
                                 {key} ${value.cost}
@@ -146,7 +147,7 @@ export default function Customise() {
                         <div>
                            {Object.entries(proteinList).map(([key,value]) => (
                             <button key={key}
-                            className={value.added ? "option-button-selected" : "option-button"}
+                            className={value.added ? styles.option_button_selected : styles.option_button}
                             onClick={() => additem([value.type,key])}
                             >
                                 {key} ${value.cost}
@@ -158,7 +159,7 @@ export default function Customise() {
                         <div>
                            {Object.entries(vegetableList).map(([key,value]) => (
                             <button key={key}
-                            className={value.added ? "option-button-selected" : "option-button"}
+                            className={value.added ? styles.option_button_selected : styles.option_button}
                             onClick={() => additem([value.type,key])}
                             >
                                 {key} ${value.cost}
@@ -167,21 +168,21 @@ export default function Customise() {
                         </div>
                     )}
                     {currentStep == 4 && (
-                    <div className="review">
-                        <div className="review-column">
-                            <p className="total">Base:</p>
+                    <div className={styles.review}>
+                        <div className={styles.review_colum}>
+                            <p className={styles.total}>Base:</p>
                         {Object.entries(baseList).filter(([key,value]) => value.added == true).map(([key,value]) => (
                             <p key={key}>{key} ${value.cost}</p>
                            ))}
                            </div>
-                        <div className="review-column">
-                        <p className="total">Protein:</p>
+                            <div className={styles.review_colum}>
+                        <p className={styles.total}>Protein:</p>
                         {Object.entries(proteinList).filter(([key,value]) => value.added == true).map(([key,value]) => (
                             <p key={key}>{key} ${value.cost}</p>
                            ))}
                            </div>
-                           <div className="review-column">
-                        <p className="total">vegetables:</p>
+                           <div className={styles.review_colum}>
+                        <p className={styles.total}>vegetables:</p>
                         {Object.entries(vegetableList).filter(([key,value]) => value.added == true).map(([key,value]) => (
                             <p key={key}>{key} ${value.cost}</p>
                            ))}
@@ -192,17 +193,17 @@ export default function Customise() {
                 </div>
 
             </div>
-            <div className="option-div">
-                <button className="option-button"
+            <div className={styles.option_div}>
+                <button className={styles.option_button}
                 onClick={() => lastStep()}
                 >Previous step</button>
-                <p className="total" >Total: ${price}</p>
+                <p className={styles.total} >Total: ${price}</p>
                 {currentStep == 4 && (
-                    <button className="option-button"
+                    <button className={styles.option_button}
                     >Add to cart</button>
                 )}
                 {currentStep !=4 && (
-                    <button className="option-button"
+                    <button className={styles.option_button}
                     onClick={() => nextStep()}
                     >Next step</button>
                 )}
@@ -211,6 +212,7 @@ export default function Customise() {
             
 
 
+        </div>
         </div>
     )
 }
