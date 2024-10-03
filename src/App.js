@@ -38,7 +38,7 @@ function App() {
           <Route path="/register" element={<RegisterPage/>}/>
           <Route path="/order" element={<Order/>}/>
           <Route path="/orderPreMade" element={<OrderPreMade/>}/>
-          <Route path="/orderMealKit" element={<OrderMealKit/>}/>
+          <Route path="/orderMealKit/:LID" element={<OrderMealKit/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path='/map' element={<MapDisplay/>}/>
           <Route path="/upload" element = {<Upload/>}/>
