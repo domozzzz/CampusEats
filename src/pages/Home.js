@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import burrito from '../images/burrito.png'
-import chickenRice from '../images/chickenRice.png'
-import kebab from '../images/kebab.png'
+
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'

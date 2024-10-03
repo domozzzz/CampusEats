@@ -1,7 +1,5 @@
 import homepage from '../images/homepage.png'
-import burrito from '../images/burrito.png'
-import chickenRice from '../images/chickenRice.png'
-import kebab from '../images/kebab.png'
+
 import React, { useState, useEffect } from 'react';
 import "../css/Community.css"
 import supabase from '../supabase';

@@ -13,7 +13,6 @@ export default function OrderSelect() {
 
     return user ? (
          <div>
-            {console.log("loged in as", user.email)}
             <div class="welcome" alt="Avatar">
                 <div class="heading-image">
                 <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
@@ -31,10 +30,11 @@ export default function OrderSelect() {
                         <h3>Pre-Made</h3>
                         <p>Order just one pre-made meal from this week’s selection</p>
                     </button></Link>
+                    <Link to="/customise">
                     <button>
                         <h3>Custom Meal</h3>
                         <p>Customise a meal based on your preferences.</p>
-                    </button>
+                    </button></Link>
                     <button>
                         <h3>Community <br/>Meals</h3>
                         <p>Meals uploaded by the CampusEats community</p>
