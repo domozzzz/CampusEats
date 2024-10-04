@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import homepage from '../images/homepage.png'
+import homepage from '../images/Homepage.png'
 import {Helmet} from 'react-helmet-async'
-import "../css/upload.css"
+import "../css/Upload.css"
 import "../css/App.css"
 import UploadPopup from "../components/UploadPopUp";
 import supabase from "../supabase";

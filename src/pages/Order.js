@@ -1,47 +1,43 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import homepage from '../images/homepage.png'
+import homepage from '../images/Homepage.png';
+import clock from '../images/Clock.png';
+import search from '../images/Search.png';
 import '../css/Order.css'
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../components/AuthProvider';
 
 
 export default function OrderSelect() {
-
-    const { user } = useAuth();
-
-
-    return user ? (
-         <div>
+    return (
+        <div>
             <div class="welcome" alt="Avatar">
                 <div class="heading-image">
                 <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
                 </div>
             </div>
             <div class="order-choice">
-                <h1>Choose your type of meal</h1>
+                <h1>Order</h1>
                 <div className='orderChoiceButtons'>
+                <span className="grey-button">
+                    <Link to="/customise"><button>
+                        <img src={clock} style={{height: "150px"}}></img>
+                        <h3>Custom Meal Kit</h3>
+                        <p>Create a quick, custom meal-kit. Set your own base,
+                            protein and vegetables ready to order at any location.</p>
+                    </button></Link>
+                    </span>
+                    <span className="green-button">
                     <Link to="/map"><button>
-                        <h3>Meal Kit</h3>
-                        <p>Meal kit will be delivered to you in form of 
-                            raw ingredients that you can cook yourself!</p>
+                        <img src={search} style={{height: "140px"}}></img>
+                        <h3 style={{color: "white"}}>Search Meal-kits near me</h3>
+                        <p style={{color: "white"}}>Search through custom Meal-kits made by the
+                            CampusEats team or other users!</p>
                     </button></Link>
-                    <Link to="/orderPreMade"><button>
-                        <h3>Pre-Made</h3>
-                        <p>Order just one pre-made meal from this week’s selection</p>
-                    </button></Link>
-                    <Link to="/customise">
-                    <button>
-                        <h3>Custom Meal</h3>
-                        <p>Customise a meal based on your preferences.</p>
-                    </button></Link>
-                    <button>
-                        <h3>Community <br/>Meals</h3>
-                        <p>Meals uploaded by the CampusEats community</p>
-                    </button>
+                    </span>
                 </div>
             </div>
         </div>
-    ) : (<Navigate to="/login"/>)
+    )
 }
 

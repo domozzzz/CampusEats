@@ -16,10 +16,12 @@ import RegisterPage from "./pages/Register.js";
 import Customise from "./pages/Customise.js";
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
-import MapDisplay from "./components/map.js";
-import Upload from "./pages/upload.js";
+import MapDisplay from "./components/Map.js";
+import Upload from "./pages/Upload.js";
 import AuthProvider from "./components/AuthProvider.js";
 import ProfilePage from "./pages/Profile.js";
+import LocationSearch from "./pages/LocationSearch.js";
+import OrderSearch from "./pages/OrderSearch.js";
 
 
 function App() {
@@ -45,6 +47,9 @@ function App() {
           <Route path="/customise" element={<Customise/>}/>
           <Route path="/community" element={<Community/>}/>
           <Route path="/profile" element={<ProfilePage/>}/>
+
+          
+
       </Routes>
       <Footer />
     </Router>

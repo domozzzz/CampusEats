@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import '../css/meals.css'
-import homepage from '../images/homepage.png'
-import mealtypeActive from '../images/meal_type_green.png'
-import mealtypeNonActive from '../images/meal_type_white.png'
-import order from "../images/order_white.png"
-import preferenceActive from "../images/preferences_green.png"
-import preferenceNonActive from '../images/preferences_white.png'
+import '../css/Meals.css'
+import homepage from '../images/Homepage.png'
+import mealtypeActive from '../images/Meal_type_green.png'
+import mealtypeNonActive from '../images/Meal_type_white.png'
+import order from "../images/Order_white.png"
+import preferenceActive from "../images/Preferences_green.png"
+import preferenceNonActive from '../images/Preferences_white.png'
 
 export default function Meals() {
     const [option, setOption] = useState([true, false, false])

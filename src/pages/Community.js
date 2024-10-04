@@ -1,4 +1,4 @@
-import homepage from '../images/homepage.png'
+import homepage from '../images/Homepage.png'
 
 import React, { useState, useEffect } from 'react';
 import "../css/Community.css"

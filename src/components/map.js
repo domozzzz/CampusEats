@@ -1,18 +1,19 @@
 
 
 import React, {useEffect, useState, useRef, useCallback,useMemo} from 'react';
-import homepage from '../images/homepage.png'
+import homepage from '../images/Homepage.png'
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { Link } from 'react-router-dom';
 import "../css/Map.css"
 import "../css/App.css"
 import supabase from '../supabase';
 
-const MAP_API_KEY = ''
+const MAP_API_KEY = process.env.REACT_APP_MAP
 
 const UQ = {lat: -27.4977, lng: 153.0129}
 
 const MapDisplay = () => {
+  console.log(MAP_API_KEY)
 
       const { isLoaded } = useLoadScript({
         googleMapsApiKey: MAP_API_KEY,
@@ -22,6 +23,7 @@ const MapDisplay = () => {
       const [display, setDisplay] = useState(null)
 
       useEffect(() => {
+        window.scrollTo(0, 0)
         async function getLocations() {
           const {data, error} = await supabase
           .from('Locations')
@@ -57,11 +59,10 @@ const MapDisplay = () => {
               </div>
           </div>
           <div className='Map'>
-            <h1>Select your location</h1>
+            <h1>Step 1: Select your location</h1>
             <div className='search-box'>
                   <input type="search"  placeholder="Search for a location..." onChange={get_search} />
                   {search.map((location) => {
-                    {console.log(location.id)}
                     return (
                     <div key={location.id} className='possible_location'> 
                         <button className={display ? 'inactive' : ''} name={location.id} onClick={set_display}>{location.name}</button>
@@ -75,7 +76,7 @@ const MapDisplay = () => {
             <GoogleMap
               mapContainerClassName='map-style'
               center={{lat: display.lat, lng: display.lng}}
-              zoom={16}>
+              zoom={15}>
             </GoogleMap>
             <Link to={`../orderMealKit/${display.id}`}>
             <button className='submit_location'>Select {display.name}</button>

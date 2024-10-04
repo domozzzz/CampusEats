@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import supabase from "../supabase.js";
 import styles from "../css/CustomMeal.module.css"
 import { Link } from "react-router-dom";
-import homepage from '../images/homepage.png'
+import homepage from '../images/Homepage.png'
 import { useAuth } from "../components/AuthProvider.js";
 
 

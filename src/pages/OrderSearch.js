@@ -1,16 +1,12 @@
 import homepage from '../images/Homepage.png'
-import burrito from '../images/Burrito.png'
-import chickenRice from '../images/ChickenRice.png'
-import kebab from '../images/Kebab.png'
-import React, { useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "../css/Community.css"
 import supabase from '../supabase';
 
 
-export default function OrderSelect() {
+export default function OrderSearch() {
 
-    const {LID} = useParams()
   const [counter, setCounter] = useState(0);
 
   const [dietary, setDietary] = useState({
@@ -117,19 +113,19 @@ export default function OrderSelect() {
   };
 
   async function openPop(event) {
-    const meal = results.find(meal => meal.meal_id == event.target.name)
+    const meal = results.find(meal => meal.id == event.target.name)
     const {data, error} = await supabase
     .from('nutrition')
     .select('*')
-    .eq('meal_id',meal.meal_id)
+    .eq('meal_id',meal.id)
 
     if (data) {
       setIngredients({
-        name: meal.meals.name,
-        image: meal.meals.photo,
-        ingredients: meal.meals.ingredients,
+        name: meal.name,
+        image: meal.photo,
+        ingredients: meal.ingredients,
         nutrition: data[0],
-        cost: meal.meals.price
+        cost: meal.price
       })
       setError(null)
       setSeen(true);
@@ -186,50 +182,49 @@ export default function OrderSelect() {
   }
   
   useEffect(() => {
-    window.scrollTo(0, 0)
     const getResults = async () => {
       const {data, error} = await supabase
-      .from('mealLocations')
-      .select('*,meals(*,nutrition(*)),Locations(*)')
-      .eq('location_id',LID)  
-      .neq('meals.id',0)
-      .lte('meals.nutrition.Sugars',sugars.high)
-      .lte('meals.nutrition.Calories',calories.high)  
-      .lte('meals.nutrition.Protein',protein.high)
-      .gte('meals.nutrition.Sugars',sugars.low)
-      .gte('meals.nutrition.Calories',calories.low)  
-      .gte('meals.nutrition.Protein',protein.low)     
+      .from('meals')
+      .select('*,nutrition(*)')
+      .neq('id',0)
+      .lte('nutrition.Sugars',sugars.high)
+      .lte('nutrition.Calories',calories.high)  
+      .lte('nutrition.Protein',protein.high)
+      .gte('nutrition.Sugars',sugars.low)
+      .gte('nutrition.Calories',calories.low)  
+      .gte('nutrition.Protein',protein.low)
+      .order(`${orderBy}`,{ascending: false})          
       if (data) {
         const result = data.filter((mealkit) => {
-            const vegan = () => {
-              if (dietary.vegan == true) {
-                return mealkit.meals.vegan == true
-              }
-              return true
+          const vegan = () => {
+            if (dietary.vegan == true) {
+              return mealkit.vegan == true
             }
-  
-            const gf = () => {
-              if (dietary.gf == true) {
-                return mealkit.meals.gf == true
-              }
-              return true
+            return true
+          }
+
+          const gf = () => {
+            if (dietary.gf == true) {
+              return mealkit.gf == true
             }
-  
-            const vegetarian = () => {
-              if (dietary.vegetarian == true) {
-                return mealkit.meals.vegetarian == true
-              }
-              return true
+            return true
+          }
+
+          const vegetarian = () => {
+            if (dietary.vegetarian == true) {
+              return mealkit.vegetarian == true
             }
-  
-            const searchMatch = () => {
-              if (search != null) {
-                return mealkit.meals.name.toLowerCase().includes(search.toLowerCase())
-              }
-              return true
+            return true
+          }
+
+          const searchMatch = () => {
+            if (search != null) {
+              return mealkit.name.toLowerCase().includes(search.toLowerCase())
             }
-            return mealkit.meals.nutrition !=null && vegan() && gf() && vegetarian() && searchMatch()
-          })
+            return true
+          }
+          return mealkit.nutrition !=null && vegan() && gf() && vegetarian() && searchMatch()
+        })
          setResults(result)
       }
   
@@ -315,6 +310,8 @@ export default function OrderSelect() {
           </div>
 
           <h4>${Ingredients.cost} - 1 serving</h4>
+          <button className='pop-button'>Add to Cart</button>
+          <Link to = '/cart'><button className='pop-button'>Checkout</button></Link>
         </div>
       )
     }
@@ -330,8 +327,9 @@ export default function OrderSelect() {
                 </div>
             </div>
             <div class="order">
-              <h1>Step 2: Select your Mealkit</h1>
+              <h1>Search Meal Kits</h1>
             <div>
+                <h2>Step 2: Select your Mealkit</h2>
                 <div className='search-box'>
                   <input type="search" onChange={get_search} placeholder="Search for key word"/>
                 </div>
@@ -353,6 +351,13 @@ export default function OrderSelect() {
                       <li className='spaced'><input type="text2" onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="text2" onChange={set_max_sugars}/></li>
                     </ul>
                   </div>
+                  <div className='sub-box'>
+                    <h1>Location</h1>
+                    <ul>
+                    <li><input type="checkbox"></input>Any</li>
+                    <li><input type="checkbox"></input>Custom<input type="text3" /></li>
+                    </ul>
+                  </div>
                   <div className='s ub-box'>
                     <h1>Filter</h1>
                     <Dropdown></Dropdown>
@@ -369,13 +374,13 @@ export default function OrderSelect() {
           {results.map((meal) => {
             return (
                 <div class="card" name="hello">
-                  <img src={meal.meals.photo} alt="Avatar"></img>
-                  <p>{meal.meals.name}<br />
+                  <img src={meal.photo} alt="Avatar"></img>
+                  <p>{meal.name}<br />
                     Creator: Joseph<br />
-                    ♡ {meal.meals.likes}<br />
-                    Location: {meal.Locations.name}
+                    ♡ {meal.likes}<br />
+                    Location: QUT
                   </p>  
-                  <button name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
+                  <button name = {meal.id} onClick={openPop}>View Ingredients</button>
                   <p style={{color: 'red'}}>{error ? error : ''}</p>
                   </div>
             )

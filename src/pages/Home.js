@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import homepage from '../images/homepage.png'
+import homepage from '../images/Homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
 import { useState, useEffect } from "react";

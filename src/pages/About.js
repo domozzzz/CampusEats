@@ -1,6 +1,6 @@
 
-import about from '../images/about.jpeg'
-import homepage from '../images/homepage.png'
+import about from '../images/About.jpeg'
+import homepage from '../images/Homepage.png'
 import { Link } from 'react-router-dom';
 import '../css/About.css'
 

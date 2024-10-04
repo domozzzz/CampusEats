@@ -1,8 +1,8 @@
-import homepage from '../images/homepage.png'
+import homepage from '../images/Homepage.png'
 import { Link } from 'react-router-dom';
-import burrito from '../images/burrito.png'
-import chickenRice from '../images/chickenRice.png'
-import kebab from '../images/kebab.png'
+import burrito from '../images/Burrito.png'
+import chickenRice from '../images/ChickenRice.png'
+import kebab from '../images/Kebab.png'
 import React, { useState } from 'react';
 
 const Dropdown = () => {
@@ -129,6 +129,7 @@ export default function About() {
 
         <h4>$14 - 1 serving</h4>
         <button onClick={addToCart} className='pop-button'>Add to Cart</button>
+        <Link><button className='pop-button'>Checkout</button></Link>
       </div>
     )
   }

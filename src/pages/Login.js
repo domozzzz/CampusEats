@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import supabase from "../supabase.js";
-import homepage from '../images/homepage.png';
+import homepage from '../images/Homepage.png';
 import { useAuth } from "../components/AuthProvider.js";
 import { Navigate } from "react-router-dom";
 
