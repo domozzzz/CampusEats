@@ -104,6 +104,7 @@ export default function Upload() {
             <h2>Basic Details</h2>
             <div className="basic_input">
                 <input type="text" placeholder="Meal Kit Name" onChange={e => setUpload({...upload,['name']: e.target.value})}/>
+                <input type="file" accept="image/png, image/jpeg" />
                 <input type="text" placeholder="Image Link" onChange={e => setUpload({...upload,['image']: e.target.value})}/>
             </div>
         </div>

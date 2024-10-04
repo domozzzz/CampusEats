@@ -1,7 +1,7 @@
 import homepage from '../images/homepage.png'
-import burrito from '../images/burrito.png'
+import burrito from '../images/Burrito.png'
 import chickenRice from '../images/chickenRice.png'
-import kebab from '../images/kebab.png'
+import kebab from '../images/Kebab.png'
 import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import "../css/Community.css"
