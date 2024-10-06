@@ -9,6 +9,7 @@ import Marketplace from './pages/marketplace.js';
 import OrderMealKit from './pages/OrderMealKit.js';
 import MapDisplay from './components/Map.js';
 import Upload from "./pages/Upload.js";
+import CustomiseV2 from "./pages/CustomiseV2.js";
 import Cart from './pages/Cart.js';
 import RegisterPage from "./pages/Register.js";
 import Customise from "./pages/Customise.js";
@@ -34,6 +35,7 @@ function App() {
           <Route path='/orderSearchMap' element={<MapDisplay/>}/>
           <Route path="/orderSearchMealKit/:LID" element={<OrderMealKit/>}/>
           <Route path="/customMealKit" element={<Customise/>}/>
+          <Route path="customiseV2" element={<CustomiseV2/>}/>
 
           <Route path="/upload" element = {<Upload/>}/>
           <Route path="/cart" element={<Cart/>}/>

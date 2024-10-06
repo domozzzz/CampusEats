@@ -71,7 +71,7 @@ export default function Upload() {
                        poster_id: user['id'], 
                        meal_id: data[0].id,
                        title: upload['name'],
-                       username: upload['username']
+                       username:`${user['user_metadata']['first_name']} ${user['user_metadata']['last_name']}`
                     }
                 ]).select()
 
@@ -113,7 +113,6 @@ export default function Upload() {
             <div className="basic_input">
                 <input type="text" placeholder="Meal Kit Name" onChange={e => setUpload({...upload,['name']: e.target.value})}/>
                 <input type="text" placeholder="Image Link" onChange={e => setUpload({...upload,['image']: e.target.value})}/>
-                <input type="text" placeholder="Your name" onChange={e => setUpload({...upload,['username']: e.target.value})}/>
             </div>
         </div>
         )

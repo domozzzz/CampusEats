@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import homepage from '../images/Homepage.png';
 import PestoChicken from '../images/Pesto_chicken.png';
 import MangoSmoothie from '../images/Mango_smoothie.png';
@@ -9,22 +9,48 @@ import AddressIcon from '../images/AddressIcon.png';
 import EmailIcon from '../images/EmailIcon.png';
 import PasswordIcon from '../images/PasswordIcon.png';
 import '../css/Profile.css';
+import { useAuth } from '../components/AuthProvider';
+import { Navigate } from 'react-router-dom';
+import supabase from '../supabase';
 
 const Profile = () => {
-    const [user] = useState({
-        name: 'Gabriella O.',
-        email: 'xxxxxxx@uq.edu.au',
+    const { user } = useAuth()
+
+    const [orders, setOrderds] = useState([])
+
+    const [uploads, setUploads] = useState([])
+
+    useEffect(() => {
+        const getUploads = async () => {
+            const {data, error} = await supabase
+            .from('sellers')
+            .select('*,meals(*)')
+            .eq('user_id',user.id)
+
+            if (data) {
+                let filtered = data[0]['meals']
+                setUploads(filtered)
+            }
+
+            if (error) {
+                console.log(error)
+            }
+        }
+
+        getUploads()
+    },[])
+    const [userDetails] = useState({
+        name: `${user['user_metadata']['first_name']} ${user['user_metadata']['last_name'][0]}`,
+        email: user.email,
         address: 'UQ St Lucia',
         orders: [
             { id: 1, name: 'Pesto Chicken & Pasta', date: 'July 15, 2024', image: PestoChicken },
             { id: 2, name: 'Mango Tango Smoothie', date: 'July 15, 2024', image: MangoSmoothie },
             { id: 3, name: 'Sausage & Egg Breakfast Sandwich', date: 'July 14, 2024', image: SausageSandwich },
-            { id: 4, name: 'Acai Berry Bowl', date: 'July 13, 2024', image: AcaiBowl },
-            { id: 5, name: 'California Veggie Wrap', date: 'July 12, 2024', image: VeggieWrap },
         ],
     });
 
-    return (
+    return user ? (
         <div>
             <div class="welcome" alt="Avatar">
                 <div class="heading-image">
@@ -34,8 +60,8 @@ const Profile = () => {
             <div className="profile">
                 <div className="profile-header">
                     <div className="name-email-container">
-                        <h2>{user.name}</h2>
-                        <p className="email">{user.email}</p>
+                        <h2>{userDetails.name}</h2>
+                        <p className="email">{userDetails.email}</p>
                     </div>
                     <div className="profile-buttons">
                         <button className="btn-account">Account</button>
@@ -46,20 +72,11 @@ const Profile = () => {
                 <div className="details">
                     <h2>Details</h2>
                     <div className="detail-item">
-
-                        <div className="detail-field">
-                            <img src={AddressIcon} alt="Address Icon" className="icon" />
-                            <div className="label-info">
-                                <label>Delivery Address</label>
-                                <p>{user.address}</p>
-                            </div>
-                        </div>
-
                         <div className="detail-field">
                             <img src={EmailIcon} alt="Email Icon" className="icon" />
                             <div className="label-info">
                                 <label>Email Address</label>
-                                <p>{user.email}</p>
+                                <p>{userDetails.email}</p>
                             </div>
                         </div>
 
@@ -75,13 +92,28 @@ const Profile = () => {
 
                 <div className="order-history">
                     <h2>Order History</h2>
-                    {user.orders.map((order) => (
+                    {userDetails.orders.map((order) => (
                         <div key={order.id} className="order-item">
                             <div className="order-text">
                                 <h3>{order.name}</h3>
                                 <p>{order.date}</p>
                             </div>
                             <img src={order.image} alt={order.name} />
+                        </div>
+                    ))}
+                </div>
+
+                <div className="order-history">
+                    <h2>Uploaded MealKits</h2>
+                    {uploads.map((upload) => (
+                        <div key={upload.id} className="order-item">
+                            <div className="order-text">
+                                <h3>{upload.name}</h3>
+                                <p>Number of Orders: {upload.number_of_orders}</p>
+                                <p>You have made: ${0.50 * upload.number_of_orders}</p>
+                                <p></p>
+                            </div>
+                            <img src={upload.photo} alt={upload.name} />
                         </div>
                     ))}
                 </div>
@@ -93,7 +125,7 @@ const Profile = () => {
                 </div>
             </div>
         </div>
-    );
+    ) : <Navigate to="login"/>;
 };
 
 export default Profile;
