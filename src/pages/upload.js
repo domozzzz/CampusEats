@@ -28,6 +28,7 @@ export default function Upload() {
     const [upload, setUpload] = useState(
         {
             name: null,
+            username: null,
             image: null,
             gf: false,
             vegetarian: false,
@@ -69,7 +70,8 @@ export default function Upload() {
                     {
                        poster_id: user['id'], 
                        meal_id: data[0].id,
-                       title: upload['name']
+                       title: upload['name'],
+                       username: upload['username']
                     }
                 ]).select()
 
@@ -111,6 +113,7 @@ export default function Upload() {
             <div className="basic_input">
                 <input type="text" placeholder="Meal Kit Name" onChange={e => setUpload({...upload,['name']: e.target.value})}/>
                 <input type="text" placeholder="Image Link" onChange={e => setUpload({...upload,['image']: e.target.value})}/>
+                <input type="text" placeholder="Your name" onChange={e => setUpload({...upload,['username']: e.target.value})}/>
             </div>
         </div>
         )
@@ -172,6 +175,7 @@ export default function Upload() {
     const options = [basicDetails, dietary, ingredientDisplay]
 
     const arrow_up = () => {
+        console.log(user)
         if (display == 0) {
             return
         } else {

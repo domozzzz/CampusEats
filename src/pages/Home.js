@@ -32,18 +32,20 @@ export default function Home() {
     useEffect(() => {
         setLoading(true)
         const fetchMeals = async () => {
-            const {data: d, e} = await supabase
+            const {data: d, error: e} = await supabase
                 .from('meals')
-                .select('*')
+                .select('*,sellers(*)')
                 .neq('id',0)
                 .limit(9)
                 .order('likes', {ascending: false})
                 if (e) {
+                    console.log(e)
                     setError(true)
                     setData(null)
                     setLoading(false)
                 }
                 if (d) {
+                    console.log(d)
                     setError(false)
                     setData(d)
                     setLoading(false)
@@ -64,7 +66,7 @@ export default function Home() {
                                 <div class="card">
                                 <img src={meal.photo} alt="Avatar"></img>
                                 <p>{meal.name}<br />
-                              Creator: {meal.seller_id}<br />
+                              Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
                               ♡ {meal.likes}<br />
                               Location: QUT
                             </p>  

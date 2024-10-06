@@ -185,7 +185,7 @@ export default function Community() {
     const getResults = async () => {
       const {data, error} = await supabase
       .from('meals')
-      .select('*,nutrition(*)')
+      .select('*,nutrition(*), sellers(*)')
       .neq('id',0)
       .lte('nutrition.Sugars',sugars.high)
       .lte('nutrition.Calories',calories.high)  
@@ -378,7 +378,7 @@ export default function Community() {
                 <div class="card" name="hello">
                   <img src={meal.photo} alt="Avatar"></img>
                   <p>{meal.name}<br />
-                    Creator: Joseph<br />
+                    Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
                     ♡ {meal.likes}<br />
                     Location: QUT
                   </p>  
