@@ -78,7 +78,7 @@ const MapDisplay = () => {
               center={{lat: display.lat, lng: display.lng}}
               zoom={15}>
             </GoogleMap>
-            <Link to={`../orderMealKit/${display.id}`}>
+            <Link to={`../orderSearchMealKit/${display.id}`}>
             <button className='submit_location'>Select {display.name}</button>
             </Link>
             </div>

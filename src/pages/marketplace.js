@@ -5,7 +5,7 @@ import "../css/Community.css"
 import supabase from '../supabase';
 
 
-export default function Community() {
+export default function Marketplace() {
 
   const [counter, setCounter] = useState(0);
 

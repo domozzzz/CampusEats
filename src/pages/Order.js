@@ -22,7 +22,7 @@ export default function OrderSelect() {
                 <h1>Order</h1>
                 <div className='orderChoiceButtons'>
                 <span className="grey-button">
-                    <Link to="/customise"><button>
+                    <Link to="/customMealKit"><button>
                         <img src={clock} style={{height: "150px"}}></img>
                         <h3>Custom Meal Kit</h3>
                         <p>Create a quick, custom meal-kit. Set your own base,
@@ -30,7 +30,7 @@ export default function OrderSelect() {
                     </button></Link>
                     </span>
                     <span className="green-button">
-                    <Link to="/map"><button>
+                    <Link to="/orderSearchMap"><button>
                         <img src={search} style={{height: "140px"}}></img>
                         <h3 style={{color: "white"}}>Search Meal-kits near me</h3>
                         <p style={{color: "white"}}>Search through custom Meal-kits made by the
