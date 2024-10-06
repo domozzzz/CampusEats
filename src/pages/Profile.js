@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import homepage from '../images/Homepage.png';
 import PestoChicken from '../images/Pesto_chicken.png';
 import MangoSmoothie from '../images/Mango_smoothie.png';
@@ -16,9 +16,20 @@ import supabase from '../supabase';
 const Profile = () => {
     const { user } = useAuth()
 
+    const uploadRef = useRef(null)
+    const orderRef = useRef(null)
+    const executeUploadScroll = (ref) => {
+        window.scrollTo({
+            top: ref.offsetTop,
+            left: 0,
+            behavior: "smooth",
+          });
+    }
+
     const [orders, setOrderds] = useState([])
 
     const [uploads, setUploads] = useState([])
+
 
     useEffect(() => {
         const getUploads = async () => {
@@ -64,8 +75,8 @@ const Profile = () => {
                         <p className="email">{userDetails.email}</p>
                     </div>
                     <div className="profile-buttons">
-                        <button className="btn-account">Account</button>
-                        <button className="btn-order-history">Order History</button>
+                        <button className="btn-account" onClick={() => {executeUploadScroll(orderRef.current)}}>Order History</button>
+                        <button className="btn-order-history" onClick={() => {executeUploadScroll(uploadRef.current)}}>Upload History</button>
                     </div>
                 </div>
 
@@ -90,7 +101,7 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className="order-history">
+                <div className="order-history" ref={orderRef}>
                     <h2>Order History</h2>
                     {userDetails.orders.map((order) => (
                         <div key={order.id} className="order-item">
@@ -103,7 +114,7 @@ const Profile = () => {
                     ))}
                 </div>
 
-                <div className="order-history">
+                <div className="order-history" ref={uploadRef}>
                     <h2>Uploaded MealKits</h2>
                     {uploads.map((upload) => (
                         <div key={upload.id} className="order-item">
