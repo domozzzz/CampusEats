@@ -1,0 +1,130 @@
+:root {
+    --green: #064D42;
+}
+
+.quick-order {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+    height: auto;
+    padding-bottom: 120px;
+    width: 100%;
+    align-items: center;
+}
+
+.quick-order h1 {
+    color: #064D42;
+    font-size: 2.5rem;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.progress {
+    display: flex;
+    justify-content: center; 
+    align-items: flex-start;
+    margin: 30px 0;
+    gap: 40px; 
+    position: relative;
+}
+
+.progress-bar {
+    max-width: 400px;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 0; 
+    right: 0;
+    height: 2px;
+    background-color: #D9E5E3;
+    z-index: 1;
+  }
+
+.progress .step {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 10px;
+    z-index: 2;
+}
+
+.progress .step .number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 15px;
+    border-radius: 50%;
+    background-color: #D9E5E3;
+    color: #064D42;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    z-index: 3;
+}
+
+.step.active {
+    background-color: transparent;
+}
+.step.active .number {
+    background-color: #064D42; 
+    color: white; 
+}
+
+.progress .step span {
+    margin-top: 8px; 
+    font-size: 1rem;
+    font-weight: normal;
+    color: #064D42;
+}
+
+.step-instruction {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.choice-card {
+    background-color: #064D42;
+    padding: 15px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+}
+
+.choice-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.choice-card p {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.continue-btn {
+    background-color: #064D42;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.continue-btn:hover {
+    background-color: #052f2d;
+}
