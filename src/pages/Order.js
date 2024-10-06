@@ -9,7 +9,9 @@ import { useAuth } from '../components/AuthProvider';
 
 
 export default function OrderSelect() {
-    return (
+
+    const { user } = useAuth()
+    return user ? (
         <div>
             <div class="welcome" alt="Avatar">
                 <div class="heading-image">
@@ -38,6 +40,6 @@ export default function OrderSelect() {
                 </div>
             </div>
         </div>
-    )
+    ) : <Navigate to='/login'/>
 }
 
