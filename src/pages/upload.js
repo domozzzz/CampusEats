@@ -4,7 +4,9 @@ import {Helmet} from 'react-helmet-async'
 import "../css/Upload.css"
 import "../css/App.css"
 import UploadPopup from "../components/UploadPopUp";
+import { useAuth } from '../components/AuthProvider';
 import supabase from "../supabase";
+import { Navigate } from "react-router-dom";
 
 
 const baseIngreident = {
@@ -13,6 +15,8 @@ const baseIngreident = {
     measurement: 'grams'
 }
 export default function Upload() {
+
+    const { user } = useAuth()
 
     const [display, setDisplay] = useState(0)
     const [ingredients, setIngredients] = useState([])
@@ -54,6 +58,7 @@ export default function Upload() {
             )
             .select()
             if (error) {
+                console.log(error)
                 setErrorSubmit(error)
             }
 
@@ -62,6 +67,7 @@ export default function Upload() {
                 .from('post')
                 .insert([
                     {
+                       poster_id: user['id'], 
                        meal_id: data[0].id,
                        title: upload['name']
                     }
@@ -183,7 +189,7 @@ export default function Upload() {
 
 
  
-    return (
+    return user ? (
         <div>
             <Helmet>
                 <title>Upload page</title>
@@ -230,5 +236,5 @@ export default function Upload() {
                 </div>
             </div>  
         </div>
-    )
+    ) : <Navigate to='/login'/>
 }
