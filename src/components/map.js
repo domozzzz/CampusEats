@@ -13,7 +13,6 @@ const MAP_API_KEY = process.env.REACT_APP_MAP
 const UQ = {lat: -27.4977, lng: 153.0129}
 
 const MapDisplay = () => {
-  console.log(MAP_API_KEY)
 
       const { isLoaded } = useLoadScript({
         googleMapsApiKey: MAP_API_KEY,
@@ -78,7 +77,7 @@ const MapDisplay = () => {
               center={{lat: display.lat, lng: display.lng}}
               zoom={15}>
             </GoogleMap>
-            <Link to={`../orderSearchMealKit/${display.id}`}>
+            <Link to={`../order/${display.id}`}>
             <button className='submit_location'>Select {display.name}</button>
             </Link>
             </div>

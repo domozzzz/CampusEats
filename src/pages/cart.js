@@ -5,24 +5,33 @@ import homepage from '../images/Homepage.png'
 import '../css/Checkout.css'
 import { CartContext } from '../components/CartContext';
 
-function checkoutItem(image, name, cost) {
+
+function removeall(item, remove) {
+    for (let i = item.quantity; i > 0; i--) {
+        remove(item);
+    }
+}
+
+function checkoutItem(item, add, remove) {
     return (
         <div className='checkoutItem'>
-        <img src={image} alt="image"></img>
-        <p>{name}<br/>${cost}</p>
+        <img src={item.image} alt="image"></img>
+        <p>{item.name}<br/>${item.cost}</p>
         <div className='increment'>
-            <button>-</button>
-            <p>1</p>
-            <button>+</button> 
+            <button onClick={() => remove(item)}>-</button>
+            <p>{item.quantity}</p>
+            <button onClick={() => add(item)}>+</button> 
         </div>
-        <p>${cost}</p>
-        <button className='remove'>remove</button>
+        <p>${item.cost * item.quantity}</p>
+        <button className='remove' onClick={() => removeall(item,remove)}>remove</button>
     </div>
     )
 }
 export default function Cart() {
     const { cart } = useContext(CartContext);
     const { clearCart } = useContext(CartContext);
+    const { addToCart } = useContext(CartContext);
+    const { removeFromCart } = useContext(CartContext);
     console.log(cart);
 
     return (
@@ -34,7 +43,7 @@ export default function Cart() {
             </div>
             <div className='checkout'>
                 <h1>Your Cart</h1>
-                {cart.map((item) => checkoutItem(1, item.name, item.cost))}
+                {cart.map((item) => checkoutItem(item, addToCart, removeFromCart))}
                 <button className='checkoutSubmit'>Checkout</button>
                 <button className='checkoutSubmit' onClick={() => clearCart()}>clear</button>
             </div>

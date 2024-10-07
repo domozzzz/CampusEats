@@ -12,9 +12,30 @@ export const CartProvider = ({ children }) => {
     // Add an item to the cart
     const addToCart = (item) => {
         console.log("adding", item);
-      setCart((prevCart) => [...prevCart, item]); // Simply add the item to the cart
-      console.log(cart);
+        setCart((prevCart) => {
+            const existing = prevCart.find((items) => items.meal_id === item.meal_id);
+            if (existing) {
+                return prevCart.map((items) => items.meal_id === item.meal_id ? {...items, quantity: items.quantity + 1} : items);
+            } else {
+                return [...prevCart, item];
+            }
+        });
     };
+
+    const removeFromCart = (item) => {
+        setCart((prevCart) => {
+            const existing = prevCart.find((items) => items.meal_id === item.meal_id);
+            if (existing) {
+                const multiple = existing.quantity > 1;
+                if (multiple) {
+                    console.log("removing one");
+                    return prevCart.map((items) => items.meal_id === item.meal_id ? {...items, quantity: items.quantity - 1} : items);
+                } else {
+                    return prevCart.filter((items) => items.meal_id != item.meal_id);
+                }
+            }
+        })
+    }
 
     const clearCart = () => {
         console.log("clearingCart");
@@ -27,7 +48,7 @@ export const CartProvider = ({ children }) => {
     }, [cart]);
   
     return (
-      <CartContext.Provider value={{ cart, addToCart, clearCart }}>
+      <CartContext.Provider value={{ cart, addToCart, clearCart, removeFromCart }}>
         {children}
       </CartContext.Provider>
     );

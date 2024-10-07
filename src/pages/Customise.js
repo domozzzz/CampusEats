@@ -4,6 +4,7 @@ import styles from "../css/CustomMeal.module.css"
 import { Link } from "react-router-dom";
 import homepage from '../images/Homepage.png'
 import { useAuth } from "../components/AuthProvider.js";
+import { useParams } from 'react-router-dom';
 import { CartContext } from "../components/CartContext.js";
 
 
@@ -15,9 +16,10 @@ export default function Customise() {
     const [vegetableList, setVegetableList] = useState({});
     const [selected, setSelected] = useState({});
     const [price, setPrice] = useState(0);
+    const [photo , setPhoto] = useState();
 
     const { addToCart } = useContext(CartContext);
-    
+    const { LID } = useParams();    
 
     const steps = ["BASE", "PROTEIN", "VEGETABLES", "REVIEW"];
 
@@ -31,6 +33,7 @@ export default function Customise() {
             .eq('id',0)
 
             if (data) {
+                console.log(data);
                 let ingredients = data[0].ingredients;
                 let bases = [];
                 let proteins = {};
@@ -47,6 +50,7 @@ export default function Customise() {
                 setBaseList(bases);
                 setProteinList(proteins);
                 setVegetableList(vegetables);
+                setPhoto(data[0].photo);
 
             } else {
                 console.log(error);
@@ -69,6 +73,7 @@ export default function Customise() {
             meal_id: 0,
             ingredients: all,
             quantity: 1,
+            image: photo,
             cost: price,
         }
         addToCart(item);

@@ -3,15 +3,18 @@ import burrito from '../images/Burrito.png'
 import chickenRice from '../images/ChickenRice.png'
 import kebab from '../images/Kebab.png'
 import React, { useState, useEffect} from 'react';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import "../css/Community.css"
 import supabase from '../supabase';
+import { CartContext } from "../components/CartContext.js";
 
 
 export default function OrderSelect() {
 
     const {LID} = useParams()
   const [counter, setCounter] = useState(0);
+  const { addToCart } = useContext(CartContext);
 
   const [dietary, setDietary] = useState({
     gf: false,
@@ -116,6 +119,20 @@ export default function OrderSelect() {
     );
   };
 
+  const checkout = (meal) => {
+    const item = {
+        name: meal.meals.name,
+        meal_id: meal.meals.id,
+        ingredients: [],
+        quantity: 1,
+        cost: meal.meals.price,
+        image: meal.meals.photo,
+        lid: LID,
+    }
+    console.log(item);
+    addToCart(item);
+  }
+
   async function openPop(event) {
     const meal = results.find(meal => meal.meal_id == event.target.name)
     const {data, error} = await supabase
@@ -129,7 +146,7 @@ export default function OrderSelect() {
         image: meal.meals.photo,
         ingredients: meal.meals.ingredients,
         nutrition: data[0],
-        cost: meal.meals.price
+        cost: meal.meals.price,
       })
       setError(null)
       setSeen(true);
@@ -330,7 +347,7 @@ export default function OrderSelect() {
                 </div>
             </div>
             <div class="order">
-              <h1>Step 2: Select your Mealkit</h1>
+              <h1>Step 3: Select your Mealkit</h1>
             <div>
                 <div className='search-box'>
                   <input type="search" onChange={get_search} placeholder="Search for key word"/>
@@ -376,6 +393,7 @@ export default function OrderSelect() {
                     Location: {meal.Locations.name}
                   </p>  
                   <button name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
+                  <button onClick={() => checkout(meal)}>add to cart</button>
                   <p style={{color: 'red'}}>{error ? error : ''}</p>
                   </div>
             )

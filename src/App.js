@@ -5,7 +5,7 @@ import Home from './pages/Home.js';
 import About from './pages/About.js'
 import Login from './pages/Login.js';
 import Order from './pages/Order.js';
-import Marketplace from './pages/marketplace.js';
+import Marketplace from './pages/Marketplace.js';
 import OrderMealKit from './pages/OrderMealKit.js';
 import MapDisplay from './components/Map.js';
 import Upload from "./pages/Upload.js";
@@ -33,10 +33,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<RegisterPage/>}/>
 
-          <Route path="/order" element={<Order/>}/>
+          <Route path="/order/:LID" element={<Order/>}/>
           <Route path='/orderSearchMap' element={<MapDisplay/>}/>
           <Route path="/orderSearchMealKit/:LID" element={<OrderMealKit/>}/>
-          <Route path="/customMealKit" element={<Customise/>}/>
+          <Route path="/customMealKit/:LID" element={<Customise/>}/>
           <Route path="customiseV2" element={<CustomiseV2/>}/>
 
           <Route path="/upload" element = {<Upload/>}/>

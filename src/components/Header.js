@@ -11,7 +11,7 @@ export default function Header() {
         <ul>
           <li class="unpadded"><NavLink to = "/"><img src={logo}  class="logo" alt="Logo"/></NavLink></li>
           <li><NavLink to = "/">Home</NavLink></li>
-          <li><NavLink to = "/order">Order</NavLink></li>
+          <li><NavLink to = "/orderSearchMap">Order</NavLink></li>
           <li><NavLink to = "/upload">Upload</NavLink></li>
           <li><NavLink to = "/marketplace">Marketplace</NavLink></li>
           <li><NavLink to = "/about">About Us</NavLink></li>
