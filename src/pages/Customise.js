@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import supabase from "../supabase.js";
 import styles from "../css/CustomMeal.module.css"
 import { Link } from "react-router-dom";
 import homepage from '../images/Homepage.png'
 import { useAuth } from "../components/AuthProvider.js";
+import { CartContext } from "../components/CartContext.js";
 
 
 
@@ -14,6 +15,8 @@ export default function Customise() {
     const [vegetableList, setVegetableList] = useState({});
     const [selected, setSelected] = useState({});
     const [price, setPrice] = useState(0);
+
+    const { addToCart } = useContext(CartContext);
     
 
     const steps = ["BASE", "PROTEIN", "VEGETABLES", "REVIEW"];
@@ -54,6 +57,22 @@ export default function Customise() {
 
 
     }, []);
+
+    const checkout = () => {
+        console.log(vegetableList);
+        let v = Object.entries(vegetableList).filter(([key,value]) => value.added == true );
+        let p = Object.entries(proteinList).filter(([key,value]) => value.added == true );
+        let b = Object.entries(baseList).filter(([key,value]) => value.added == true );
+        let all = ({...Object.fromEntries(b),...Object.fromEntries(p),...Object.fromEntries(v) })
+        const item = {
+            name: "Quick meal",
+            meal_id: 0,
+            ingredients: all,
+            quantity: 1,
+            cost: price,
+        }
+        addToCart(item);
+    }
 
     const additem = ([type,key]) => {
         if (type === "base") {
@@ -200,6 +219,7 @@ export default function Customise() {
                 <p className={styles.total} >Total: ${price}</p>
                 {currentStep == 4 && (
                     <button className={styles.option_button}
+                    onClick={() => checkout()}
                     >Add to cart</button>
                 )}
                 {currentStep !=4 && (

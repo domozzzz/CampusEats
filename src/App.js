@@ -16,6 +16,7 @@ import Customise from "./pages/Customise.js";
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import AuthProvider from "./components/AuthProvider.js";
+import { CartProvider } from "./components/CartContext.js";
 import ProfilePage from "./pages/Profile.js";
 
 
@@ -23,6 +24,7 @@ function App() {
   return (
     <HelmetProvider>
       <AuthProvider>
+      <CartProvider>
     <Router>
       <Header />
       <Routes>
@@ -48,6 +50,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    </CartProvider>
     </AuthProvider>
     </HelmetProvider>
   );
