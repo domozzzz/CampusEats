@@ -15,6 +15,7 @@ import supabase from '../supabase';
 
 const Profile = () => {
     const { user } = useAuth()
+    const { signOut } = useAuth()
 
     const uploadRef = useRef(null)
     const orderRef = useRef(null)
@@ -38,7 +39,7 @@ const Profile = () => {
             .select('*,meals(*)')
             .eq('user_id',user.id)
 
-            if (data) {
+            if (data.length > 0) {  // hello I changed this to check for length becuase users not in sellers table got react error on page
                 let filtered = data[0]['meals']
                 setUploads(filtered)
             }
@@ -75,6 +76,7 @@ const Profile = () => {
                         <p className="email">{userDetails.email}</p>
                     </div>
                     <div className="profile-buttons">
+                        <button className="btn-account" onClick={() => signOut()}>Log Out</button>
                         <button className="btn-account" onClick={() => {executeUploadScroll(orderRef.current)}}>Order History</button>
                         <button className="btn-order-history" onClick={() => {executeUploadScroll(uploadRef.current)}}>Upload History</button>
                     </div>

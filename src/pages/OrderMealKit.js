@@ -123,7 +123,7 @@ export default function OrderSelect() {
     const item = {
         name: meal.meals.name,
         meal_id: meal.meals.id,
-        ingredients: [],
+        ingredients: {},
         quantity: 1,
         cost: meal.meals.price,
         image: meal.meals.photo,

@@ -4,6 +4,9 @@ import { Link, useLocation } from 'react-router-dom'
 import homepage from '../images/Homepage.png'
 import '../css/Checkout.css'
 import { CartContext } from '../components/CartContext';
+import supabase from "../supabase.js";
+import { useAuth } from '../components/AuthProvider';
+import {v4 as uuidv4} from 'uuid';
 
 
 function removeall(item, remove) {
@@ -27,12 +30,48 @@ function checkoutItem(item, add, remove) {
     </div>
     )
 }
+
+
+
 export default function Cart() {
     const { cart } = useContext(CartContext);
     const { clearCart } = useContext(CartContext);
     const { addToCart } = useContext(CartContext);
     const { removeFromCart } = useContext(CartContext);
+    const { user } = useAuth();
     console.log(cart);
+
+    const handleSubmit = async() => {
+        const orderId = uuidv4();
+        const items = cart.map(item => ({
+            order_id: orderId,
+            meal_id: item.meal_id,
+            location: parseInt(item.lid),
+            stage: "none",
+            complete: false,
+            custom_ingredients: item.ingredients,
+            quantity: item.quantity,
+            buyer_id: user.id,
+        }))
+
+        console.log(items);
+        const { data: sessionData, error:sessionError } = await supabase.auth.getSession();
+        if (sessionError || !sessionData.session) {
+            console.error("somthing went wrong with session")
+        }else {
+            console.log(sessionData);
+        }
+        const {data, error } = await supabase
+            .from('orders')
+            .insert(items)
+            .select()
+
+        if (error) {
+            console.error(error);
+        } else {
+            console.log(data);
+        }
+    }
 
     return (
         <div>
@@ -44,7 +83,7 @@ export default function Cart() {
             <div className='checkout'>
                 <h1>Your Cart</h1>
                 {cart.map((item) => checkoutItem(item, addToCart, removeFromCart))}
-                <button className='checkoutSubmit'>Checkout</button>
+                <button className='checkoutSubmit' onClick={() => handleSubmit()}>Checkout</button>
                 <button className='checkoutSubmit' onClick={() => clearCart()}>clear</button>
             </div>
         </div>

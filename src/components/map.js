@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import "../css/Map.css"
 import "../css/App.css"
 import supabase from '../supabase';
+import { useAuth } from './AuthProvider';
+import { Navigate, Outlet } from 'react-router-dom';
 
 const MAP_API_KEY = process.env.REACT_APP_MAP
 
@@ -50,7 +52,9 @@ const MapDisplay = () => {
         setDisplay(displayLocation)
       }
       
-      return (
+      const { user } = useAuth()
+
+      return user ? (
         <div>
           <div class="welcome" alt="Avatar">
               <div class="heading-image">
@@ -84,7 +88,7 @@ const MapDisplay = () => {
           )}
         </div>          
       </div>
-      )
+      ) : <Navigate to='/login'/>
 }
 
 export default MapDisplay;

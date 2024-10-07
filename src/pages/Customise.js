@@ -75,6 +75,7 @@ export default function Customise() {
             quantity: 1,
             image: photo,
             cost: price,
+            lid: LID,
         }
         addToCart(item);
     }
