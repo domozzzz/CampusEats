@@ -1,7 +1,9 @@
 import React from 'react'
+import { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from 'react-router-dom'
 import homepage from '../images/homepage.png'
 import '../css/checkout.css'
+import { CartContext } from "../components/CartContext.js";
 
 function checkoutItem(image, name, cost) {
     return (
@@ -19,8 +21,10 @@ function checkoutItem(image, name, cost) {
     )
 }
 export default function Cart() {
-    const location = useLocation()
-    {console.log(location)}
+    const { cart } = useContext(CartContext);
+    const { clearCart } = useContext(CartContext);
+    console.log(cart);
+
     return (
         <div>
             <div className="welcome" alt="Avatar">
@@ -30,19 +34,9 @@ export default function Cart() {
             </div>
             <div className='checkout'>
                 <h1>Your Cart</h1>
-
-                <div className='checkoutItem'>
-                    <img src='' alt="image"></img>
-                    <p>Test item<br/>$0.00</p>
-                    <div className='increment'>
-                        <button>-</button>
-                        <p>1</p>
-                        <button>+</button> 
-                    </div>
-                    <p>$0.00</p>
-                    <button className='remove'>remove</button>
-                </div>
+                {cart.map((item) => checkoutItem(1, item.name, item.cost))}
                 <button className='checkoutSubmit'>Checkout</button>
+                <button className='checkoutSubmit' onClick={() => clearCart()}>clear</button>
             </div>
         </div>
     )

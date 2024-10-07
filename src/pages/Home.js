@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import homepage from '../images/homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import supabase from "../supabase";
+import { CartContext } from "../components/CartContext.js";
 
 
 function ScrollButton({ id, children, className }) {
