@@ -133,34 +133,34 @@ export default function Upload() {
     
     const ingredientDisplay = (
         <div className="Basic_info">
-                            <h2>Ingredients</h2>
-                            <div className="ingredient_list">
-                                {ingredients.map((item, i) => {
-                                    return (
-                                        <div className="item">
-                                            <ul>{item.name} x {item.quantity} {item.measurement}</ul><button name={`Button-${i}`} onClick={removeIngredient}>-</button>
-                                        </div> 
-                                    )
-                                })}                                                              
-                            </div>
-                            <div className="add_ingredient">
-                                <div className="info">
-                                    <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name" onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}/>
-                                    <label> x </label>
-                                    <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
-                                    <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
-                                        <option value="grams">grams</option>
-                                        <option value="milli-grams">milli-grams</option>
-                                        <option value = "litres">litres</option>
-                                        <option value = "milli-litres">milli-litres</option>
-                                        <option value="tablespoon">tablespoon</option>
-                                        <option value="item">item</option>
-                                    </select>
-                                    <button className="add_ingredient_button" onClick={addIngredient}>+</button>
-                                    <p style={{color:'red'}}>{errorIngredient ? errorIngredient : ''}</p>
-                                </div>
-                            </div>
-                        </div>
+            <h2>Ingredients</h2>
+            <div className="ingredient_list">
+                {ingredients.map((item, i) => {
+                    return (
+                        <div className="item">
+                            <ul>{item.name} x {item.quantity} {item.measurement}</ul><button name={`Button-${i}`} onClick={removeIngredient}>-</button>
+                        </div> 
+                    )
+                })}                                                              
+            </div>
+            <div className="add_ingredient">
+                <div className="info">
+                    <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name" onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}/>
+                    <label> x </label>
+                    <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
+                    <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
+                        <option value="grams">grams</option>
+                        <option value="milli-grams">milli-grams</option>
+                        <option value = "litres">litres</option>
+                        <option value = "milli-litres">milli-litres</option>
+                        <option value="tablespoon">tablespoon</option>
+                        <option value="item">item</option>
+                    </select>
+                    <button className="add_ingredient_button" onClick={addIngredient}>+</button>
+                    <p style={{color:'red'}}>{errorIngredient ? errorIngredient : ''}</p>
+                </div>
+            </div>
+        </div>
     )
     
     const options = [basicDetails, dietary, ingredientDisplay]

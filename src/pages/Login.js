@@ -10,7 +10,6 @@ import { Navigate } from "react-router-dom";
 
 function LoginPage() {
   
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
@@ -44,34 +43,33 @@ function LoginPage() {
 
   return (
     <div>
-    <div className="login-container">
-    <div class="welcome">
-                <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
-            </div>
-      <div className="login-box">
-        <h2>Sign in to your account</h2>
-        <form  onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Username"
-            className="input-field"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="input-field"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-
-          />
-          <button type="submit" className="login-button">Login</button>
-        </form>
-        <p>
-          Don’t have an account? <Link to="/register">Register now.</Link>
-        </p>
-      </div>
+      <div className="login-container">
+        <div class="welcome">
+          <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
+        </div>
+        <div className="login-box">
+          <h2>Sign in to your account</h2>
+          <form  onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Username"
+              className="input-field"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="input-field"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit" className="login-button">Login</button>
+          </form>
+          <p>
+            Don’t have an account? <Link to="/register">Register now.</Link>
+          </p>
+        </div>
       </div>
       <div class="image-placeholder"></div>
     </div>

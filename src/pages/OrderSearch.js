@@ -235,158 +235,157 @@ export default function OrderSearch() {
 
     getResults()
   },[dietary, calories, sugars, protein, orderBy, search])
-    const Pop = () => {
-      return (
-        <div className='pop'>
-          <button className="exit-button" onClick={closePop}>x</button>
-          <h2>{Ingredients.name}</h2>
-          <img src={Ingredients.image} alt="Avatar"></img>
-
-          <table>
-            <tr>
-              <th>Nutritient</th>
-              <th>Amount per Serving</th>
-            </tr>
-            <tr>
-              <td>Calories</td>
-              <td>{Ingredients.nutrition.Calories} grams</td>
-            </tr>
-            <tr>
-              <td>Total Fats</td>
-              <td>{Ingredients.nutrition.total_fats} grams</td>
-            </tr>
-            <tr>
-              <td>Saturated Fats</td>
-              <td>{Ingredients.nutrition.saturated_fats} grams</td>
-            </tr>
-            <tr>
-              <td>Trans fats</td>
-              <td>{Ingredients.nutrition.trans_fats} grams</td>
-            </tr>
-            <tr>
-              <td>Cholestrol</td>
-              <td>{Ingredients.nutrition.Cholestrol} mg</td>
-            </tr>
-            <tr>
-              <td>Sodium</td>
-              <td>{Ingredients.nutrition.Sodium} mg</td>
-            </tr>
-            <tr>
-              <td>Carbs</td>
-              <td>{Ingredients.nutrition.Total_Carbohydrates} grams</td>
-            </tr>
-            <tr>
-              <td>Sugars</td>
-              <td>{Ingredients.nutrition.Sugars} grams</td>
-            </tr>
-            <tr>
-              <td>Protein</td>
-              <td>{Ingredients.nutrition.Protein} grams</td>
-            </tr>
-            <tr>
-              <td>Vitamin A</td>
-              <td>{Ingredients.nutrition.Vitamin_A} %DV</td>
-            </tr>
-            <tr>
-              <td>Vitamin C</td>
-              <td>{Ingredients.nutrition.Vitamin_C} %DV</td>
-            </tr>
-            <tr>
-              <td>Calcium</td>
-              <td>{Ingredients.nutrition.Calcium} %DV</td>
-            </tr>
-            <tr>
-              <td>Iron</td>
-              <td>{Ingredients.nutrition.Iron} %DV</td>
-            </tr>
-          </table>
-
-
-          <div className='pop-info'>
-            <h4>Ingredients</h4>
-              {Ingredients.ingredients.map((ing) => {
-                return ( <p>{ing.name} x {ing.quantity} {ing.measurement}</p>)
-              })}
-          </div>
-
-          <h4>${Ingredients.cost} - 1 serving</h4>
-          <button className='pop-button'>Add to Cart</button>
-          <Link to = '/cart'><button className='pop-button'>Checkout</button></Link>
-        </div>
-      )
-    }
-
+  
+  const Pop = () => {
     return (
-        <div>
-            <div class="welcome" alt="Avatar">
-                <div class="heading-image">
-                <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
-                    <div class="title">
-                      <h1>About Us</h1>
-                    </div>
-                </div>
+      <div className='pop'>
+        <button className="exit-button" onClick={closePop}>x</button>
+        <h2>{Ingredients.name}</h2>
+        <img src={Ingredients.image} alt="Avatar"></img>
+
+        <table>
+          <tr>
+            <th>Nutritient</th>
+            <th>Amount per Serving</th>
+          </tr>
+          <tr>
+            <td>Calories</td>
+            <td>{Ingredients.nutrition.Calories} grams</td>
+          </tr>
+          <tr>
+            <td>Total Fats</td>
+            <td>{Ingredients.nutrition.total_fats} grams</td>
+          </tr>
+          <tr>
+            <td>Saturated Fats</td>
+            <td>{Ingredients.nutrition.saturated_fats} grams</td>
+          </tr>
+          <tr>
+            <td>Trans fats</td>
+            <td>{Ingredients.nutrition.trans_fats} grams</td>
+          </tr>
+          <tr>
+            <td>Cholestrol</td>
+            <td>{Ingredients.nutrition.Cholestrol} mg</td>
+          </tr>
+          <tr>
+            <td>Sodium</td>
+            <td>{Ingredients.nutrition.Sodium} mg</td>
+          </tr>
+          <tr>
+            <td>Carbs</td>
+            <td>{Ingredients.nutrition.Total_Carbohydrates} grams</td>
+          </tr>
+          <tr>
+            <td>Sugars</td>
+            <td>{Ingredients.nutrition.Sugars} grams</td>
+          </tr>
+          <tr>
+            <td>Protein</td>
+            <td>{Ingredients.nutrition.Protein} grams</td>
+          </tr>
+          <tr>
+            <td>Vitamin A</td>
+            <td>{Ingredients.nutrition.Vitamin_A} %DV</td>
+          </tr>
+          <tr>
+            <td>Vitamin C</td>
+            <td>{Ingredients.nutrition.Vitamin_C} %DV</td>
+          </tr>
+          <tr>
+            <td>Calcium</td>
+            <td>{Ingredients.nutrition.Calcium} %DV</td>
+          </tr>
+          <tr>
+            <td>Iron</td>
+            <td>{Ingredients.nutrition.Iron} %DV</td>
+          </tr>
+        </table>
+
+
+        <div className='pop-info'>
+          <h4>Ingredients</h4>
+            {Ingredients.ingredients.map((ing) => {
+              return ( <p>{ing.name} x {ing.quantity} {ing.measurement}</p>)
+            })}
+        </div>
+
+        <h4>${Ingredients.cost} - 1 serving</h4>
+        <button className='pop-button'>Add to Cart</button>
+        <Link to = '/cart'><button className='pop-button'>Checkout</button></Link>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <div class="welcome" alt="Avatar">
+          <div class="heading-image">
+          <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
+            <div class="title">
+              <h1>About Us</h1>
             </div>
-            <div class="order">
-              <h1>Search Meal Kits</h1>
-            <div>
-                <h2>Step 2: Select your Mealkit</h2>
-                <div className='search-box'>
-                  <input type="search" onChange={get_search} placeholder="Search for key word"/>
-                </div>
-                <div className='community-box'>
-                  <div className='sub-box'>
-                    <h1>Dietry</h1>
-                    <ul>
-                      <li><input type="checkbox" name='gf' onChange={set_dietary_option}></input>Gluten-Free</li>
-                      <li><input type="checkbox" name='vegan' onChange={set_dietary_option}></input>Vegan</li>
-                      <li><input type="checkbox" name='vegetarian' onChange={set_dietary_option}></input>Vegetarian</li>
-                    </ul>
-
-                  </div>
-                  <div className='sub-box'>
-                    <h1>Nutritients</h1>
-                    <ul>
-                      <li className='spaced'><input type="text2" onChange={set_min_calorie} /><span>≤ Calories ≤</span><input type="text2" onChange={set_max_calorie} /></li>
-                      <li className='spaced'><input type="text2" onChange={set_min_protein}/><span>≤ Protein ≤</span><input type="text2" onChange={set_max_protein} /></li>
-                      <li className='spaced'><input type="text2" onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="text2" onChange={set_max_sugars}/></li>
-                    </ul>
-                  </div>
-                  <div className='sub-box'>
-                    <h1>Location</h1>
-                    <ul>
-                    <li><input type="checkbox"></input>Any</li>
-                    <li><input type="checkbox"></input>Custom<input type="text3" /></li>
-                    </ul>
-                  </div>
-                  <div className='s ub-box'>
-                    <h1>Filter</h1>
-                    <Dropdown></Dropdown>
-                  </div>
-
-                </div>
-              </div>
-              <div>
+          </div>
+        </div>
+        <div class="order">
+          <h1>Search Meal Kits</h1>
+        <div>
+          <h2>Step 2: Select your Mealkit</h2>
+          <div className='search-box'>
+            <input type="search" onChange={get_search} placeholder="Search for key word"/>
+          </div>
+          <div className='community-box'>
+            <div className='sub-box'>
+              <h1>Dietry</h1>
+              <ul>
+                <li><input type="checkbox" name='gf' onChange={set_dietary_option}></input>Gluten-Free</li>
+                <li><input type="checkbox" name='vegan' onChange={set_dietary_option}></input>Vegan</li>
+                <li><input type="checkbox" name='vegetarian' onChange={set_dietary_option}></input>Vegetarian</li>
+              </ul>
+            </div>
+            <div className='sub-box'>
+              <h1>Nutritients</h1>
+              <ul>
+                <li className='spaced'><input type="text2" onChange={set_min_calorie} /><span>≤ Calories ≤</span><input type="text2" onChange={set_max_calorie} /></li>
+                <li className='spaced'><input type="text2" onChange={set_min_protein}/><span>≤ Protein ≤</span><input type="text2" onChange={set_max_protein} /></li>
+                <li className='spaced'><input type="text2" onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="text2" onChange={set_max_sugars}/></li>
+              </ul>
+            </div>
+            <div className='sub-box'>
+              <h1>Location</h1>
+              <ul>
+                <li><input type="checkbox"></input>Any</li>
+                <li><input type="checkbox"></input>Custom<input type="text3" /></li>
+              </ul>
+            </div>
+            <div className='s ub-box'>
+              <h1>Filter</h1>
+              <Dropdown></Dropdown>
+            </div>
+          </div>
+        </div>
+        <div>
         </div>
         <div className='popup-display'>
-        {seen ? <Pop/> : null}
+          {seen ? <Pop/> : null}
         </div>
         <div className={`cards ${seen ? 'transparent' : ''}`}>
           {results.map((meal) => {
             return (
-                <div class="card" name="hello">
-                  <img src={meal.photo} alt="Avatar"></img>
-                  <p>{meal.name}<br />
-                    Creator: Joseph<br />
-                    ♡ {meal.likes}<br />
-                    Location: QUT
-                  </p>  
-                  <button name = {meal.id} onClick={openPop}>View Ingredients</button>
-                  <p style={{color: 'red'}}>{error ? error : ''}</p>
-                  </div>
+              <div class="card" name="hello">
+                <img src={meal.photo} alt="Avatar"></img>
+                <p>{meal.name}<br />
+                  Creator: Joseph<br />
+                  ♡ {meal.likes}<br />
+                  Location: QUT
+                </p>  
+                <button name = {meal.id} onClick={openPop}>View Ingredients</button>
+                <p style={{color: 'red'}}>{error ? error : ''}</p>
+              </div>
             )
           })}            
-          </div>
-            </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }

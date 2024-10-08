@@ -74,39 +74,7 @@ export default function Home() {
         }
         return slides
     }   
-    // const slides = [
-    //     <div class="cards">
-    //       <Link to="/meals">
-    //         <div class="card">
-    //           <img src={burrito} alt="Avatar"></img>
-    //               <p>Braised Brisket Burrito</p>
-    //         </div>
-    //       </Link>
-    //       <Link to="/meals"><div class="card">
-    //           <img src={chickenRice} alt="Avatar"></img>
-    //               <p>Hainanese Chicken Rice</p>
-    //       </div></Link>
-    //       <Link to="/meals"><div class="card">
-    //           <img src={kebab} alt="Avatar"></img>
-    //               <p>Adana Kebab</p>
-    //       </div></Link>
-    //   </div>,
-    //     <div class="cards">
-    //     <Link to="/meals"><div class="card">
-    //         <img src={burrito} alt="Avatar"></img>
-    //             <p>Braised Brisket Burrito</p>
-    //     </div></Link>
-    //     <Link to="/meals"><div class="card">
-    //         <img src={chickenRice} alt="Avatar"></img>
-    //             <p>Hainanese Chicken Rice</p>
-    //     </div></Link>
-    //     <Link to="/meals"><div class="card">
-    //         <img src={kebab} alt="Avatar"></img>
-    //             <p>Adana Kebab</p>
-    //     </div></Link>
-    // </div>,
-    //   ];
-    //console.log(slides)
+
     return (
         <div>
             <div class="aboveTheFold">
@@ -136,7 +104,7 @@ export default function Home() {
                 </div>
 
                 <div class="explore">
-                    <Link to="/meals" className="explore-button">Explore more meal plans <span>&#8594;</span></Link>
+                    <Link to="/community" className="explore-button">Explore more meal plans <span>&#8594;</span></Link>
                 </div>
             </section>
         </div>
