@@ -1,10 +1,8 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import homepage from '../images/Homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
-import { useState, useEffect } from "react";
 import supabase from "../supabase";
 
 
@@ -48,7 +46,6 @@ export default function Home() {
                     setData(d)
                     setLoading(false)
                 }     
-
         }
         fetchMeals()
     },[])
@@ -134,8 +131,8 @@ export default function Home() {
                 <h3>Meal Plan</h3>
                 <p>See below for our more popular dishes. Ready to be delivered to your desired university location.</p>
 
-                    <div>
-                        {!loading && !error ? <Slideshow slides={generate_slides()}/> : <p>Not yet loaded</p>}
+                <div>
+                    {!loading && !error ? <Slideshow slides={generate_slides()}/> : <p>Not yet loaded</p>}
                 </div>
 
                 <div class="explore">
