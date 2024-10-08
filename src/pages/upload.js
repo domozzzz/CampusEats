@@ -8,7 +8,7 @@ import { useAuth } from '../components/AuthProvider';
 import supabase from "../supabase";
 import { Navigate } from "react-router-dom";
 
-
+//Empty ingredients object for user when inputting ingredients
 const baseIngreident = {
     name: null,
     quantity: 1,
