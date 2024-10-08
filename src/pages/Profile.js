@@ -17,6 +17,7 @@ const Profile = () => {
     const { user } = useAuth()
     const { signOut } = useAuth()
 
+
     const uploadRef = useRef(null)
     const orderRef = useRef(null)
     const executeUploadScroll = (ref) => {
@@ -34,26 +35,28 @@ const Profile = () => {
 
     useEffect(() => {
         const getUploads = async () => {
-            const {data, error} = await supabase
-            .from('sellers')
-            .select('*,meals(*)')
-            .eq('user_id',user.id)
+            if (user) {
+                const {data, error} = await supabase
+                .from('sellers')
+                .select('*,meals(*)')
+                .eq('user_id',user.id)
 
-            if (data.length > 0) {  // hello I changed this to check for length becuase users not in sellers table got react error on page
-                let filtered = data[0]['meals']
-                setUploads(filtered)
-            }
+                if (data.length > 0) {  // hello I changed this to check for length becuase users not in sellers table got react error on page
+                    let filtered = data[0]['meals']
+                    setUploads(filtered)
+                }
 
-            if (error) {
-                console.log(error)
-            }
+                if (error) {
+                    console.log(error)
+                }
+            }    
         }
 
         getUploads()
     },[])
     const [userDetails] = useState({
-        name: `${user['user_metadata']['first_name']} ${user['user_metadata']['last_name'][0]}`,
-        email: user.email,
+        name: user ? `${user['user_metadata']['first_name']} ${user['user_metadata']['last_name'][0]}` : null,
+        email: user ? user.email : null,
         address: 'UQ St Lucia',
         orders: [
             { id: 1, name: 'Pesto Chicken & Pasta', date: 'July 15, 2024', image: PestoChicken },
@@ -138,7 +141,7 @@ const Profile = () => {
                 </div>
             </div>
         </div>
-    ) : <Navigate to="login"/>;
+    ) : <Navigate to="/login"/>;
 };
 
 export default Profile;

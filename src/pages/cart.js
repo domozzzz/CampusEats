@@ -3,9 +3,9 @@ import { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from 'react-router-dom'
 import homepage from '../images/Homepage.png'
 import '../css/Checkout.css'
-import { CartContext } from '../components/CartContext';
+import { CartContext } from '../components/CartContext.js';
 import supabase from "../supabase.js";
-import { useAuth } from '../components/AuthProvider';
+import { useAuth } from '../components/AuthProvider.js';
 import {v4 as uuidv4} from 'uuid';
 
 
