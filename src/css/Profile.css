@@ -178,3 +178,20 @@
 .pagination a:hover {
     background-color: #004d33;
 }
+
+.heart-button {
+    font-size: 3rem;
+    color: black;
+    padding: 6px;
+    background-color: transparent;
+    width:4vw;
+    border: none;
+}
+
+.heart-button:hover {
+   color:palevioletred; 
+}
+
+.activeProfile {
+    color: palevioletred;
+}

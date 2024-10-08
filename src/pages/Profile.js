@@ -12,8 +12,12 @@ import '../css/Profile.css';
 import { useAuth } from '../components/AuthProvider';
 import { Navigate } from 'react-router-dom';
 import supabase from '../supabase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const Profile = () => {
+    const currentDate = new Date();
+    const lastWeekDate = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
     const { user } = useAuth()
     const { signOut } = useAuth()
 
@@ -28,9 +32,16 @@ const Profile = () => {
           });
     }
 
-    const [orders, setOrderds] = useState([])
 
     const [uploads, setUploads] = useState([])
+    const [liked, setLiked] = useState([])
+
+    const [userDetails, setUserDetails] = useState({
+        name: user ? `${user['user_metadata']['first_name']} ${user['user_metadata']['last_name'][0]}` : null,
+        email: user ? user.email : null,
+        address: 'UQ St Lucia',
+        orders: []
+    })
 
 
     useEffect(() => {
@@ -52,19 +63,64 @@ const Profile = () => {
             }    
         }
 
-        getUploads()
-    },[])
-    const [userDetails] = useState({
-        name: user ? `${user['user_metadata']['first_name']} ${user['user_metadata']['last_name'][0]}` : null,
-        email: user ? user.email : null,
-        address: 'UQ St Lucia',
-        orders: [
-            { id: 1, name: 'Pesto Chicken & Pasta', date: 'July 15, 2024', image: PestoChicken },
-            { id: 2, name: 'Mango Tango Smoothie', date: 'July 15, 2024', image: MangoSmoothie },
-            { id: 3, name: 'Sausage & Egg Breakfast Sandwich', date: 'July 14, 2024', image: SausageSandwich },
-        ],
-    });
+        const getOrders = async () => {
+            if (user) {
+                const {data, error} = await supabase
+                .from('orders')
+                .select('*,meals(*)')
+                .eq('buyer_id',user.id)
+                .gte("created_at",lastWeekDate.toISOString())
+                .order('created_at', {ascending: false})
 
+                if (error) {
+                    console.log(error)
+                }
+
+                if (data) {
+                    
+                    let likes = new Array(data.length).fill(false)
+                    setLiked(likes)
+                    setUserDetails({...userDetails, 
+                        orders: data
+                    })
+
+                }
+            }
+        }
+        getOrders()
+        getUploads()
+
+    },[])
+
+    const likeOrder = async (e) => {
+        if (liked[e.target.name] != true) {
+            let meal = userDetails.orders[e.target.name]
+            const {data, error} = await supabase
+            .from('meals')
+            .update({'likes': meal.meals['likes'] + 1})
+            .eq('id', meal.meals['id'])
+            .select()
+
+            if (error) {
+                console.log(error)
+            }
+
+        }    
+        let likes = liked.map( (l, i) => {
+            if (i == e.target.name) {
+                return true
+            } else {
+                return l
+            }   
+        })
+        setLiked(likes)
+    }
+
+    const dateFormat = (date) => {
+        return date.slice(0,10)
+    }
+
+ 
     return user ? (
         <div>
             <div class="welcome" alt="Avatar">
@@ -108,13 +164,14 @@ const Profile = () => {
 
                 <div className="order-history" ref={orderRef}>
                     <h2>Order History</h2>
-                    {userDetails.orders.map((order) => (
+                    {userDetails.orders.map((order, i) => (
                         <div key={order.id} className="order-item">
                             <div className="order-text">
-                                <h3>{order.name}</h3>
-                                <p>{order.date}</p>
+                                <h3>{order.meals.name}</h3>
+                                <p>{dateFormat(order.created_at)}</p>
                             </div>
-                            <img src={order.image} alt={order.name} />
+                            <button name={i} onClick={likeOrder} className={liked[i] ? 'heart-button activeProfile' : 'heart-button'}>♥</button>
+                            <img src={order.meals.photo} alt={order.meals.name} />
                         </div>
                     ))}
                 </div>
@@ -134,11 +191,11 @@ const Profile = () => {
                     ))}
                 </div>
 
-                <div className="pagination">
+                {/* <div className="pagination">
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
-                </div>
+                </div> */}
             </div>
         </div>
     ) : <Navigate to="/login"/>;
