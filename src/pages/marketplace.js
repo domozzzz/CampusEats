@@ -119,19 +119,20 @@ export default function Marketplace() {
   };
 
   async function openPop(event) {
-    const meal = results.find(meal => meal.id == event.target.name)
+    const meal = results.find(meal => meal.meals.id == event.target.name)
+    console.log(meal)
     const {data, error} = await supabase
     .from('nutrition')
     .select('*')
-    .eq('meal_id',meal.id)
+    .eq('meal_id',meal.meals.id)
 
     if (data) {
       setIngredients({
-        name: meal.name,
-        image: meal.photo,
-        ingredients: meal.ingredients,
+        name: meal.meals.name,
+        image: meal.meals.photo,
+        ingredients: meal.meals.ingredients,
         nutrition: data[0],
-        cost: meal.price
+        cost: meal.meals.price
       })
       setError(null)
       setSeen(true);
@@ -198,47 +199,54 @@ export default function Marketplace() {
     }
     const getResults = async () => {
       const {data, error} = await supabase
-      .from('meals')
-      .select('*,nutrition(*), sellers(*)')
-      .neq('id',0)
-      .lte('nutrition.Sugars',sugars.high)
-      .lte('nutrition.Calories',calories.high)  
-      .lte('nutrition.Protein',protein.high)
-      .gte('nutrition.Sugars',sugars.low)
-      .gte('nutrition.Calories',calories.low)  
-      .gte('nutrition.Protein',protein.low)
-      .order(`${orderBy}`,{ascending: false})          
+      .from('mealLocations')
+      .select('*,meals(*,nutrition(*)),Locations(*)')  
+      .neq('meals.id',0)
+      .lte('meals.nutrition.Sugars',sugars.high)
+      .lte('meals.nutrition.Calories',calories.high)  
+      .lte('meals.nutrition.Protein',protein.high)
+      .gte('meals.nutrition.Sugars',sugars.low)
+      .gte('meals.nutrition.Calories',calories.low)  
+      .gte('meals.nutrition.Protein',protein.low)     
       if (data) {
+        console.log(data)
         const result = data.filter((mealkit) => {
-          const vegan = () => {
-            if (dietary.vegan == true) {
-              return mealkit.vegan == true
+            const vegan = () => {
+              if (dietary.vegan == true) {
+                return mealkit.meals.vegan == true
+              }
+              return true
             }
-            return true
-          }
+  
+            const gf = () => {
+              if (dietary.gf == true) {
+                return mealkit.meals.gf == true
+              }
+              return true
+            }
+  
+            const vegetarian = () => {
+              if (dietary.vegetarian == true) {
+                return mealkit.meals.vegetarian == true
+              }
+              return true
+            }
+  
+            const searchMatch = () => {
+              if (search != null) {
+                return mealkit.meals.name.toLowerCase().includes(search.toLowerCase())
+              }
+              return true
+            }
 
-          const gf = () => {
-            if (dietary.gf == true) {
-              return mealkit.gf == true
+            const locationMatch = () => {
+              if (location.length > 0) {
+                return mealkit.Locations.name.toLowerCase().includes(location.toLowerCase())
+              }
+              return true
             }
-            return true
-          }
-
-          const vegetarian = () => {
-            if (dietary.vegetarian == true) {
-              return mealkit.vegetarian == true
-            }
-            return true
-          }
-
-          const searchMatch = () => {
-            if (search != null) {
-              return mealkit.name.toLowerCase().includes(search.toLowerCase())
-            }
-            return true
-          }
-          return mealkit.nutrition !=null && vegan() && gf() && vegetarian() && searchMatch()
-        })
+            return mealkit.meals.nutrition !=null && vegan() && gf() && vegetarian() && searchMatch() && locationMatch()
+          })
          setResults(result)
       }
   
@@ -370,8 +378,7 @@ export default function Marketplace() {
                   <div className='sub-box'>
                     <h1>Location</h1>
                     <ul>
-                    <li><input type="checkbox"></input>Any</li>
-                    <li>Custom<input type="text3" onChange={customLocation} /></li>
+                    <li><input type="text3" placeholder='search location' onChange={customLocation} style={{'width': '100%'}}/></li>
                     </ul>
                   </div>
                   <div className='s ub-box'>
@@ -387,16 +394,22 @@ export default function Marketplace() {
         {seen ? <Pop/> : null}
         </div>
         <div className={`cards ${seen ? 'transparent' : ''}`}>
-          {results.map((meal) => {
+          {results.sort((a,b) => {
+             if (orderBy === 'price') {
+              return a.meals['price'] - b.meals['price']
+              } else {
+                return b.meals[orderBy] - a.meals[orderBy]
+              }
+          }).map((meal) => {
             return (
                 <div class="card" name="hello">
-                  <img src={meal.photo} alt="Avatar"></img>
-                  <p>{meal.name}<br />
+                  <img src={meal.meals.photo} alt="Avatar"></img>
+                  <p>{meal.meals.name}<br />
                     Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
-                    ♡ {meal.likes}<br />
-                    Location: QUT
+                    ♡ {meal.meals.likes}<br />
+                    Location: {meal.Locations.name}
                   </p>  
-                  <button name = {meal.id} onClick={openPop}>View Ingredients</button>
+                  <button name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
                   <p style={{color: 'red'}}>{error ? error : ''}</p>
                   </div>
             )

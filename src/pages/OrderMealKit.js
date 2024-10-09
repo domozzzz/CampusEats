@@ -128,6 +128,7 @@ export default function OrderSelect() {
         cost: meal.meals.price,
         image: meal.meals.photo,
         lid: LID,
+        number_of_orders: meal.meals.number_of_orders
     }
     console.log(item);
     addToCart(item);
@@ -383,7 +384,13 @@ export default function OrderSelect() {
         {seen ? <Pop/> : null}
         </div>
         <div className={`cards ${seen ? 'transparent' : ''}`}>
-          {results.map((meal) => {
+          {results.sort((a,b) => {
+            if (orderBy === 'price') {
+            return a.meals['price'] - b.meals['price']
+            } else {
+              return b.meals[orderBy] - a.meals[orderBy]
+            }
+          }).map((meal) => {
             return (
                 <div class="card" name="hello">
                   <img src={meal.meals.photo} alt="Avatar"></img>
