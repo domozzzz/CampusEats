@@ -50,6 +50,12 @@ export default function Marketplace() {
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const [location, setLocation] = useState('')
+
+  const customLocation = (e) => {
+    setLocation(e.target.value)
+  }
+
   const Dropdown = () => {
   
     const toggleDropdown = () => {
@@ -182,6 +188,14 @@ export default function Marketplace() {
   }
   
   useEffect(() => {
+
+    if (location.length == 0) {
+      console.log("empty")
+    } 
+    
+    else {
+      console.log(location)
+    }
     const getResults = async () => {
       const {data, error} = await supabase
       .from('meals')
@@ -234,7 +248,7 @@ export default function Marketplace() {
     }
 
     getResults()
-  },[dietary, calories, sugars, protein, orderBy, search])
+  },[dietary, calories, sugars, protein, orderBy, search, location])
     const Pop = () => {
       return (
         <div className='pop'>
@@ -357,7 +371,7 @@ export default function Marketplace() {
                     <h1>Location</h1>
                     <ul>
                     <li><input type="checkbox"></input>Any</li>
-                    <li><input type="checkbox"></input>Custom<input type="text3" /></li>
+                    <li>Custom<input type="text3" onChange={customLocation} /></li>
                     </ul>
                   </div>
                   <div className='s ub-box'>

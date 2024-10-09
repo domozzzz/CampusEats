@@ -187,6 +187,7 @@ const Profile = () => {
 
                 <div className="order-history" ref={orderRef}>
                     <h2>Order History</h2>
+                    {/* Map each order as an entry */}
                     {userDetails.orders.map((order, i) => (
                         <div key={order.id} className="order-item">
                             <div className="order-text">
@@ -201,6 +202,7 @@ const Profile = () => {
 
                 <div className="order-history" ref={uploadRef}>
                     <h2>Uploaded MealKits</h2>
+                    {/* Map each upload as an entry */}
                     {uploads.map((upload) => (
                         <div key={upload.id} className="order-item">
                             <div className="order-text">
@@ -213,12 +215,6 @@ const Profile = () => {
                         </div>
                     ))}
                 </div>
-
-                {/* <div className="pagination">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                </div> */}
             </div>
         </div>
     ) : <Navigate to="/login"/>;
