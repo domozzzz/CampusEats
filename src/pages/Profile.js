@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import homepage from '../images/Homepage.png';
 import EmailIcon from '../images/EmailIcon.png';
 import PasswordIcon from '../images/PasswordIcon.png';
-import '../css/Profile.css';
+import styles from '../css/Profile.module.css';
 import { useAuth } from '../components/AuthProvider';
 import { Navigate } from 'react-router-dom';
 import supabase from '../supabase';
@@ -151,33 +151,33 @@ const Profile = () => {
                     <img src={homepage} alt="Avatar" style={{ zIndex: "0", width: "100%", height: "100vh", position: "relative" }}></img>
                 </div>
             </div>
-            <div className="profile">
-                <div className="profile-header">
-                    <div className="name-email-container">
+            <div className={styles.profile}>
+                <div className={styles['profileHeader']}>
+                    <div className={styles["nameEmailContainer"]}>
                         <h2>{userDetails.name}</h2>
-                        <p className="email">{userDetails.email}</p>
+                        <p className={styles["email"]}>{userDetails.email}</p>
                     </div>
-                    <div className="profile-buttons">
-                        <button className="btn-account" onClick={() => signOut()}>Log Out</button>
-                        <button className="btn-account" onClick={() => {executeUploadScroll(orderRef.current)}}>Order History</button>
-                        <button className="btn-order-history" onClick={() => {executeUploadScroll(uploadRef.current)}}>Upload History</button>
+                    <div className={styles["profileButtons"]}>
+                        <button className={styles["btnAccount"]} onClick={() => signOut()}>Log Out</button>
+                        <button className={styles["btnAccount"]} onClick={() => {executeUploadScroll(orderRef.current)}}>Order History</button>
+                        <button className={styles["btnUploadHistory"]} onClick={() => {executeUploadScroll(uploadRef.current)}}>Upload History</button>
                     </div>
                 </div>
 
-                <div className="details">
+                <div className={styles["details"]}>
                     <h2>Details</h2>
-                    <div className="detail-item">
-                        <div className="detail-field">
-                            <img src={EmailIcon} alt="Email Icon" className="icon" />
-                            <div className="label-info">
+                    <div className={styles["detailItem"]}>
+                        <div className={styles["detailField"]}>
+                            <img src={EmailIcon} alt="Email Icon" className={styles["icon"]} />
+                            <div className={styles["labelInfo"]}>
                                 <label>Email Address</label>
                                 <p>{userDetails.email}</p>
                             </div>
                         </div>
 
-                        <div className="detail-field">
-                            <img src={PasswordIcon} alt="Password Icon" className="icon" />
-                            <div className="label-info">
+                        <div className={styles["detailField"]}>
+                            <img src={PasswordIcon} alt="Password Icon" className={styles["icon"]} />
+                            <div className={styles["labelInfo"]}>
                                 <label>Password</label>
                                 <p>********</p>
                             </div>
@@ -185,27 +185,27 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className="order-history" ref={orderRef}>
+                <div className={styles["orderHistory"]} ref={orderRef}>
                     <h2>Order History</h2>
                     {/* Map each order as an entry */}
                     {userDetails.orders.map((order, i) => (
-                        <div key={order.id} className="order-item">
-                            <div className="order-text">
+                        <div key={order.id} className={styles["orderItem"]}>
+                            <div className={styles["orderText"]}>
                                 <h3>{order.meals.name}</h3>
                                 <p>{dateFormat(order.created_at)}</p>
                             </div>
-                            <button name={i} onClick={likeOrder} className={liked[i] ? 'heart-button activeProfile' : 'heart-button'}>♥</button>
+                            <button name={i} onClick={likeOrder} className={liked[i] ? `${styles['heartButton']} ${styles['activeProfile']}`  : styles['heartButton']}>♥</button>
                             <img src={order.meals.photo} alt={order.meals.name} />
                         </div>
                     ))}
                 </div>
 
-                <div className="order-history" ref={uploadRef}>
+                <div className={styles["orderHistory"]} ref={uploadRef}>
                     <h2>Uploaded MealKits</h2>
                     {/* Map each upload as an entry */}
                     {uploads.map((upload) => (
-                        <div key={upload.id} className="order-item">
-                            <div className="order-text">
+                        <div key={upload.id} className={styles["orderItem"]}>
+                            <div className={styles["orderText"]}>
                                 <h3>{upload.name}</h3>
                                 <p>Number of Orders: {upload.number_of_orders}</p>
                                 <p>You have made: ${0.50 * upload.number_of_orders}</p>

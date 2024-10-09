@@ -12,7 +12,7 @@
     width: 100%;
 }
   
-.profile-header {
+.profileHeader {
     display: flex;
     justify-content: space-between; 
     align-items: center; 
@@ -23,30 +23,30 @@
     margin: 20px auto;
 }
 
-.profile-header .email {
+.profileHeader .email {
     color: grey;
     margin-top: 5px;
     text-align: left;
 }
 
-.name-email-container h2 {
+.nameEmailContainer h2 {
     padding-top: 50px;
     text-align: left;
     margin: 0;
 }
 
-.profile-header .name-email-container {
+.profileHeader .nameEmailContainer {
     display: flex;
     flex-direction: column;
     text-align: left;
 }
 
-.profile-buttons {
+.profileButtons {
     display: flex;
     margin-left: auto;
 }
 
-.profile-buttons button {
+.profileButtons button {
     padding: 10px 20px;
     border: none;
     background-color: #628C63;
@@ -56,7 +56,7 @@
     margin-left: 10px;
 }
 
-.profile-buttons .btn-order-history {
+.profileButtons .btnUploadHistory {
     background-color: #064D42;
 }
 
@@ -71,7 +71,7 @@
     text-align: left;
 }
 
-.detail-item {
+.detailItem {
     border-radius: 10px;
     max-width: 100%;
     background-color: #F7FAFA;
@@ -80,25 +80,25 @@
     align-items: center;
 }
 
-.detail-field {
+.detailField {
     padding: 15px;
     display: flex;
     align-items: center;
 }
   
-.label-info {
+.labelInfo {
     display: flex;
     flex-direction: column;
 }
   
-.detail-field label {
+.detailField label {
     font-weight: bold;
     margin-bottom: 5px;
     color: #333;
     text-align: left;
 }
   
-.detail-field p {
+.detailField p {
     margin: 0;
     color: #555;
     font-size: 16px;
@@ -112,7 +112,7 @@
     margin-left: 10px;
 }
 
-.order-history {
+.orderHistory {
     background-color: #fff;
     padding: 20px;
     width: 80%;
@@ -124,14 +124,14 @@
     align-items: center;
 }
 
-.order-history h2 {
+.orderHistory h2 {
     font-size: 24px;
     margin-bottom: 20px;
     text-align: left;
     width: 100%;
 }
 
-.order-item {
+.orderItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -140,7 +140,7 @@
     width: 100%;
 }
 
-.order-item img {
+.orderItem img {
     width: 180px;
     height: auto;
     border-radius: 5px;
@@ -148,14 +148,14 @@
     object-fit: cover;
 }
 
-.order-text h3 {
+.orderText h3 {
     margin: 0;
     padding: 0;
     text-align: left;
     font-size: 18px;
 }
 
-.order-text p {
+.orderText p {
     font-size: 14px;
     text-align: left;
     color: #888;
@@ -179,7 +179,7 @@
     background-color: #004d33;
 }
 
-.heart-button {
+.heartButton {
     font-size: 3rem;
     color: black;
     padding: 6px;
@@ -188,7 +188,7 @@
     border: none;
 }
 
-.heart-button:hover {
+.heartButton:hover {
    color:palevioletred; 
 }
 
