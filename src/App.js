@@ -18,6 +18,7 @@ import Footer from './components/Footer.js';
 import AuthProvider from "./components/AuthProvider.js";
 import { CartProvider } from "./components/CartContext.js";
 import ProfilePage from "./pages/Profile.js";
+import Postcheckout from "./pages/Postcheck.js";
 
 
 function App() {
@@ -37,13 +38,15 @@ function App() {
           <Route path='/orderSearchMap' element={<MapDisplay/>}/>
           <Route path="/orderSearchMealKit/:LID" element={<OrderMealKit/>}/>
           <Route path="/customMealKit/:LID" element={<Customise/>}/>
-          <Route path="customiseV2" element={<CustomiseV2/>}/>
+          <Route path="/customiseV2" element={<CustomiseV2/>}/>
 
           <Route path="/upload" element = {<Upload/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/profile" element={<ProfilePage/>}/>
 
           <Route path="/marketplace" element={<Marketplace/>}/>
+
+          <Route path="/payment" element={<Postcheckout/>}/>
 
           
 
