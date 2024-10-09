@@ -143,6 +143,9 @@ const Profile = () => {
         return date.slice(0,10)
     }
 
+    //Displaying only 4 recent orders at a time
+    const [orderIndex, setOrderIndex] = useState(0)
+
  
     return user ? (
         <div>
@@ -198,6 +201,8 @@ const Profile = () => {
                             <img src={order.meals.photo} alt={order.meals.name} />
                         </div>
                     ))}
+                    <div>
+                    </div>
                 </div>
 
                 <div className={styles["orderHistory"]} ref={uploadRef}>

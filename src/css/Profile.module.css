@@ -142,7 +142,7 @@
 
 .orderItem img {
     width: 180px;
-    height: auto;
+    height: 180px;
     border-radius: 5px;
     margin-left: 15px;
     object-fit: cover;

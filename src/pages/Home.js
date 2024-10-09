@@ -80,39 +80,7 @@ export default function Home() {
         }
         return slides
     }   
-    // const slides = [
-    //     <div class="cards">
-    //       <Link to="/meals">
-    //         <div class="card">
-    //           <img src={burrito} alt="Avatar"></img>
-    //               <p>Braised Brisket Burrito</p>
-    //         </div>
-    //       </Link>
-    //       <Link to="/meals"><div class="card">
-    //           <img src={chickenRice} alt="Avatar"></img>
-    //               <p>Hainanese Chicken Rice</p>
-    //       </div></Link>
-    //       <Link to="/meals"><div class="card">
-    //           <img src={kebab} alt="Avatar"></img>
-    //               <p>Adana Kebab</p>
-    //       </div></Link>
-    //   </div>,
-    //     <div class="cards">
-    //     <Link to="/meals"><div class="card">
-    //         <img src={burrito} alt="Avatar"></img>
-    //             <p>Braised Brisket Burrito</p>
-    //     </div></Link>
-    //     <Link to="/meals"><div class="card">
-    //         <img src={chickenRice} alt="Avatar"></img>
-    //             <p>Hainanese Chicken Rice</p>
-    //     </div></Link>
-    //     <Link to="/meals"><div class="card">
-    //         <img src={kebab} alt="Avatar"></img>
-    //             <p>Adana Kebab</p>
-    //     </div></Link>
-    // </div>,
-    //   ];
-    //console.log(slides)
+ 
     return (
         <div>
             <div class="aboveTheFold">
