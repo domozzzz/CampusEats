@@ -378,8 +378,7 @@ export default function Marketplace() {
                   <div className='sub-box'>
                     <h1>Location</h1>
                     <ul>
-                    <li><input type="checkbox"></input>Any</li>
-                    <li>Custom<input type="text3" onChange={customLocation} /></li>
+                    <li><input type="text3" placeholder='search location' onChange={customLocation} style={{'width': '100%'}}/></li>
                     </ul>
                   </div>
                   <div className='s ub-box'>

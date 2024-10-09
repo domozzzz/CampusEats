@@ -39,7 +39,6 @@ export default function Cart() {
     const { addToCart } = useContext(CartContext);
     const { removeFromCart } = useContext(CartContext);
     const { user } = useAuth();
-    console.log(cart);
 
     const handleSubmit = async() => {
         const orderId = uuidv4();
@@ -54,7 +53,6 @@ export default function Cart() {
             buyer_id: user.id,
         }))
 
-        console.log(items);
         const { data: sessionData, error:sessionError } = await supabase.auth.getSession();
         if (sessionError || !sessionData.session) {
             console.error("somthing went wrong with session")
@@ -72,17 +70,21 @@ export default function Cart() {
             console.log(data);
         }
 
-        const incrementOrders = async (meal) => {
+        const incrementOrders = async (meal_id, order_numbers) => {
             const {error} = await supabase
             .from('meals')
-            .update({'number_of_orders': meal['number_of_orders'] + 1})
-            .eq('id', meal['id'])
+            .update({'number_of_orders': order_numbers + 1})
+            .eq('id', meal_id)
+            .neq('id',0)
 
             if (error) {
-                console.log(`error updating order count of meal ${meal['id']}`)
+                console.log(`error updating order count of meal ${meal_id}`)
             }
         }
         
+        cart.map((item) => {
+            incrementOrders(item.meal_id, item.number_of_orders)
+        })
     }
 
     return (

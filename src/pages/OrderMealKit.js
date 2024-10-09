@@ -128,6 +128,7 @@ export default function OrderSelect() {
         cost: meal.meals.price,
         image: meal.meals.photo,
         lid: LID,
+        number_of_orders: meal.meals.number_of_orders
     }
     console.log(item);
     addToCart(item);
