@@ -7,6 +7,7 @@ import UploadPopup from "../components/UploadPopUp";
 import { useAuth } from '../components/AuthProvider';
 import supabase from "../supabase";
 import { Navigate } from "react-router-dom";
+import {v4 as uuidv4} from 'uuid';
 
 //Empty ingredients object for user when inputting ingredients
 const baseIngreident = {
@@ -24,6 +25,7 @@ export default function Upload() {
     const [errorSubmit, setErrorSubmit] = useState(null)
     const [newIngredient, setNewIngredient] = useState(baseIngreident)
     const [successful, setSuccessful] = useState(null)
+    const [image, setImage] = useState(null);
 
     const [upload, setUpload] = useState(
         {
@@ -40,17 +42,21 @@ export default function Upload() {
     const handleSubmit = async () => {
         if (upload['name'] === null) {
             setErrorSubmit("Error uploading mealkit, ensure you have entered valid name")
-        }else if (upload['image'] === null) {
+        }else if (image === null) {
             setErrorSubmit("Error uploading mealkit, ensure you have entered an image line")
         }else if (ingredients.length == 0) {
             setErrorSubmit("Error uploading mealkit, ensure you add ingredients")
         } else {
+
+            const url = await uploadImage()
+            
+            
             const {data, error} = await supabase
             .from('meals_unvalidated')
             .insert(
                 {
                    name: upload['name'],
-                   photo: upload['image'],
+                   photo: url,
                    ingredients: ingredients,
                    gf: upload['gf'],
                    vegan: upload['vegan'],
@@ -105,6 +111,38 @@ export default function Upload() {
         const buttonName = e.target.name
         const index = parseInt(buttonName.slice(7))
         setIngredients(ing => ing.filter((val, i) => (i !== index)))
+    }
+
+    async function uploadImage(e) {
+        let file = image;
+        let imageid = uuidv4();
+
+        console.log(imageid);
+        const {data, error} = await supabase
+        .storage
+        .from('images')
+        .upload(user.id + "/" + imageid, file);
+
+        if (error) {
+            return -1;
+        } else {
+            return (geturl(imageid));
+        }
+
+    }
+
+    const geturl = (id) => {
+        const {data} = supabase
+        .storage
+        .from('images')
+        .getPublicUrl(user.id + "/" + id);
+
+        return (data.publicUrl);
+
+    }
+
+    const addImage = (image) => {
+        setImage(image.target.files[0]);
     }
 
     const basicDetails = (
@@ -230,6 +268,7 @@ export default function Upload() {
                     </div>
                 </div>
                 <div className="submit_upload">
+                    <input type="file" accept="image/*" onChange={(e) => addImage(e)}/>
                     <button onClick={handleSubmit}>Submit Meal-kit</button>
                     <p style={{color: 'red'}}>{errorSubmit ? errorSubmit : ''}</p>
                     <p style={{color: 'green'}}>{successful ? successful : ''}</p>
