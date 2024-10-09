@@ -13,20 +13,20 @@ export default function Footer() {
         </div>
         <h3>Custom meal kits designed by CampusEats and <br/> other users for delivery to your desired university!</h3>
         <ul>
-          <li><Link to="/orderMealKit">
-            <a href="/">Meal Plan</a>
+          <li><Link to="/order">
+            <a href="/order">Order</a>
           </Link></li>
 
           <li><Link to="/about">
             <a href="about">About Us</a>
           </Link></li>
 
-          <li><Link to="/order">
-            <a href="/meals">Meals</a>
-          </Link></li>
-
           <li><Link to="/community">
-            <a href="/recipes">Recipes</a>
+            <a href="/Community">Community</a>
+          </Link></li>
+          
+          <li><Link to="/TermsAndConditions">
+            <a href="/TermsAndConditions">TermsAndConditions</a>
           </Link></li>
         </ul>
       </div> 

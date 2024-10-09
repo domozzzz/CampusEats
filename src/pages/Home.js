@@ -1,10 +1,8 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import homepage from '../images/Homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
-import { useState, useEffect } from "react";
 import supabase from "../supabase";
 
 
@@ -48,7 +46,6 @@ export default function Home() {
                     setData(d)
                     setLoading(false)
                 }     
-
         }
         fetchMeals()
     },[])
@@ -77,39 +74,7 @@ export default function Home() {
         }
         return slides
     }   
-    // const slides = [
-    //     <div class="cards">
-    //       <Link to="/meals">
-    //         <div class="card">
-    //           <img src={burrito} alt="Avatar"></img>
-    //               <p>Braised Brisket Burrito</p>
-    //         </div>
-    //       </Link>
-    //       <Link to="/meals"><div class="card">
-    //           <img src={chickenRice} alt="Avatar"></img>
-    //               <p>Hainanese Chicken Rice</p>
-    //       </div></Link>
-    //       <Link to="/meals"><div class="card">
-    //           <img src={kebab} alt="Avatar"></img>
-    //               <p>Adana Kebab</p>
-    //       </div></Link>
-    //   </div>,
-    //     <div class="cards">
-    //     <Link to="/meals"><div class="card">
-    //         <img src={burrito} alt="Avatar"></img>
-    //             <p>Braised Brisket Burrito</p>
-    //     </div></Link>
-    //     <Link to="/meals"><div class="card">
-    //         <img src={chickenRice} alt="Avatar"></img>
-    //             <p>Hainanese Chicken Rice</p>
-    //     </div></Link>
-    //     <Link to="/meals"><div class="card">
-    //         <img src={kebab} alt="Avatar"></img>
-    //             <p>Adana Kebab</p>
-    //     </div></Link>
-    // </div>,
-    //   ];
-    //console.log(slides)
+
     return (
         <div>
             <div class="aboveTheFold">
@@ -134,12 +99,12 @@ export default function Home() {
                 <h3>Meal Plan</h3>
                 <p>See below for our more popular dishes. Ready to be delivered to your desired university location.</p>
 
-                    <div>
-                        {!loading && !error ? <Slideshow slides={generate_slides()}/> : <p>Not yet loaded</p>}
+                <div>
+                    {!loading && !error ? <Slideshow slides={generate_slides()}/> : <p>Not yet loaded</p>}
                 </div>
 
                 <div class="explore">
-                    <Link to="/meals" className="explore-button">Explore more meal plans <span>&#8594;</span></Link>
+                    <Link to="/community" className="explore-button">Explore more meal plans <span>&#8594;</span></Link>
                 </div>
             </section>
         </div>
