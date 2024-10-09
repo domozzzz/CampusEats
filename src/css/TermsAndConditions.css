@@ -1,0 +1,33 @@
+.terms {    
+    padding: auto;
+    position: relative;
+    color: var(--black);
+    background-color: var(--white);
+    text-align: left;
+}
+
+.terms p {
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: 1.4em;
+    text-align: left;
+}
+
+.terms h1{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding: auto;
+    text-align: center;
+    color: var(--green);
+}
+
+.terms h2{
+    padding-left: 100px;
+    padding-right: 100px;
+    text-align: left;
+    color: var(--green);
+}
+
+.terms li {
+    display: list-item;
+}

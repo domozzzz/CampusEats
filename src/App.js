@@ -19,6 +19,7 @@ import AuthProvider from "./components/AuthProvider.js";
 import ProfilePage from "./pages/Profile.js";
 import LocationSearch from "./pages/LocationSearch.js";
 import OrderSearch from "./pages/OrderSearch.js";
+import TermsAndConditions from './pages/TermsAndConditions.js';
 
 
 function App() {
@@ -33,15 +34,16 @@ function App() {
           <Route path="/recipes" element={<Recipes />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<RegisterPage/>}/>
-          <Route path="/order" element={<Order/>}/>
-          <Route path="/cart" element={<Cart/>}/>
-          <Route path='/map' element={<MapDisplay/>}/>
-          <Route path="/upload" element = {<Upload/>}/>
-          <Route path="/customise" element={<Customise/>}/>
-          <Route path="/community" element={<Community/>}/>
-          <Route path="/profile" element={<ProfilePage/>}/>
-          <Route path="/orderSearch" element={<OrderSearch/>}/>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/order" element={<Order/>} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path='/map' element={<MapDisplay />} />
+          <Route path="/upload" element = {<Upload />}/ >
+          <Route path="/customise" element={<Customise />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/orderSearch" element={<OrderSearch />} />
+          <Route path='TermsAndConditions' element={<TermsAndConditions />} />
       </Routes>
       <Footer />
     </Router>

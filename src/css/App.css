@@ -648,6 +648,7 @@ label {
   display: flex !important;
   height:auto;
   align-items: flex-end;
+  
 }
 
 .footer_image {
@@ -680,6 +681,10 @@ label {
   margin-right: 100px;
   list-style-type: none;
 }
+
+  .footer-links {
+    text-align: right;
+  }
 
 .footer a {
   font-weight: lighter;
