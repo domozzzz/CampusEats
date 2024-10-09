@@ -71,6 +71,18 @@ export default function Cart() {
         } else {
             console.log(data);
         }
+
+        const incrementOrders = async (meal) => {
+            const {error} = await supabase
+            .from('meals')
+            .update({'number_of_orders': meal['number_of_orders'] + 1})
+            .eq('id', meal['id'])
+
+            if (error) {
+                console.log(`error updating order count of meal ${meal['id']}`)
+            }
+        }
+        
     }
 
     return (
