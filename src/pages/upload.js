@@ -1,20 +1,10 @@
 import React, {useState} from "react";
 import homepage from '../images/Homepage.png'
-import {Helmet} from 'react-helmet-async'
 import styles from "../css/Upload.module.css"
 import { useAuth } from '../components/AuthProvider';
 import supabase from "../supabase";
 import { Navigate } from "react-router-dom";
 import {v4 as uuidv4} from 'uuid';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Form from 'react-bootstrap/Form'
-import Button from "react-bootstrap/Button";
-import ListGroup from "react-bootstrap/ListGroup";
-import Stack from 'react-bootstrap/Stack'
-import Alert from 'react-bootstrap/Alert'
 
 //Empty ingredients object for user when inputting ingredients
 const baseIngreident = {
@@ -152,72 +142,6 @@ export default function Upload() {
         setImage(image.target.files[0]);
     }
 
-    const basicDetails = (
-        <div className="Basic_info">
-            <h2>Basic Details</h2>
-            <div className="basic_input">
-                <Form.Label>Meal Kit Name</Form.Label>
-                <Form.Control type="text" onChange={e => setUpload({...upload,['name']: e.target.value})} />
-                <input type="text" placeholder="Image Link" onChange={e => setUpload({...upload,['image']: e.target.value})}/>
-            </div>
-        </div>
-        )
-    
-    const dietary = (
-        <div className="Basic_info">
-            <h2>Dietary</h2>
-            <p>Check the boxes for relevant dietary info which applies to your meal</p>
-            <div className="dietary">
-                <div>
-                    <input type="checkbox" onChange={e => setUpload({...upload,['vegetarian']: e.target.value === 'on' ? true : false})}/> 
-                    <label>Vegetarian</label>
-                </div>
-                <div>
-                    <input type="checkbox" onChange={e => setUpload({...upload,['gf']: e.target.value ==='on' ? true : false})}/> 
-                    <label>Gluten-Free</label>
-                </div>
-                <div>
-                    <input type="checkbox" onChange={e => setUpload({...upload,['vegan']: e.target.value === 'on' ? true : false})}/> 
-                    <label>Vegan</label>
-                </div>
-            </div>
-    
-        </div>        
-    )
-    
-    const ingredientDisplay = (
-        <div className="Basic_info">
-                            <h2>Ingredients</h2>
-                            <div className="ingredient_list">
-                                {ingredients.map((item, i) => {
-                                    return (
-                                        <div className="item">
-                                            <ul>{item.name} x {item.quantity} {item.measurement}</ul><button name={`Button-${i}`} onClick={removeIngredient}>-</button>
-                                        </div> 
-                                    )
-                                })}                                                              
-                            </div>
-                            <div className="add_ingredient">
-                                <div className="info">
-                                    <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name" onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}/>
-                                    <label> x </label>
-                                    <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
-                                    <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
-                                        <option value="grams">grams</option>
-                                        <option value="milli-grams">milli-grams</option>
-                                        <option value = "litres">litres</option>
-                                        <option value = "milli-litres">milli-litres</option>
-                                        <option value="tablespoon">tablespoon</option>
-                                        <option value="item">item</option>
-                                    </select>
-                                    <button className="add_ingredient_button" onClick={addIngredient}>+</button>
-                                    <p style={{color:'red'}}>{errorIngredient ? errorIngredient : ''}</p>
-                                </div>
-                            </div>
-                        </div>
-    )
-    
-    const options = [basicDetails, dietary, ingredientDisplay]
 
     const arrow_up = () => {
         console.log(user)
@@ -246,103 +170,80 @@ export default function Upload() {
                 </div>
             </div>  
             <div className={styles["upload"]}>
-                    <Container fluid>
-                        <Row lg="8" md="8" sm="10">
                         <div className={styles["header"]}>
                         <h1>Upload</h1>
                         <p>Upload your own meal-kits for review from our CampusEats team. Accepted Meal-Kits will be displayed on our market place and avaliable for purchase.</p>
                         </div>
-                        </Row>
-                        <Row className={`${styles['section']} mx-auto col-md-8`}>
-                                    <h2>Basic Details</h2>
-                                    <Form.Label>Meal Kit Name</Form.Label>
-                                    <Form.Control type="text" onChange={e => setUpload({...upload,['name']: e.target.value})} />
-                                    <Form.Label>Choose an Image</Form.Label>
-                                    <Form.Control type="file" accept="image/*" onChange={(e) => addImage(e)} />    
-                        </Row>
-                        <Row className={`${styles['section']} mx-auto col-md-8`}>
+                        <div className={styles["basicDetails"]}>
+                        <h2>Basic Details</h2>
+                                <div>
+                                    <label>Meal Kit Name</label> 
+                                    <input type="text" onChange={e => setUpload({...upload,['name']: e.target.value})} />
+                                </div> 
+                                <div>  
+                                    <label>Choose an Image</label>
+                                    <input type="file" accept="image/*" onChange={(e) => addImage(e)} /> 
+                                </div>     
+                         </div>              
+                        <div>
                                 <h2>Dietary Info</h2>
                                 <p>Check the boxes for relevant dietary info which applies to your meal</p>
-                                    <Form style={{'flex-direction': 'row'}}>
-                                        <Form.Check 
-                                            inline
-                                            className={styles['option']}
-                                            label="Vegetarian" 
-                                            type="checkbox" 
-                                            onChange={e => setUpload({...upload,['vegetarian']: e.target.value === 'on' ? true : false})}
-                                    />
-                                        <Form.Check
-                                            inline
-                                            label="Gluten-Free" 
-                                            className={styles['option']}
-                                            type="checkbox" 
-                                            onChange={e => setUpload({...upload,['gf']: e.target.value ==='on' ? true : false})}
-                                        />
-                                        <Form.Check 
-                                            inline
-                                            label="Vegan" 
-                                            className={styles['option']}
-                                            type="checkbox" 
-                                            onChange={e => setUpload({...upload,['vegan']: e.target.value === 'on' ? true : false})}
-                                        />    
-                                </Form>
-                        </Row>
-                        <Row className={`${styles['section']} mx-auto col-md-8`}>
+                                    <form>
+                                        <div>
+                                            <input type="checkbox" onChange={e => setUpload({...upload,['vegetarian']: e.target.value === 'on' ? true : false})}/>
+                                            <label>Vegetarian</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" onChange={e => setUpload({...upload,['gf']: e.target.value ==='on' ? true : false})}/>
+                                            <label>Gluten-free</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" onChange={e => setUpload({...upload,['vegan']: e.target.value === 'on' ? true : false})}/>
+                                            <label>Vegan</label>
+                                        </div>
+                                </form>
+                            </div>
                                 <h2>Ingredients</h2>
-                                <ListGroup  className={styles['ingredients']}>
+                                <div className={styles['ingredientList']}>
                                     {ingredients.map((item, i) => {
                                         return (
-                                                <ListGroup.Item variant="success"> {item.name} x {item.quantity} {item.measurement} <Button 
-                                                className="ml-auto" variant="success" name={`Button-${i}`} onClick={removeIngredient}>-</Button>
-                                                </ListGroup.Item>
+                                            <div className={styles['ingredient']}>
+                                                <div className={styles['ingredientName']}>
+                                                    <label>{item.name} x {item.quantity} {item.measurement}</label>
+                                                </div>  
+                                                <div className={styles['removeIngredient']}>
+                                                    <button name={`Button-${i}`} onClick={removeIngredient}> - </button>            
+                                                </div>
+                                            </div>    
                                         )
                                     })}                                                              
-                                </ListGroup>
-                                    <Form>
-                                        <Row>
-                                            <Col xs="4">
-                                        <Form.Control value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name" onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}/>
-                                            </Col>
-                                            <Col xs="1">
-                                                <Form.Label>x</Form.Label>
-                                            </Col>
-                                            <Col xs="2">
-                                                <Form.Control type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
-                                            </Col>
-                                            <Col xs="3">
-                                                <Form.Select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
-                                                <option value="grams">grams</option>
-                                                <option value="milli-grams">milli-grams</option>
-                                                <option value = "litres">litres</option>
-                                                <option value = "milli-litres">milli-litres</option>
-                                                <option value="tablespoon">tablespoon</option>
-                                                <option value="item">item</option>
-                                                </Form.Select>
-                                            </Col>
-                                            <Col xs="2">
-                                                <Button variant="secondary" onClick={addIngredient}>Add</Button>
-                                            </Col>
-                        
-                                        </Row>
-                                    </Form>    
-                                    <div>
+                                </div>
+                                <div className={styles['addIngredient']}>
+                                    <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name"
+                                     onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}
+                                     />
+                                     <label>x</label>
+                                     <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
+                                     <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
+                                        <option value="grams">grams</option>
+                                        <option value="milli-grams">milli-grams</option>
+                                        <option value = "litres">litres</option>
+                                        <option value = "milli-litres">milli-litres</option>
+                                        <option value="tablespoon">tablespoon</option>
+                                        <option value="item">item</option>
+                                     </select>
+                                     <button onClick={addIngredient}>Add</button>
+                                     <div>
                                         <p style={{color:'red'}}>{errorIngredient ? errorIngredient : ''}</p>
                                     </div>
-                        </Row>
-                        <Stack className={`mx-auto col-lg-4 ${styles['section']}`} gap={2}>
-                            <Button size="lg" onClick={handleSubmit} variant="success">Submit Meal-kit</Button>
-                            {errorSubmit ? 
-                            <Alert variant="danger" dismissible>
-                                <Alert.Heading>Oh, No!</Alert.Heading>
-                                <p>{errorSubmit}</p>
-                            </Alert> : ''}
-                            {successful ? 
-                            <Alert variant="success" dismissible>
-                                <Alert.Heading>Uploaded!</Alert.Heading>
-                                <p>{successful}</p>
-                            </Alert> : ''}
-                        </Stack>
-                    </Container>
+                                </div>
+
+                                <div className={styles['submit']}>
+                                    <button onClick={handleSubmit}>Submit Meal-Kit!</button>
+                                    <p className={styles['error']}>{errorSubmit ? errorSubmit : ''}</p>
+                                    <p className={styles['success']}>{successful ? successful : ''}</p>
+
+                                </div>
             </div>  
         </div>
     ) : <Navigate to='/login'/>

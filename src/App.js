@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './css/App.css'
-import {HelmetProvider} from 'react-helmet-async'
 import Home from './pages/Home.js';
 import About from './pages/About.js'
 import Login from './pages/Login.js';
@@ -22,7 +21,6 @@ import ProfilePage from "./pages/Profile.js";
 
 function App() {
   return (
-    <HelmetProvider>
       <AuthProvider>
       <CartProvider>
     <Router>
@@ -52,7 +50,6 @@ function App() {
     </Router>
     </CartProvider>
     </AuthProvider>
-    </HelmetProvider>
   );
 }
 
