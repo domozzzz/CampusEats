@@ -1,6 +1,74 @@
 
 
+.choice_card {
+  background-color: #064D42;
+  padding: 15px;
+  border-radius: 15px;
+  border-style: solid;
+  border-width: 2.5px;
+  width: 150px;
+  min-height: 250px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
 
+.choice_card_added {
+  background-color: #D9E5E3;
+  padding: 15px;
+  border-style: solid;
+  border-width: 2.5px;
+  border-radius: 15px;
+  border-color: #064D42;
+  width: 150px;
+  min-height: 250px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+.choice_card_img {
+  width: 100%;
+  height: 75%;
+  border-style: solid;
+  border-width: 2.5px;
+  border-color: #064D42;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.choice_card_img_added {
+  width: 100%;
+  height: 75%;
+  border-style: solid;
+  border-width: 2.5px;
+  border-color: #064D42;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.choice_card_p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.choice_card_p_added {
+  color: #064D42;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  height: 100%;
+}
 
 .custom_meal_container {
     text-align: center;
@@ -10,15 +78,19 @@
     align-items: center;
     flex-direction: column;
     background-color: white;
+    padding-bottom: 120px;
+    width: 100%;
+    position: relative;
   }
   
   .progress_steps {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin-bottom: 50px;
-    width: 50%;
-    background-color: none;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
   }
   
   .step {
@@ -72,7 +144,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 500px;
+    height: 100%;
     width: 90%;
     margin-top: 30px;
   }
@@ -154,7 +226,10 @@
     position: absolute;
     top: -60px;
     background-color: #fff;
-    width: 30%;
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    max-height: 70px;
     padding: 10px;
     border: 1px solid black;
     z-index: 10;
@@ -162,7 +237,7 @@
 
   .review {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     min-height: 500px;
@@ -170,8 +245,7 @@
 
   .review_column {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
     margin-top: 20px;
+    background-color: red;
   }

@@ -1,0 +1,165 @@
+.upload {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+     justify-content: center;
+    background-color: white;
+    height: auto;
+    padding-bottom: 50px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.header h1 {
+    color: #004d3d;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.header p {
+    font-size: 1rem;
+    width: 50%;
+}
+
+.upload h2 {
+    font-size: 2rem;
+    font-weight: 100;
+    color: #004d3d;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.basicDetails {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.basicDetails div {
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+.basicDetails label {
+    margin-right: 10px;
+}
+
+.basicDetails input {
+    width: 50%;
+}
+
+.upload form {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.upload form label {
+    margin-left: 10px;
+    font-size: 1.25rem;
+}
+
+.ingredientList {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.ingredient {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin: 10px;
+    border: dashed #004d3d 2px;
+}
+
+.removeIngredient {
+    text-align: right;
+    margin-right: 20px;
+    width: 30%;
+}
+
+.removeIngredient button {
+    width: 40px;
+    border-radius: 10px;
+    background-color: #004d3d;
+    color: white;
+}
+
+.addIngredient {
+    text-align: center;
+    padding: 10px;
+    background-color: #D9E5E3;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+}
+
+.addIngredient input {
+    height: 25px;
+    margin: 5px;
+    border-radius: 2px;
+    border: none;
+}
+
+.addIngredient input[type="number"] {
+    width: 10%;
+}
+
+.addIngredient select {
+    height: 25px;
+    margin: 5px;
+}
+
+.addIngredient button {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    background-color: #004d3d;
+    font-size: 1.25rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.submit {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.submit button {
+    width: 80%;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #004d3d;
+    color: white;
+    border: solid #004d3d 2px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}

@@ -1,12 +1,12 @@
 import React, {useState} from "react";
 import homepage from '../images/Homepage.png'
-import {Helmet} from 'react-helmet-async'
-import "../css/Upload.css"
-import "../css/App.css"
-import UploadPopup from "../components/UploadPopUp";
+import styles from "../css/Upload.module.css"
+import { useAuth } from '../components/AuthProvider';
 import supabase from "../supabase";
+import { Navigate } from "react-router-dom";
+import {v4 as uuidv4} from 'uuid';
 
-
+//Empty ingredients object for user when inputting ingredients
 const baseIngreident = {
     name: null,
     quantity: 1,
@@ -14,16 +14,27 @@ const baseIngreident = {
 }
 export default function Upload() {
 
-    const [display, setDisplay] = useState(0)
-    const [ingredients, setIngredients] = useState([])
-    const [errorIngredient, setErrorIngreident] = useState(null)
-    const [errorSubmit, setErrorSubmit] = useState(null)
-    const [newIngredient, setNewIngredient] = useState(baseIngreident)
-    const [successful, setSuccessful] = useState(null)
+    const { user } = useAuth()
 
+
+    //State foringredients in upload
+    const [ingredients, setIngredients] = useState([])
+    //Most recently added ingredient
+    const [newIngredient, setNewIngredient] = useState(baseIngreident)
+    //Error within ingredient (no-name provided)
+    const [errorIngredient, setErrorIngreident] = useState(null)
+    //Error submitting mealkit to supabase
+    const [errorSubmit, setErrorSubmit] = useState(null)
+    //Successfully submitted ingredient
+    const [successful, setSuccessful] = useState(null)
+    //Image upload
+    const [image, setImage] = useState(null);
+
+    //Final upload state object
     const [upload, setUpload] = useState(
         {
             name: null,
+            username: null,
             image: null,
             gf: false,
             vegetarian: false,
@@ -31,21 +42,28 @@ export default function Upload() {
 
         }
     )
-   
+   /**
+    * Handling submission of meal-kit. Async function for connecting with supabase
+    */
     const handleSubmit = async () => {
+        //Set errors upon submit
         if (upload['name'] === null) {
             setErrorSubmit("Error uploading mealkit, ensure you have entered valid name")
-        }else if (upload['image'] === null) {
+        }else if (image === null) {
             setErrorSubmit("Error uploading mealkit, ensure you have entered an image line")
         }else if (ingredients.length == 0) {
             setErrorSubmit("Error uploading mealkit, ensure you add ingredients")
         } else {
+
+            const url = await uploadImage()
+            
+            //Insert into meals-unavlidated table
             const {data, error} = await supabase
             .from('meals_unvalidated')
             .insert(
                 {
                    name: upload['name'],
-                   photo: upload['image'],
+                   photo: url,
                    ingredients: ingredients,
                    gf: upload['gf'],
                    vegan: upload['vegan'],
@@ -54,16 +72,20 @@ export default function Upload() {
             )
             .select()
             if (error) {
+                console.log(error)
                 setErrorSubmit(error)
             }
 
             if (data) {
+                //If meal uploaded, insert into post-table
                 const {d, e} = await supabase
                 .from('post')
                 .insert([
                     {
+                       poster_id: user['id'], 
                        meal_id: data[0].id,
-                       title: upload['name']
+                       title: upload['name'],
+                       username:`${user['user_metadata']['first_name']} ${user['user_metadata']['last_name']}`
                     }
                 ]).select()
 
@@ -99,136 +121,124 @@ export default function Upload() {
         setIngredients(ing => ing.filter((val, i) => (i !== index)))
     }
 
-    const basicDetails = (
-        <div className="Basic_info">
-            <h2>Basic Details</h2>
-            <div className="basic_input">
-                <input type="text" placeholder="Meal Kit Name" onChange={e => setUpload({...upload,['name']: e.target.value})}/>
-                <input type="text" placeholder="Image Link" onChange={e => setUpload({...upload,['image']: e.target.value})}/>
-            </div>
-        </div>
-        )
-    
-    const dietary = (
-        <div className="Basic_info">
-            <h2>Dietary</h2>
-            <p>Check the boxes for relevant dietary info which applies to your meal</p>
-            <div className="dietary">
-                <div>
-                    <input type="checkbox" onChange={e => setUpload({...upload,['vegetarian']: e.target.value === 'on' ? true : false})}/> 
-                    <label>Vegetarian</label>
-                </div>
-                <div>
-                    <input type="checkbox" onChange={e => setUpload({...upload,['gf']: e.target.value ==='on' ? true : false})}/> 
-                    <label>Gluten-Free</label>
-                </div>
-                <div>
-                    <input type="checkbox" onChange={e => setUpload({...upload,['vegan']: e.target.value === 'on' ? true : false})}/> 
-                    <label>Vegan</label>
-                </div>
-            </div>
-    
-        </div>        
-    )
-    
-    const ingredientDisplay = (
-        <div className="Basic_info">
-            <h2>Ingredients</h2>
-            <div className="ingredient_list">
-                {ingredients.map((item, i) => {
-                    return (
-                        <div className="item">
-                            <ul>{item.name} x {item.quantity} {item.measurement}</ul><button name={`Button-${i}`} onClick={removeIngredient}>-</button>
-                        </div> 
-                    )
-                })}                                                              
-            </div>
-            <div className="add_ingredient">
-                <div className="info">
-                    <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name" onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}/>
-                    <label> x </label>
-                    <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
-                    <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
-                        <option value="grams">grams</option>
-                        <option value="milli-grams">milli-grams</option>
-                        <option value = "litres">litres</option>
-                        <option value = "milli-litres">milli-litres</option>
-                        <option value="tablespoon">tablespoon</option>
-                        <option value="item">item</option>
-                    </select>
-                    <button className="add_ingredient_button" onClick={addIngredient}>+</button>
-                    <p style={{color:'red'}}>{errorIngredient ? errorIngredient : ''}</p>
-                </div>
-            </div>
-        </div>
-    )
-    
-    const options = [basicDetails, dietary, ingredientDisplay]
+    async function uploadImage(e) {
+        let file = image;
+        let imageid = uuidv4();
 
-    const arrow_up = () => {
-        if (display == 0) {
-            return
+        console.log(imageid);
+        const {data, error} = await supabase
+        .storage
+        .from('images')
+        .upload(user.id + "/" + imageid, file);
+
+        if (error) {
+            return -1;
         } else {
-            setDisplay(display-1)
+            return (geturl(imageid));
         }
+
     }
 
-    const arrow_down = () => {
-        if (display == 2) {
-            return
-        } else {
-            setDisplay(display+1)
-        }
-    }    
+    const geturl = (id) => {
+        const {data} = supabase
+        .storage
+        .from('images')
+        .getPublicUrl(user.id + "/" + id);
+
+        return (data.publicUrl);
+
+    }
+
+    const addImage = (image) => {
+        setImage(image.target.files[0]);
+    }
+
 
 
  
-    return (
+    return user ? (
         <div>
-            <Helmet>
-                <title>Upload page</title>
-                <script src="https://kit.fontawesome.com/772a7aab14.js" crossorigin="anonymous"></script>
-            </Helmet>
             <div className="welcome" alt="Avatar">
                 <div className="heading-image">
                     <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
                 </div>
             </div>  
-            <div className="upload">
-                <div className="header">
-                <h1>Upload</h1>
-                <h3>Upload your own meal-kits for review from our CampusEats team. Accepted Meal-Kits will be displayed on our market place and avaliable for purchase.</h3>
-                </div>
-                <div className="create-upload">
-                    <div className="detail-name">
-                        <ul>
-                            <li style={display==0 ? {'color': '#064d42', 'fontSize': '2rem'} : {'color':'#D9E5E3', 'fontSize': '1.5rem'}}>Basic Details</li>
-                            <li style={display==1 ? {'color': '#064d42', 'fontSize': '2rem'} : {'color':'#D9E5E3', 'fontSize': '1.5rem'}}>Dietary Info</li>
-                            <li style={display==2 ? {'color': '#064d42', 'fontSize': '2rem'} : {'color':'#D9E5E3', 'fontSize': '1.5rem'}}>Ingredients</li>
-                        </ul>
+            <div className={styles["upload"]}>
+                        <div className={styles["header"]}>
+                        <h1>Upload</h1>
+                        <p>Upload your own meal-kits for review from our CampusEats team. Accepted Meal-Kits will be displayed on our market place and avaliable for purchase.</p>
+                        </div>
+                        <div className={styles["basicDetails"]}>
+                        <h2>Basic Details</h2>
+                                <div>
+                                    <label>Meal Kit Name</label> 
+                                    <input type="text" onChange={e => setUpload({...upload,['name']: e.target.value})} />
+                                </div> 
+                                <div>  
+                                    <label>Choose an Image</label>
+                                    <input type="file" accept="image/*" onChange={(e) => addImage(e)} /> 
+                                </div>     
+                         </div>              
+                        <div>
+                                <h2>Dietary Info</h2>
+                                <p>Check the boxes for relevant dietary info which applies to your meal</p>
+                                    <form>
+                                        <div>
+                                            <input type="checkbox" onChange={e => setUpload({...upload,['vegetarian']: e.target.value === 'on' ? true : false})}/>
+                                            <label>Vegetarian</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" onChange={e => setUpload({...upload,['gf']: e.target.value ==='on' ? true : false})}/>
+                                            <label>Gluten-free</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" onChange={e => setUpload({...upload,['vegan']: e.target.value === 'on' ? true : false})}/>
+                                            <label>Vegan</label>
+                                        </div>
+                                </form>
+                            </div>
+                                <h2>Ingredients</h2>
+                                <div className={styles['ingredientList']}>
+                                    {ingredients.map((item, i) => {
+                                        return (
+                                            <div className={styles['ingredient']}>
+                                                <div className={styles['ingredientName']}>
+                                                    <label>{item.name} x {item.quantity} {item.measurement}</label>
+                                                </div>  
+                                                <div className={styles['removeIngredient']}>
+                                                    <button name={`Button-${i}`} onClick={removeIngredient}> - </button>            
+                                                </div>
+                                            </div>    
+                                        )
+                                    })}                                                              
+                                </div>
+                                <div className={styles['addIngredient']}>
+                                    <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name"
+                                     onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}
+                                     />
+                                     <label>x</label>
+                                     <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
+                                     <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
+                                        <option value="grams">grams</option>
+                                        <option value="milli-grams">milli-grams</option>
+                                        <option value = "litres">litres</option>
+                                        <option value = "milli-litres">milli-litres</option>
+                                        <option value="tablespoon">tablespoon</option>
+                                        <option value="item">item</option>
+                                     </select>
+                                     <button onClick={addIngredient}>Add</button>
+                                     <div>
+                                        <p style={{color:'red'}}>{errorIngredient ? errorIngredient : ''}</p>
+                                    </div>
+                                </div>
 
-                    </div>
-                    <div className="details">
-                        {options[display]}              
-                    </div>
-                    <div className="arrows">
-                        <i class="fa-solid fa-arrow-up" onClick={arrow_up}></i>
-                        <i class="fa-solid fa-arrow-down" onClick={arrow_down}></i>
-                    </div>
-                    <div className="arrows small">
-                    <i class="fa-solid fa-arrow-left" onClick={arrow_up}></i>    
-                    <i class="fa-solid fa-arrow-right" onClick={arrow_down}></i>
-                    </div>
-                </div>
-                <div className="submit_upload">
-                    <button onClick={handleSubmit}>Submit Meal-kit</button>
-                    <p style={{color: 'red'}}>{errorSubmit ? errorSubmit : ''}</p>
-                    <p style={{color: 'green'}}>{successful ? successful : ''}</p>
-                    <p>*All Meal-kits will be subjected to a review process by our CampusEats team.
-                         Ensure all information you provide is factual and accurate. Only select meal kits will be displayed within
-                         the marketplace and avaliable for order</p>
-                </div>
+                                <div className={styles['submit']}>
+                                    <button onClick={handleSubmit}>Submit Meal-Kit!</button>
+                                    <p className={styles['error']}>{errorSubmit ? errorSubmit : ''}</p>
+                                    <p className={styles['success']}>{successful ? successful : ''}</p>
+
+                                </div>
             </div>  
         </div>
-    )
+    ) : <Navigate to='/login'/>
 }

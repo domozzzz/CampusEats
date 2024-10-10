@@ -5,13 +5,21 @@
     overflow: hidden;
 }
 
-  
+
 #projects p {
     font-size: 1.2em;
     text-align: center;
 }
 
-.login-button2 {  
+.button-container {
+    display: flex;
+    justify-content: left; 
+    align-items: center;
+    gap: 5px; 
+    margin-top: 20px;
+}
+
+.login-button2 {
     margin-left: 30px;
     font-size: 2em;
     background-color: transparent;
@@ -41,7 +49,7 @@
     padding-left: 0.5em;
     padding-right: 0.5em;
     background-color: var(--green);
-    color: var(--white);
+    color:white;
     text-decoration: none;
 }
 
@@ -63,7 +71,7 @@
     color: var(--white);
     text-decoration: none;
 }
-  
+
 .discover-button {
     margin-left: 30px;
     font-size: 2em;
@@ -80,4 +88,102 @@
     color: var(--white);
     text-decoration: none;
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+
+    /* Home Page */
+    .welcome {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        height: 50px;
+        width: auto;
+    }
+
+    .title {
+        position: absolute;
+        transform: translate(0, -130%);
+        color: white;
+    }
+
+    .title h1 {
+        font-size: 1.3em;
+        font-weight: normal;
+        text-align: left;
+    }
+
+    .title b {
+        font-size: 1.3em;
+    }
+
+    .login-button2,
+    .register-button {
+        width: 20%; 
+        height: 30px;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .discover-button {
+        width: 50%;
+        font-size: 1.5em;
+    }
+
+    .projects p {
+        font-size: 1em;
+    }
+
+    .explore-button {
+        width: 50%;
+        font-size: 1em;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .cards {
+        position: relative; 
+        display: grid;
+        text-align:center;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-gap: 10px;
+        margin: auto;
+        width: 100%;
+      }
+    
+    .card {
+      position: relative;
+      width: 100%;
+      font-size: 1em;
+      border-radius: 15px;
+      background-color: var(--green);
+      color: white;
+      justify-items: center;
+      display: flex;
+      flex-direction: column;
+      grid-gap: 10px; 
+      height: 250px;
+     }
+    
+    
+    p {
+      color: white;
+      margin: 0;
+      padding: 0;
+      padding-bottom: 10px;
+    }
+    
+    .card img {
+      width: 80%;
+      margin: 10%;
+    }
+    
+    .explore-button {
+      width: 50%;
+      font-size: 1em;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
 }

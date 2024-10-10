@@ -51,10 +51,12 @@ nav ul li { /* All nav elements */
 }
 
 nav ul li:last-child {
-  margin-left: auto; /* Put last nav item on right */
+   /* Put last nav item on right */
   margin-right: 20px;
 }
-
+nav ul li:nth-last-child(2) {
+  margin-left: auto; /* Put last nav item on right */
+}
 nav li a {    
   display: block;
   color: var(--white);
@@ -239,12 +241,12 @@ h1 {
   font-size: 2.5em;
   text-align: center;
   padding: 30px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 h2 {
   text-align: center;
-  font-family: "Poppins", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 h3 {
@@ -535,6 +537,7 @@ button:hover {
 .about-text p {
   font-size: 18px;
   line-height: 1.6;
+  text-align: left;
 }
 
 .heading {
@@ -668,11 +671,17 @@ label {
   height: fit-content;
 }
 
+.servings-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
 .serving-select {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex; /* To align li elements horizontally */
+  display: flex; 
   padding-right: 30px;
   padding-bottom: 15px;
 }
@@ -697,4 +706,139 @@ label {
   width: 50%;
   margin: auto;
   margin-bottom: 40px;
+}
+
+.meal {
+  position: absolute;
+  background-color: var(--white);
+  height: 100vh;
+  z-index: 5;
+}
+
+.container {
+  position: relative;
+  display: center;
+  text-align: center;
+}
+
+.container h1{
+  color: var(--green);
+  margin: 0;
+  padding: 10px;
+}
+
+.container h3{
+  margin-left: 0;
+  padding-left: 0;
+
+}
+
+.container button {
+  width: 20%;
+  margin: auto;
+  display: block;
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.container p {
+  font-size: 20px;
+}
+
+
+.order-container {
+  padding: 30px;
+  position: relative;
+  display: center;
+  text-align: center;
+}
+
+.order-container h1{
+  color: var(--green);
+  margin: 0;
+  padding: 10px;
+}
+
+.order-container h3{
+  margin-left: 20px;
+  padding-left: 0;
+
+}
+
+.order-container button {
+  width: 20%;
+  margin: auto;
+  display: block;
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.order-container p {
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.order-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+
+}
+
+/* Hide the browser's default checkbox */
+.order-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+
+@media (max-width: 600px) {
+  nav a {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav li {
+    width: auto; 
+  }
+
+  h1, h2, h3, h4 {
+    margin: 10px;
+    padding: 5px;
+  }
+
+  p {
+    font-size: 16px;
+  }  
+  
+  footer {
+    padding: 10px;
+  }
+
+  footer p {
+    font-size: 1em; 
+    padding: 5px; 
+  }
+
+  footer a {
+    font-size: 0.9em;
+  }
 }
