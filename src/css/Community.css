@@ -17,16 +17,18 @@ li  {
 }
 
 input[type=search] {
-    text-align: center;
-    padding: 6px;
-    border: none;
-    width: 600px;
-    color: black;
-    font-size: 1.5em;
+  text-align: center;
+  padding: 6px;
+  border: none;
+  width: 100%;
+  max-width: 560px;
+  color: black;
+  font-size: 1.5em;
+  box-sizing: border-box;
 }
 
 input[type=text2] {
-  text-align: center;
+  text-align: left;
   padding: 6px;
   border: none;
   width: 30px;
@@ -35,7 +37,7 @@ input[type=text2] {
 }
 
 input[type=text3] {
-  text-align: center;
+  text-align: left;
   padding: 6px;
   border: none;
   width: 80px;
@@ -45,39 +47,67 @@ input[type=text3] {
 
 h1 {
   padding-bottom: 0;
+  font-size: 1.5em;
 }
 
 .search-box {
   background-color: var(--lightGray);
-  padding: 15px 30px 15px 30px;
-  width: fit-content;
+  padding: 15px 30px;
+  width: 90%;
+  max-width: 600px;
   align-content: center;
-  margin: 10px auto 10px auto;
+  margin: 10px auto;
   border-radius: 15px;
-} 
+  box-sizing: border-box;
+}
+
+.sub-box span {
+    white-space: nowrap;
+}
 
 .community-box {
   background-color: var(--lightGray);
-  width: fit-content;
-  margin: 10px auto 50px auto;
   display: flex;
-  justify-content: space-between;
-  padding: 20px;
+  width: 90%;
+  margin: 10px auto 50px auto;
   border-radius: 15px;
+  flex-wrap: wrap; /* Allows the items to wrap onto new lines */
+  justify-content: space-between; /* Evenly space the sub-boxes */
 }
 
 .sub-box {
   flex: 1;
   padding: 10px;
   box-sizing: border-box;
+  text-align: center; /* Center text and inline elements horizontally */
+
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center content horizontally */
+  min-width: 250px; /* Ensure the sub-box doesn't shrink too much */
+}
+
+/* Style for the h1 element to keep it at the top */
+.sub-box h1 {
+  margin: 0;
+  padding-top: 10px;
   text-align: center;
 }
 
+
+@media (max-width: 768px) {
+  .sub-box {
+    flex: 100%;
+    padding: 10px;
+  }
+}
+
+.dropdown {
+    width: 180px;
+}
+
+
 .dropdown-button {
-  margin-top: 15px;
-  margin-left: 40px;
-  margin-right: 40px;
-  float: right;
   width: 180px;
   font-size: 1.5em;
   border: none;
@@ -93,17 +123,14 @@ h1 {
 
 .dropdown-button-open {
   width: 180px;
-  margin-right: 30px;
+  font-size: 1.5em;
+  border: none;
   padding: 0.2em;
   padding-left: 0.5em;
   padding-right: 0.5em;
-  float: right;
-  font-size: 1.5em;
-  border: none;
   background-color: var(--green);
   color: var(--white);
   text-decoration: none;
-  overflow:hidden
 }
 
 .dropdown-option-button {
@@ -126,9 +153,6 @@ h1 {
 }
 
 .dropdown-content {
-  margin-top: 15px;
-  margin-left: 40px;
-  margin-right: 40px;
   width: 180px;
   background-color: var(--gray);
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);

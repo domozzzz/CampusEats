@@ -358,7 +358,7 @@ export default function OrderSearch() {
                 <li><input type="checkbox"></input>Custom<input type="text3" /></li>
               </ul>
             </div>
-            <div className='s ub-box'>
+            <div className='sub-box'>
               <h1>Filter</h1>
               <Dropdown></Dropdown>
             </div>

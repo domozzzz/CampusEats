@@ -362,7 +362,7 @@ export default function Community() {
                 <li><input type="checkbox"></input>Custom<input type="text3" /></li>
               </ul>
             </div>
-            <div className='s ub-box'>
+            <div className='sub-box'>
               <h1>Filter</h1>
               <Dropdown />
             </div>
@@ -377,7 +377,7 @@ export default function Community() {
           {results.map((meal) => {
             return (
               <div class="card" name="hello">
-                <img src={meal.photo} alt="Avatar"></img>
+                <img className='card-img' src={meal.photo} alt="Avatar"></img>
                 <p>
                   {meal.name}<br />
                   Creator: Joseph<br />
