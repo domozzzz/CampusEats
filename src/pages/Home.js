@@ -96,7 +96,7 @@ export default function Home() {
             </div>
             <div class="image-placeholder"></div>
             <section id="projects">
-                <h3>Meal Plan</h3>
+                <h3>Marketplace</h3>
                 <p>See below for our more popular dishes. Ready to be delivered to your desired university location.</p>
 
                 <div>
@@ -104,7 +104,7 @@ export default function Home() {
                 </div>
 
                 <div class="explore">
-                    <Link to="/community" className="explore-button">Explore more meal plans <span>&#8594;</span></Link>
+                    <Link to="/community" className="explore-button">Explore more marketplace <span>&#8594;</span></Link>
                 </div>
             </section>
         </div>

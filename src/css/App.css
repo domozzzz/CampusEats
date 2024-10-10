@@ -80,7 +80,6 @@ nav li a {
     padding: 10px;  
   }
 
-  /* Home Page */
   .welcome {
     flex-direction: column;
     text-align: center;
@@ -192,14 +191,6 @@ nav li a {
     font-size: 18px;
     padding: 10px;
     text-align: center;
-  }
-
-  .container {
-    padding: 15px;
-  }
-
-  .container h1 {
-    font-size: 1.5em;
   }
 
   .join-us {
@@ -482,8 +473,8 @@ table {
 
 .transparent {
   opacity: 0.5;
-  pointer-events: none; /* Prevent interaction with the cards when pop-up is open */
-  transition: opacity 0.3s ease; /* Smooth transition */
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .pop h4 {
@@ -561,7 +552,6 @@ button:hover {
   border: 1px solid #ccc;
 }
 
-/* Order page */
 .order {
   padding-top: 30px;
   padding-bottom: 150px;
@@ -610,82 +600,6 @@ label {
   font-size: 1.5em;
   color: var(--white);
   padding-left: 50px;
-}
-
-.container {
-  display: block;
-  position: relative;
-  padding-left: 20px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;  
-}
-
-.footer {
-  display: flex !important;
-  height:auto;
-  align-items: flex-end;
-  
-}
-
-.footer_image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 20% !important;
-  height: 80%;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.footer img {
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 120px;
-}
-.footer h3 {
-  margin-top: auto;
-  margin-bottom: auto;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.footer ul {
-  line-height: 150%;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: 100px;
-  list-style-type: none;
-}
-
-  .footer-links {
-    text-align: right;
-  }
-
-.footer a {
-  font-weight: lighter;
-}
-
-footer p {
-  width: 150px;
-  font-size: 15px !important;
-  color: black;
-  padding: 0;
-
-}
-
-/* Hide the default checkbox */
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
 }
 
 .meal-kit-info-left label  {
@@ -754,12 +668,6 @@ footer p {
   height: fit-content;
 }
 
-.servings-container {
-  display: flex;
-  justify-content: space-between; /* Push elements to opposite sides */
-  align-items: center;
-}
-
 .serving-select {
   list-style-type: none;
   margin: 0;
@@ -783,144 +691,10 @@ footer p {
   float: right;
 }
 
-.split-right p {
-  padding-left: 50px;
-}
-
-.meal-kit-info .left {
-  width: 30%;
-}
-
-.meal-kit-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px; /* Space between the panels */
-}
-
-.meal-kit-info-left, .split-right {
-  flex: 1;
-}
-
-.meal-kit-info-left, .split-right {
-  max-width: 45%;
-}
-
-.order-meal-kit {
-  padding: 20px;
-}
-
-
-.meal-kit-info p {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--white);
-  font-size: 20px;
-  letter-spacing: 4px;
-
-}
-
 .order h1 {
   color: var(--green);
   padding-top: 0;
   width: 50%;
   margin: auto;
   margin-bottom: 40px;
-}
-  
-
-
-.meal {
-  position: absolute;
-  background-color: var(--white);
-  height: 100vh;
-  z-index: 5;
-}
-
-.container {
-  position: relative;
-  display: center;
-  text-align: center;
-}
-
-.container h1{
-  color: var(--green);
-  margin: 0;
-  padding: 10px;
-}
-
-.container h3{
-  margin-left: 0;
-  padding-left: 0;
-
-}
-
-.container button {
-  width: 20%;
-  margin: auto;
-  display: block;
-  background-color: var(--green);
-  color: var(--white);
-}
-
-.container p {
-  font-size: 20px;
-}
-
-
-.order-container {
-  padding: 30px;
-  position: relative;
-  display: center;
-  text-align: center;
-}
-
-.order-container h1{
-  color: var(--green);
-  margin: 0;
-  padding: 10px;
-}
-
-.order-container h3{
-  margin-left: 20px;
-  padding-left: 0;
-
-}
-
-.order-container button {
-  width: 20%;
-  margin: auto;
-  display: block;
-  background-color: var(--green);
-  color: var(--white);
-}
-
-.order-container p {
-  margin-left: 20px;
-  font-size: 20px;
-}
-
-.order-container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-
-}
-
-/* Hide the browser's default checkbox */
-.order-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
 }

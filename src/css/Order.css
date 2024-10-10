@@ -13,11 +13,6 @@
     align-items: center;
 }
 
-.order-choice h1 {
-    color: #064D42;
-    font-size: 3rem;
-}
-
 .order-choice h3 {
     font-size: 2rem;
 }
@@ -47,13 +42,12 @@
 .green-button {
     margin: 50px 50px 50px 50px;
     background-color: var(--green);
-    color: white; /* Ensure text visibility */
+    color: white;
 }
 
 .white {
-    color: white; /* Ensure text visibility */
+    color: white;
 }
-
 
 .orderChoiceButtons p {
     color: black;
@@ -66,7 +60,9 @@
 }
 
 @media (max-width: 750px) {
-    .orderChoiceButtons button {
-        margin: 0 auto 100px auto !important;
+    .orderChoiceButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
