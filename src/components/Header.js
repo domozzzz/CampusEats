@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 import logo from "../images/Logo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { useAuth } from "./AuthProvider";
 
 
 export default function Header() {
+  const { user } = useAuth();
 
   return (
     <div>
@@ -18,7 +20,7 @@ export default function Header() {
           <li><NavLink to = "/marketplace">Marketplace</NavLink></li>
           <li><NavLink to = "/about">About Us</NavLink></li>
           <li><NavLink to = "/cart"><FontAwesomeIcon icon={faCartShopping} /></NavLink></li>
-          <li><NavLink to = "/profile">Profile</NavLink></li>
+          <li><NavLink to = "/profile">{user ? "Profile" : "Login"}</NavLink></li>
         </ul>
       </nav>
     </div>
