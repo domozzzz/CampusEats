@@ -75,3 +75,16 @@
 .save-btn:hover {
     background-color: #054138;
 }
+
+
+@media (max-width: 600px) {
+    .form-group input {
+        padding: 8px; 
+        font-size: 12px; 
+    }
+
+    .save-btn {
+        padding: 8px 15px; 
+        font-size: 14px;
+    }
+}

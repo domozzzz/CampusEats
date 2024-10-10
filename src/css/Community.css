@@ -71,23 +71,22 @@ h1 {
   width: 90%;
   margin: 10px auto 50px auto;
   border-radius: 15px;
-  flex-wrap: wrap; /* Allows the items to wrap onto new lines */
-  justify-content: space-between; /* Evenly space the sub-boxes */
+  flex-wrap: wrap; 
+  justify-content: space-between; 
 }
 
 .sub-box {
   flex: 1;
   padding: 10px;
   box-sizing: border-box;
-  text-align: center; /* Center text and inline elements horizontally */
+  text-align: center; 
 
   display: flex;
-  flex-direction: column; /* Stack content vertically */
-  align-items: center; /* Center content horizontally */
-  min-width: 250px; /* Ensure the sub-box doesn't shrink too much */
+  flex-direction: column; 
+  align-items: center; 
+  min-width: 250px; 
 }
 
-/* Style for the h1 element to keep it at the top */
 .sub-box h1 {
   margin: 0;
   padding-top: 10px;
