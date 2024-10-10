@@ -5,6 +5,7 @@ import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
 import supabase from "../supabase";
 import { CartContext } from "../components/CartContext.js";
+import { useAuth } from '../components/AuthProvider.js';
 
 
 function ScrollButton({ id, children, className }) {
@@ -27,6 +28,7 @@ export default function Home() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(false)
     const [mealData, setData] = useState(null)
+    const { user } = useAuth();
 
     useEffect(() => {
         setLoading(true)
@@ -89,10 +91,11 @@ export default function Home() {
                         Custom meal kits designed by CampusEats and<br />
                         other users for delivery to your desired university.<br />
                     </h1>
+                    {user ? '':
                     <div className="button-container">
-                        <Link to="/login" className="login-button2">Login</Link>
-                        <Link to="/register" className="register-button">Register</Link>
-                    </div>
+                        <Link to="/login" className="login-button2">{user ? "": "Login"}</Link>
+                        <Link to="/register" className="register-button">{user ? "": "Register"}</Link>
+                    </div>}
                     <ScrollButton className="discover-button" id="projects">
                         Discover More<span>&#8595;</span>
                     </ScrollButton>
