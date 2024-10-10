@@ -1,0 +1,53 @@
+.upload {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+     justify-content: center;
+    background-color: white;
+    height: auto;
+    padding-bottom: 50px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+.header h1 {
+    color: #004d3d;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.header p {
+    font-size: 1rem;
+    width: 60%;
+}
+
+.section {
+    margin-top: 50px !important;
+}
+
+.section h2 {
+    color: #004d3d;
+    font-weight: 600;
+
+}
+
+.option {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.option input {
+    float:none !important;
+    margin-right: 5px;
+}
+
+.ingredients {
+    margin-bottom: 40px !important;
+}
+
