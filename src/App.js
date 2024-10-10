@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './css/App.css'
-import { HelmetProvider } from 'react-helmet-async'
 import Home from './pages/Home.js';
 import About from './pages/About.js'
 import Recipes from './pages/Recipes.js';
@@ -25,7 +24,6 @@ import TermsAndConditions from './pages/TermsAndConditions.js';
 
 function App() {
   return (
-    <HelmetProvider>
       <AuthProvider>
         <Router>
           <Header />
@@ -50,7 +48,6 @@ function App() {
           <Footer />
         </Router>
       </AuthProvider>
-    </HelmetProvider>
   );
 }
 
