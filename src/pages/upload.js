@@ -16,14 +16,21 @@ export default function Upload() {
 
     const { user } = useAuth()
 
-    const [display, setDisplay] = useState(0)
+
+    //State foringredients in upload
     const [ingredients, setIngredients] = useState([])
-    const [errorIngredient, setErrorIngreident] = useState(null)
-    const [errorSubmit, setErrorSubmit] = useState(null)
+    //Most recently added ingredient
     const [newIngredient, setNewIngredient] = useState(baseIngreident)
+    //Error within ingredient (no-name provided)
+    const [errorIngredient, setErrorIngreident] = useState(null)
+    //Error submitting mealkit to supabase
+    const [errorSubmit, setErrorSubmit] = useState(null)
+    //Successfully submitted ingredient
     const [successful, setSuccessful] = useState(null)
+    //Image upload
     const [image, setImage] = useState(null);
 
+    //Final upload state object
     const [upload, setUpload] = useState(
         {
             name: null,
@@ -35,8 +42,11 @@ export default function Upload() {
 
         }
     )
-   
+   /**
+    * Handling submission of meal-kit. Async function for connecting with supabase
+    */
     const handleSubmit = async () => {
+        //Set errors upon submit
         if (upload['name'] === null) {
             setErrorSubmit("Error uploading mealkit, ensure you have entered valid name")
         }else if (image === null) {
@@ -47,7 +57,7 @@ export default function Upload() {
 
             const url = await uploadImage()
             
-            
+            //Insert into meals-unavlidated table
             const {data, error} = await supabase
             .from('meals_unvalidated')
             .insert(
@@ -67,6 +77,7 @@ export default function Upload() {
             }
 
             if (data) {
+                //If meal uploaded, insert into post-table
                 const {d, e} = await supabase
                 .from('post')
                 .insert([
@@ -142,23 +153,6 @@ export default function Upload() {
         setImage(image.target.files[0]);
     }
 
-
-    const arrow_up = () => {
-        console.log(user)
-        if (display == 0) {
-            return
-        } else {
-            setDisplay(display-1)
-        }
-    }
-
-    const arrow_down = () => {
-        if (display == 2) {
-            return
-        } else {
-            setDisplay(display+1)
-        }
-    }    
 
 
  

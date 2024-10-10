@@ -24,11 +24,12 @@
 
 .header p {
     font-size: 1rem;
-    width: 60%;
+    width: 50%;
 }
 
-h2 {
+.upload h2 {
     font-size: 2rem;
+    font-weight: 100;
     color: #004d3d;
     margin-top: 30px;
     margin-bottom: 20px;
@@ -54,7 +55,7 @@ h2 {
     width: 50%;
 }
 
-form {
+.upload form {
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -63,7 +64,7 @@ form {
     margin-right: auto;
 }
 
-form label {
+.upload form label {
     margin-left: 10px;
     font-size: 1.25rem;
 }
@@ -150,7 +151,7 @@ form label {
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 20px;
-    background-color: #188754;
+    background-color: #004d3d;
     color: white;
     border: solid #004d3d 2px;
 }
