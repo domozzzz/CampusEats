@@ -12,6 +12,7 @@ function LoginPage() {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginerror, setError] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
   
@@ -24,6 +25,7 @@ function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(false);
     if (!validform()) {
       alert("Please enter a valid email and password");
       return;
@@ -31,14 +33,12 @@ function LoginPage() {
     const { data: {user, session}, error } = await login(email, password)
     if (error) {
       console.log(error);
+      setError(true);
 
     }
     if (user && session) {
       navigate("/");
-    } else {
-      console.log("didnt work\n", user, session, error );
     }
-    
   };
 
   return (
@@ -49,10 +49,11 @@ function LoginPage() {
         </div>
         <div className="login-box">
           <h2>Sign in to your account</h2>
+          {loginerror ? <h2>Incorrect email or password, please try again</h2>: ''}
           <form  onSubmit={handleSubmit}>
             <input
               type="text"
-              placeholder="Username"
+              placeholder="Email"
               className="input-field"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
