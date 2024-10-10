@@ -4,6 +4,7 @@ import homepage from '../images/Homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
 import supabase from "../supabase";
+import { CartContext } from "../components/CartContext.js";
 
 
 function ScrollButton({ id, children, className }) {
@@ -30,22 +31,25 @@ export default function Home() {
     useEffect(() => {
         setLoading(true)
         const fetchMeals = async () => {
-            const { data: d, e } = await supabase
+            const {data: d, error: e} = await supabase
                 .from('meals')
-                .select('*')
-                .neq('id', 0)
+                .select('*,sellers(*)')
+                .neq('id',0)
                 .limit(9)
-                .order('likes', { ascending: false })
-            if (e) {
-                setError(true)
-                setData(null)
-                setLoading(false)
-            }
-            if (d) {
-                setError(false)
-                setData(d)
-                setLoading(false)
-            }
+                .order('likes', {ascending: false})
+                if (e) {
+                    console.log(e)
+                    setError(true)
+                    setData(null)
+                    setLoading(false)
+                }
+                if (d) {
+                    console.log(d)
+                    setError(false)
+                    setData(d)
+                    setLoading(false)
+                }     
+
         }
         fetchMeals()
     }, [])
@@ -59,12 +63,12 @@ export default function Home() {
                         return (
                             <Link to="/meals">
                                 <div class="card">
-                                    <img src={meal.photo} alt="Avatar"></img>
-                                    <p>{meal.name}<br />
-                                        Creator: {meal.seller_id}<br />
-                                        ♡ {meal.likes}<br />
-                                        Location: QUT
-                                    </p>
+                                <img src={meal.photo} alt="Avatar"></img>
+                                <p>{meal.name}<br />
+                              Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
+                              ♡ {meal.likes}<br />
+                              Location: QUT
+                            </p>  
                                 </div>
                             </Link>
                         )
@@ -73,8 +77,8 @@ export default function Home() {
             )
         }
         return slides
-    }
-
+    }   
+ 
     return (
         <div>
             <div class="aboveTheFold">

@@ -7,13 +7,14 @@ import { Link } from 'react-router-dom';
 import "../css/Map.css"
 import "../css/App.css"
 import supabase from '../supabase';
+import { useAuth } from './AuthProvider';
+import { Navigate, Outlet } from 'react-router-dom';
 
 const MAP_API_KEY = process.env.REACT_APP_MAP
 
 const UQ = {lat: -27.4977, lng: 153.0129}
 
 const MapDisplay = () => {
-  console.log(MAP_API_KEY)
 
       const { isLoaded } = useLoadScript({
         googleMapsApiKey: MAP_API_KEY,
@@ -51,7 +52,9 @@ const MapDisplay = () => {
         setDisplay(displayLocation)
       }
       
-      return (
+      const { user } = useAuth()
+
+      return user ? (
         <div>
           <div class="welcome" alt="Avatar">
               <div class="heading-image">
@@ -78,14 +81,14 @@ const MapDisplay = () => {
               center={{lat: display.lat, lng: display.lng}}
               zoom={15}>
             </GoogleMap>
-            <Link to={`../orderMealKit/${display.id}`}>
+            <Link to={`../order/${display.id}`}>
             <button className='submit_location'>Select {display.name}</button>
             </Link>
             </div>
           )}
         </div>          
       </div>
-      )
+      ) : <Navigate to='/login'/>
 }
 
 export default MapDisplay;

@@ -51,10 +51,12 @@ nav ul li { /* All nav elements */
 }
 
 nav ul li:last-child {
-  margin-left: auto; /* Put last nav item on right */
+   /* Put last nav item on right */
   margin-right: 20px;
 }
-
+nav ul li:nth-last-child(2) {
+  margin-left: auto; /* Put last nav item on right */
+}
 nav li a {    
   display: block;
   color: var(--white);

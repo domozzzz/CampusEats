@@ -6,10 +6,13 @@ import search from '../images/Search.png';
 import '../css/Order.css'
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../components/AuthProvider';
-
+import { useParams } from 'react-router-dom';
 
 export default function OrderSelect() {
-    return (
+
+    const { user } = useAuth()
+    const {LID} = useParams()
+    return user ? (
         <div>
             <div class="welcome" alt="Avatar">
                 <div class="heading-image">
@@ -17,34 +20,26 @@ export default function OrderSelect() {
                 </div>
             </div>
             <div class="order-choice">
-                <h1>Order</h1>
+                <h1>Step 2: Choose you order type</h1>
                 <div className='orderChoiceButtons'>
-                    <span className="grey-button">
-                        <Link to="/customise">
-                            <button>
-                                <img src={clock} style={{height: "150px"}}></img>
-                                <h3>Custom Meal Kit</h3>
-                                <p>
-                                    Create a quick, custom meal-kit. Set your own base,
-                                    protein and vegetables ready to order at any location.
-                                </p>
-                            </button>
-                        </Link>
+                <span className="grey-button">
+                    <Link to={`/customMealKit/${LID}`}><button>
+                        <img src={clock} style={{height: "150px"}}></img>
+                        <h3>Custom Meal Kit</h3>
+                        <p>Create a quick, custom meal-kit. Set your own base,
+                            protein and vegetables ready to order at any location.</p>
+                    </button></Link>
                     </span>
                     <span className="green-button">
-                        <Link to="/map">
-                            <button>
-                                <img src={search} style={{height: "140px"}}></img>
-                                <h3 style={{color: "white"}}>Search Meal-kits near me</h3>
-                                <p style={{color: "white"}}>
-                                    Search through custom Meal-kits made by the
-                                    CampusEats team or other users!
-                                </p>
-                            </button>
-                        </Link>
+                    <Link to={`/orderSearchMealKit/${LID}`}><button>
+                        <img src={search} style={{height: "140px"}}></img>
+                        <h3 style={{color: "white"}}>Search Meal-kits near me</h3>
+                        <p style={{color: "white"}}>Search through custom Meal-kits made by the
+                            CampusEats team or other users!</p>
+                    </button></Link>
                     </span>
                 </div>
             </div>
         </div>
-    )
+    ) : <Navigate to='/login'/>
 }
