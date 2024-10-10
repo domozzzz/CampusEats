@@ -95,7 +95,7 @@ h1 {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .sub-box {
     flex: 100%;
     padding: 10px;

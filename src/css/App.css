@@ -62,173 +62,6 @@ nav li a {
   text-decoration: none;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-  /* Navbar */
-  nav a {
-    font-size: 16px;
-  }
-
-  nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  nav li {
-    width: auto; 
-    padding: 10px;  
-  }
-
-  /* Home Page */
-  .welcome {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .logo {
-    height: 50px;
-    width: auto;
-  } 
-
-  .title {
-    position: absolute;
-    transform: translate(0, -130%);
-    color: white;
-  }
-  
-  .title h1 {
-    font-size: 1.3em;
-    font-weight: normal;
-    text-align: left;
-  }
-  
-  .title b {
-    font-size: 1.3em;
-  }
-
-  .home-login-button {
-    width: 50%;
-    font-size: 1.3em;
-  }
-
-  .register-button {
-    width: 50%;
-    font-size: 1.3em;
-  }
-
-  .discover-button {
-    width: 50%;
-    font-size: 1.5em;
-  }
-
-  .projects p {
-    font-size: 1em;
-  }
-
-.explore-button {
-  width: 50%;
-  font-size: 1em;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-
-  /* About Page */
-  .about {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-image {
-    flex: 1;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-  }
-
-  .about-image img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  .about-text {
-    flex: 1;
-    padding: 10px;
-    margin-top: 0;
-    font-size: 1em;
-  }
-
-  .about-text h1 {
-    margin-bottom: 20px;
-    text-align: center;
-    padding: 0;
-  }
-
-  .about2 {
-    flex-direction: column;
-    padding: 0;
-    text-align: center;
-    height: 300px;
-  }
-
-  .about2-title {
-    flex: 1;
-    text-align: center;
-    height: 300px;
-    margin-top: 10px;
-  }
-
-  .about2-title h1 {
-    font-size: 2em;
-    margin-bottom: 0;
-  }
-
-  .about2-text {
-    padding: 10px;
-  }
-
-  .about2-text p {
-    font-size: 18px;
-    padding: 10px;
-    text-align: center;
-  }
-
-  .container {
-    padding: 15px;
-  }
-
-  .container h1 {
-    font-size: 1.5em;
-  }
-
-  .join-us {
-    font-size: 1em;
-    text-align: center;
-  }
-
-  .join-us p {
-    padding: 10px;
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .about-register-button{
-    font-size: 1.4em;
-    padding: 10px;
-    width: 50%;
-  }
-
-  h1, h2, h3, h4 {
-    margin: 10px;
-    padding: 5px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-}
-
 .logo {
   height: 80px;
   width: auto;
@@ -248,12 +81,12 @@ h1 {
   font-size: 2.5em;
   text-align: center;
   padding: 30px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 h2 {
   text-align: center;
-  font-family: "Poppins", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 h3 {
@@ -544,6 +377,7 @@ button:hover {
 .about-text p {
   font-size: 18px;
   line-height: 1.6;
+  text-align: left;
 }
 
 .heading {
@@ -756,7 +590,7 @@ footer p {
 
 .servings-container {
   display: flex;
-  justify-content: space-between; /* Push elements to opposite sides */
+  justify-content: space-between; 
   align-items: center;
 }
 
@@ -764,7 +598,7 @@ footer p {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  display: flex; /* To align li elements horizontally */
+  display: flex; 
   padding-right: 30px;
   padding-bottom: 15px;
 }
@@ -923,4 +757,44 @@ footer p {
   cursor: pointer;
   height: 0;
   width: 0;
+}
+
+
+@media (max-width: 600px) {
+  nav a {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav li {
+    width: auto; 
+  }
+
+  h1, h2, h3, h4 {
+    margin: 10px;
+    padding: 5px;
+  }
+
+  p {
+    font-size: 16px;
+  }  
+  
+  footer {
+    padding: 10px;
+  }
+
+  footer p {
+    font-size: 1em; 
+    padding: 5px; 
+  }
+
+  footer a {
+    font-size: 0.9em;
+  }
 }

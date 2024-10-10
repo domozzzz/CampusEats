@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import homepage from '../images/homepage.png';
+import homepage from '../images/Homepage.png';
 import '../css/EditProfile.css';
 
 export default function EditProfile() {

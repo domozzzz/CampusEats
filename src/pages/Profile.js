@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import homepage from '../images/homepage.png';
+import { Link } from 'react-router-dom';
+import homepage from '../images/Homepage.png';
 import PestoChicken from '../images/Pesto_chicken.png';
 import MangoSmoothie from '../images/Mango_smoothie.png';
 import SausageSandwich from '../images/Sausage_sandwich.png';
@@ -38,7 +39,9 @@ const Profile = () => {
                         <p className="email">{user.email}</p>
                     </div>
                     <div className="profile-buttons">
-                        <button className="btn-account">Account</button>
+                        <Link to="/editProfile">
+                            <button className="btn-account">Account</button>
+                        </Link>
                         <button className="btn-order-history">Order History</button>
                     </div>
                 </div>

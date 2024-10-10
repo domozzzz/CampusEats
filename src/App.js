@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './css/App.css'
-import {HelmetProvider} from 'react-helmet-async'
+import { HelmetProvider } from 'react-helmet-async'
 import Home from './pages/Home.js';
 import About from './pages/About.js'
 import Recipes from './pages/Recipes.js';
@@ -14,9 +14,10 @@ import Customise from "./pages/Customise.js";
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import MapDisplay from "./components/Map.js";
-import Upload from "./pages/Upload.js"; 
+import Upload from "./pages/Upload.js";
 import AuthProvider from "./components/AuthProvider.js";
 import ProfilePage from "./pages/Profile.js";
+import EditProfile from "./pages/EditProfile.js";
 import LocationSearch from "./pages/LocationSearch.js";
 import OrderSearch from "./pages/OrderSearch.js";
 import TermsAndConditions from './pages/TermsAndConditions.js';
@@ -26,28 +27,29 @@ function App() {
   return (
     <HelmetProvider>
       <AuthProvider>
-    <Router>
-      <Header />
-      <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/recipes" element={<Recipes />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/order" element={<Order/>} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path='/map' element={<MapDisplay />} />
-          <Route path="/upload" element = {<Upload />}/ >
-          <Route path="/customise" element={<Customise />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/orderSearch" element={<OrderSearch />} />
-          <Route path='TermsAndConditions' element={<TermsAndConditions />} />
-      </Routes>
-      <Footer />
-    </Router>
-    </AuthProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/recipes" element={<Recipes />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path='/map' element={<MapDisplay />} />
+            <Route path="/upload" element={<Upload />} />
+            <Route path="/customise" element={<Customise />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/editProfile" element={<EditProfile/>}/>
+            <Route path="/orderSearch" element={<OrderSearch />} />
+            <Route path='TermsAndConditions' element={<TermsAndConditions />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </AuthProvider>
     </HelmetProvider>
   );
 }
