@@ -796,7 +796,7 @@ label {
 
 @media (max-width: 600px) {
   nav a {
-    font-size: 16px;
+    font-size: 13px;
     margin: 0;
   }
 
@@ -804,6 +804,8 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
   }
 
   nav li {
@@ -821,11 +823,6 @@ label {
   
   footer {
     padding: 10px;
-  }
-
-  footer p {
-    font-size: 1em; 
-    padding: 5px; 
   }
 
   footer a {

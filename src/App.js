@@ -51,8 +51,6 @@ function App() {
           <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
           <Route path="/payment" element={<Postcheckout/>}/>
 
-          
-
       </Routes>
       <Footer />
     </Router>
