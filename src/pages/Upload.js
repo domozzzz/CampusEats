@@ -103,7 +103,7 @@ export default function Upload() {
 
     }
 
-
+    
     const addIngredient = (e) => {
         if (newIngredient['name'] != null) {
             setIngredients([...ingredients,newIngredient])

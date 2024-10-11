@@ -12,7 +12,6 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const MAP_API_KEY = process.env.REACT_APP_MAP
 
-const UQ = {lat: -27.4977, lng: 153.0129}
 
 const MapDisplay = () => {
 
@@ -45,11 +44,13 @@ const MapDisplay = () => {
         setSearch(locations.filter((location) => location.name
         .toLowerCase()
         .includes(e.target.value.toLowerCase())))
+        setDisplay(null)
       }
 
       const set_display = (e) => {
         const displayLocation = locations.find((location) => location.id == e.target.name)
         setDisplay(displayLocation)
+        setSearch([])
       }
       
       const { user } = useAuth()
