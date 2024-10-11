@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 import "../css/App.css"
-import useToken from "../components/AuthProvider";
 import { Link } from "react-router-dom";
 import homepage from '../images/Homepage.png'
 import supabase from "../supabase";

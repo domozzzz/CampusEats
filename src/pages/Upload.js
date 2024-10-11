@@ -51,7 +51,7 @@ export default function Upload() {
             setErrorSubmit("Error uploading mealkit, ensure you have entered valid name")
         }else if (image === null) {
             setErrorSubmit("Error uploading mealkit, ensure you have entered an image line")
-        }else if (ingredients.length == 0) {
+        }else if (ingredients.length === 0) {
             setErrorSubmit("Error uploading mealkit, ensure you add ingredients")
         } else {
 
