@@ -87,10 +87,49 @@ input[type=text3] {
   text-align: center;
 }
 
+
+.option-button {
+  background-color: #D9E5E3;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  color: #064D42;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .sub-box {
     flex: 100%;
     padding: 10px;
+
+
+
+  }
+
+  .card {
+    position: relative;
+    width: 100%;
+    font-size: 1em;
+    border-radius: 15px;
+    background-color: var(--green);
+    color: white;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px; 
+    height: 300px;
+   }
+
+
+   .card img {
+    max-width: 250px;
+    max-height: 100px;
+    margin: 10%;
+    object-fit: contain;
+    
   }
 }
 
@@ -158,3 +197,5 @@ input[type=text3] {
 .dropdown-option-button:hover {
   background-color: var(--gray);
 }
+
+

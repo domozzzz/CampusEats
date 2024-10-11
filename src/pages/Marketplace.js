@@ -409,7 +409,7 @@ export default function Marketplace() {
                     ♡ {meal.meals.likes}<br />
                     Location: {meal.Locations.name}
                   </p>  
-                  <button name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
+                  <button className='option-button' name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
                   <p style={{color: 'red'}}>{error ? error : ''}</p>
                   </div>
             )

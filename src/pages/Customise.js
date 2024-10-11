@@ -78,7 +78,7 @@ export default function Customise() {
 
         let all = ({...Object.fromEntries(b),...Object.fromEntries(p),...Object.fromEntries(v) })
         const item = {      // Formate to the structure of cart objects
-            name: "Quick meal",
+            name: "Custom meal",
             meal_id: 0,
             ingredients: all,
             quantity: 1,
@@ -169,7 +169,7 @@ export default function Customise() {
                 </div>
             </div>
             <div className={styles.custom_meal_container}>
-                <h1>Quick Meal</h1>
+                <h1>Customise</h1>
                 {/* Shows the number of steps and the users current step */}
                 <div className={styles.progress_steps}> 
                     <div className={`${styles.step} ${1 <= currentStep ? styles.active : ""}`}>
