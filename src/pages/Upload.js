@@ -168,19 +168,22 @@ export default function Upload() {
                         <h1>Upload</h1>
                         <p>Upload your own meal-kits for review from our CampusEats team. Accepted Meal-Kits will be displayed on our market place and avaliable for purchase.</p>
                         </div>
-                        <div className={styles["basicDetails"]}>
-                        <h2>Basic Details</h2>
-                                <div>
-                                    <label>Meal Kit Name</label> 
-                                    <input type="text" onChange={e => setUpload({...upload,['name']: e.target.value})} />
-                                </div> 
-                                <div>  
-                                    <label>Choose an Image</label>
-                                    <input type="file" accept="image/*" onChange={(e) => addImage(e)} /> 
-                                </div>     
-                         </div>              
-                        <div>
+
+                            <h2>Basic Details</h2>
+                            <div className={styles["basicDetails"]}>
+
+                            <div>
+                                <label>Meal Kit Name</label> 
+                                <input type="text" onChange={e => setUpload({...upload,['name']: e.target.value})} />
+                            </div> 
+                            <div>  
+                                <label>Choose an Image</label>
+                                <input type="file" accept="image/*" onChange={(e) => addImage(e)} /> 
+                            </div>     
+                        </div>     
                                 <h2>Dietary Info</h2>
+                                <div className={styles["basicDetails"]}>
+
                                 <p>Check the boxes for relevant dietary info which applies to your meal</p>
                                     <form>
                                         <div>
