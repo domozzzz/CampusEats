@@ -63,7 +63,7 @@ export default function Home() {
                 <div class="cards">
                     {mealData.slice(i * 3, (i * 3) + 3).map((meal) => {
                         return (
-                            <Link to="/meals">
+                            <Link to="/marketplace">
                                 <div class="card">
                                 <img src={meal.photo} alt="Avatar"></img>
                                 <p>{meal.name}<br />

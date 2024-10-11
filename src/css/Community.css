@@ -82,6 +82,11 @@ input[type=text3] {
   min-width: 250px;
 }
 
+.sub-box h1 {
+  margin: 0;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .sub-box {
     flex: 100%;

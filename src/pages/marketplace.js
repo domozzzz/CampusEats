@@ -381,7 +381,7 @@ export default function Marketplace() {
                     <li><input type="text3" placeholder='search location' onChange={customLocation} style={{'width': '100%'}}/></li>
                     </ul>
                   </div>
-                  <div className='s ub-box'>
+                  <div className='sub-box'>
                     <h1>Filter</h1>
                     <Dropdown></Dropdown>
                   </div>
