@@ -371,7 +371,7 @@ export default function OrderSelect() {
                       <li className='spaced'><input type="text2" onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="text2" onChange={set_max_sugars}/></li>
                     </ul>
                   </div>
-                  <div className='s ub-box'>
+                  <div className='sub-box'>
                     <h1>Filter</h1>
                     <Dropdown></Dropdown>
                   </div>

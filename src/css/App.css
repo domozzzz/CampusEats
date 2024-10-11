@@ -64,19 +64,167 @@ nav li a {
   text-decoration: none;
 }
 
+/* Mobile */
+@media (max-width: 600px) {
+  /* Navbar */
+  nav a {
+    font-size: 16px;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav li {
+    width: auto; 
+    padding: 10px;  
+  }
+
+  .welcome {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo {
+    height: 50px;
+    width: auto;
+  } 
+
+  .title {
+    position: absolute;
+    transform: translate(0, -130%);
+    color: white;
+  }
+  
+  .title h1 {
+    font-size: 1.3em;
+    font-weight: normal;
+    text-align: left;
+  }
+  
+  .title b {
+    font-size: 1.3em;
+  }
+
+  .home-login-button {
+    width: 50%;
+    font-size: 1.3em;
+  }
+
+  .register-button {
+    width: 50%;
+    font-size: 1.3em;
+  }
+
+  .discover-button {
+    width: 50%;
+    font-size: 1.5em;
+  }
+
+  .projects p {
+    font-size: 1em;
+  }
+
+.explore-button {
+  width: 50%;
+  font-size: 1em;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+  /* About Page */
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image {
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .about-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .about-text {
+    flex: 1;
+    padding: 10px;
+    margin-top: 0;
+    font-size: 1em;
+  }
+
+  .about-text h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 0;
+  }
+
+  .about2 {
+    flex-direction: column;
+    padding: 0;
+    text-align: center;
+    height: 300px;
+  }
+
+  .about2-title {
+    flex: 1;
+    text-align: center;
+    height: 300px;
+    margin-top: 10px;
+  }
+
+  .about2-title h1 {
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+
+  .about2-text {
+    padding: 10px;
+  }
+
+  .about2-text p {
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .join-us {
+    font-size: 1em;
+    text-align: center;
+  }
+
+  .join-us p {
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .about-register-button{
+    font-size: 1.4em;
+    padding: 10px;
+    width: 50%;
+  }
+
+  h1, h2, h3, h4 {
+    margin: 10px;
+    padding: 5px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
 .logo {
   height: 80px;
   width: auto;
-}
-
-footer {
-  position: absolute;
-  background-color: var(--lightGray);
-  width: 100%;
-}
-
-footer p {    
-  color: var(--white);
 }
 
 h1 {
@@ -317,8 +465,8 @@ table {
 
 .transparent {
   opacity: 0.5;
-  pointer-events: none; /* Prevent interaction with the cards when pop-up is open */
-  transition: opacity 0.3s ease; /* Smooth transition */
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .pop h4 {
@@ -397,7 +545,6 @@ button:hover {
   border: 1px solid #ccc;
 }
 
-/* Order page */
 .order {
   padding-top: 30px;
   padding-bottom: 150px;
@@ -446,82 +593,6 @@ label {
   font-size: 1.5em;
   color: var(--white);
   padding-left: 50px;
-}
-
-.container {
-  display: block;
-  position: relative;
-  padding-left: 20px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;  
-}
-
-.footer {
-  display: flex !important;
-  height:auto;
-  align-items: flex-end;
-  
-}
-
-.footer_image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 20% !important;
-  height: 80%;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.footer img {
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 120px;
-}
-.footer h3 {
-  margin-top: auto;
-  margin-bottom: auto;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.footer ul {
-  line-height: 150%;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: 100px;
-  list-style-type: none;
-}
-
-  .footer-links {
-    text-align: right;
-  }
-
-.footer a {
-  font-weight: lighter;
-}
-
-footer p {
-  width: 150px;
-  font-size: 15px !important;
-  color: black;
-  padding: 0;
-
-}
-
-/* Hide the default checkbox */
-.container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
 }
 
 .meal-kit-info-left label  {
@@ -619,43 +690,6 @@ footer p {
   float: right;
 }
 
-.split-right p {
-  padding-left: 50px;
-}
-
-.meal-kit-info .left {
-  width: 30%;
-}
-
-.meal-kit-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px; /* Space between the panels */
-}
-
-.meal-kit-info-left, .split-right {
-  flex: 1;
-}
-
-.meal-kit-info-left, .split-right {
-  max-width: 45%;
-}
-
-.order-meal-kit {
-  padding: 20px;
-}
-
-
-.meal-kit-info p {
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--white);
-  font-size: 20px;
-  letter-spacing: 4px;
-
-}
-
 .order h1 {
   color: var(--green);
   padding-top: 0;
@@ -663,8 +697,6 @@ footer p {
   margin: auto;
   margin-bottom: 40px;
 }
-  
-
 
 .meal {
   position: absolute;

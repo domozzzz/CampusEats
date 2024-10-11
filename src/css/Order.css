@@ -13,11 +13,6 @@
     align-items: center;
 }
 
-.order-choice h1 {
-    color: #064D42;
-    font-size: 3rem;
-}
-
 .order-choice h3 {
     font-size: 2rem;
 }
@@ -71,6 +66,20 @@
         margin-top: 30px;
         margin-bottom: 0;
     }
+@media (max-width: 750px) {
+    .orderChoiceButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+
+    h1 {
+        margin-top: 30px;
+        margin-bottom: 0;
+    }
     
     .orderChoiceButtons {
         flex-direction: column;
@@ -81,4 +90,5 @@
         width: 100%; 
         margin: 10px 0; 
     }
+}
 }

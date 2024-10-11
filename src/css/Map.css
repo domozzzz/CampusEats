@@ -1,7 +1,8 @@
 .Map {
     position: relative;
     width: 100vw;
-    height: 120vh;
+    min-height: 60vh;
+    height: fit-content;
     background-color: white;
 }
 
