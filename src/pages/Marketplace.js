@@ -260,8 +260,11 @@ export default function Marketplace() {
     const Pop = () => {
       return (
         <div className='pop'>
-          <button className="exit-button" onClick={closePop}>x</button>
-          <h2>{Ingredients.name}</h2>
+          <div className='pop-control'>
+          
+            <h2>{Ingredients.name}</h2>
+            <button className="exit-button" onClick={closePop}>x</button>
+          </div>
           <img src={Ingredients.image} alt="Avatar"></img>
 
           <table>

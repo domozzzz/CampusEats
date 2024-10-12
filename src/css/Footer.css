@@ -36,7 +36,7 @@ footer p {
     font-size: 20px;
     font-weight: 500;
 }
-  
+
 .footer ul {
     line-height: 150%;
     display: flex;
@@ -53,6 +53,6 @@ footer p {
 footer p {
     width: 150px;
     font-size: 15px !important;
-    color: black;
+    color: var(--green);
     padding: 0;  
 }

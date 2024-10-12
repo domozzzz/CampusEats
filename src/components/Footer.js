@@ -22,7 +22,7 @@ export default function Footer() {
             <a href="about">About Us</a>
           </Link></li>
 
-          <li><Link to="/community">
+          <li><Link to="/marketplace">
             <a href="/Community">Community</a>
           </Link></li>
           

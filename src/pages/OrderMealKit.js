@@ -261,8 +261,10 @@ export default function OrderSelect() {
     const Pop = () => {
       return (
         <div className='pop'>
-          <button className="exit-button" onClick={closePop}>x</button>
+          <div className='pop-control'>
           <h2>{Ingredients.name}</h2>
+          <button className="exit-button" onClick={closePop}>x</button>
+        </div>
           <img src={Ingredients.image} alt="Avatar"></img>
 
           <table>
@@ -399,8 +401,8 @@ export default function OrderSelect() {
                     ♡ {meal.meals.likes}<br />
                     Location: {meal.Locations.name}
                   </p>  
-                  <button name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
-                  <button onClick={() => checkout(meal)}>add to cart</button>
+                  <button className='option-button' name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
+                  <button className='option-button' onClick={() => checkout(meal)}>add to cart</button>
                   <p style={{color: 'red'}}>{error ? error : ''}</p>
                   </div>
             )

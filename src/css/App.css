@@ -383,7 +383,8 @@ section {
 
 .pop {
   position:absolute;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   height: fit-content;
   margin: auto;
   z-index: 1000;
@@ -394,6 +395,16 @@ section {
   border-radius: 15px;
   padding-bottom: 50px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.pop-control {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .spaced {
@@ -404,6 +415,8 @@ section {
 
 .pop h2 {
   color: var(--white);
+  text-align: center;
+  flex-grow: 1;
 }
 
 .pop-button {  
@@ -441,7 +454,6 @@ table {
 .pop button {
   left: 0; 
   right: 0; 
-  margin-inline: auto; 
   overflow: hidden;
 
 }
@@ -457,10 +469,11 @@ table {
 
 .exit-button {
   color: var(--white);
-  background-color: var(--green);
+  background: transparent;
   border: none;
-  float: right;
-  overflow: hidden;
+  cursor: pointer;
+  font-size: 2rem;
+  margin-top: -2.5rem;
 }
 
 .transparent {
@@ -795,14 +808,15 @@ label {
 
 
 @media (max-width: 600px) {
-  nav a {
+  nav li a {
     font-size: 13px;
     margin: 0;
+    padding: 0;
   }
 
   nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin: 0;
     padding: 0;
