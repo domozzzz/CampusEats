@@ -1,15 +1,19 @@
-.Map {
+.map {
+    padding-top: 30px;
+    min-height: 80vh;
     position: relative;
-    width: 100vw;
-    min-height: 60vh;
-    height: fit-content;
-    background-color: white;
+    color: var(--black);
+    background-color: var(--white);
 }
 
-.Map h1 {
-    font-size: 3.5rem;
-    color:#064d42;
-}
+.map h1 {
+    color: var(--green);
+    padding-top: 0;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
 .map-style {
     width: 40vw;

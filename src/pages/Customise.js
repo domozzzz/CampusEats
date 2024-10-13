@@ -7,8 +7,6 @@ import { useAuth } from "../components/AuthProvider.js";
 import { useParams } from 'react-router-dom';
 import { CartContext } from "../components/CartContext.js";
 
-
-
 export default function Customise() {
     const [currentStep, setStep] = useState(1);
     const [baseList, setBaseList] = useState({});

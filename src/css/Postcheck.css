@@ -1,6 +1,11 @@
 .thankDiv {
+    padding-top: 30px;
     background-color: white;
     position: relative;
     height: 100%;
     min-height: 500px;
+}
+
+.thankDiv h1 {
+    color: var(--green);
 }

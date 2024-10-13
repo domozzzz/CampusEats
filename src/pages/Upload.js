@@ -153,9 +153,6 @@ export default function Upload() {
         setImage(image.target.files[0]);
     }
 
-
-
- 
     return user ? (
         <div>
             <div className="welcome" alt="Avatar">
@@ -164,83 +161,80 @@ export default function Upload() {
                 </div>
             </div>  
             <div className={styles["upload"]}>
-                        <div className={styles["header"]}>
-                        <h1>Upload</h1>
-                        <p>Upload your own meal-kits for review from our CampusEats team. Accepted Meal-Kits will be displayed on our market place and avaliable for purchase.</p>
+                <div className={styles["header"]}>
+                    <h1>Upload</h1>
+                    <p>Upload your own meal-kits for review from our CampusEats team. Accepted Meal-Kits will be displayed on our market place and avaliable for purchase.</p>
+                </div>
+
+                <h2>Basic Details</h2>
+                <div className={styles["basicDetails"]}>
+                    <div>
+                        <label>Meal Kit Name</label> 
+                        <input type="text" onChange={e => setUpload({...upload,['name']: e.target.value})} />
+                    </div> 
+                    <div>  
+                        <label>Choose an Image</label>
+                        <input type="file" accept="image/*" onChange={(e) => addImage(e)} /> 
+                    </div>     
+                </div>     
+                <h2>Dietary Info</h2>
+                <div className={styles["basicDetails"]}>
+
+                    <p>Check the boxes for relevant dietary info which applies to your meal</p>
+                    <form>
+                        <div>
+                            <input type="checkbox" onChange={e => setUpload({...upload,['vegetarian']: e.target.value === 'on' ? true : false})}/>
+                            <label>Vegetarian</label>
                         </div>
-
-                            <h2>Basic Details</h2>
-                            <div className={styles["basicDetails"]}>
-
-                            <div>
-                                <label>Meal Kit Name</label> 
-                                <input type="text" onChange={e => setUpload({...upload,['name']: e.target.value})} />
-                            </div> 
-                            <div>  
-                                <label>Choose an Image</label>
-                                <input type="file" accept="image/*" onChange={(e) => addImage(e)} /> 
-                            </div>     
-                        </div>     
-                                <h2>Dietary Info</h2>
-                                <div className={styles["basicDetails"]}>
-
-                                <p>Check the boxes for relevant dietary info which applies to your meal</p>
-                                    <form>
-                                        <div>
-                                            <input type="checkbox" onChange={e => setUpload({...upload,['vegetarian']: e.target.value === 'on' ? true : false})}/>
-                                            <label>Vegetarian</label>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" onChange={e => setUpload({...upload,['gf']: e.target.value ==='on' ? true : false})}/>
-                                            <label>Gluten-free</label>
-                                        </div>
-                                        <div>
-                                            <input type="checkbox" onChange={e => setUpload({...upload,['vegan']: e.target.value === 'on' ? true : false})}/>
-                                            <label>Vegan</label>
-                                        </div>
-                                </form>
-                            </div>
-                                <h2>Ingredients</h2>
-                                <div className={styles['ingredientList']}>
-                                    {ingredients.map((item, i) => {
-                                        return (
-                                            <div className={styles['ingredient']}>
-                                                <div className={styles['ingredientName']}>
-                                                    <label>{item.name} x {item.quantity} {item.measurement}</label>
-                                                </div>  
-                                                <div className={styles['removeIngredient']}>
-                                                    <button name={`Button-${i}`} onClick={removeIngredient}> - </button>            
-                                                </div>
-                                            </div>    
-                                        )
-                                    })}                                                              
+                        <div>
+                            <input type="checkbox" onChange={e => setUpload({...upload,['gf']: e.target.value ==='on' ? true : false})}/>
+                            <label>Gluten-free</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" onChange={e => setUpload({...upload,['vegan']: e.target.value === 'on' ? true : false})}/>
+                            <label>Vegan</label>
+                        </div>
+                    </form>
+                </div>
+                <h2>Ingredients</h2>
+                <div className={styles['ingredientList']}>
+                    {ingredients.map((item, i) => {
+                        return (
+                            <div className={styles['ingredient']}>
+                                <div className={styles['ingredientName']}>
+                                    <label>{item.name} x {item.quantity} {item.measurement}</label>
+                                </div>  
+                                <div className={styles['removeIngredient']}>
+                                    <button name={`Button-${i}`} onClick={removeIngredient}> - </button>            
                                 </div>
-                                <div className={styles['addIngredient']}>
-                                    <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name"
-                                     onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}
-                                     />
-                                     <label>x</label>
-                                     <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
-                                     <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
-                                        <option value="grams">grams</option>
-                                        <option value="milli-grams">milli-grams</option>
-                                        <option value = "litres">litres</option>
-                                        <option value = "milli-litres">milli-litres</option>
-                                        <option value="tablespoon">tablespoon</option>
-                                        <option value="item">item</option>
-                                     </select>
-                                     <button onClick={addIngredient}>Add</button>
-                                     <div>
-                                        <p style={{color:'red'}}>{errorIngredient ? errorIngredient : ''}</p>
-                                    </div>
-                                </div>
-
-                                <div className={styles['submit']}>
-                                    <button onClick={handleSubmit}>Submit Meal-Kit!</button>
-                                    <p className={styles['error']}>{errorSubmit ? errorSubmit : ''}</p>
-                                    <p className={styles['success']}>{successful ? successful : ''}</p>
-
-                                </div>
+                            </div>    
+                        )
+                    })}                                                              
+                </div>
+                <div className={styles['addIngredient']}>
+                    <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name"
+                        onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}
+                        />
+                        <label>x</label>
+                        <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
+                        <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
+                        <option value="grams">grams</option>
+                        <option value="milli-grams">milli-grams</option>
+                        <option value = "litres">litres</option>
+                        <option value = "milli-litres">milli-litres</option>
+                        <option value="tablespoon">tablespoon</option>
+                        <option value="item">item</option>
+                        </select>
+                        <button onClick={addIngredient}>Add</button>
+                        <div>
+                        <p style={{color:'red'}}>{errorIngredient ? errorIngredient : ''}</p>
+                    </div>
+                </div>
+                <div className={styles['submit']}>
+                    <button onClick={handleSubmit}>Submit Meal-Kit!</button>
+                    <p className={styles['error']}>{errorSubmit ? errorSubmit : ''}</p>
+                    <p className={styles['success']}>{successful ? successful : ''}</p>
+                </div>
             </div>  
         </div>
     ) : <Navigate to='/login'/>

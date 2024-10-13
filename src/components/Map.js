@@ -62,7 +62,7 @@ const MapDisplay = () => {
                   <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
               </div>
           </div>
-          <div className='Map'>
+          <div className='map'>
             <h1>Step 1: Select your location</h1>
             <div className='search-box'>
                   <input type="search"  placeholder="Search for a location..." onChange={get_search} />

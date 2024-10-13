@@ -9,6 +9,7 @@
     background-color: var(--white);
     display: flex;
     flex-direction: row-reverse;
+
 }
 
 .about-text h1 {
@@ -58,6 +59,24 @@
 .about2-title h1 {
     color: var(--white);
     font-size: 2.5em;
+}
+
+.about-register-button {
+    font-size: 2em;
+    border: none;
+    border-radius: 15px;
+    margin-top: 1em;
+    width: min-content;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    background-color: var(--green);
+    color: var(--white);
+    text-decoration: none;
 }
 
 .about2-text {

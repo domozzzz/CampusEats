@@ -8,10 +8,6 @@
   --tableBody: #1a1a1d;
 }
 
-a.active {
-  text-decoration: underline;
-}
-
 p {
   color: var(--black);
 }
@@ -127,12 +123,12 @@ nav li a {
     font-size: 1em;
   }
 
-.explore-button {
-  width: 50%;
-  font-size: 1em;
-  padding: 10px;
-  margin-bottom: 20px;
-}
+  .explore-button {
+    width: 50%;
+    font-size: 1em;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
 
   /* About Page */
   .about {
@@ -195,17 +191,6 @@ nav li a {
     text-align: center;
   }
 
-  .join-us {
-    font-size: 1em;
-    text-align: center;
-  }
-
-  .join-us p {
-    padding: 10px;
-    font-size: 18px;
-    text-align: center;
-  }
-
   .about-register-button{
     font-size: 1.4em;
     padding: 10px;
@@ -262,58 +247,13 @@ h3 {
   font-size: 1.3em;
 }
 
-.about-register-button {
-  font-size: 2em;
-  border: none;
-  border-radius: 15px;
-  margin-top: 1em;
-  width: min-content;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  background-color: var(--green);
-  color: var(--white);
-  text-decoration: none;
-}
-
 .image-placeholder {
   height: 90vh;
-}
-
-.cart-button {  
-  font-size: 1.5em;
-  display: block;
-  float: left;
-  border: none;
-  border-radius: 15px;
-  margin-bottom: 0.5em;
-  padding: 0.2em;
-  margin-left: 30px;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  background-color: var(--green);
-  color: var(--white);
-  text-decoration: none;
 }
 
 .center {
   margin-top: 30px;
   text-align: center;
-}
-
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
 }
 
 section {
@@ -537,12 +477,6 @@ button:hover {
     cursor: pointer;
 }
 
-.about-text p {
-  font-size: 18px;
-  line-height: 1.6;
-  text-align: left;
-}
-
 .heading {
   position: absolute;
   top: 0;
@@ -558,116 +492,40 @@ button:hover {
   border: 1px solid #ccc;
 }
 
-.order {
+.bg {
   padding-top: 30px;
-  padding-bottom: 150px;
+  padding-bottom: 50px;
   position: relative;
   color: var(--black);
   background-color: var(--white);
 }
 
-.order-meal-kit {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--white);
+.white {
+  padding-top: 30px;
   position: relative;
-  height: auto;
-  width: 100%;
-  align-items: center;
-  
+  color: var(--black);
+  background-color: var(--white);
 }
 
-.order-meal-kit p {
-  color: var(--black); 
+.white h1 {
+  color: var(--green);
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  width: 50%;
+  margin: auto;
 }
 
 .black {
   color: var(--black);
 }
 
-
-.order-meal-kit h1{
-  margin-bottom: 0;
-  padding-bottom: 10px;
-  color: var(--green);
-}
-.order-meal-kit h2{
-  font-size: 2em;
-  color: var(--white);
-}
-
-
 label {
   text-align: left;
 }
 
-.meal-kit-info-left h3 {
-  text-align: left;
-  font-size: 1.5em;
-  color: var(--white);
-  padding-left: 50px;
-}
-
-.meal-kit-info-left label  {
-  text-align: left;
-}
-
-.order-meal-kit p {
-  color: var(--white);
-  margin-top: 0;
-  font-size: 22px;
-}
-
-.left p {
-  text-align: left;
-}
-
-.right p {
-  text-align: left;
-}
-
-
-.meal-kit-info {
-  z-index: 10;
-  position: relative;
-  text-align: center;
-  color: var(--white);
-  background-color: var(--green);
-  margin: 30px auto 50px auto;
-  width: 70%;
-  border-style: none;
-  border-radius: 15px;
-}
-
-.meal-kit-info-left {
-  z-index: 10;
-  text-align: center;
-  color: var(--white);
-  background-color: var(--green);
-  margin: 30px 60px 50px 40px;
-  width: 40%;
-  border-style: none;
-  border-radius: 15px;
-  float: left;
-  height: fit-content;
-}
-
 .split-right {
   width: 40%;
-  border-style: none;
-  border-radius: 15px;
-  float: right;
-  height: fit-content;
-}
-
-.meal-kit-info-right {
-  z-index: 10;
-  position: relative;
-  text-align: left;
-  color: var(--white);
-  background-color: var(--green);
-  margin: 30px 60px 10px 40px;
-  width: 100%;
   border-style: none;
   border-radius: 15px;
   float: right;
@@ -689,7 +547,6 @@ label {
   padding-bottom: 15px;
 }
 
-
 .serving-select li {
   border-style: solid;
   border-width: 1px;
@@ -703,12 +560,13 @@ label {
   float: right;
 }
 
-.order h1 {
+.bg h1 {
   color: var(--green);
   padding-top: 0;
   width: 50%;
   margin: auto;
-  margin-bottom: 40px;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .meal {
@@ -747,65 +605,6 @@ label {
 .container p {
   font-size: 20px;
 }
-
-
-.order-container {
-  padding: 30px;
-  position: relative;
-  display: center;
-  text-align: center;
-}
-
-.order-container h1{
-  color: var(--green);
-  margin: 0;
-  padding: 10px;
-}
-
-.order-container h3{
-  margin-left: 20px;
-  padding-left: 0;
-
-}
-
-.order-container button {
-  width: 20%;
-  margin: auto;
-  display: block;
-  background-color: var(--green);
-  color: var(--white);
-}
-
-.order-container p {
-  margin-left: 20px;
-  font-size: 20px;
-}
-
-.order-container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-
-}
-
-/* Hide the browser's default checkbox */
-.order-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
 
 @media (max-width: 600px) {
   nav li a {

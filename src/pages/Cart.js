@@ -123,7 +123,7 @@ export default function Cart() {
                 </div>
             </div>
             <div className='checkout'>
-                <h1>Your Cart</h1>
+                <h1>Cart</h1>
                 {cart.map((item) => checkoutItem(item, addToCart, removeFromCart))}
                 <div className='buttons'>
                     <button className='checkoutSubmit' onClick={() => clearCart()}>clear</button>

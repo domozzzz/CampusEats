@@ -19,7 +19,7 @@ export default function OrderSelect() {
                     <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
                 </div>
             </div>
-            <div class="order-choice">
+            <div class="bg">
                 <h1>Step 2: Choose you order type</h1>
                 <div className='orderChoiceButtons'>
                 <span className="grey-button">

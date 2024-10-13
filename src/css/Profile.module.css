@@ -11,6 +11,13 @@
     padding-bottom: 50px;
     width: 100%;
 }
+
+.profile h1 {
+    color: #064D42;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
   
 .profileHeader {
     display: flex;

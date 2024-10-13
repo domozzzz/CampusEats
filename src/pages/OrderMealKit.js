@@ -349,7 +349,7 @@ export default function OrderSelect() {
                     </div>
                 </div>
             </div>
-            <div class="order">
+            <div class="bg">
               <h1>Step 3: Select your Mealkit</h1>
             <div>
                 <div className='search-box'>

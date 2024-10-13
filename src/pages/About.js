@@ -9,11 +9,11 @@ export default function About() {
         <div>
             <div class="welcome" alt="Avatar">
                 <div class="heading-image">
-                <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
-                    <div class="title">
-                        <h1>About Us</h1>
-                    </div>
+                    <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
                 </div>
+            </div>
+            <div class='white'>
+                <h1>About</h1>
             </div>
             <div class="about" alt="Avatar" style={{ width: "100%", height: "600px" }}>
                 <div class="about-image">

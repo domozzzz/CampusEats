@@ -2,21 +2,6 @@
     --green: #064D42;
 }
 
-.order-choice {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    position: relative;
-    height: auto;
-    padding-bottom: 120px;
-    width: 100%;
-    align-items: center;
-}
-
-.order-choice h3 {
-    font-size: 2rem;
-}
-
 .orderChoiceButtons {
     display: flex;
     flex-direction: row;

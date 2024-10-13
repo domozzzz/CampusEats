@@ -155,6 +155,7 @@ const Profile = () => {
                 </div>
             </div>
             <div className={styles.profile}>
+                <h1>Profile</h1>
                 <div className={styles['profileHeader']}>
                     <div className={styles["nameEmailContainer"]}>
                         <h2>{userDetails.name}</h2>

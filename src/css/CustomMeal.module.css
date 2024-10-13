@@ -82,6 +82,10 @@
     width: 100%;
     position: relative;
   }
+
+  .custom_meal_container h1 {
+    color: var(--green);
+  }
   
   .progress_steps {
     display: flex;

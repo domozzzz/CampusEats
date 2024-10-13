@@ -8,9 +8,6 @@ export default function Postcheckout() {
             <div class="welcome" alt="Avatar">
                 <div class="heading-image">
                 <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
-                    <div class="title">
-                        <h1>About Us</h1>
-                    </div>
                 </div>
             </div>
             <div className='thankDiv'>

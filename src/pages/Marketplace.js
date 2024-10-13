@@ -349,75 +349,75 @@ export default function Marketplace() {
                     </div>
                 </div>
             </div>
-            <div class="order">
+            <div class="bg">
               <h1>Marketplace</h1>
-            <div>
-                <p>Welcome to the CampusEats community!<br />
-                  Explore meal ideas shared by fellow students, share your own <br />
-                  creations and get inspired to eat healthy!<br />
-                  Click one of the meals to show more information.<br />
-                </p>
-                <div className='search-box'>
-                  <input type="search" onChange={get_search} placeholder="Search for key word"/>
-                </div>
-                <div className='community-box'>
-                  <div className='sub-box'>
-                    <h1>Dietry</h1>
-                    <ul>
-                      <li><input type="checkbox" name='gf' onChange={set_dietary_option}></input>Gluten-Free</li>
-                      <li><input type="checkbox" name='vegan' onChange={set_dietary_option}></input>Vegan</li>
-                      <li><input type="checkbox" name='vegetarian' onChange={set_dietary_option}></input>Vegetarian</li>
-                    </ul>
+              <div className='marketplace'>
+                  <p>Welcome to the CampusEats community!<br />
+                    Explore meal ideas shared by fellow students, share your own <br />
+                    creations and get inspired to eat healthy!<br />
+                    Click one of the meals to show more information.<br />
+                  </p>
+                  <div className='search-box'>
+                    <input type="search" onChange={get_search} placeholder="Search for key word"/>
+                  </div>
+                  <div className='community-box'>
+                    <div className='sub-box'>
+                      <h1>Dietry</h1>
+                      <ul>
+                        <li><input type="checkbox" name='gf' onChange={set_dietary_option}></input>Gluten-Free</li>
+                        <li><input type="checkbox" name='vegan' onChange={set_dietary_option}></input>Vegan</li>
+                        <li><input type="checkbox" name='vegetarian' onChange={set_dietary_option}></input>Vegetarian</li>
+                      </ul>
+
+                    </div>
+                    <div className='sub-box'>
+                      <h1>Nutritients</h1>
+                      <ul>
+                        <li className='spaced'><input type="text2" onChange={set_min_calorie} /><span>≤ Calories ≤</span><input type="text2" onChange={set_max_calorie} /></li>
+                        <li className='spaced'><input type="text2" onChange={set_min_protein}/><span>≤ Protein ≤</span><input type="text2" onChange={set_max_protein} /></li>
+                        <li className='spaced'><input type="text2" onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="text2" onChange={set_max_sugars}/></li>
+                      </ul>
+                    </div>
+                    <div className='sub-box'>
+                      <h1>Location</h1>
+                      <ul>
+                      <li><input type="text3" placeholder='search location' onChange={customLocation} style={{'width': '100%'}}/></li>
+                      </ul>
+                    </div>
+                    <div className='sub-box'>
+                      <h1>Filter</h1>
+                      <Dropdown></Dropdown>
+                    </div>
 
                   </div>
-                  <div className='sub-box'>
-                    <h1>Nutritients</h1>
-                    <ul>
-                      <li className='spaced'><input type="text2" onChange={set_min_calorie} /><span>≤ Calories ≤</span><input type="text2" onChange={set_max_calorie} /></li>
-                      <li className='spaced'><input type="text2" onChange={set_min_protein}/><span>≤ Protein ≤</span><input type="text2" onChange={set_max_protein} /></li>
-                      <li className='spaced'><input type="text2" onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="text2" onChange={set_max_sugars}/></li>
-                    </ul>
-                  </div>
-                  <div className='sub-box'>
-                    <h1>Location</h1>
-                    <ul>
-                    <li><input type="text3" placeholder='search location' onChange={customLocation} style={{'width': '100%'}}/></li>
-                    </ul>
-                  </div>
-                  <div className='sub-box'>
-                    <h1>Filter</h1>
-                    <Dropdown></Dropdown>
-                  </div>
-
                 </div>
-              </div>
-              <div>
-        </div>
-        <div className='popup-display'>
-        {seen ? <Pop/> : null}
-        </div>
-        <div className={`cards ${seen ? 'transparent' : ''}`}>
-          {results.sort((a,b) => {
-             if (orderBy === 'price') {
-              return a.meals['price'] - b.meals['price']
-              } else {
-                return b.meals[orderBy] - a.meals[orderBy]
-              }
-          }).map((meal) => {
-            return (
-                <div class="card" name="hello">
-                  <img src={meal.meals.photo} alt="Avatar"></img>
-                  <p>{meal.meals.name}<br />
-                    Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
-                    ♡ {meal.meals.likes}<br />
-                    Location: {meal.Locations.name}
-                  </p>  
-                  <button className='option-button' name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
-                  <p style={{color: 'red'}}>{error ? error : ''}</p>
-                  </div>
-            )
-          })}            
+                <div>
           </div>
+          <div className='popup-display'>
+          {seen ? <Pop/> : null}
+          </div>
+          <div className={`cards ${seen ? 'transparent' : ''}`}>
+            {results.sort((a,b) => {
+              if (orderBy === 'price') {
+                return a.meals['price'] - b.meals['price']
+                } else {
+                  return b.meals[orderBy] - a.meals[orderBy]
+                }
+            }).map((meal) => {
+              return (
+                  <div class="card" name="hello">
+                    <img src={meal.meals.photo} alt="Avatar"></img>
+                    <p>{meal.meals.name}<br />
+                      Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
+                      ♡ {meal.meals.likes}<br />
+                      Location: {meal.Locations.name}
+                    </p>  
+                    <button className='option-button' name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
+                    <p style={{color: 'red'}}>{error ? error : ''}</p>
+                    </div>
+              )
+            })}            
+            </div>
             </div>
         </div>
     );
