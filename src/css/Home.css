@@ -13,6 +13,12 @@
     object-fit: cover;
 }
 
+.title-text {
+    position: absolute;
+    transform: translate(0, -130%);
+    color: var(--white);
+  }
+
 
 #projects p {
     font-size: 1.2em;

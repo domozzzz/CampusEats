@@ -60,7 +60,7 @@ const Profile = () => {
                 .eq('user_id',user.id)
                 //If user not a seller, ignore
                 if (data.length > 0) {
-                    const filtered = data.filter((meal) => {return meal['meals'].length > 0}).map((meal) => {return (meal['meals'])})
+                    let filtered = data[0]['meals']
                     setUploads(filtered)
                 }
 
@@ -210,14 +210,14 @@ const Profile = () => {
                     <h2>Uploaded MealKits</h2>
                     {/* Map each upload as an entry */}
                     {uploads.map((upload) => (
-                        <div key={upload[0].id} className={styles["orderItem"]}>
+                        <div key={upload.id} className={styles["orderItem"]}>
                             <div className={styles["orderText"]}>
-                                <h3>{upload[0].name}</h3>
-                                <p>Number of Orders: {upload[0].number_of_orders}</p>
-                                <p>You have made: ${0.50 * upload[0].number_of_orders}</p>
+                                <h3>{upload.name}</h3>
+                                <p>Number of Orders: {upload.number_of_orders}</p>
+                                <p>You have made: ${0.50 * upload.number_of_orders}</p>
                                 <p></p>
                             </div>
-                            <img src={upload[0].photo} alt={upload[0].name} />
+                            <img src={upload.photo} alt={upload.name} />
                         </div>
                     ))}
                 </div>
