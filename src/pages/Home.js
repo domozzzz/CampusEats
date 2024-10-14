@@ -84,7 +84,7 @@ export default function Home() {
     return (
         <div>
             <div class="aboveTheFold">
-                <img src={homepage} alt="Homepage" style={{ zIndex: "0", width: "100%", height: "100vh", position: "relative" }}></img>
+                <img class="homepage-img" src={homepage} alt="Homepage"></img>
                 <div class="title-text">
                     <h1>CampusEats<br />
                         <b>The Solutions for Your Everyday Meals</b><br />
@@ -111,7 +111,7 @@ export default function Home() {
                 </div>
 
                 <div class="explore">
-                    <Link to="/marketplace" className="explore-button">Explore more marketplace <span>&#8594;</span></Link>
+                    <Link to="/marketplace" className="explore-button">Explore marketplace <span>&#8594;</span></Link>
                 </div>
             </section>
         </div>

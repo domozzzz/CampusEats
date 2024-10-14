@@ -24,7 +24,7 @@ export default function OrderSelect() {
                 <div className='orderChoiceButtons'>
                 <span className="grey-button">
                     <Link to={`/customMealKit/${LID}`}><button>
-                        <img src={clock} style={{height: "150px"}}></img>
+                        <img src={clock} class='clock-img'></img>
                         <h3>Custom Meal Kit</h3>
                         <p>Create a quick, custom meal-kit. Set your own base,
                             protein and vegetables ready to order at any location.</p>
@@ -32,7 +32,7 @@ export default function OrderSelect() {
                     </span>
                     <span className="green-button">
                     <Link to={`/orderSearchMealKit/${LID}`}><button>
-                        <img src={search} style={{height: "140px"}}></img>
+                        <img src={search} class='search-img'></img>
                         <h3 style={{color: "white"}}>Search Meal-kits near me</h3>
                         <p style={{color: "white"}}>Search through custom Meal-kits made by the
                             CampusEats team or other users!</p>

@@ -1,6 +1,6 @@
 .map {
     padding-top: 30px;
-    min-height: 80vh;
+    min-height: 90vh;
     position: relative;
     color: var(--black);
     background-color: var(--white);
@@ -13,7 +13,7 @@
     margin: auto;
     margin-bottom: 0;
     padding-bottom: 0;
-  }
+}
 
 .map-style {
     width: 40vw;
@@ -62,4 +62,23 @@
     font-weight: bold;
     padding: 10px;
     border-radius: 10px;    
+}
+
+@media (max-width: 600px) {
+    .map h1 {
+        width: 90%;
+        font-size: 1.5rem;
+    }
+
+    .map-style {
+        width: 90vw;
+        margin-bottom: 10px;
+    }
+
+    .possible_location button, 
+    .submit_location {
+        font-size: 1.2rem;
+        width: 100%;
+        margin: 0;
+    }
 }

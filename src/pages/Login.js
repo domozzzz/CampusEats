@@ -45,7 +45,7 @@ function LoginPage() {
     <div>
       <div className="login-container">
         <div class="welcome">
-          <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative"}}></img>
+          <img src={homepage} alt="Avatar" style={{zIndex: "0", width: "100%", height: "100vh", position: "relative", objectFit: "cover"}}></img>
         </div>
         <div className="login-box">
           <h2>Sign in to your account</h2>

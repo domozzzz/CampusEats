@@ -22,6 +22,9 @@
     padding-top: 0;
     margin-bottom: 0;
     padding-bottom: 0;
+    padding-top: 20px;
+    margin-top: 0;
+
 }
 
 .header p {
@@ -172,4 +175,60 @@
 
 .success {
     color: green;
+}
+
+@media (max-width: 600px) {
+    .header p {
+        width: 80%;
+        font-size: 0.9rem;
+    }
+
+    .upload h2 {
+        font-size: 1.5rem;
+    }
+
+    .upload h1 {
+        font-size: 1.5rem;
+    }
+
+    .basicDetails {
+        width: 90%;
+        margin-bottom: 0px;
+    }
+
+    .basicDetails div {
+        width: 80%;
+    }
+
+    .basicDetails input {
+        width: 100%;
+    }
+
+    
+    .basicDetails p {
+        font-size: 1em;
+    }
+
+    .upload form {
+        width: 90%;
+    }
+
+    .removeIngredient {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .addIngredient {
+        width: 90%;
+    }
+
+    .addIngredient input[type="number"] {
+        width: 20%;
+    }
+
+    .submit button {
+        width: 100%;
+        font-size: 1.5rem;
+    }
 }

@@ -202,3 +202,19 @@
 .activeProfile {
     color: palevioletred;
 }
+
+@media (max-width: 600px) {
+    .profileButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profileButtons button {
+        width: 80%;
+        margin: 5px;
+    }
+
+    .profile h1 {
+        font-size: 1.5rem;
+    }
+}

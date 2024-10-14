@@ -56,3 +56,46 @@ footer p {
     color: var(--green);
     padding: 0;  
 }
+
+@media (max-width: 600px) {
+    footer {
+        position: relative; /* Changed from absolute to relative */
+        background-color: var(--lightGray);
+        width: 100%;
+        padding: 20px 0;
+      }
+      
+      footer p {
+        color: var(--white);
+      }
+      
+      .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+      }
+      
+      .footer img {
+        width: 80px;
+      }
+      
+      .footer h3 {
+        text-align: center;
+        margin: 10px 0;
+        font-size: 16px;
+      }
+      
+      .footer ul {
+        line-height: 150%;
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+        margin: 0; /* Add margin */
+        list-style-type: none;
+      }
+
+      footer p {
+        color: var(--green);
+      }
+}

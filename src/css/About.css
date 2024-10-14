@@ -7,16 +7,16 @@
     text-align: left;
     color: var(--black);
     background-color: var(--white);
+    width: 100% !important;
+    height: 600px !important;
     display: flex;
     flex-direction: row-reverse;
-
 }
 
 .about-text h1 {
     padding-top: 130px;
-    padding-left: 0;
     padding-bottom: 0;
-    text-align: left;
+    text-align: center;
     color: var(--green);
 }
 
@@ -82,6 +82,7 @@
 .about2-text {
     text-align: justify;
     padding: 40px;
+    width: 90%;
 }
 
 .about2-text p {
@@ -93,99 +94,82 @@
     color: var(--green);
     font-size: 10;
     text-align: center;
-    padding-bottom: 50px;
 }
 
 .join-us h1 {
     padding-bottom: 0px;
+
 }
 
 .join-us p {
+    width: 90%;
     color: black;
     font-size: 1.4em;
 }
 
 @media (max-width: 600px) {
-    .about {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about-image {
-        flex: 1;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-    }
-
-    .about-image img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-    }
-
-    .about-text {
-        flex: 1;
-        padding: 10px;
-        margin-top: 0;
-        font-size: 14px;
-    }
 
     .about-text h1 {
-        margin-bottom: 20px;
-        text-align: center;
-        padding: 0;
+        position: relative;
+        font-size: 1rem;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .white h1 {
+        font-size: 1.5rem;
     }
 
     .about2 {
-        padding: 0;
-        text-align: center;
-        height: auto;
+        flex-direction: column;
+        align-items: center;
     }
 
     .about2-title {
+        flex: 1;
         text-align: center;
-        margin: 0;
-    }
-
-    .about2-title h1 {
-        font-size: 2em;
+        padding-bottom: 0;
         margin-bottom: 0;
     }
 
-    .about2-text {
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    .about2-text p {
-        font-size: 18px;
-        padding: 10px;
-        text-align: center;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    .container h1 {
+    .about2-title h1 {
         font-size: 1.5em;
-    }
-
-    .join-us {
-        font-size: 1em;
-        text-align: center;
-    }
-
-    .join-us p {
-        padding: 10px;
-        font-size: 18px;
-        text-align: center;
+        padding-bottom: 0;
+        margin-bottom: 0;
     }
 
     .about-register-button {
-        font-size: 1.4em;
-        padding: 10px;
-        width: 80%;
+        font-size: 1rem;
+        padding: 0.5em;
+        width: 60%;
+    }
+
+    .about2-text p {
+        padding-top: 0;
+        margin-top: 0;
+        font-size: 1rem;
+    }
+
+    .join-us h1 {
+        font-size: 1em;
+    }
+
+    .join-us p {
+        font-size: 1rem;
+    }
+
+    .about {
+        position: relative;
+        color: var(--black);
+        background-color: var(--white);
+        width: 100% !important;
+        height: 400px !important;
+        display: inline-block;
+    }
+
+    .about-image {
+        display: none;
     }
 }
