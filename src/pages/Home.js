@@ -34,11 +34,11 @@ export default function Home() {
         setLoading(true)
         const fetchMeals = async () => {
             const {data: d, error: e} = await supabase
-                .from('meals')
-                .select('*,sellers(*)')
-                .neq('id',0)
+                .from('mealLocations')
+                .select('*,meals(*, sellers(*)), Locations(*)')
+                .neq('meal_id',0)
                 .limit(9)
-                .order('likes', {ascending: false})
+                .order('likes', {ascending: false, foreignTable: 'meals'})
                 if (e) {
                     console.log(e)
                     setError(true)
@@ -65,11 +65,11 @@ export default function Home() {
                         return (
                             <Link to="/marketplace">
                                 <div class="card">
-                                <img src={meal.photo} alt="Avatar"></img>
-                                <p>{meal.name}<br />
-                              Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
-                              ♡ {meal.likes}<br />
-                              Location: QUT
+                                <img src={meal.meals['photo']} alt="Avatar"></img>
+                                <p><strong>{meal.meals['name']}</strong><br />
+                              Creator: {meal.meals['sellers'] != null ? meal.meals['sellers']['username'] : "CampusEats"}<br />
+                              ♡ {meal.meals['likes']}<br />
+                              Location: {meal.Locations['name']}
                             </p>  
                                 </div>
                             </Link>
