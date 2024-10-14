@@ -1,8 +1,8 @@
 .aboveTheFold {
     width: 100vw;
+    position: absolute;
     top: 0px;
     overflow: hidden;
-    font-size: 1vw;
 }
 
 .homepage-img {

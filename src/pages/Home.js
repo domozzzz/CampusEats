@@ -84,12 +84,8 @@ export default function Home() {
     return (
         <div>
             <div class="aboveTheFold">
-<<<<<<< HEAD
-                <img class="homepage-img" src={homepage} alt="Homepage"></img>
+                <img src={homepage} alt="Homepage" style={{ zIndex: "0", width: "100%", height: "100vh", position: "relative", objectFit: "cover"}}></img>
                 <div class="title-text">
-=======
-                <div class="title-text" style={{'backgroundImage': `url(${homepage})`, 'backgroundSize': 'cover','padding-top': '150px', 'padding-bottom': '20%', 'backdropFilter': 'contrast(1%)' }}>
->>>>>>> 9c04d4b395ba39fa84972183014dfcbac571217e
                     <h1>CampusEats<br />
                         <b>The Solutions for Your Everyday Meals</b><br />
                         Custom meal kits designed by CampusEats and<br />
@@ -105,6 +101,7 @@ export default function Home() {
                     </ScrollButton>
                 </div>
             </div>
+            <div class="image-placeholder"></div>
             <section id="projects">
                 <h3>Marketplace</h3>
                 <p>See below for our more popular dishes. Ready to be delivered to your desired university location.</p>
