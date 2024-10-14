@@ -233,12 +233,11 @@ h3 {
 }
 
 .title-text {
-  position: absolute;
-  transform: translate(0, -130%);
   color: var(--white);
 }
 
 .title-text h1 {
+  margin-top: 125px;
   font-weight: normal;
   text-align: left;
 }
