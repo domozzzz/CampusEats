@@ -84,7 +84,7 @@ export default function Home() {
     return (
         <div>
             <div class="aboveTheFold">
-                <div class="title-text" style={{'backgroundImage': `url(${homepage})`, 'backgroundSize': 'cover','padding-top': '150px', 'padding-bottom': '20%' }}>
+                <div class="title-text" style={{'backgroundImage': `url(${homepage})`, 'backgroundSize': 'cover','padding-top': '150px', 'padding-bottom': '20%', 'backdropFilter': 'contrast(1%)' }}>
                     <h1>CampusEats<br />
                         <b>The Solutions for Your Everyday Meals</b><br />
                         Custom meal kits designed by CampusEats and<br />
