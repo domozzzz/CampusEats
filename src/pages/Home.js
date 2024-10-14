@@ -34,11 +34,11 @@ export default function Home() {
         setLoading(true)
         const fetchMeals = async () => {
             const {data: d, error: e} = await supabase
-                .from('meals')
-                .select('*,sellers(*)')
-                .neq('id',0)
+                .from('mealLocations')
+                .select('*,meals(*, sellers(*)), Locations(*)')
+                .neq('meal_id',0)
                 .limit(9)
-                .order('likes', {ascending: false})
+                .order('likes', {ascending: false, foreignTable: 'meals'})
                 if (e) {
                     console.log(e)
                     setError(true)
@@ -65,11 +65,11 @@ export default function Home() {
                         return (
                             <Link to="/marketplace">
                                 <div class="card">
-                                <img src={meal.photo} alt="Avatar"></img>
-                                <p>{meal.name}<br />
-                              Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
-                              ♡ {meal.likes}<br />
-                              Location: QUT
+                                <img src={meal.meals['photo']} alt="Avatar"></img>
+                                <p><strong>{meal.meals['name']}</strong><br />
+                              Creator: {meal.meals['sellers'] != null ? meal.meals['sellers']['username'] : "CampusEats"}<br />
+                              ♡ {meal.meals['likes']}<br />
+                              Location: {meal.Locations['name']}
                             </p>  
                                 </div>
                             </Link>
@@ -84,8 +84,12 @@ export default function Home() {
     return (
         <div>
             <div class="aboveTheFold">
+<<<<<<< HEAD
                 <img class="homepage-img" src={homepage} alt="Homepage"></img>
                 <div class="title-text">
+=======
+                <div class="title-text" style={{'backgroundImage': `url(${homepage})`, 'backgroundSize': 'cover','padding-top': '150px', 'padding-bottom': '20%', 'backdropFilter': 'contrast(1%)' }}>
+>>>>>>> 9c04d4b395ba39fa84972183014dfcbac571217e
                     <h1>CampusEats<br />
                         <b>The Solutions for Your Everyday Meals</b><br />
                         Custom meal kits designed by CampusEats and<br />
@@ -101,7 +105,6 @@ export default function Home() {
                     </ScrollButton>
                 </div>
             </div>
-            <div class="image-placeholder"></div>
             <section id="projects">
                 <h3>Marketplace</h3>
                 <p>See below for our more popular dishes. Ready to be delivered to your desired university location.</p>

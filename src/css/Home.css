@@ -1,6 +1,5 @@
 .aboveTheFold {
     width: 100vw;
-    position: absolute;
     top: 0px;
     overflow: hidden;
     font-size: 1vw;
@@ -120,6 +119,7 @@
         position: absolute;
         transform: translate(0, -130%);
         color: white;
+        margin-top: 300px;
     }
 
     .title h1 {
