@@ -88,6 +88,8 @@ export default function Cart() {
             }
         }
 
+        clearCart();
+
         nav('/payment');
     }
 
