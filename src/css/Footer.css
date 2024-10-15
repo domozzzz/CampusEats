@@ -57,45 +57,46 @@ footer p {
     padding: 0;  
 }
 
+/* Mobile Styles */
 @media (max-width: 600px) {
-    footer {
-        position: relative; /* Changed from absolute to relative */
-        background-color: var(--lightGray);
-        width: 100%;
-        padding: 20px 0;
-      }
-      
-      footer p {
-        color: var(--white);
-      }
-      
-      .footer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-      }
-      
-      .footer img {
-        width: 80px;
-      }
-      
-      .footer h3 {
-        text-align: center;
-        margin: 10px 0;
-        font-size: 16px;
-      }
-      
-      .footer ul {
-        line-height: 150%;
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center items */
-        margin: 0; /* Add margin */
-        list-style-type: none;
-      }
+  footer {
+      position: relative; /* Use relative positioning for mobile */
+      background-color: var(--lightGray);
+      width: 100%;
+      padding: 20px 0; /* Add padding */
+  }
 
-      footer p {
-        color: var(--green);
-      }
+  .footer {
+      flex-direction: column; /* Stack items vertically on mobile */
+      align-items: center; /* Center items */
+  }
+
+  .footer img {
+      width: 80px; /* Adjust image width for mobile */
+  }
+
+  .footer h3 {
+      text-align: center; /* Center heading */
+      margin: 10px 0; /* Add spacing */
+      font-size: 16px; /* Adjust font size */
+  }
+
+  .footer ul {
+      display: flex; /* Use flexbox for horizontal alignment */
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center items */
+      padding: 0; /* Remove default padding */
+      list-style-type: none; /* Remove bullets */
+      margin: 0; /* Remove default margin */
+  }
+
+  .footer ul li {
+      margin: 5px 0; /* Add spacing between list items */
+  }
+
+  footer p {
+      color: var(--green);
+      text-align: center; /* Center paragraph text */
+  }
 }
+

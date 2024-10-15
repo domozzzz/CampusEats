@@ -7,6 +7,7 @@
     min-height: 300px;
     width: 100%;
     align-items: center;
+    padding-bottom: 200px;
 }
 
 .checkout h1 {
@@ -96,6 +97,11 @@
 }
 
 @media (max-width: 600px) {
+    .checkout {
+        padding-bottom: 200px;
+    }
+
+
     .checkout h1 {
         font-size: 1.5rem;  
     }

@@ -65,7 +65,7 @@ export default function Home() {
                         return (
                             <Link to="/marketplace">
                                 <div class="card">
-                                <img src={meal.meals['photo']} alt="Avatar"></img>
+                                <img class='card-img' src={meal.meals['photo']} alt="Avatar"></img>
                                 <p><strong>{meal.meals['name']}</strong><br />
                               Creator: {meal.meals['sellers'] != null ? meal.meals['sellers']['username'] : "CampusEats"}<br />
                               ♡ {meal.meals['likes']}<br />

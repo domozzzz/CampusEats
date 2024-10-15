@@ -406,7 +406,7 @@ export default function Marketplace() {
             }).map((meal) => {
               return (
                   <div class="card" name="hello">
-                    <img src={meal.meals.photo} alt="Avatar"></img>
+                    <img src={meal.meals.photo} alt="Avatar" class='card-img'></img>
                     <p>{meal.meals.name}<br />
                       Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
                       ♡ {meal.meals.likes}<br />

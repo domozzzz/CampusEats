@@ -217,4 +217,9 @@
     .profile h1 {
         font-size: 1.5rem;
     }
+
+
+    .orderItem img {
+        height: 100px;
+    }
 }
