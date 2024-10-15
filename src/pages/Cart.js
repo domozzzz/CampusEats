@@ -126,7 +126,7 @@ export default function Cart() {
                 <h1>Cart</h1>
                 {cart.map((item) => checkoutItem(item, addToCart, removeFromCart))}
                 <div className='buttons'>
-                    <button className='checkoutSubmit' onClick={() => clearCart()}>clear</button>
+                    <button className='checkoutSubmit' onClick={() => clearCart()}>Clear</button>
                     <button className='checkoutSubmit' onClick={() => handleSubmit()}>Checkout</button>
                 </div>
             </div>
