@@ -53,6 +53,7 @@
   color: white;
   font-size: 1rem;
   margin-top: 10px;
+  white-space: nowrap;
 }
 
 .choice_card_p_added {
@@ -251,7 +252,6 @@
     display: flex;
     flex-direction: row;
     margin-top: 20px;
-    background-color: red;
   }
 
   @media (max-width: 600px) {
@@ -315,10 +315,14 @@
     }
   
     .step_div {
-      top: -40px;
+      top: -30px;
       max-width: 250px;
       max-height: 50px;
-      padding: 5px;
+      padding: 0px;
+    }
+
+    .step_div h2 {
+      font-size: 1rem;
     }
   }
   

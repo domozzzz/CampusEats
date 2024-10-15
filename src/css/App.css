@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+
 :root {
   --white: #ffff;
   --black: #0000;
@@ -10,6 +14,15 @@
 
 p {
   color: var(--black);
+  font-family: "Poppins", sans-serif;
+}
+
+li {
+  font-family: "Poppins", sans-serif;
+}
+
+label {
+  font-family: "Poppins", sans-serif;
 }
 
 div {
@@ -40,6 +53,7 @@ nav ul li { /* All nav elements */
   padding-top: 25px;
   padding-left: 0px;
   font-size: 1.5em;
+  font-family: "Poppins", sans-serif;
 }
 
 .menu-icon {
