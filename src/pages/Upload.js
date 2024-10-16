@@ -98,7 +98,7 @@ export default function Upload() {
 
             setErrorSubmit(null)
             setErrorIngreident(null)
-            setSuccessful("Successfully submitted meal-kit, you should see it on the homepage soon!")
+            setSuccessful("Successfully submitted meal-kit, our CampusEats team will review shortly!")
         }
 
     }
@@ -249,7 +249,7 @@ export default function Upload() {
                     </div>
                 </div>
                 <div className={styles['submit']}>
-                    <button onClick={handleSubmit}>Submit Meal-Kit!</button>
+                    <button onClick={successful ? null : handleSubmit} style={successful ? {'backgroundColor': 'grey', 'color': 'black'} : {}}>Submit Meal-Kit!</button>
                     <p className={styles['error']}>{errorSubmit ? errorSubmit : ''}</p>
                     <p className={styles['success']}>{successful ? successful : ''}</p>
                 </div>
