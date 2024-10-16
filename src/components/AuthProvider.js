@@ -5,10 +5,20 @@ const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
 
+/**
+ * signs the user out
+ */
 const signOut = () => supabase.auth.signOut();
 
+/**
+ * Logs user in
+ * @param {*} email user email
+ * @param {*} password user password
+ */
 const login = (email, password) =>
   supabase.auth.signInWithPassword({ email, password });
+
+
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -18,6 +28,10 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
 
     setLoading(true);
+
+    /**
+     * Gets the user data from local storage
+     */
     const getUser = async () => {
       const {data} = await supabase.auth.getUser();
       const {user: currentUser} = data;
@@ -26,6 +40,9 @@ const AuthProvider = ({ children }) => {
     };
     getUser();
 
+    /**
+     * update local storage when session changes
+     */
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       if (event === "SIGNED_IN") {
         setUser(session.user);

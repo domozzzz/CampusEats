@@ -14,13 +14,22 @@ function LoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
   
-  const validform = (e) => {
-    const emailRegex = /\S+@\S+\.\S+/;
+  /**
+   * Validates the information that the user has entered
+   * @returns bool if input is valid
+   */
+  const validform = () => {
+    const emailRegex = /\S+@\S+\.\S+/;  // Check that email has @ and .
     const isEmailValid = emailRegex.test(email);
-    const isPaswwordValid = password.length > 8;
+    const isPaswwordValid = password.length > 8;   //checks that password is longer than 8 characters
     return isEmailValid && isPaswwordValid;
   }
 
+  /**
+   * Handles user submitting the form
+   * Checks if the input is valid and logs the user in
+   * navigates to the homepage once logged in 
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
@@ -28,7 +37,7 @@ function LoginPage() {
       alert("Please enter a valid email and password");
       return;
     }
-    const { data: {user, session}, error } = await login(email, password)
+    const { data: {user, session}, error } = await login(email, password)  // logs user into site and sets session
     if (error) {
       console.log(error);
       setError(true);

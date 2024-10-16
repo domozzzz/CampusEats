@@ -13,11 +13,15 @@ function RegisterPage() {
   const [phone, setPhone] = useState('');
   const [msg, setMsg] = useState("");
   
+  /**
+   * Validates the information that the user has entered
+   * @returns bool if input is valid
+   */
   const validform = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
-    const isEmailValid = emailRegex.test(email);
+    const isEmailValid = emailRegex.test(email);  // Check that email has @ and .
     
-    const isPaswwordValid = password.length > 8;
+    const isPaswwordValid = password.length > 8; //checks that password is longer than 8 characters
 
     return isEmailValid && isPaswwordValid;
   }
