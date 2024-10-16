@@ -18,8 +18,12 @@ import { CartProvider } from "./components/CartContext.js";
 import ProfilePage from "./pages/Profile.js";
 import TermsAndConditions from './pages/TermsAndConditions.js';
 import Postcheckout from "./pages/Postcheck.js";
+import NotFound from "./components/NotFound.js";
 
-
+/**
+ * Main App.js file for routing 
+ * @returns routing component
+ */
 function App() {
   return (
       <AuthProvider>
@@ -45,6 +49,8 @@ function App() {
 
           <Route path="/TermsAndConditions" element={<TermsAndConditions/>}/>
           <Route path="/payment" element={<Postcheckout/>}/>
+
+          <Route path='*' element={<NotFound/>}/>
 
       </Routes>
       <Footer />

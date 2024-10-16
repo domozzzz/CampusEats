@@ -60,7 +60,7 @@ const Profile = () => {
                 .eq('user_id',user.id)
                 //If user not a seller, ignore
                 if (data.length > 0) {
-                    let filtered = data[0]['meals']
+                    let filtered = data.filter((d) => d['meals'].length > 0)
                     setUploads(filtered)
                 }
 
@@ -143,9 +143,6 @@ const Profile = () => {
         return date.slice(0,10)
     }
 
-    //Displaying only 4 recent orders at a time
-    const [orderIndex, setOrderIndex] = useState(0)
-
  
     return user ? (
         <div>
@@ -211,14 +208,14 @@ const Profile = () => {
                     {/* Map each upload as an entry */}
                     {uploads.map((upload) => (
                         <div key={upload.id} className={styles["orderItem"]}>
-                            <div className={styles["orderText"]}>
-                                <h3>{upload.name}</h3>
-                                <p>Number of Orders: {upload.number_of_orders}</p>
-                                <p>You have made: ${0.50 * upload.number_of_orders}</p>
-                                <p></p>
-                            </div>
-                            <img src={upload.photo} alt={upload.name} />
+                        <div className={styles["orderText"]}>
+                            <h3>{upload.meals[0]['name']}</h3>
+                            <p>Number of Orders: {upload.meals[0]['number_of_orders']}</p>
+                            <p>You have made: ${0.50 * upload.meals[0]['number_of_orders']}</p>
+                            <p></p>
                         </div>
+                        <img src={upload.meals[0]['photo']} alt={upload.meals[0]['name']} />
+                    </div>
                     ))}
                 </div>
             </div>

@@ -103,8 +103,10 @@ export default function Upload() {
 
     }
 
-    
-    const addIngredient = (e) => {
+    /**
+     * Add an ingredient to the current ingredient list
+     */
+    const addIngredient = () => {
         if (newIngredient['name'] != null) {
             setIngredients([...ingredients,newIngredient])
             setUpload({...upload,'ingredients': ingredients})
@@ -115,6 +117,10 @@ export default function Upload() {
         }
     }
 
+    /**
+     * Remove an ingredient from lisr
+     * @param {*} e button which contains index of ingredient to remove from list
+     */
     const removeIngredient = (e) => {
         const buttonName = e.target.name
         const index = parseInt(buttonName.slice(7))
@@ -130,7 +136,7 @@ export default function Upload() {
         let imageid = uuidv4();
 
         console.log(imageid);
-        const {data, error} = await supabase
+        const {error} = await supabase
         .storage
         .from('images')
         .upload(user.id + "/" + imageid, file);
@@ -142,7 +148,11 @@ export default function Upload() {
         }
 
     }
-
+    /**
+     * Get url for uploaded image
+     * @param {*} id id of user for image
+     * @returns image url in supabase
+     */
     const geturl = (id) => {
         const {data} = supabase
         .storage
@@ -153,6 +163,10 @@ export default function Upload() {
 
     }
 
+    /**
+     * set image locally
+     * @param {*} image local image input type 
+     */
     const addImage = (image) => {
         setImage(image.target.files[0]);
     }
@@ -174,7 +188,7 @@ export default function Upload() {
                 <div className={styles["basicDetails"]}>
                     <div>
                         <label>Meal Kit Name</label> 
-                        <input type="text" onChange={e => setUpload({...upload,['name']: e.target.value})} />
+                        <input type="text" onChange={e => setUpload({...upload,'name': e.target.value})} />
                     </div> 
                     <div>  
                         <label>Choose an Image</label>
@@ -187,15 +201,15 @@ export default function Upload() {
                     <p>Check the boxes for relevant dietary info which applies to your meal</p>
                     <form>
                         <div>
-                            <input type="checkbox" onChange={e => setUpload({...upload,['vegetarian']: e.target.value === 'on' ? true : false})}/>
+                            <input type="checkbox" onChange={e => setUpload({...upload,'vegetarian': e.target.value === 'on' ? true : false})}/>
                             <label>Vegetarian</label>
                         </div>
                         <div>
-                            <input type="checkbox" onChange={e => setUpload({...upload,['gf']: e.target.value ==='on' ? true : false})}/>
+                            <input type="checkbox" onChange={e => setUpload({...upload,'gf': e.target.value ==='on' ? true : false})}/>
                             <label>Gluten-free</label>
                         </div>
                         <div>
-                            <input type="checkbox" onChange={e => setUpload({...upload,['vegan']: e.target.value === 'on' ? true : false})}/>
+                            <input type="checkbox" onChange={e => setUpload({...upload,'vegan': e.target.value === 'on' ? true : false})}/>
                             <label>Vegan</label>
                         </div>
                     </form>
@@ -217,11 +231,11 @@ export default function Upload() {
                 </div>
                 <div className={styles['addIngredient']}>
                     <input type="text" value={newIngredient['name'] != null ? newIngredient['name'] : ''} placeholder="ingredient name"
-                        onChange={ e => setNewIngredient({...newIngredient, ['name']: e.target.value})}
+                        onChange={ e => setNewIngredient({...newIngredient, 'name': e.target.value})}
                         />
                         <label>x</label>
-                        <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, ['quantity']: e.target.value})}/>
-                        <select onChange={ e => setNewIngredient({...newIngredient, ['measurement']: e.target.value})}>
+                        <input type="number" min ="1" placeholder="1" onChange={ e => setNewIngredient({...newIngredient, 'quantity': e.target.value})}/>
+                        <select onChange={ e => setNewIngredient({...newIngredient, 'measurement': e.target.value})}>
                         <option value="grams">grams</option>
                         <option value="milli-grams">milli-grams</option>
                         <option value = "litres">litres</option>
