@@ -184,3 +184,9 @@
         margin-bottom: 60px;
     }
 }
+
+@media (min-width:650px) and (max-width:850px) {
+    .title-text {
+        margin-top: 150px;
+    }
+}

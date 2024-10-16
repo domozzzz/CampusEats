@@ -23,7 +23,7 @@ export default function Footer() {
           </Link></li>
 
           <li><Link to="/marketplace">
-            <a href="/Community">Community</a>
+            <a href="/Community">Marketplace</a>
           </Link></li>
           
           <li><Link to="/TermsAndConditions">

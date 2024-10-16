@@ -101,6 +101,22 @@
         padding-bottom: 200px;
     }
 
+    .checkoutItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-height: fit-content;
+    }
+
+    .checkoutItem img{
+        margin-right: 0;
+        max-width: fit-content;
+    }
+
+    .checkoutItem .remove {
+        margin-right: 0;
+    }
+
 
     .checkout h1 {
         font-size: 1.5rem;  
