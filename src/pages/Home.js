@@ -6,7 +6,11 @@ import '../css/Home.css'
 import supabase from "../supabase";
 import { useAuth } from '../components/AuthProvider.js';
 
-
+/**
+ * Scroll to element on click
+ * @param {*} params parameters used to scroll to item
+ * @returns button component with scroll functionality
+ */
 function ScrollButton({ id, children, className }) {
     const scroll = () => {
         const targetElement = document.getElementById(id);
@@ -22,22 +26,31 @@ function ScrollButton({ id, children, className }) {
     );
 }
 
+/**
+ * Home page React Component
+ * @returns Home page component
+ */
 export default function Home() {
-
+    //variable for if supabase api call is loading
     const [loading, setLoading] = useState(true)
+    //variable for if supabase api response contains error
     const [error, setError] = useState(false)
+    //Meal data from API 
     const [mealData, setData] = useState(null)
+    //User login status
     const { user } = useAuth();
 
     useEffect(() => {
         setLoading(true)
+        /**
+         * Fetch meals from supabase API
+         */
         const fetchMeals = async () => {
             const {data: d, error: e} = await supabase
                 .from('mealLocations')
                 .select('*,meals(*, sellers(*)), Locations(*)')
                 .neq('meal_id',0)
                 .limit(9)
-                .order('likes', {ascending: false, foreignTable: 'meals'})
                 if (e) {
                     console.log(e)
                     setError(true)
@@ -60,7 +73,20 @@ export default function Home() {
         for (let i = 0; i < 3; i++) {
             slides.push(
                 <div class="cards">
-                    {mealData.slice(i * 3, (i * 3) + 3).map((meal) => {
+                    {mealData
+                    // Sort meals by likes
+                    .sort((a,b) => {
+                        if (a.meals['likes'] > b.meals['likes']) {
+                            return -1
+                        } else if (a.meals['likes'] < b.meals['likes']) {
+                            return 1
+                        } else {
+                            return 0
+                        }
+                    })
+                    //Show only 3 per slide
+                    .slice(i * 3, (i * 3) + 3)
+                    .map((meal) => {
                         return (
                             <Link to="/marketplace">
                                 <div class="card">

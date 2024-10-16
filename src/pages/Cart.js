@@ -68,12 +68,6 @@ export default function Cart() {
             buyer_id: user.id,
         }))
 
-        // const { data: sessionData, error:sessionError } = await supabase.auth.getSession();
-        // if (sessionError || !sessionData.session) {
-        //     console.error("somthing went wrong with session")
-        // }else {
-        //     console.log(sessionData);
-        // }
         const {data, error } = await supabase //insert cart to order table
             .from('orders')
             .insert(items)
@@ -116,7 +110,7 @@ export default function Cart() {
 
 
     }
-
+    // Display if user is logged in
     return user ? (
         <div>
             <div className="welcome" alt="Avatar">

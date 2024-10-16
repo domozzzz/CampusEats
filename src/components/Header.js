@@ -5,10 +5,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from "./AuthProvider";
 
+/**
+ * Header component used in React App
+ * @returns Header component
+ */
 export default function Header() {
+  // determines if user is authenticated
   const { user } = useAuth();
+  //Is the hamburger-menu open
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  /**
+   * Toggle hamburger menu
+   */
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };

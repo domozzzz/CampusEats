@@ -1,7 +1,4 @@
 import homepage from '../images/Homepage.png'
-import burrito from '../images/Burrito.png'
-import chickenRice from '../images/ChickenRice.png'
-import kebab from '../images/Kebab.png'
 import React, { useState, useEffect} from 'react';
 import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
@@ -9,13 +6,28 @@ import "../css/Community.css"
 import supabase from '../supabase';
 import { CartContext } from "../components/CartContext.js";
 
+/**
+ * NOTE
+ * This page is very similar to marketplace page. However, it does not contain a location search option
+ * As the location has been pre-set by the user on the previous page. Users are also able to add items to 
+ * cart on this page...
+ */
 
+/**
+ * OrderMealKit React compoent
+ * @returns page for ordering a pre-made mealkit
+ */
 export default function OrderSelect() {
 
-    const {LID} = useParams()
-  const [counter, setCounter] = useState(0);
+  //Location ID set by user
+  const {LID} = useParams()
+
+  // Cart context for adding to cart
   const { addToCart } = useContext(CartContext);
 
+  /**
+   * search filter options
+   */
   const [dietary, setDietary] = useState({
     gf: false,
     vegetarian: false,
@@ -34,38 +46,44 @@ export default function OrderSelect() {
     high: 9999
   })
 
+  //selected value to SORT BY in supabase
   const [orderBy, setOrderBy] = useState('likes')
+  //Selected value to DISPLAY on filter
+  const [selectedValue, setSelectedValue] = useState('Likes');
 
+  //Key word search
   const [search, setSearch] = useState(null)
 
+  //Results of search
   const [results, setResults] = useState([])
+
+  //Ingredients to display when a user clicks "view ingredients" on meal  
   const [Ingredients, setIngredients] = useState({
     name: null,
     image: null,
     ingredients: null,
     nutrition: null
   })
+
+  // Error status
   const [error, setError] = useState(null)
 
-  const inc = () => {
-    setCounter(counter + 1 );
-  }
-
+  // Popup seen status
   const [seen, setSeen] = useState(false)
 
-  const [selectedValue, setSelectedValue] = useState('Likes');
 
   const [isOpen, setIsOpen] = useState(false);
 
+  /**
+   * Drop down filter (likes, number of orders, cost)
+   * @returns dropdown component
+   */  
   const Dropdown = () => {
   
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
     };
   
-    const closeDropdown = () => {
-      setIsOpen(false);
-    };
   
     const handleButtonClick = (e) => {
       setSelectedValue(e.target.value);
@@ -119,6 +137,10 @@ export default function OrderSelect() {
     );
   };
 
+  /**
+   * Checkout function to add item to cart
+   * @param {*} meal meal to add to cart
+   */
   const checkout = (meal) => {
     const item = {
         name: meal.meals.name,
@@ -130,25 +152,32 @@ export default function OrderSelect() {
         lid: LID,
         number_of_orders: meal.meals.number_of_orders
     }
-    console.log(item);
     addToCart(item);
   }
 
+  /**
+  * Pop-up component (show ingredients and nutrition)
+  * @param {*} event input that triggers open pop
+  */
   async function openPop(event) {
-    const meal = results.find(meal => meal.meal_id == event.target.name)
+    //Target name for each card is meal-id
+    const meal = results.find(meal => meal.meals.id == event.target.name)
+    //Search in nutrition table for meal-id
     const {data, error} = await supabase
     .from('nutrition')
     .select('*')
-    .eq('meal_id',meal.meal_id)
+    .eq('meal_id',meal.meals.id)
 
+    //Set ingredient data based on returned meal-kit
     if (data) {
       setIngredients({
         name: meal.meals.name,
         image: meal.meals.photo,
         ingredients: meal.meals.ingredients,
         nutrition: data[0],
-        cost: meal.meals.price,
+        cost: meal.meals.price
       })
+      //Set error to null and seen (popup) to true
       setError(null)
       setSeen(true);
     }
@@ -163,6 +192,10 @@ export default function OrderSelect() {
     setSeen(false);
   };
 
+  /**
+   * set dietary option (gluten free, vegan, vegetarian) true/false
+   * @param {*} e input object (gluten free or vegan or vegetarian)
+   */  
   const set_dietary_option = (e) => {
     if (e.target.checked) {
       setDietary({...dietary,[e.target.name]: true})
@@ -171,28 +204,33 @@ export default function OrderSelect() {
     }
   }
 
+    /**
+   * Collection of functions to set the nutritional options
+   * @param {*} e input DOM object triggered
+   */
+
   const set_min_calorie = (e) => {
-    setCalories({...calories, ['low']: parseFloat(e.target.value)})
+    setCalories({...calories, 'low': parseFloat(e.target.value)})
   }
 
   const set_max_calorie = (e) => {
-    setCalories({...calories, ['high']: parseFloat(e.target.value)})
+    setCalories({...calories, 'high': parseFloat(e.target.value)})
   }
 
   const set_min_protein = (e) => {
-    setProtein({...protein, ['low']: parseFloat(e.target.value)})
+    setProtein({...protein, 'low': parseFloat(e.target.value)})
   }
 
   const set_max_protein = (e) => {
-    setProtein({...protein, ['high']: parseFloat(e.target.value)})
+    setProtein({...protein, 'high': parseFloat(e.target.value)})
   }  
 
   const set_min_sugars = (e) => {
-    setSugars({...sugars, ['low']: parseFloat(e.target.value)})
+    setSugars({...sugars, 'low': parseFloat(e.target.value)})
   }
 
   const set_max_sugars = (e) => {
-    setSugars({...sugars, ['high']: parseFloat(e.target.value)})
+    setSugars({...sugars, 'high': parseFloat(e.target.value)})
   }
 
   const get_search = (e) => {
@@ -203,8 +241,13 @@ export default function OrderSelect() {
     }
   }
   
+  /**
+  * Use Effect used to return filtered results based on user search conditions
+  */
   useEffect(() => {
     window.scrollTo(0, 0)
+    //Get data for all meals which meet condition (not mealid 0 and within nutritional range)
+    // AND at the given location id
     const getResults = async () => {
       const {data, error} = await supabase
       .from('mealLocations')
@@ -219,6 +262,7 @@ export default function OrderSelect() {
       .gte('meals.nutrition.Protein',protein.low)     
       if (data) {
         const result = data.filter((mealkit) => {
+          //Filter by vegan, vegetarian and gluten-free
             const vegan = () => {
               if (dietary.vegan == true) {
                 return mealkit.meals.vegan == true
@@ -239,7 +283,7 @@ export default function OrderSelect() {
               }
               return true
             }
-  
+            //Filter by whether meal name matches search
             const searchMatch = () => {
               if (search != null) {
                 return mealkit.meals.name.toLowerCase().includes(search.toLowerCase())
@@ -257,7 +301,12 @@ export default function OrderSelect() {
     }
 
     getResults()
-  },[dietary, calories, sugars, protein, orderBy, search])
+  },[dietary, calories, sugars, protein, orderBy, search, LID])
+
+    /**
+   * Pop up to display ingredients and nutrtion for each meal
+   * @returns pop-up rendered component
+   */
     const Pop = () => {
       return (
         <div className='pop'>
@@ -368,9 +417,9 @@ export default function OrderSelect() {
                   <div className='sub-box'>
                     <h1>Nutritients</h1>
                     <ul>
-                      <li className='spaced'><input type="text2" onChange={set_min_calorie} /><span>≤ Calories ≤</span><input type="text2" onChange={set_max_calorie} /></li>
-                      <li className='spaced'><input type="text2" onChange={set_min_protein}/><span>≤ Protein ≤</span><input type="text2" onChange={set_max_protein} /></li>
-                      <li className='spaced'><input type="text2" onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="text2" onChange={set_max_sugars}/></li>
+                      <li className='spaced'><input type="number" min={0} max={9999} onChange={set_min_calorie} /><span>≤ Calories ≤</span><input type="number" min={0} max={9999} onChange={set_max_calorie} /></li>
+                        <li className='spaced'><input type="number" min={0} max={9999} onChange={set_min_protein}/><span>≤ Protein ≤</span><input type="number" min={0} max={9999} onChange={set_max_protein} /></li>
+                        <li className='spaced'><input type="number" min={0} max={9999} onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="number"min={0} max={9999} onChange={set_max_sugars}/></li>
                     </ul>
                   </div>
                   <div className='sub-box'>
@@ -387,6 +436,7 @@ export default function OrderSelect() {
         </div>
         <div className={`cards ${seen ? 'transparent' : ''}`}>
           {results.sort((a,b) => {
+            {/* If sort by price, show lowest to highest, else highest to lowest */}
             if (orderBy === 'price') {
             return a.meals['price'] - b.meals['price']
             } else {

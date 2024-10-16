@@ -4,10 +4,14 @@ import homepage from '../images/Homepage.png';
 import clock from '../images/Clock.png';
 import search from '../images/Search.png';
 import '../css/Order.css'
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate} from 'react-router-dom';
 import { useAuth } from '../components/AuthProvider';
 import { useParams } from 'react-router-dom';
 
+/**
+ * React component to render page for chosing between custom mealkit or searching pre-made
+ * @returns 
+ */
 export default function OrderSelect() {
 
     const { user } = useAuth()

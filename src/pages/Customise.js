@@ -7,6 +7,10 @@ import { useAuth } from "../components/AuthProvider.js";
 import { useParams } from 'react-router-dom';
 import { CartContext } from "../components/CartContext.js";
 
+/**
+ * Customise page for react app
+ * @returns custom-mealkit page
+ */
 export default function Customise() {
     const [currentStep, setStep] = useState(1);
     const [baseList, setBaseList] = useState({});

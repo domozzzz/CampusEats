@@ -107,8 +107,8 @@ export default function Upload() {
     const addIngredient = (e) => {
         if (newIngredient['name'] != null) {
             setIngredients([...ingredients,newIngredient])
-            setUpload({...upload,['ingredients']: ingredients})
-            setNewIngredient({...newIngredient, ['name']: null})
+            setUpload({...upload,'ingredients': ingredients})
+            setNewIngredient({...newIngredient, 'name': null})
             setErrorIngreident(null)
         } else {
             setErrorIngreident("Error adding new ingredient")
@@ -121,7 +121,11 @@ export default function Upload() {
         setIngredients(ing => ing.filter((val, i) => (i !== index)))
     }
 
-    async function uploadImage(e) {
+    /**
+     * Upload an image file to supabase
+     * @returns image url of imageid
+     */
+    async function uploadImage() {
         let file = image;
         let imageid = uuidv4();
 

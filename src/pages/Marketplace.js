@@ -5,10 +5,15 @@ import "../css/Community.css"
 import supabase from '../supabase';
 
 
+/**
+ * React component for displaying marketplace results
+ * @returns marketplace react components
+ */
 export default function Marketplace() {
 
-  const [counter, setCounter] = useState(0);
-
+  /**
+   * search filter options
+   */
   const [dietary, setDietary] = useState({
     gf: false,
     vegetarian: false,
@@ -27,44 +32,50 @@ export default function Marketplace() {
     high: 9999
   })
 
+  //selected value to SORT BY in supabase
   const [orderBy, setOrderBy] = useState('likes')
+  //Selected value to DISPLAY on filter
+  const [selectedValue, setSelectedValue] = useState('Likes');
 
+  //Key word search
   const [search, setSearch] = useState(null)
 
+  //Results of search
   const [results, setResults] = useState([])
+  //Ingredients to display when a user clicks "view ingredients" on meal
   const [Ingredients, setIngredients] = useState({
     name: null,
     image: null,
     ingredients: null,
     nutrition: null
   })
+  //Error status
   const [error, setError] = useState(null)
 
-  const inc = () => {
-    setCounter(counter + 1 );
-  }
-
+  //pop up seen status
   const [seen, setSeen] = useState(false)
 
-  const [selectedValue, setSelectedValue] = useState('Likes');
 
+  //Drop down filter status
   const [isOpen, setIsOpen] = useState(false);
 
+  //Location search feature
   const [location, setLocation] = useState('')
 
   const customLocation = (e) => {
     setLocation(e.target.value)
   }
 
+  /**
+   * Drop down filter (likes, number of orders, cost)
+   * @returns dropdown component
+   */
   const Dropdown = () => {
   
     const toggleDropdown = () => {
       setIsOpen(!isOpen);
     };
   
-    const closeDropdown = () => {
-      setIsOpen(false);
-    };
   
     const handleButtonClick = (e) => {
       setSelectedValue(e.target.value);
@@ -118,14 +129,20 @@ export default function Marketplace() {
     );
   };
 
+  /**
+   * Pop-up component (show ingredients and nutrition)
+   * @param {*} event input that triggers open pop
+   */
   async function openPop(event) {
+    //Target name for each card is meal-id
     const meal = results.find(meal => meal.meals.id == event.target.name)
-    console.log(meal)
+    //Search in nutrition table for meal-id
     const {data, error} = await supabase
     .from('nutrition')
     .select('*')
     .eq('meal_id',meal.meals.id)
 
+    //Set ingredient data based on returned meal-kit
     if (data) {
       setIngredients({
         name: meal.meals.name,
@@ -134,6 +151,7 @@ export default function Marketplace() {
         nutrition: data[0],
         cost: meal.meals.price
       })
+      //Set error to null and seen (popup) to true
       setError(null)
       setSeen(true);
     }
@@ -148,6 +166,10 @@ export default function Marketplace() {
     setSeen(false);
   };
 
+  /**
+   * set dietary option (gluten free, vegan, vegetarian) true/false
+   * @param {*} e input object (gluten free or vegan or vegetarian)
+   */
   const set_dietary_option = (e) => {
     if (e.target.checked) {
       setDietary({...dietary,[e.target.name]: true})
@@ -156,28 +178,33 @@ export default function Marketplace() {
     }
   }
 
+  /**
+   * Collection of functions to set the nutritional options
+   * @param {*} e input DOM object triggered
+   */
+
   const set_min_calorie = (e) => {
-    setCalories({...calories, ['low']: parseFloat(e.target.value)})
+      setCalories({...calories, 'low': parseFloat(e.target.value)})
   }
 
   const set_max_calorie = (e) => {
-    setCalories({...calories, ['high']: parseFloat(e.target.value)})
+    setCalories({...calories, 'high': parseFloat(e.target.value)})
   }
 
   const set_min_protein = (e) => {
-    setProtein({...protein, ['low']: parseFloat(e.target.value)})
+    setProtein({...protein, 'low': parseFloat(e.target.value)})
   }
 
   const set_max_protein = (e) => {
-    setProtein({...protein, ['high']: parseFloat(e.target.value)})
+    setProtein({...protein, 'high': parseFloat(e.target.value)})
   }  
 
   const set_min_sugars = (e) => {
-    setSugars({...sugars, ['low']: parseFloat(e.target.value)})
+    setSugars({...sugars, 'low': parseFloat(e.target.value)})
   }
 
   const set_max_sugars = (e) => {
-    setSugars({...sugars, ['high']: parseFloat(e.target.value)})
+    setSugars({...sugars, 'high': parseFloat(e.target.value)})
   }
 
   const get_search = (e) => {
@@ -188,19 +215,16 @@ export default function Marketplace() {
     }
   }
   
+  /**
+   * Use Effect used to return filtered results based on user search conditions
+   */
   useEffect(() => {
 
-    if (location.length == 0) {
-      console.log("empty")
-    } 
-    
-    else {
-      console.log(location)
-    }
+    //Get data for all meals which meet condition (not mealid 0 and within nutritional range)
     const getResults = async () => {
       const {data, error} = await supabase
       .from('mealLocations')
-      .select('*,meals(*,nutrition(*)),Locations(*)')  
+      .select('*,meals(*,nutrition(*),sellers(*)),Locations(*)')  
       .neq('meals.id',0)
       .lte('meals.nutrition.Sugars',sugars.high)
       .lte('meals.nutrition.Calories',calories.high)  
@@ -209,8 +233,8 @@ export default function Marketplace() {
       .gte('meals.nutrition.Calories',calories.low)  
       .gte('meals.nutrition.Protein',protein.low)     
       if (data) {
-        console.log(data)
         const result = data.filter((mealkit) => {
+          //Filter by vegan, vegetarian and gluten-free
             const vegan = () => {
               if (dietary.vegan == true) {
                 return mealkit.meals.vegan == true
@@ -231,14 +255,14 @@ export default function Marketplace() {
               }
               return true
             }
-  
+            //Filter by whether meal name matches search
             const searchMatch = () => {
               if (search != null) {
                 return mealkit.meals.name.toLowerCase().includes(search.toLowerCase())
               }
               return true
             }
-
+            //Is meal at search location
             const locationMatch = () => {
               if (location.length > 0) {
                 return mealkit.Locations.name.toLowerCase().includes(location.toLowerCase())
@@ -257,6 +281,10 @@ export default function Marketplace() {
 
     getResults()
   },[dietary, calories, sugars, protein, orderBy, search, location])
+  /**
+   * Pop up to display ingredients and nutrtion for each meal
+   * @returns pop-up rendered component
+   */
     const Pop = () => {
       return (
         <div className='pop'>
@@ -373,9 +401,9 @@ export default function Marketplace() {
                     <div className='sub-box'>
                       <h1>Nutritients</h1>
                       <ul>
-                        <li className='spaced'><input type="text2" onChange={set_min_calorie} /><span>≤ Calories ≤</span><input type="text2" onChange={set_max_calorie} /></li>
-                        <li className='spaced'><input type="text2" onChange={set_min_protein}/><span>≤ Protein ≤</span><input type="text2" onChange={set_max_protein} /></li>
-                        <li className='spaced'><input type="text2" onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="text2" onChange={set_max_sugars}/></li>
+                        <li className='spaced'><input type="number" min={0} max={9999} onChange={set_min_calorie} /><span>≤ Calories ≤</span><input type="number" min={0} max={9999} onChange={set_max_calorie} /></li>
+                        <li className='spaced'><input type="number" min={0} max={9999} onChange={set_min_protein}/><span>≤ Protein ≤</span><input type="number" min={0} max={9999} onChange={set_max_protein} /></li>
+                        <li className='spaced'><input type="number" min={0} max={9999} onChange={set_min_sugars}/><span>≤ Sugars ≤</span><input type="number"min={0} max={9999} onChange={set_max_sugars}/></li>
                       </ul>
                     </div>
                     <div className='sub-box'>
@@ -397,6 +425,7 @@ export default function Marketplace() {
           {seen ? <Pop/> : null}
           </div>
           <div className={`cards ${seen ? 'transparent' : ''}`}>
+            {/* If sort by price, show lowest to highest, else highest to lowest */}
             {results.sort((a,b) => {
               if (orderBy === 'price') {
                 return a.meals['price'] - b.meals['price']
@@ -408,7 +437,7 @@ export default function Marketplace() {
                   <div class="card" name="hello">
                     <img src={meal.meals.photo} alt="Avatar" class='card-img'></img>
                     <p>{meal.meals.name}<br />
-                      Creator: {meal['sellers'] != null ? meal['sellers']['username'] : "CampusEats"}<br />
+                      Creator: {meal.meals['sellers'] != null ? meal.meals['sellers']['username'] : "CampusEats"}<br />
                       ♡ {meal.meals.likes}<br />
                       Location: {meal.Locations.name}
                     </p>  

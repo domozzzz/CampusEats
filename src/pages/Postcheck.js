@@ -2,6 +2,10 @@
 import homepage from '../images/Homepage.png'
 import '../css/Postcheck.css'
 
+/**
+ * Post checkout component after user submits order (protype DOES NOT contain checkout feature)
+ * @returns postcheckout component
+ */
 export default function Postcheckout() {
     return (
         <div>

@@ -2,6 +2,10 @@
 import homepage from '../images/Homepage.png'
 import '../css/TermsAndConditions.css'
 
+/**
+ * Terms and conditions page
+ * @returns simple terms and conditions page
+ */
 export default function TermsAndConditions() {
     return (
         <div>

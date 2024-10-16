@@ -3,6 +3,10 @@ import logo from '../images/Logo.png'
 import { Link } from "react-router-dom";
 import '../css/Footer.css'
 
+/**
+ * Footer component for application
+ * @returns footer component
+ */
 export default function Footer() {
 
   return (

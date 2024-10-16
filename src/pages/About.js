@@ -3,7 +3,10 @@ import about from '../images/About.jpeg'
 import homepage from '../images/Homepage.png'
 import { Link } from 'react-router-dom';
 import '../css/About.css'
-
+/**
+ * About page in react App
+ * @returns React 'About Us' page component
+ */
 export default function About() {
     return (
         <div>
