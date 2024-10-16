@@ -29,7 +29,7 @@ function removeall(item, remove) {
 function checkoutItem(item, add, remove) {
     return (
         <div className='checkoutItem'>
-        <img src={item.image} alt="image"></img>
+        <img src={item.image} alt={item.name}></img>
         <p>{item.name}<br/>${item.cost}</p>
         <div className='increment'>
             <button onClick={() => remove(item)}>-</button>
@@ -100,7 +100,7 @@ export default function Cart() {
     const updatemeal = async(item) => {
 
         // Get how many times it has been ordered
-        let {data: meals, error: er} = await supabase
+        let {data: meals} = await supabase
         .from('meals')
         .select('number_of_orders')
         .eq('id',item.meal_id)
@@ -108,7 +108,7 @@ export default function Cart() {
         let ordernum = (meals[0].number_of_orders);
 
         // Insert new value
-        const {data: update, error} = await supabase
+        await supabase
         .from('meals')
         .update({number_of_orders: ordernum + item.quantity})
         .eq('id',item.meal_id)

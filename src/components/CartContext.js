@@ -31,7 +31,7 @@ export const CartProvider = ({ children }) => {
                     console.log("removing one");
                     return prevCart.map((items) => items.meal_id === item.meal_id ? {...items, quantity: items.quantity - 1} : items);
                 } else {
-                    return prevCart.filter((items) => items.meal_id != item.meal_id);
+                    return prevCart.filter((items) => items.meal_id !== item.meal_id);
                 }
             }
         })

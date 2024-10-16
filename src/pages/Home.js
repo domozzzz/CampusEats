@@ -4,7 +4,6 @@ import homepage from '../images/Homepage.png'
 import Slideshow from "../components/Slideshow";
 import '../css/Home.css'
 import supabase from "../supabase";
-import { CartContext } from "../components/CartContext.js";
 import { useAuth } from '../components/AuthProvider.js';
 
 

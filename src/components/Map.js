@@ -1,14 +1,14 @@
 
 
-import React, {useEffect, useState, useRef, useCallback,useMemo} from 'react';
+import React, {useEffect, useState} from 'react';
 import homepage from '../images/Homepage.png'
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { Link } from 'react-router-dom';
 import "../css/Map.css"
 import "../css/App.css"
 import supabase from '../supabase';
 import { useAuth } from './AuthProvider';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const MAP_API_KEY = process.env.REACT_APP_MAP
 
@@ -74,7 +74,7 @@ const MapDisplay = () => {
                   })}
             </div>
           {!isLoaded || !display? (
-            <h1></h1>
+            <h2>search a location...</h2>
           ) : (
             <div>
             <GoogleMap
