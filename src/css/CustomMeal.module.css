@@ -59,6 +59,7 @@
   color: #064D42;
   font-size: 1rem;
   margin-top: 10px;
+  white-space: nowrap;
 }
 
 .cards {
