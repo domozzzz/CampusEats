@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom';
 
 /**
  * React component to render page for chosing between custom mealkit or searching pre-made
- * @returns 
+ * @returns Select order type component
  */
 export default function OrderSelect() {
 
