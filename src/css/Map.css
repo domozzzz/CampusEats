@@ -19,8 +19,8 @@
 .map-style {
     width: 40vw;
     height: 40vh;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center button horizontally */
+    margin-right: auto; /* Center button horizontally */
     border: solid 2px #064d42;
 }
 
@@ -38,7 +38,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
 }
 
 .possible_location .inactive {
@@ -54,15 +54,15 @@
     background-color: #064d42;
     margin-top: 50px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
     margin-bottom: 10px;
     color: white;
     width: fit-content;
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px;
-    border-radius: 10px;    
+    border-radius: 10px; /* Rounded corners */
 }
 
 /* Mobile */
