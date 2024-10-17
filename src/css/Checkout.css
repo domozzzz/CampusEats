@@ -43,8 +43,8 @@
     margin-right: 30px;
 }
 .checkoutItem p {
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-top: auto; /* Center vertically */
+    margin-bottom: auto; /* Center vertically */
     text-align: center;
     width: 200px;
     color: white;
@@ -85,7 +85,7 @@
     background-color: #064D42;
     color: white;
     font-size: 1.5rem;
-    border-radius: 25px;
+    border-radius: 25px; /* Rounded corners */
     border: none;
     margin-top: 20px;
     margin-bottom: 100px;
@@ -93,7 +93,7 @@
 
 .buttons {
     display: flex;
-    flex-direction: row; /* Places b    uttons in horizontal row */
+    flex-direction: row; /* Places buttons in horizontal row */
     justify-content: space-around; /* Places the buttons evenly */
 }
 

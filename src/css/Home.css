@@ -27,9 +27,8 @@
 }
 
 .button-container {
-    display: flex;
     justify-content: left; 
-    align-items: center;
+    align-items: center; /* Center items */
     gap: 5px; 
     margin-top: 20px;
 }
@@ -41,7 +40,7 @@
     display: block;
     float: left;
     border: solid 1px;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
     margin-bottom: 0.5em;
     display: block;
     padding: 0.2em;
@@ -57,7 +56,7 @@
     display: block;
     float: left;
     border: none;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
     margin-bottom: 0.5em;
     display: block;
     padding: 0.2em;
@@ -71,13 +70,13 @@
 .explore-button {
     font-size: 2em;
     border: none;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
     margin-top: 2em;
     margin-bottom: 0.5em;
     width: fit-content;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
     display: block;
     padding: 0.2em;
     padding-left: 0.5em;
@@ -92,7 +91,7 @@
     font-size: 2em;
     background-color: transparent;
     border: none;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
     margin-bottom: 0.5em;
     padding: 0.2em;
     display: block;
@@ -110,7 +109,7 @@
 
     /* Home Page */
     .welcome {
-        flex-direction: column;
+        flex-direction: column; /* Stack vertically */
         text-align: center;
     }
 

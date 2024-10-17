@@ -51,7 +51,7 @@
     margin: auto;
     margin-bottom: 50px;
     background-color: #D9E5E3;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
 
 }
 
@@ -104,7 +104,7 @@
 
 .removeIngredient button {
     width: 40px;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
     background-color: #004d3d;
     color: white;
 }
@@ -116,13 +116,13 @@
     width: fit-content;
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
 }
 
 .addIngredient input {
     height: 25px;
     margin: 5px;
-    border-radius: 2px;
+    border-radius: 2px; /* Rounded corners */
     border: none;
 }
 
@@ -145,7 +145,7 @@
     font-size: 1.25rem;
     color: white;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
 }
 
 .submit {
@@ -161,7 +161,7 @@
     font-size: 2rem;
     margin-bottom: 20px;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 20px; /* Rounded corners */
     background-color: #004d3d;
     color: white;
     border: solid #004d3d 2px;

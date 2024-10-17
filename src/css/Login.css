@@ -30,7 +30,7 @@ body {
     flex-direction: column; /* Stack vertically */
     background-color: #FDFDFD;
     padding: 40px;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
     text-align: center;
     max-width: 300px;
     width: 100%;
@@ -64,7 +64,7 @@ body {
     background: transparent;
     color: #0c6649;
     border: 1px solid #0c6649;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
     font-size: 16px;
     cursor: pointer;
   }
