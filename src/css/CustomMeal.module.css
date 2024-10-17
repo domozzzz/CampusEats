@@ -52,14 +52,12 @@
   color: white;
   font-size: 1rem;
   margin-top: 10px;
-  white-space: nowrap;
 }
 
 .choice_card_p_added {
   color: #064D42;
   font-size: 1rem;
   margin-top: 10px;
-  white-space: nowrap;
 }
 
 .cards {
@@ -259,7 +257,7 @@
 
     .choice_card, .choice_card_added {
       width: 100px;
-      min-height: 200px;
+      min-height: 250px;
     }
   
     .choice_card_img, .choice_card_img_added {
@@ -267,7 +265,7 @@
     }
   
     .choice_card_p, .choice_card_p_added {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
     }
 
     .custom_meal_container h1 {
