@@ -1,16 +1,17 @@
+/* Base */
 :root {
     --green: #064D42;
 }
 
 .quick-order {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack vertically */
     background-color: white;
     position: relative;
-    height: auto;
+    height: auto; /* Keep aspect ratio */
     padding-bottom: 120px;
     width: 100%;
-    align-items: center;
+    align-items: center; /* Center stacked items */
 }
 
 .quick-order h1 {
@@ -46,8 +47,8 @@
 
 .progress .step {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;  /* Stack vertically */
+    align-items: center;  /* Center stacked items */
     justify-content: center;
     gap: 10px;
     z-index: 2;
@@ -56,10 +57,10 @@
 .progress .step .number {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Center items */
     margin: 0;
     padding: 15px;
-    border-radius: 50%;
+    border-radius: 50%; /* Make circular */
     background-color: #D9E5E3;
     color: #064D42;
     font-size: 1.5rem;
@@ -98,14 +99,14 @@
 .choice-card {
     background-color: #064D42;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
     width: 150px;
     text-align: center;
 }
 
 .choice-card img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
 }
 
 .choice-card p {
@@ -120,8 +121,8 @@
     padding: 15px 30px;
     font-size: 1.2rem;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Hover cursor style*/
     margin-top: 20px;
 }
 

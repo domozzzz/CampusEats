@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 
-
+/* Base */
 :root {
   --white: #ffff;
   --black: #0000;
@@ -57,7 +57,7 @@ nav ul li { /* All nav elements */
 }
 
 .menu-icon {
-  display: none;
+  display: none; /* Hides icon */
 }
 
 .unpadded {
@@ -68,7 +68,7 @@ nav ul li:last-child {
   margin-right: 20px;
 }
 nav ul li:nth-last-child(2) {
-  margin-left: auto;
+  margin-left: auto; /* Keep aspect ratio */
 }
 nav li a {    
   display: block;
@@ -162,7 +162,7 @@ h1 {
   }
   .about-image img {
     width: 100%;
-    height: auto;
+    height: auto; /* Keep aspect ratio */
     object-fit: cover;
   }
   .about-text {
@@ -620,7 +620,7 @@ label {
   }
 
   .logo {
-    display: none;
+    display: none; /* Hides logo */
   }
 }
 
@@ -638,7 +638,7 @@ label {
   }
 
   .nav-links {
-    display: none;
+    display: none;  /* Hides links */
     flex-direction: column;
     align-items: center;
   }
@@ -661,7 +661,7 @@ label {
   }
 
   .logo {
-    display: none;
+    display: none; /* Hides logo */
   }
 
   nav ul li:last-child {

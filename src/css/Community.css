@@ -1,9 +1,14 @@
+/* Base */
 :root {
 --lightGray: #D9E5E3;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 p {
-    text-align: center;
+    text-align: center; /* Center all paragraphs */
 }
 
 ul {
@@ -12,12 +17,12 @@ ul {
 
 li  {
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertically alignment */
   margin-bottom: 10px;
 }
 
 input[type=search] {
-  text-align: center;
+  text-align: center; /* Centers text in searchbar */
   padding: 6px;
   border: none;
   width: 100%;
@@ -52,7 +57,7 @@ input[type=text3] {
   max-width: 600px;
   align-content: center;
   margin: 10px auto;
-  border-radius: 15px;
+  border-radius: 15px; /* Rounded corners */
   box-sizing: border-box;
 }
 
@@ -69,7 +74,7 @@ input[type=text3] {
   width: 180px;
   font-size: 1.5em;
   border: none;
-  border-radius: 15px;
+  border-radius: 15px; /* Rounded corners */
   margin-bottom: 0.5em;
   padding: 0.2em;
   padding-left: 0.5em;
@@ -119,8 +124,8 @@ input[type=text3] {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   display: flex;
-  border-radius: 15px;
-  flex-direction: column;
+  border-radius: 15px; /* Rounded corners */
+  flex-direction: column; /* Align vertically */
   overflow: hidden;
 }
 
@@ -133,7 +138,7 @@ input[type=text3] {
   display: flex;
   width: 90%;
   margin: 10px auto 50px auto;
-  border-radius: 15px;
+  border-radius: 15px; /* Rounded corners */
   flex-wrap: wrap; 
   justify-content: space-between; 
 }
@@ -143,10 +148,9 @@ input[type=text3] {
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
-
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* Align vertically */
+  align-items: center; /* Center items */
   min-width: 250px;
 }
 
@@ -159,16 +163,17 @@ input[type=text3] {
 .option-button {
   background-color: #D9E5E3;
   border: none;
-  border-radius: 10px;
+  border-radius: 10px; /* Rounded corners */
   margin: 10px;
   color: #064D42;
   font-size: 1rem;
   font-weight: bold;
-  cursor: pointer;
+  cursor: pointer; /* Hover cursor */
   text-align: center;
 }
 
-  @media (max-width: 600px) {
+/* Mobile */
+@media (max-width: 600px) {
   p, ul {
     font-size: 1rem;
   }

@@ -434,7 +434,7 @@ export default function OrderSelect() {
         <div className='popup-display'>
         {seen ? <Pop/> : null}
         </div>
-        <div className={`cards ${seen ? 'transparent' : ''}`}>
+        <div className={`cards ${seen ? 'transparent' : ''}`} id='top'>
           {results.sort((a,b) => {
             {/* If sort by price, show lowest to highest, else highest to lowest */}
             if (orderBy === 'price') {
@@ -451,7 +451,7 @@ export default function OrderSelect() {
                     ♡ {meal.meals.likes}<br />
                     Location: {meal.Locations.name}
                   </p>  
-                  <button className='option-button' name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
+                  <a href="#top"><button className='option-button' name = {meal.meals.id} onClick={openPop}>View Ingredients</button></a>
                   <button className='option-button' onClick={() => checkout(meal)}>add to cart</button>
                   <p style={{color: 'red'}}>{error ? error : ''}</p>
                   </div>

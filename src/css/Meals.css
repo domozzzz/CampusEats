@@ -1,3 +1,4 @@
+/* Base */
 .meals-title {
     z-index: 10;
     position: relative;
@@ -21,7 +22,7 @@
     color: #064D42;
     background-color:#FDFDFD;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack vertically */
     text-align: center;
     margin:  20px 20px 30px 20px;
     width: 200px;
@@ -29,7 +30,7 @@
     padding: 15px 10px 15px;
     border-style: solid;
     border-color: #064D42;
-    border-radius: 15%;  
+    border-radius: 15%; /* Rounded corners */
 }
 
 .meals-logo img {
@@ -48,20 +49,20 @@
     position: relative;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column; /* Stack vertically */
     text-align: center;
     color: #FDFDFD;
     background-color: #064D42;
     margin: 30px auto 50px auto;
     width: 70%;
     border-style: none;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
 }
 
 .meals-logo h3 {
     font-size: 2em;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
     margin-top: 10px;
 }
 
@@ -78,7 +79,7 @@
     justify-content: center;
     background-color: white;
     border-style: none;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
 }
 
 .meal-info-header button {
@@ -87,7 +88,7 @@
     width: 140px;
     height: 50px;
     border-style: none;
-    border-radius: 15px;
+    border-radius: 15px; /* Rounded corners */
     font-size: large;
     font-weight: 600;
     color: #064D42;

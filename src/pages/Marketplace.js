@@ -160,6 +160,8 @@ export default function Marketplace() {
       setError("There was an error retrieving nutrtional info for this meal.")
       console.log(error)
     }
+
+
   };
 
   function closePop () {
@@ -424,7 +426,7 @@ export default function Marketplace() {
           <div className='popup-display'>
           {seen ? <Pop/> : null}
           </div>
-          <div className={`cards ${seen ? 'transparent' : ''}`}>
+          <div className={`cards ${seen ? 'transparent' : ''}`}  id='top'>
             {/* If sort by price, show lowest to highest, else highest to lowest */}
             {results.sort((a,b) => {
               if (orderBy === 'price') {
@@ -441,7 +443,7 @@ export default function Marketplace() {
                       ♡ {meal.meals.likes}<br />
                       Location: {meal.Locations.name}
                     </p>  
-                    <button className='option-button' name = {meal.meals.id} onClick={openPop}>View Ingredients</button>
+                    <a href="#top"><button className='option-button' name = {meal.meals.id} onClick={openPop} >View Ingredients</button></a>
                     <p style={{color: 'red'}}>{error ? error : ''}</p>
                     </div>
               )

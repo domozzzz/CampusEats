@@ -1,3 +1,4 @@
+/* Base */
 :root {
     --green: #064D42;
 }
@@ -7,11 +8,11 @@
     flex-direction: column;
     background-color: white;
     position: relative;
-    height: auto;
+    height: auto; /* Keep aspect ratio */
     padding-top: 50px;
     padding-bottom: 50px;
     width: 100%;
-    align-items: center;
+    align-items: center; /* Center items */
 }
 
 .edit-profile h1 {
@@ -25,7 +26,7 @@
     background-color: white;
     padding: 40px;
     width: 400px;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1;
     position: relative;
@@ -54,7 +55,7 @@
     padding: 10px;
     font-size: 14px;
     border: 1px solid #064D42;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
 }
 
 .form-actions {
@@ -67,7 +68,7 @@
     background-color: #064D42;
     color: white;
     font-size: 16px;
-    border-radius: 10px;
+    border-radius: 10px; /* Rounded corners */
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -76,7 +77,7 @@
     background-color: #054138;
 }
 
-
+/* Mobile */
 @media (max-width: 600px) {
     .form-group input {
         padding: 8px; 
