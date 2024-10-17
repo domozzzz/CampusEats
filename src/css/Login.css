@@ -1,3 +1,4 @@
+/* Base */
 body {
   margin: 0;
   overflow-x: hidden;
@@ -9,7 +10,7 @@ body {
     position: absolute;
     top: 0;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Center items */
     background-attachment: fixed;
     background-size: 100% 100vh;
     height: 100vh;
@@ -26,7 +27,7 @@ body {
     margin-top: 150px;
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack vertically */
     background-color: #FDFDFD;
     padding: 40px;
     border-radius: 15px;
@@ -92,8 +93,8 @@ body {
   form {
     position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Stack vertically */
+    align-items: center;  /* Center stacked items */
     justify-content: center;
   }
   

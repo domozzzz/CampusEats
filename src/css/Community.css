@@ -1,9 +1,10 @@
+/* Base */
 :root {
 --lightGray: #D9E5E3;
 }
 
 p {
-    text-align: center;
+    text-align: center; /* Center all paragraphs */
 }
 
 ul {
@@ -12,12 +13,12 @@ ul {
 
 li  {
   display: flex;
-  align-items: center;
+  align-items: center; /* Vertically alignment */
   margin-bottom: 10px;
 }
 
 input[type=search] {
-  text-align: center;
+  text-align: center; /* Centers text in searchbar */
   padding: 6px;
   border: none;
   width: 100%;
@@ -120,7 +121,7 @@ input[type=text3] {
   z-index: 1;
   display: flex;
   border-radius: 15px;
-  flex-direction: column;
+  flex-direction: column; /* Align vertically */
   overflow: hidden;
 }
 
@@ -143,10 +144,9 @@ input[type=text3] {
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
-
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: column; /* Align vertically */
+  align-items: center; /* Center items */
   min-width: 250px;
 }
 
@@ -164,11 +164,12 @@ input[type=text3] {
   color: #064D42;
   font-size: 1rem;
   font-weight: bold;
-  cursor: pointer;
+  cursor: pointer; /* Hover cursor */
   text-align: center;
 }
 
-  @media (max-width: 600px) {
+/* Mobile */
+@media (max-width: 600px) {
   p, ul {
     font-size: 1rem;
   }

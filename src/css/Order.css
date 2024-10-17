@@ -1,3 +1,4 @@
+/* Base */
 :root {
     --green: #064D42;
 }
@@ -57,6 +58,7 @@
     transition-duration: 0.5s;
 }
 
+/* Mobile */
 @media (max-width: 600px) {
     .clock-img {
         height: 60px;

@@ -1,13 +1,14 @@
+/* Base */
 .slideshow {
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* Keep items inside slideshow */
     width: 80%;
     margin: auto;
 }
 
 .slideshow-content {
     display: flex;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease; /* Half a second transition on changing slide*/
     width: 100%;
 }
 
@@ -15,7 +16,7 @@
     min-width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
+    align-items: center; /* Center stacked items */
     justify-content: center;
 }
 
@@ -38,7 +39,7 @@
     position: absolute;
     top: 40%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5); /* Transparent slideshow buttons*/
     color: var(--white);
     border: none;
     padding: 10px;

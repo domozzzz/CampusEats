@@ -1,17 +1,18 @@
+/* Base */
 .upload {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack vertically */
     justify-content: center;
     background-color: white;
-    height: auto;
+    height: auto; /* Keep aspect ratio */
     padding-bottom: 50px;
 }
 
 .header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Stack vertically */
+    align-items: center; /* Center stacked items */
     text-align: center;
     font-family: "Poppins", sans-serif;
 }
@@ -42,7 +43,7 @@
 
 .basicDetails {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stack vertically */
     text-align: center;
     padding: 10px;
     margin: 10px;
@@ -56,8 +57,8 @@
 
 .basicDetails div {
     margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
     width: 60%;
 }
 .basicDetails label {
@@ -70,8 +71,8 @@
     flex-direction: row;
     text-align: center;
     width: 75%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
 }
 
 .upload form label {
@@ -81,8 +82,8 @@
 
 .ingredientList {
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
     text-align: center;
     font-size: 1.5rem;
 }
@@ -113,8 +114,8 @@
     padding: 10px;
     background-color: #D9E5E3;
     width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
     border-radius: 15px;
 }
 
@@ -137,8 +138,8 @@
 .addIngredient button {
     margin-top: 10px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
     width: 60%;
     background-color: #004d3d;
     font-size: 1.25rem;
@@ -149,8 +150,8 @@
 
 .submit {
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
     text-align: center;
     margin-top: 40px;
 }
@@ -174,6 +175,7 @@
     color: green;
 }
 
+/* Mobile */
 @media (max-width: 600px) {
     .header p {
         width: 80%;

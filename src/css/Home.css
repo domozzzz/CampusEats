@@ -1,3 +1,4 @@
+/* Base */
 .aboveTheFold {
     width: 100vw;
     position: absolute;
@@ -104,6 +105,7 @@
     cursor: pointer;
 }
 
+/* Mobile */
 @media (max-width: 600px) {
 
     /* Home Page */

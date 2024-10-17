@@ -1,3 +1,4 @@
+/* Base */
 .map {
     padding-top: 30px;
     min-height: 90vh;
@@ -64,6 +65,7 @@
     border-radius: 10px;    
 }
 
+/* Mobile */
 @media (max-width: 600px) {
     .map h1 {
         width: 90%;
