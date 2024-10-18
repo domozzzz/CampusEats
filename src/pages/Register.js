@@ -26,6 +26,11 @@ function RegisterPage() {
     return isEmailValid && isPaswwordValid;
   }
 
+  /**
+   * Handles user submitting the form
+   * Checks if the input is valid and logs the user in
+   * if inputs are valid register the user and send validation email
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validform()) {

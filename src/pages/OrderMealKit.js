@@ -447,7 +447,7 @@ export default function OrderSelect() {
                 <div class="card" name="hello">
                   <img src={meal.meals.photo} alt="Avatar"></img>
                   <p>{meal.meals.name}<br />
-                    Creator: Joseph<br />
+                    Creator: {meal.meals['sellers'] != null ? meal.meals['sellers']['username'] : "CampusEats"}<br />
                     ♡ {meal.meals.likes}<br />
                     Location: {meal.Locations.name}
                   </p>  
